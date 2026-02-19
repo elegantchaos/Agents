@@ -6,7 +6,7 @@ This folder contains canonical, shareable `.codex` files derived from `/Users/sa
 
 - `AGENTS.md`
 - `config.toml.template` (sanitized template; not a direct copy)
-- `rules/` (`default.rules`, `git.rules`, `swift.rules`)
+- `rules/` (`misc.rules`, `git.rules`, `swift.rules`)
 - `automations/templates/` (sanitized templates)
 
 ## Excluded

@@ -8,6 +8,10 @@ It is intended for:
 - storing reusable language/technology guidance that can be referenced on demand
 - maintaining global config that can optionally be symlinked into place (for example from `~/.codex`)
 
+Canonical local path:
+
+- `~/.local/share/agents`
+
 ## Working Model
 
 Use this repo in two ways:
@@ -23,13 +27,16 @@ Use this repo in two ways:
 ## Structure
 
 - `AGENTS.md`: global, cross-project defaults
-- `instructions/technologies/`: technology-specific instructions loaded only when relevant
+- `instructions/`: modular instructions loaded only when relevant
+  - `technologies/` for language/framework guidance (`javascript.md`, `python.md`, `swift.md`, `swiftui.md`)
+  - `github.md` for GitHub/PR workflow guidance
 - `templates/`: starter templates for project-level agent files
 - `agents/`: tool-specific notes (Codex app, opencode CLI, Copilot/VSCode)
 - `scripts/`: reusable helper scripts
 - `skills/`: reusable skills and skill docs
 - `rules/`: reusable rules/checklists/policies
 - `config/`: canonical config files intended for copy or symlink workflows
+  - `config/dotcodex/rules/`: canonical rule targets for `~/.codex/rules/*.rules` symlinks
 
 ## First Draft Notes
 
