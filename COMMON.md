@@ -29,14 +29,15 @@ These instructions are intended to be broadly applicable across projects, langua
 - Use comments sparingly inside methods, to explain non-obvious code.
 - Do not add dependencies without clear justification.
 - Never commit secrets, keys, tokens, or credentials.
-- See `instructions/principles.md` for context.
+- See `instructions/principles.md` for more detail.
 
 
 ## Testing and Validation
 
-- Add tests for new behavior and bug fixes where feasible.
+- Add unit tests for new behavior and bug fixes where feasible.
 - Run the narrowest relevant checks first, then broader project checks.
-- If validation cannot be run, state this explicitly.
+- See `instructions/testing.md` for more detail.
+- Always validate code before committing it.
 
 ## Research
 

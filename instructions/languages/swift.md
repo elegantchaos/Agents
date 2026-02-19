@@ -2,38 +2,94 @@
 
 Use this module only when the project uses Swift.
 
-## Language Version
+## Platform and Language Version
 
-Prefer Swift 6+ and modern idioms.
+- Target iOS 26.0+ and/or macOS 26.0+ for new projects.
+- Target Swift 6+ for new projects.
+- Always prefer Swift 6+ modern idioms when possible.
 
 If an existing project is using Swift 5 language mode:
 - migrate to Swift 6 if trivial
-- if not trivial, write new code to be easy to migrate
+- otherwise implement new code with Swift 6 migration in mind
+- prefer modern concurrency-safe patterns where practical
 - consider splitting code into multiple packages
 - suggest a migration path
+- default UI-facing types to `@MainActor` when it improves correctness; explicitly justify non-main-actor types.
 
-## Core Expectations
-
-- Prefer modern Swift concurrency (`async/await`, actors, structured tasks).
-- Avoid `DispatchQueue.main.async` when actor isolation is the correct model.
-- Favor value types unless reference semantics are required.
-- Mark classes `final` unless inheritance is intentional.
-- Avoid force unwraps and `try!` except in provably safe cases.
-
-## Code Organization
+## File organization
 
 - Prefer one primary type per file.
-- Keep type and file names aligned.
-- Use small, explicit APIs and avoid broad utility dumping.
-- Keep protocol conformances clear and localized.
+- Name files after the type (`MyType.swift`).
+- For focused extensions, use `MyType+Functionality.swift`.
+- For protocol-conformance files, use `MyType+ProtocolName.swift`.
+- Use PascalCase file names.
 
-## Safety and Clarity
+In each Swift file, prefer this order:
+1. imports
+2. log channels (if any)
+3. main type definition
+4. helper types/extensions
+5. `#Preview` at the bottom for SwiftUI view files
 
-- Make actor isolation explicit for UI-facing or shared mutable state.
-- Prefer typed errors for domain failures.
-- Avoid hidden global state.
+## Type organization
 
-## Validation
+For classes/structs, prefer this order:
+1. stored properties
+2. initializers
+3. computed properties
+4. public methods
+5. private methods (often in private extensions)
 
-- Run package or target-specific builds/tests first.
-- Run full project checks before completion.
+For enums, prefer:
+1. cases
+2. static constants/factories
+3. computed properties
+
+For protocols, prefer:
+1. properties
+2. methods
+
+## Documentation comments
+
+- Add `///` docs to all types and members, including private members.
+- Explain intent/behavior, not just the symbol name.
+- Add inline comments only where intent is not obvious.
+
+## Core coding conventions
+
+- Prefer Swift-native APIs over older Foundation patterns.
+- Prefer static member lookup where it improves readability.
+- Avoid force unwraps and `try!` unless failure is unrecoverable.
+- Prefer value types unless reference semantics are required.
+- Mark classes `final` unless inheritance is intentional.
+- Keep visibility tight (`private` by default, `public` only when necessary).
+- Avoid private single-line wrappers unless they add clear value.
+
+## Concurrency
+
+- Prefer Swift concurrency (`Task`, `await`, actors) for new code.
+- Minimize new `DispatchQueue` usage unless required by existing APIs.
+- Use actors for shared mutable state when practical.
+
+## Error handling
+
+- Use `throws` / `async throws` for failure paths.
+- Use `Result` when success/failure must be stored or passed as state.
+- Use optionals only when absence is a valid non-error outcome.
+- Prefer domain-specific error enums.
+
+## String filtering
+
+- For user-input filtering, use `localizedStandardContains()`.
+
+## Localization
+
+- Localize all user-facing strings.
+- Use dot-separated localization keys.
+- Prefer generated string catalog symbols when available.
+
+## Testing (Swift-Specific Instructions)
+
+- Avoid `@testable import` where practical.
+- Use Swift Testing
+- Don't use XCTest
