@@ -44,29 +44,19 @@ These instructions are intended to be broadly applicable across projects, langua
 - Avoid unrelated refactors while completing focused tasks.
 - If unexpected workspace changes appear, pause and confirm direction.
 
-## Technology Modules
+## Instruction Modules
 
-Check `~/.local/share/agents/instructions/` for further instructions to follow.
-You will find files relating to certain technologies, services and programming 
-languages.
+Load only the relevant files from `instructions/`.
 
-Read only the files used in the project.
+Use this routing index to decide quickly:
 
-Currently we have specific coding standards for:
-- Languages:
-  - Swift
-  - Python
-  - Javascript
-- Technologies:
-  - SwiftUI 
-- Services:
-  - Github (eg for making pull requests)
-
-## Workflow Modules
-
-Load workflow/tooling guidance only when relevant:
-
-- `instructions/services/github.md`
+- `instructions/languages/swift.md`: Load for `.swift`, `Package.swift`, SwiftPM, Xcode targets, or Swift concurrency/code-style decisions. Skip for non-Swift repos.
+- `instructions/languages/python.md`: Load for `.py`, Python tooling (`pyproject.toml`, `requirements*.txt`), packaging, typing, or test/lint setup in Python repos.
+- `instructions/languages/javascript.md`: Load for JS/TS files, `package.json`, Node/browser tooling, npm/pnpm/yarn workflows, and frontend/backend JS patterns.
+- `instructions/technologies/swiftui.md`: Load when touching SwiftUI views, modifiers, state/data flow (`@State`, `@Observable`, `@Environment`), navigation, or previews.
+- `instructions/services/github.md`: Load for branches, commits, PRs, issues, Actions workflows, CODEOWNERS, release flow, and review etiquette.
+- `instructions/principles.md`: Load for architecture/tradeoff decisions, abstraction boundaries, dependency injection, state modeling, or when multiple designs are plausible.
+- `instructions/trusted-sources.md`: Load when doing external research, validating uncertain facts, choosing citations, or resolving conflicting technical claims.
 
 ## Tool Profiles
 
