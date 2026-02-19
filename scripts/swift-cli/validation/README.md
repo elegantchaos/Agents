@@ -1,3 +1,4 @@
 # Swift CLI Validation Scripts
 
-- `test-all.template.sh`: run tests across configured local package paths
+- `format-all-source.template.sh`: format `Source`/`Tests` using `swift format`
+- `lint-all-source.template.sh`: lint `Source`/`Tests` using `swift format lint`

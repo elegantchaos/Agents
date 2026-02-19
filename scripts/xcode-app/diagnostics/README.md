@@ -1,5 +1,7 @@
 # Diagnostics Scripts
 
-Local troubleshooting templates for Xcode app repos.
+No canonical diagnostics scripts are included yet.
 
-- `cloudkit-log.template.sh`: stream CoreData/CloudKit logs for a named process
+Rule for inclusion in this repository:
+
+- a script name must appear in multiple local repos before being added here

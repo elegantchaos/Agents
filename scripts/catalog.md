@@ -1,39 +1,45 @@
-# Script Catalog (First Pass)
+# Script Catalog
 
-This is a first-pass classification of scripts found in:
+This catalog is based on script files found in:
 
 - `/Users/sam/Developer/Projects/Stack/Extras/Scripts`
 - `/Users/sam/Developer/Projects/ActionStatus/Extras/Scripts`
 
-## Shared Patterns
+## Multi-Repo Script Names
 
-- `validate-changes`: common concept, project-specific implementation
-- `validate-target`: common concept, project-specific package/workspace layout
-- `upload`, `upload-*`: ReleaseTools-based submission flows
+Only script names appearing in 2+ repos are considered canonical here.
 
-## Recommended Buckets
+- `upload` (5 repos)
+- `upload-macOS` (3 repos)
+- `screenshots` (3 repos)
+- `rt` (3 repos)
+- `install-xcpretty` (3 repos)
+- `bootstrap-tools` (3 repos)
+- `validate-target` (2 repos)
+- `validate-changes` (2 repos)
+- `upload.template` (2 repos)
+- `upload-iOS` (2 repos)
+- `lint-all-source` (2 repos)
+- `format-all-source` (2 repos)
+- `embed` (2 repos)
+- `downloads` (2 repos)
 
-- `xcode-app/validation`
-  - `validate-changes`
-  - `validate-target`
-- `xcode-app/release`
-  - `upload`
-  - `upload-iOS`, `upload-macOS`, `upload-tvOS`
-  - `upload.template`
-- `xcode-app/build-phases`
-  - `embed` (re-sign embedded frameworks/bundles/xpcs)
-- `xcode-app/diagnostics`
-  - `cloudkit-log.sh`
-  - `check-infos.sh`
-  - `screenshots`
-  - `downloads` (project-local convenience)
-- `swift-cli/validation`
-  - `test-all`
-  - `format-all-source`
-  - `lint-all-source`
+## Included Templates In This Repo
 
-## Notes
+- `xcode-app/validation/validate-changes.template.sh` (`validate-changes`)
+- `xcode-app/validation/validate-target.template.sh` (`validate-target`)
+- `xcode-app/release/releasetools-upload.template.sh` (`upload`)
+- `xcode-app/build-phases/embed-resign.template.sh` (`embed`)
+- `swift-cli/validation/format-all-source.template.sh` (`format-all-source`)
+- `swift-cli/validation/lint-all-source.template.sh` (`lint-all-source`)
 
-- Most scripts are reusable as templates, not drop-in shared binaries.
-- `validate-*` scripts are best parameterized per repo (workspace name, package paths, schemes, platforms).
-- ReleaseTools scripts should isolate app-specific values (scheme names, App Store URLs) into variables.
+## Excluded For Now
+
+Even with repeated names, these are currently omitted because they are either tool-link convenience wrappers or highly project-specific workflows:
+
+- `screenshots`
+- `downloads`
+- `rt`
+- `bootstrap-tools`
+- `install-xcpretty`
+- platform-specific upload wrappers (`upload-iOS`, `upload-macOS`)

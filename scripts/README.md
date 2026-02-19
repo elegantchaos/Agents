@@ -2,6 +2,10 @@
 
 Reusable scripts are organized by project type and technology.
 
+Inclusion rule:
+
+- only include script templates whose script names appear in multiple local repos
+
 ## Layout
 
 - `xcode-app/validation/`: validation scripts for Xcode application repos
@@ -12,7 +16,7 @@ Reusable scripts are organized by project type and technology.
 
 ## First-Pass Sources
 
-Initial categorization is based on:
+Categorization and inclusion are based on:
 
 - `Stack/Extras/Scripts`
 - `ActionStatus/Extras/Scripts`
