@@ -1,0 +1,6 @@
+version = 1
+name = "Update AGENTS.md"
+prompt = "Update AGENTS.md with newly discovered workflows and commands.\n\nConstraints:\n- Keep edits minimal, accurate, and grounded in repo usage.\n- Do not touch unrelated sections or auto-generated files.\n- If you are unsure, prefer adding a TODO with a short note rather than inventing."
+status = "ACTIVE"
+rrule = "RRULE:FREQ=WEEKLY;BYHOUR=10;BYMINUTE=0;BYDAY=MO,TU,WE,TH,FR"
+cwds = ["/absolute/path/to/project"]

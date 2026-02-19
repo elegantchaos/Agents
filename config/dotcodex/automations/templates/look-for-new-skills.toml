@@ -1,0 +1,6 @@
+version = 1
+name = "Look For New Skills"
+prompt = "Review prior sessions in ~/.codex/sessions and update AGENTS.md files or update/create skills for common tasks. Keep edits minimal, accurate, and grounded in repo usage. Do not touch unrelated sections or auto-generated files. If unsure, add a TODO with a short note instead of inventing."
+status = "ACTIVE"
+rrule = "RRULE:FREQ=WEEKLY;BYHOUR=10;BYMINUTE=30;BYDAY=MO,TU,WE,TH,FR"
+cwds = ["/absolute/path/to/project"]

@@ -1,0 +1,22 @@
+model = "gpt-5.3-codex"
+personality = "pragmatic"
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]
+
+# Set this to the local path where cupertino is installed on each machine.
+[mcp_servers.cupertino]
+command = "/path/to/cupertino"
+args = ["serve"]
+
+[mcp_servers.xcode]
+command = "xcrun"
+args = ["mcpbridge"]
+
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+
+# Optional, machine-local trusted project paths:
+# [projects."/absolute/path/to/project"]
+# trust_level = "trusted"

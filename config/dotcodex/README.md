@@ -1,10 +1,38 @@
 # Shared `.codex` Config
 
-Use this folder for canonical config files intended for `~/.codex`.
+This folder contains canonical, shareable `.codex` files derived from `/Users/sam/.codex`.
 
-Possible workflows:
+## Included
 
-1. Copy files into `~/.codex` on each machine.
-2. Symlink selected files from `~/.codex` to this repository.
+- `AGENTS.md`
+- `config.toml.template` (sanitized template; not a direct copy)
+- `rules/` (`default.rules`, `git.rules`, `swift.rules`)
+- `automations/templates/` (sanitized templates)
 
-Keep machine-specific secrets out of this folder.
+## Excluded
+
+These are intentionally not tracked because they are secret, ephemeral, or machine-specific:
+
+- `auth.json`
+- `sessions/`, `archived_sessions/`
+- `sqlite/`
+- `log/`
+- `tmp/`
+- `shell_snapshots/`
+- `worktrees/`
+- `.codex-global-state.json`
+- `models_cache.json`
+- `vendor_imports/`
+- `skills/.system/` managed content
+- `version.json`
+- machine-specific `projects.*` trust mappings from `config.toml`
+
+## Usage
+
+Copy or symlink selected files into `~/.codex`.
+
+Recommended pattern:
+
+1. Copy `config.toml.template` to `~/.codex/config.toml`.
+2. Fill in local paths and any machine-specific settings.
+3. Copy/symlink `AGENTS.md` and `rules/*.rules`.

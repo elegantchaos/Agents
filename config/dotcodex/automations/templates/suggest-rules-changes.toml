@@ -1,0 +1,6 @@
+version = 1
+name = "Suggest Rules Changes"
+prompt = "Examine the current rules in ~/.codex/rules/. Do not edit the rules directly yourself, but look for common usage patterns and suggest simplifications that will reduce daily friction (particularly for non-destructive or reversible actions), whilst remaining safe."
+status = "ACTIVE"
+rrule = "RRULE:FREQ=WEEKLY;BYHOUR=10;BYMINUTE=15;BYDAY=MO,TU,WE,TH,FR"
+cwds = ["/absolute/path/to/project"]
