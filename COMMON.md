@@ -23,8 +23,14 @@ These instructions are intended to be broadly applicable across projects, langua
 - Keep interfaces small and explicit.
 - Prefer simple, maintainable designs over clever shortcuts.
 - Avoid hidden coupling and surprising side effects.
+- Avoid excessively long methods.
+- Avoid single-line wrapper methods.
+- Always comment methods and types to explain their purpose.
+- Use comments sparingly inside methods, to explain non-obvious code.
 - Do not add dependencies without clear justification.
 - Never commit secrets, keys, tokens, or credentials.
+- See `instructions/principles.md` for context.
+
 
 ## Testing and Validation
 
@@ -32,10 +38,18 @@ These instructions are intended to be broadly applicable across projects, langua
 - Run the narrowest relevant checks first, then broader project checks.
 - If validation cannot be run, state this explicitly.
 
+## Research
+
+If in doubt, research a topic and present options before diving in.
+See `instructions/trusted-sources.md` for research, validating uncertain facts, choosing citations, or resolving conflicting technical claims.
+Feel free to suggest additional sources.
+
 ## Documentation
 
 - Keep documentation factual and current with behavior.
 - Update README or local docs when workflows or commands change.
+- Document the architecture, calling out the guiding principles.
+- Document the implementation, calling out issues.
 - Prefer concise docs with links to deeper references.
 
 ## Safety and Change Discipline
@@ -44,9 +58,9 @@ These instructions are intended to be broadly applicable across projects, langua
 - Avoid unrelated refactors while completing focused tasks.
 - If unexpected workspace changes appear, pause and confirm direction.
 
-## Instruction Modules
+## Further Guideance
 
-Load only the relevant files from `instructions/`.
+Load relevant files from `instructions/`.
 
 Use this routing index to decide quickly:
 
@@ -55,13 +69,3 @@ Use this routing index to decide quickly:
 - `instructions/languages/javascript.md`: Load for JS/TS files, `package.json`, Node/browser tooling, npm/pnpm/yarn workflows, and frontend/backend JS patterns.
 - `instructions/technologies/swiftui.md`: Load when touching SwiftUI views, modifiers, state/data flow (`@State`, `@Observable`, `@Environment`), navigation, or previews.
 - `instructions/services/github.md`: Load for branches, commits, PRs, issues, Actions workflows, CODEOWNERS, release flow, and review etiquette.
-- `instructions/principles.md`: Load for architecture/tradeoff decisions, abstraction boundaries, dependency injection, state modeling, or when multiple designs are plausible.
-- `instructions/trusted-sources.md`: Load when doing external research, validating uncertain facts, choosing citations, or resolving conflicting technical claims.
-
-## Tool Profiles
-
-Tool-specific notes live in:
-
-- `agents/codex/README.md`
-- `agents/opencode/README.md`
-- `agents/copilot/README.md`

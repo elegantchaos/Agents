@@ -24,3 +24,9 @@ Use this module only when the project uses SwiftUI.
 
 - Ensure previews/builds still compile after edits.
 - Run tests for any state or view-model behavior changes.
+
+## Migration
+
+Scan for legacy UIKit/AppKit code which can be replaced with SwiftUI.
+Scan code for legacy SwiftUI API.
+Suggest migrations whenever possible.

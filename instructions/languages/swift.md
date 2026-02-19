@@ -2,6 +2,16 @@
 
 Use this module only when the project uses Swift.
 
+## Language Version
+
+Prefer Swift 6+ and modern idioms.
+
+If an existing project is using Swift 5 language mode:
+- migrate to Swift 6 if trivial
+- if not trivial, write new code to be easy to migrate
+- consider splitting code into multiple packages
+- suggest a migration path
+
 ## Core Expectations
 
 - Prefer modern Swift concurrency (`async/await`, actors, structured tasks).
