@@ -1,12 +1,18 @@
-# Technology Instructions
+# Instruction Modules
 
-This folder contains focused instruction modules for specific languages and frameworks.
+This folder contains focused instruction modules for languages, technologies, services, and general engineering guidance.
 
-Use them selectively. A project should reference only the modules for technologies it actually uses.
+Load only the modules relevant to the current task.
 
-Current modules:
+## Layout
 
-- `swift.md`
-- `swiftui.md`
-- `python.md`
-- `javascript.md`
+- `languages/`
+  - `swift.md`
+  - `python.md`
+  - `javascript.md`
+- `technologies/`
+  - `swiftui.md`
+- `services/`
+  - `github.md`
+- `principles.md`
+- `trusted-sources.md`
