@@ -20,10 +20,10 @@ This file is based on the canonical defaults in the Agents repository.
 
 Enable only what this project uses:
 
-- `instructions/technologies/swift.md`
-- `instructions/technologies/swiftui.md`
-- `instructions/technologies/python.md`
-- `instructions/technologies/javascript.md`
+- `instructions/languages/Swift.md`
+- `instructions/technologies/SwiftUI.md`
+- `instructions/languages/Python.md`
+- `instructions/languages/JavaScript.md`
 
 ## Validation Commands
 

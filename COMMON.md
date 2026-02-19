@@ -1,72 +1,62 @@
-# Global Agent Defaults
+# Common Rules for Rebuilt AGENTS Files
 
-These instructions are intended to be broadly applicable across projects, languages, and host tools.
+This file contains baseline shared rules that can be included in project `AGENTS.md` files when relevant.
 
-## Scope
+## Principles
+
+Apply these core principles in every project refresh:
+- Keep It Simple
+- Build What Is Needed
+- Avoid Duplication Thoughtfully
+- Single Source of Truth
+- Make Invalid States Hard to Represent
+- Explicit Dependencies
+- Composition Over Inheritance
+- Separate Commands From Queries
+- Least Knowledge
+- Concurrency by Design
+
+For detailed guidance, see `instructions/Principles.md`.
+
+## Scope and Change Strategy
 
 - Prefer minimal, focused changes that solve the requested problem.
-- Preserve existing architecture and style unless change is explicitly requested.
-- Fix root causes when practical; avoid layering temporary workarounds.
+- Preserve existing architecture/style unless change is requested or clearly needed.
+- Prefer fixing root causes over layered workarounds.
 
-## Workflow
+## Core Workflow Expectations
 
-1. Understand the request and boundaries.
-2. Inspect relevant code and docs before editing.
-3. Make the smallest coherent change set.
-4. Add or update tests for behavior changes.
-5. Run project validation commands.
-6. Summarize what changed, why, and remaining risks.
+1. Understand request boundaries.
+2. Inspect relevant code/docs before editing.
+3. Apply the smallest coherent change set.
+4. Add/update tests for behavior changes where feasible.
+5. Run relevant validation checks.
+6. Report changes, validation status, and residual risks.
 
-## Engineering Principles
+## Engineering Rules
 
-- Correctness first, then clarity, then convenience.
-- Keep interfaces small and explicit.
-- Prefer simple, maintainable designs over clever shortcuts.
+- Prioritize correctness, clarity, and maintainability.
+- Keep interfaces explicit and intentionally small.
 - Avoid hidden coupling and surprising side effects.
-- Avoid excessively long methods.
-- Avoid single-line wrapper methods.
-- Always comment methods and types to explain their purpose.
-- Use comments sparingly inside methods, to explain non-obvious code.
 - Do not add dependencies without clear justification.
-- Never commit secrets, keys, tokens, or credentials.
-- See `instructions/principles.md` for more detail.
-
+- Never expose or commit credentials/secrets.
 
 ## Testing and Validation
 
-- Add unit tests for new behavior and bug fixes where feasible.
-- Run the narrowest relevant checks first, then broader project checks.
-- See `instructions/testing.md` for more detail.
-- Always validate code before committing it.
+- Use `instructions/Testing.md` for testing and validation policy.
 
-## Research
+## Research and Source Quality
 
-If in doubt, research a topic and present options before diving in.
-See `instructions/trusted-sources.md` for research, validating uncertain facts, choosing citations, or resolving conflicting technical claims.
-Feel free to suggest additional sources.
+- Use `instructions/Trusted Sources.md` for source selection and research policy.
 
 ## Documentation
 
-- Keep documentation factual and current with behavior.
-- Update README or local docs when workflows or commands change.
-- Document the architecture, calling out the guiding principles.
-- Document the implementation, calling out issues.
-- Prefer concise docs with links to deeper references.
+- Keep docs factual and aligned with current behavior.
+- Update local docs when workflows/commands/architecture change.
+- Keep agent docs compact; move explanatory detail to human-facing docs.
 
-## Safety and Change Discipline
+## Safety and Discipline
 
 - Do not perform destructive actions without explicit approval.
-- Avoid unrelated refactors while completing focused tasks.
+- Avoid unrelated refactors during focused tasks.
 - If unexpected workspace changes appear, pause and confirm direction.
-
-## Further Guideance
-
-Load relevant files from `instructions/`.
-
-Use this routing index to decide quickly:
-
-- `instructions/languages/swift.md`: Load for `.swift`, `Package.swift`, SwiftPM, Xcode targets, or Swift concurrency/code-style decisions. Skip for non-Swift repos.
-- `instructions/languages/python.md`: Load for `.py`, Python tooling (`pyproject.toml`, `requirements*.txt`), packaging, typing, or test/lint setup in Python repos.
-- `instructions/languages/javascript.md`: Load for JS/TS files, `package.json`, Node/browser tooling, npm/pnpm/yarn workflows, and frontend/backend JS patterns.
-- `instructions/technologies/swiftui.md`: Load when touching SwiftUI views, modifiers, state/data flow (`@State`, `@Observable`, `@Environment`), navigation, or previews.
-- `instructions/services/github.md`: Load for branches, commits, PRs, issues, Actions workflows, CODEOWNERS, release flow, and review etiquette.

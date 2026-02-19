@@ -31,7 +31,8 @@ Use this repo in two ways:
 ## Structure
 
 - `AGENTS.md`: local instructions for this project only
-- `COMMON.md`: common instructions referenced by other project `AGENTS.md` files
+- `COMMON.md`: shared baseline rules for inclusion in rebuilt `AGENTS.md`
+- `REFRESH.md`: process for regenerating project instruction artifacts
 - `instructions/`: modular instructions loaded only when relevant
 - `templates/`: starter templates for project-level agent files
 - `agents/`: tool-specific notes (Codex app, opencode CLI, Copilot/VSCode)
