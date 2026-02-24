@@ -1,20 +1,28 @@
 # Common Rules for Rebuilt AGENTS Files
 
-This file contains baseline shared rules that can be included in project `AGENTS.md` files when relevant.
+This file contains baseline shared rules that should be included in project `AGENTS.md` files when relevant.
+
+## Methodology
+
+Use red/green TDD.
+Always write good code.
+
+See `instructions/Good Code.md` for a definition of good code.
 
 ## Principles
 
-Apply these core principles in every project refresh:
-- Keep It Simple
-- Build What Is Needed
-- Avoid Duplication Thoughtfully
-- Single Source of Truth
-- Make Invalid States Hard to Represent
-- Explicit Dependencies
+Apply these core principles when writing code:
+- KISS (Keep It Simple)
+- YAGNI (Build What Is Needed)
+- DRY (Avoid Duplication Thoughtfully)
+- Make Illegal States Unrepresentable
+- Dependency Injection
 - Composition Over Inheritance
-- Separate Commands From Queries
-- Least Knowledge
-- Concurrency by Design
+- Command-Query Separation
+- Law of Demeter
+- Structured Concurrency
+- Design by Contract
+- Idempotency
 
 For detailed guidance, see `instructions/Principles.md`.
 
