@@ -10,7 +10,7 @@ Produce a compact, project-targeted `AGENTS.md` for agents, while preserving pro
 
 - target project repository
 - target project's existing `AGENTS.md`
-- this repository's `COMMON.md`, `REFRESH.md`, and relevant `instructions/*.md`
+- this repository's `COMMON.md`, `REFRESH.md`, and relevant files under `instructions/` (including subfolders such as `languages/`, `technologies/`, and `services/`)
 
 ## Rebuild Workflow
 
@@ -25,7 +25,7 @@ Produce a compact, project-targeted `AGENTS.md` for agents, while preserving pro
 
 3. Build compact agent guidance
 - Always include the core non-specific shared guidance from `COMMON.md` in rebuilt `AGENTS.md` (for example engineering principles, testing/validation expectations, safety, and source-quality rules).
-- Add stack-relevant guidance from `instructions/*.md` only when those languages/tools are used by the project.
+- Add stack-relevant guidance from `instructions/` modules only when those languages/tools/services are used by the project.
 - Prefer concrete, checkable instructions over narrative explanation.
 - Exclude unrelated language/framework/service modules.
 - You may rewrite and compress guidance for agent ingestion, but do not lose the intent or essential principles from `COMMON.md`.
@@ -37,6 +37,7 @@ Produce a compact, project-targeted `AGENTS.md` for agents, while preserving pro
 
 5. Copy human-readable guideline files
 - Copy relevant files from `instructions/` into project docs (for example `Extras/Documentation/Guidelines/`).
+- Include core cross-cutting modules by default (`Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`), then add only relevant language/technology/service modules.
 - Overwrite only managed copied files.
 - Avoid touching project-authored docs outside the managed set.
 
@@ -52,6 +53,7 @@ Produce a compact, project-targeted `AGENTS.md` for agents, while preserving pro
 - Treat `COMMON.md` as mandatory baseline guidance for every project refresh.
 - Treat `instructions/` files as detailed, context-specific guidance (language/tool specific).
 - Include non-specific principles in the final `AGENTS.md` even when compacting text.
+- Prefer root-level instruction modules (`Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`) as the default human-readable copied set.
 - Include language modules only when that language is present.
 - Include technology/service modules only when actively used.
 - If uncertain, preserve shared principles in `AGENTS.md` and move optional detail to copied human docs.
