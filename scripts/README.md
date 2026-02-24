@@ -25,6 +25,7 @@ See `catalog.md` for mapping notes and recommended placement.
 
 ## Conventions
 
+- Prefer writing Swift CLI scripts where practical.
 - Keep scripts idempotent where practical.
 - Prefer explicit arguments/environment variables over hard-coded project names.
 - Add header comments with purpose and usage.

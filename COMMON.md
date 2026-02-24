@@ -2,14 +2,11 @@
 
 This file contains baseline shared rules that should be included in project `AGENTS.md` files when relevant.
 
-## Methodology
+## Methodology & Principles
 
-Use red/green TDD.
-Always write good code.
+Prefer red/green TDD unless impractical; otherwise follow `instructions/Testing.md` validation workflow and report gaps.
 
-See `instructions/Good Code.md` for a definition of good code.
-
-## Principles
+Always write good code; see `instructions/Good Code.md` for a definition of good code.
 
 Apply these core principles when writing code:
 - KISS (Keep It Simple)
@@ -49,10 +46,6 @@ For detailed guidance, see `instructions/Principles.md`.
 - Do not add dependencies without clear justification.
 - Never expose or commit credentials/secrets.
 
-## Testing and Validation
-
-- Use `instructions/Testing.md` for testing and validation policy.
-
 ## Research and Source Quality
 
 - Use `instructions/Trusted Sources.md` for source selection and research policy.
@@ -62,6 +55,15 @@ For detailed guidance, see `instructions/Principles.md`.
 - Keep docs factual and aligned with current behavior.
 - Update local docs when workflows/commands/architecture change.
 - Keep agent docs compact; move explanatory detail to human-facing docs.
+
+## Code Comments
+
+- Add compact documentation comments for each type, method/function, and member/property describing purpose.
+- Comments should add intent and context, not restate the symbol name.
+- For the primary type in a source file, add a larger top-level documentation comment with design and implementation detail.
+- Prefer files to center on one key type when practical.
+- Keep inline/block comments sparse; use them for subtle logic, non-obvious constraints, or code that could be misread.
+- Favor comments that improve IDE hover/help output while staying concise.
 
 ## Safety and Discipline
 
