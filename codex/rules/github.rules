@@ -1,5 +1,6 @@
 prefix_rule(pattern=["gh", "pr", "create"], decision="allow")
 prefix_rule(pattern=["gh", "pr"], decision="allow")
 prefix_rule(pattern=["gh", "release", "create"], decision="allow")
+prefix_rule(pattern=["gh", "release", "list"], decision="allow")
 prefix_rule(pattern=["gh", "release", "view"], decision="allow")
 prefix_rule(pattern=["gh", "repo", "create"], decision="allow")
