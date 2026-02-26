@@ -15,7 +15,7 @@ The agents file should contain two main sections:
 
 - target project repository
 - target project's existing `AGENTS.md`
-- this repository's `instructions/COMMON.md`, `REFRESH.md`, and relevant files under `instructions/` (including subfolders such as `languages/`, `technologies/`, and `services/`)
+- this repository's `instructions/COMMON.md`, this file, and relevant files under `instructions/` (including subfolders such as `languages/`, `technologies/`, and `services/`)
 
 ## Rebuild Workflow
 
@@ -37,7 +37,7 @@ The agents file should contain two main sections:
 - Add stack-relevant guidance from `instructions/` modules only when those languages/tools/services are used by the project.
 - Prefer concrete, checkable instructions over narrative explanation.
 - Exclude unrelated language/framework/service modules.
-- You may compress guidance for agent ingestion, but must
+- You may compress guidance for agent ingestion, but must:
   - preserve the intent.
   - preserve principles.
   - rewrites are acceptable only when the underlying meaning remains intact.
@@ -45,19 +45,19 @@ The agents file should contain two main sections:
 4. Add regeneration note
 
 - At the bottom of `AGENTS.md`, add a short note that this regeneration process should be repeated regularly.
-- Include a simple pointer to this file set so repeating the process is easy.
+- Include a simple pointer to the canonical refresh workflow (`codex/skills/agents-refresh/WORKFLOW.md`) and baseline guidance (`instructions/COMMON.md`) so repeating the process is easy.
 
 5. Copy relevant guideline files
 
-- Copy relevant files from `instructions/` into project docs (for example `Extras/Documentation/Guidelines/`).
+- Copy relevant files from `instructions/` into `Extras/Documentation/Guidelines/`.
 - Include core cross-cutting modules by default (`Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`), then add only relevant language/technology/service modules.
 - Overwrite only managed copied files.
 - Avoid touching project-authored docs outside the managed set.
-- In each sectin of the new AGENTS.md, add links to the local copies of any relevant guidance files.
+- In each section of the new AGENTS.md, add links to the local copies of any relevant guidance files.
 
 6. Optionally regenerate a human companion file
 
-- Create/update a project notes markdown (for example `Extras/Documentation/Guidelines/Agent-Guidance-Notes.md`) with:
+- Create/update a project notes markdown at `Extras/Documentation/Guidelines/Agent-Guidance-Notes.md` with:
   - regenerated files
   - included and excluded modules
   - detected stack assumptions

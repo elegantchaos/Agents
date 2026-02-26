@@ -1,6 +1,6 @@
 ---
 name: agents-refresh
-description: Regenerate a project AGENTS.md and related guideline docs from the shared agents repository baseline. Use when updating stale project agent instructions, syncing standards into a repo, or running the REFRESH.md rebuild workflow.
+description: Regenerate a project AGENTS.md and related guideline docs from the shared agents repository baseline. Use when updating stale project agent instructions, syncing standards into a repo, or running the agents-refresh workflow.
 ---
 
 # Agents Refresh
@@ -13,7 +13,7 @@ Rebuild project instruction artifacts from shared guidance while preserving proj
 - target repository
 - target `AGENTS.md`
 - shared `instructions/COMMON.md`
-- shared `REFRESH.md`
+- shared `codex/skills/agents-refresh/WORKFLOW.md`
 - relevant files under `instructions/`
 
 2. Detect stack evidence from the target repo (for example Swift, Python, JavaScript, SwiftUI, GitHub CLI workflows).
@@ -28,9 +28,10 @@ Rebuild project instruction artifacts from shared guidance while preserving proj
 - Preserve meaning when compressing content.
 
 5. Add a regeneration note at the bottom of `AGENTS.md`.
-- Point to shared files used for refresh (`instructions/COMMON.md`, `REFRESH.md`).
+- Point to shared files used for refresh (`instructions/COMMON.md`, `codex/skills/agents-refresh/WORKFLOW.md`).
 
 6. Copy relevant guideline files into project docs.
+- Use `Extras/Documentation/Guidelines/` as the required destination for copied guidance modules.
 - Always include: `Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`.
 - Add only relevant language/technology/service modules.
 - Overwrite only managed copied files.
