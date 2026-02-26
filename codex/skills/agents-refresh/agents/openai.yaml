@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agents Refresh"
+  short_description: "Regenerate AGENTS.md and guideline docs from shared baseline"
+  default_prompt: "Refresh this project's AGENTS.md from instructions/COMMON.md and REFRESH.md, preserve project-specific rules, copy relevant guideline modules, and report included/excluded modules with conflicts."
