@@ -15,7 +15,7 @@ The agents file should contain two main sections:
 
 - target project repository
 - target project's existing `AGENTS.md`
-- this repository's `COMMON.md`, `REFRESH.md`, and relevant files under `instructions/` (including subfolders such as `languages/`, `technologies/`, and `services/`)
+- this repository's `instructions/COMMON.md`, `REFRESH.md`, and relevant files under `instructions/` (including subfolders such as `languages/`, `technologies/`, and `services/`)
 
 ## Rebuild Workflow
 
@@ -32,8 +32,8 @@ The agents file should contain two main sections:
 
 3. Rewrite Standard Rules
 
-- Replace the rest of the file with compact agent guidance, based on `COMMON.md`.
-- Always include the core guidance from `COMMON.md` in rebuilt `AGENTS.md` (for example engineering principles, testing/validation expectations, safety, and source-quality rules).
+- Replace the rest of the file with compact agent guidance, based on `instructions/COMMON.md`.
+- Always include the core guidance from `instructions/COMMON.md` in rebuilt `AGENTS.md` (for example engineering principles, testing/validation expectations, safety, and source-quality rules).
 - Add stack-relevant guidance from `instructions/` modules only when those languages/tools/services are used by the project.
 - Prefer concrete, checkable instructions over narrative explanation.
 - Exclude unrelated language/framework/service modules.
@@ -65,7 +65,7 @@ The agents file should contain two main sections:
 
 ## Selection Rules
 
-- Treat `COMMON.md` as mandatory baseline guidance for every project refresh.
+- Treat `instructions/COMMON.md` as mandatory baseline guidance for every project refresh.
 - Treat `instructions/` files as detailed, context-specific guidance (language/tool specific).
 - Include non-specific principles in the final `AGENTS.md` even when compacting text.
 - Prefer root-level instruction modules (`Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`) as the default human-readable copied set.

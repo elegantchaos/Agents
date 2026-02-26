@@ -1,6 +1,6 @@
 # Shared Instruction Modules
 
-These files are shared guidance modules used when rebuilding project `AGENTS.md` files from the common guidance set (`COMMON.md`, `REFRESH.md`).
+These files are shared guidance modules used when rebuilding project `AGENTS.md` files from the common guidance set (`instructions/COMMON.md`, `REFRESH.md`).
 
 They are written to serve both:
 - agents selecting and applying task-relevant rules
