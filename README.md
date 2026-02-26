@@ -32,7 +32,7 @@ Use this repo in two ways:
 
 - `AGENTS.md`: local instructions for this project only
 - `instructions/COMMON.md`: shared baseline rules for inclusion in rebuilt `AGENTS.md`
-- `codex/skills/agents-refresh/WORKFLOW.md`: process for regenerating project instruction artifacts
+- `codex/skills/refresh-agents/SKILL.md`: canonical skill instructions for regenerating project instruction artifacts
 - `instructions/`: modular instructions loaded only when relevant
 - `templates/`: starter templates for project-level agent files
 - `agents/`: tool-specific notes (Codex app, opencode CLI, Copilot/VSCode)

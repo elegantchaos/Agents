@@ -19,7 +19,7 @@ Keep this section project-authored and at the top when regenerating.
 
 Rebuild this section from:
 - `instructions/COMMON.md`
-- `codex/skills/agents-refresh/WORKFLOW.md`
+- `codex/skills/refresh-agents/SKILL.md`
 - stack-relevant modules under `instructions/`
 
 Apply these baseline expectations:
@@ -31,6 +31,7 @@ Apply these baseline expectations:
 - Never expose or commit credentials/secrets.
 
 Prefer using applicable shared skills in `codex/skills/` for task-specific workflows instead of repeating skill internals in this file.
+When `Extras/Documentation/Guidelines/` contains copied guidance files, read the relevant files there to recover full required guidance for the current task.
 
 ## Managed Guidance Modules
 
@@ -47,6 +48,8 @@ Add only modules relevant to the detected stack:
 - `instructions/technologies/SwiftUI.md`
 - `instructions/services/GitHub.md`
 
+These copied guidance files are agent-first references and may also be useful for humans.
+
 ## Regeneration Note
 
-Refresh this file regularly using `codex/skills/agents-refresh/WORKFLOW.md` with `instructions/COMMON.md` as the mandatory baseline, preserving `Project Specific Rules` and rewriting only `Standard Rules`.
+To refresh this file, use the `refresh-agents` skill.

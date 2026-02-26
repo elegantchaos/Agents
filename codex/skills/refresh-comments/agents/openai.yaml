@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refresh Comments"
+  short_description: "Infrequent legacy comment refresh with AGENTS fallback"
+  default_prompt: "Refresh this repository's code comments primarily as a one-time or infrequent legacy modernization pass to match local AGENTS.md and linked guidance files. Use ~/.local/share/agents/instructions/COMMON.md only when local guidance is missing or ambiguous, then report updated files and unresolved conflicts."
