@@ -21,13 +21,17 @@ Create a draft GitHub release and stop before publishing.
   - `--include-merges` to include merge commits
 - The script auto-detects the previous tag using `git tag --sort=-v:refname` when `--previous-tag` is omitted.
 
-3. Create or update a draft release with `gh`.
+3. Impove the generated notes with LLM.
+- Update the generated notes file. 
+- It should begin with a human friendly paragraph summarising key changes.
+
+4. Create or update a draft release with `gh`.
 - Create draft release:
   - `gh release create <new_tag> --target <target> --draft --title "<new_tag>" --notes-file /tmp/<new_tag>-notes.md`
 - If release already exists, update it:
   - `gh release edit <new_tag> --draft --title "<new_tag>" --notes-file /tmp/<new_tag>-notes.md`
 
-4. Hand off for manual review/publish.
+5. Hand off for manual review/publish.
 - Report the draft release URL.
 - Explicitly state that publishing is left for manual user review.
 - Do not run publish commands unless the user explicitly asks.
