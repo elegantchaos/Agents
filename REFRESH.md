@@ -7,6 +7,7 @@ This file defines how to regenerate a project's instruction artifacts from share
 Produce a compact, project-targeted `AGENTS.md` for agents, while preserving project-local instructions and providing clear human-readable guideline docs.
 
 The agents file should contain two main sections:
+
 - Project Specific Rules
 - Standard Rules
 
@@ -19,15 +20,18 @@ The agents file should contain two main sections:
 ## Rebuild Workflow
 
 1. Load context
+
 - Read the target project's existing `AGENTS.md`.
 - Read shared common files and relevant instruction modules.
 - Detect technologies in use from repo evidence (for example: `.swift`, `Package.swift`, `.xcodeproj`, `pyproject.toml`, `requirements*.txt`, `package.json`, `tsconfig.json`).
 
 2. Preserve Project Specific Rules
+
 - Retain any project-specific policies, constraints, architecture notes, and workflows at the top of rebuilt `AGENTS.md`.
 - Remove or rewrite only clearly obsolete or contradictory local instructions.
 
 3. Rewrite Standard Rules
+
 - Replace the rest of the file with compact agent guidance, based on `COMMON.md`.
 - Always include the core guidance from `COMMON.md` in rebuilt `AGENTS.md` (for example engineering principles, testing/validation expectations, safety, and source-quality rules).
 - Add stack-relevant guidance from `instructions/` modules only when those languages/tools/services are used by the project.
@@ -39,17 +43,20 @@ The agents file should contain two main sections:
   - rewrites are acceptable only when the underlying meaning remains intact.
 
 4. Add regeneration note
+
 - At the bottom of `AGENTS.md`, add a short note that this regeneration process should be repeated regularly.
 - Include a simple pointer to this file set so repeating the process is easy.
 
 5. Copy relevant guideline files
+
 - Copy relevant files from `instructions/` into project docs (for example `Extras/Documentation/Guidelines/`).
 - Include core cross-cutting modules by default (`Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`), then add only relevant language/technology/service modules.
 - Overwrite only managed copied files.
 - Avoid touching project-authored docs outside the managed set.
-- In each sectin of the new AGENTS.md, add links to the local copies of any relevant guidance files. 
+- In each sectin of the new AGENTS.md, add links to the local copies of any relevant guidance files.
 
 6. Optionally regenerate a human companion file
+
 - Create/update a project notes markdown (for example `Extras/Documentation/Guidelines/Agent-Guidance-Notes.md`) with:
   - regenerated files
   - included and excluded modules
@@ -69,6 +76,7 @@ The agents file should contain two main sections:
 ## Reporting Expectations
 
 When finishing a rebuild, clearly state:
+
 - what changed
 - which modules were included
 - what was copied into project guideline docs
