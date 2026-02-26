@@ -12,11 +12,22 @@ Canonical, shareable subset of `/Users/sam/.codex`.
 
 We do not track other files in `~/.codex` - they are ephemeral, tied to the local machine, and/or contain secrets.
 
-## Update Rules
+## Update Procedure
 
+- Pull this project from git to ensure we have the latest changes
 - Examine `~/.codex` and suggest updates to the config file (in both directions)
 - Offer to add symlinks into `~/.codex` for missing rules, automations and skills
 - Offer to move new rules, automations and skill from `~/.codex` into here and replace the originals with sym-links 
 - Keep `config.toml.template` sanitized: remove machine-local paths and trust mappings.
 - Keep rules/skills/automatiions sanitized: avoid absolute paths or other machine-specific entries
 - Suggest other improvements we could make to Codex-related files and features.
+- Offer to commit and push changes to git.
+
+### Common Paths
+
+The following paths are ok to use, as they will exist on all machines:
+
+- ~/.codex
+- ~/.local/share/agents
+- ~/Developer/Projects
+- ~/Developer/Websites

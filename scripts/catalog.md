@@ -2,8 +2,8 @@
 
 This catalog is based on script files found in:
 
-- `/Users/sam/Developer/Projects/Stack/Extras/Scripts`
-- `/Users/sam/Developer/Projects/ActionStatus/Extras/Scripts`
+- `~/Developer/Projects/Stack/Extras/Scripts`
+- `~/Developer/Projects/ActionStatus/Extras/Scripts`
 
 ## Multi-Repo Script Names
 

@@ -15,7 +15,7 @@ Create a draft GitHub release and stop before publishing.
 
 2. Generate release notes with the bundled Swift script.
 - Run from the repository root:
-  - `swift /Users/sam/.codex/skills/gh-draft-release/scripts/generate_release_notes.swift --new-tag <new_tag> --target <target> --output /tmp/<new_tag>-notes.md`
+  - `swift ~/.codex/skills/gh-draft-release/scripts/generate_release_notes.swift --new-tag <new_tag> --target <target> --output /tmp/<new_tag>-notes.md`
 - Optional flags:
   - `--previous-tag <tag>` to force a specific previous release point
   - `--include-merges` to include merge commits

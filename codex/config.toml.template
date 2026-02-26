@@ -7,7 +7,7 @@ args = ["@playwright/mcp@latest"]
 
 # Set this to the local path where cupertino is installed on each machine.
 [mcp_servers.cupertino]
-command = "/path/to/cupertino"
+command = "/usr/local/bin/cupertino"
 args = ["serve"]
 
 [mcp_servers.xcode]
