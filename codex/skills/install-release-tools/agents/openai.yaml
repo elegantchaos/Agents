@@ -1,0 +1,4 @@
+interface:
+  display_name: "Install Release Tools"
+  short_description: "Install or update ReleaseTools via Mint"
+  default_prompt: "Install or update the ReleaseTools rt command using mint."
