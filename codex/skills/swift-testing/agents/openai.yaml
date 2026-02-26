@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift Testing"
+  short_description: "Write and refine high-quality Swift tests with Swift Testing"
+  default_prompt: "Add or improve Swift tests for the current change using Swift Testing (@Test, #expect), then run narrow-to-broad validation and report residual risks."
