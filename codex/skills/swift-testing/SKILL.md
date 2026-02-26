@@ -45,7 +45,7 @@ If a gate fails, revise the test instead of adding more assertions around fragil
 
 1. Run the narrowest test target first.
 2. Run package/app test suite next.
-3. Run project validation scripts when available.
+3. Run the `validation-flow` skill when available (`rt validate`).
 4. If validation cannot run, state the exact blocker and impacted risk.
 
 ## Output Checklist

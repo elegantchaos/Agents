@@ -8,11 +8,14 @@ Inclusion rule:
 
 ## Layout
 
-- `xcode-app/validation/`: validation scripts for Xcode application repos
+- validation is handled via `codex/skills/validation-flow/` (`rt validate`)
 - `xcode-app/release/`: release/submission scripts (including ReleaseTools workflows)
 - `xcode-app/build-phases/`: scripts intended for Xcode build phases
 - `xcode-app/diagnostics/`: local troubleshooting scripts
-- `swift-cli/validation/`: scripts for Swift command-line/package repos
+
+## Validation Flow
+
+- Standard post-change validation should use the `validation-flow` skill at `codex/skills/validation-flow/`.
 
 ## First-Pass Sources
 
