@@ -15,7 +15,9 @@ Run Mint to install or update ReleaseTools and confirm that `rt` is available.
 which mint
 ```
 
-2. If `mint` is missing, stop and tell the user Mint is required before installing ReleaseTools.
+2. If `mint` is missing:
+   - Use [$install-mint](/Users/sam/.local/share/agents/codex/skills/install-mint/SKILL.md) to install Mint first.
+   - Continue this workflow only after `which mint` succeeds.
 
 3. Check whether `rt` is already installed and capture its current version/path (if present):
 
