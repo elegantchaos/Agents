@@ -13,13 +13,12 @@ Create a draft GitHub release and stop before publishing.
 - Determine the new release tag (for example `v2.1.0`).
 - Determine the target branch/commit (default to `main` unless the user specifies otherwise).
 
-2. Generate release notes with the bundled Swift script.
+2. Generate release notes with `rt changes`.
 - Run from the repository root:
-  - `CODEX_CACHE_ROOT="${CODEX_CACHE_ROOT:-$HOME/.codex/tmp}" CLANG_MODULE_CACHE_PATH="$CODEX_CACHE_ROOT/cache/clang-module-cache" SWIFTPM_MODULECACHE_OVERRIDE="$CODEX_CACHE_ROOT/cache/swiftpm-module-cache" XDG_CACHE_HOME="$CODEX_CACHE_ROOT/cache/xdg-cache" swift ~/.codex/skills/gh-draft-release/scripts/generate_release_notes.swift --new-tag <new_tag> --target <target> --output /tmp/<new_tag>-notes.md`
-- Optional flags:
-  - `--previous-tag <tag>` to force a specific previous release point
-  - `--include-merges` to include merge commits
-- The script auto-detects the previous tag using `git tag --sort=-v:refname` when `--previous-tag` is omitted.
+  - `rt changes --end <target> > /tmp/<new_tag>-notes.md`
+  - use `rt changes --help` for options to customize the output.
+  - do not use the `--summary` flag, as the notes will be improved with LLM in the next step. 
+- The command auto-detects the previous tag when `--start` is omitted.
 
 3. Impove the generated notes with LLM.
 - Update the generated notes file. 
