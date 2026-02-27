@@ -1,5 +1,7 @@
 prefix_rule(pattern=["cat"], decision="allow")
+prefix_rule(pattern=["ln", "-sfn"], decision="allow")
 prefix_rule(pattern=["ls"], decision="allow")
 prefix_rule(pattern=["pwd"], decision="allow")
 prefix_rule(pattern=["rg"], decision="allow")
 prefix_rule(pattern=["which"], decision="allow")
+prefix_rule(pattern=["rt"], decision="allow")
