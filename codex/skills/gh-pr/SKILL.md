@@ -15,10 +15,21 @@ Create and edit GitHub pull requests with gh while avoiding shell interpolation 
 - Never use inline --body for multi-line markdown.
 - Prefer creating a temporary markdown file, then passing it to gh pr create or gh pr edit.
 - After updating body text, verify with gh pr view --json body,url.
+- Always push the PR head branch before creating or editing the PR.
+- If push fails, stop and report the exact push error.
 
 ## Workflow
 
-1. Build PR body in a file.
+1. Verify/push the PR head branch.
+
+- If creating a PR for the current branch:
+  - `git branch --show-current`
+  - `git push -u origin <current-branch>`
+- If creating/editing a PR for a specific head branch:
+  - `git push -u origin <head-branch>`
+- If push fails, stop and report the exact push error.
+
+2. Build PR body in a file.
 
 Example:
 cat > /tmp/pr-body.md <<'BODY_END'
@@ -30,7 +41,7 @@ cat > /tmp/pr-body.md <<'BODY_END'
 - check 1
 BODY_END
 
-2. Create PR with body file.
+3. Create PR with body file.
 
 gh pr create \
   --repo <owner/repo> \
@@ -39,13 +50,13 @@ gh pr create \
   --title "<title>" \
   --body-file /tmp/pr-body.md
 
-3. If PR exists or body needs correction, edit with body file.
+4. If PR exists or body needs correction, edit with body file.
 
 gh pr edit <number> \
   --repo <owner/repo> \
   --body-file /tmp/pr-body.md
 
-4. Verify final text.
+5. Verify final text.
 
 gh pr view <number> --repo <owner/repo> --json body,url
 

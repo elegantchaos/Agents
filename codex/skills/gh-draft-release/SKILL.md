@@ -13,24 +13,32 @@ Create a draft GitHub release and stop before publishing.
 - Determine the new release tag (for example `v2.1.0`).
 - Determine the target branch/commit (default to `main` unless the user specifies otherwise).
 
-2. Generate release notes with `rt changes`.
+2. Verify branch is `main` and push outstanding commits.
+- Check current branch:
+  - `git branch --show-current`
+- If branch is not `main`, stop and report that draft releases must be prepared from `main`.
+- Push `main` before drafting:
+  - `git push origin main`
+- If push fails, stop and report the exact push error.
+
+3. Generate release notes with `rt changes`.
 - Run from the repository root:
   - `rt changes --end <target> > /tmp/<new_tag>-notes.md`
   - use `rt changes --help` for options to customize the output.
   - do not use the `--summary` flag, as the notes will be improved with LLM in the next step. 
 - The command auto-detects the previous tag when `--start` is omitted.
 
-3. Impove the generated notes with LLM.
+4. Impove the generated notes with LLM.
 - Update the generated notes file. 
 - It should begin with a human friendly paragraph summarising key changes.
 
-4. Create or update a draft release with `gh`.
+5. Create or update a draft release with `gh`.
 - Create draft release:
   - `gh release create <new_tag> --target <target> --draft --title "<new_tag>" --notes-file /tmp/<new_tag>-notes.md`
 - If release already exists, update it:
   - `gh release edit <new_tag> --draft --title "<new_tag>" --notes-file /tmp/<new_tag>-notes.md`
 
-5. Hand off for manual review/publish.
+6. Hand off for manual review/publish.
 - Report the draft release URL.
 - Explicitly state that publishing is left for manual user review.
 - Do not run publish commands unless the user explicitly asks.
