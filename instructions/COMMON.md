@@ -82,3 +82,8 @@ Follow `instructions/Testing.md` validation workflow and report gaps.
 - Do not perform destructive actions without explicit approval.
 - Avoid unrelated refactors during focused tasks.
 - If unexpected workspace changes appear, pause and confirm direction.
+
+## Git Command Style
+
+- Do not use `git -C <path> ...` unless explicitly required. Prefer setting `workdir` to the repository path and running plain `git ...` commands.
+- The purpose of this instruction is to allow `git` commands to match against the rules in `git.rules`.
