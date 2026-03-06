@@ -4,14 +4,19 @@ This file contains baseline shared rules that should be included in project `AGE
 
 ## Methodology & Principles
 
-Prefer red/green TDD unless impractical; otherwise follow `instructions/Testing.md` validation workflow and report gaps.
-
 Always write good code; see `instructions/Good Code.md` for a definition of good code.
 
 Apply these core principles when writing code:
+
+### Required
+
+- DRY (Avoid Duplication Thoughtfully)
+- Single Source Of Truth
+
+### Preferred
+
 - KISS (Keep It Simple)
 - YAGNI (Build What Is Needed)
-- DRY (Avoid Duplication Thoughtfully)
 - Make Illegal States Unrepresentable
 - Dependency Injection
 - Composition Over Inheritance
@@ -26,15 +31,16 @@ For detailed guidance, see `instructions/Principles.md`.
 ## Scope and Change Strategy
 
 - Prefer minimal, focused changes that solve the requested problem.
-- Preserve existing architecture/style unless change is requested or clearly needed.
 - Prefer fixing root causes over layered workarounds.
+- Preserve existing architecture/style unless change is requested or clearly needed.
+- Suggest architectural improvements or follow-up work.
 
 ## Core Workflow Expectations
 
 1. Understand request boundaries.
 2. Inspect relevant code/docs before editing.
 3. Apply the smallest coherent change set.
-4. Add/update tests for behavior changes where feasible.
+4. Add/update tests for behavior changes.
 5. Run relevant validation checks.
 6. Report changes, validation status, and residual risks.
 
@@ -45,6 +51,12 @@ For detailed guidance, see `instructions/Principles.md`.
 - Avoid hidden coupling and surprising side effects.
 - Do not add dependencies without clear justification.
 - Never expose or commit credentials/secrets.
+
+## Testing
+
+Use red/green TDD for non-UI code.
+Create previews for UI code.
+Follow `instructions/Testing.md` validation workflow and report gaps.
 
 ## Research and Source Quality
 
