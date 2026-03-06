@@ -49,6 +49,7 @@ The rebuilt agents file should contain two main sections:
 - When copied guidance files exist in the target repo, explicitly direct agents to read relevant files under `Extras/Documentation/Guidelines/`.
 - Exclude unrelated language/framework/service modules.
 - You may compress guidance for agent ingestion, but must preserve intent and principles.
+- Do not weaken mandatory baseline requirements with hedging language (for example: `when practical`, `where feasible`, `if possible`) unless the baseline itself includes such qualifiers.
 
 4. Add regeneration note
 - At the bottom of `AGENTS.md`, add this exact note: `To refresh this file, use the refresh-agents skill.`
@@ -68,6 +69,32 @@ The rebuilt agents file should contain two main sections:
 - detected stack assumptions
 - unresolved local-vs-shared instruction conflicts
 
+7. Verify mandatory baseline clauses
+- After drafting `AGENTS.md`, verify that mandatory baseline clauses from `instructions/COMMON.md` are still present in `Standard Rules` with equivalent force.
+- Required clauses (semantic equivalent wording allowed):
+  - testing: red/green TDD for non-UI code
+  - UI testing expectation: create previews for UI code
+  - validation discipline: follow testing/validation workflow and report skipped checks
+  - safety: do not perform destructive actions without explicit approval
+  - safety: if unexpected workspace changes appear, pause and confirm direction
+  - source quality: prefer trusted primary sources for technical decisions
+- If any required clause is intentionally omitted, record it in notes with a rationale.
+
+8. Run a hedging-language lint on Standard Rules
+- Check for requirement-softening terms in mandatory clauses, including:
+  - `when practical`
+  - `where feasible`
+  - `if possible`
+  - `try to`
+  - `ideally`
+- Remove or rewrite hedged phrasing unless the source baseline explicitly uses it.
+
+9. Produce a baseline verification summary
+- In either the companion notes file or the final response, include a short matrix:
+  - required clause
+  - status (`kept`, `rewritten-equivalent`, `omitted-intentional`)
+  - location in rebuilt `AGENTS.md`
+
 ## Selection Rules
 
 - Treat `instructions/COMMON.md` as mandatory baseline guidance for every refresh.
@@ -77,6 +104,8 @@ The rebuilt agents file should contain two main sections:
 - Include language modules only when that language is present.
 - Include technology/service modules only when actively used.
 - If uncertain, preserve shared principles in `AGENTS.md` and move optional detail to copied agent-readable docs.
+- Preserve mandatory baseline obligations explicitly; compacting must not reduce requirement strength.
+- Prefer one-way tightening over weakening: clarify or make rules stricter when needed, but do not silently relax shared requirements.
 
 ## Output Checklist
 
@@ -87,3 +116,5 @@ In the final response, always include:
 - Evidence used for stack detection
 - What was copied into guideline docs
 - Any unresolved local-vs-shared instruction conflicts
+- Mandatory baseline clause verification results
+- Any intentionally omitted baseline clauses with rationale
