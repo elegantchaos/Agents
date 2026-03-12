@@ -54,7 +54,7 @@ The operational model is:
 
 This repository provides:
 
-- shared metadata in `codex/skills/public-skill-registry.tsv`
+- shared metadata in `codex/skills/public-skill-registry.json`
 - role guidance in `codex/skills/skill-role-map.md`
 - maintenance scripts in `scripts/skills-public/`
 - the `refresh-public-skills` maintenance skill in `codex/skills/refresh-public-skills/`

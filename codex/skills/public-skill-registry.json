@@ -1,0 +1,242 @@
+{
+  "skills" : [
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "ed3ce229d5a1a053a3c648fdcb763739979965a4",
+      "packagingNotes" : "Primary source is the public repo checkout under ~\/.local\/share\/skills.",
+      "phase" : 1,
+      "prerequisites" : [
+        "GitHub CLI authenticated against the target repository"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/draft-release-skill",
+      "sharedBaseline" : false,
+      "skill" : "draft-release",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "c80b27d7cd1cb07f5fd271b95dbe85d4d15cbcd5",
+      "packagingNotes" : "Primary source is the public repo checkout under ~\/.local\/share\/skills.",
+      "phase" : 1,
+      "prerequisites" : [
+        "Homebrew"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/install-mint-skill",
+      "sharedBaseline" : false,
+      "skill" : "install-mint",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "e2c1a793f0d18a4698398b562dfcea4b8b955d08",
+      "packagingNotes" : "Environment-coupled through Mint and ReleaseTools.",
+      "phase" : 2,
+      "prerequisites" : [
+        "Mint",
+        "Access to the ReleaseTools package"
+      ],
+      "publicationClass" : "portable-with-prereqs",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/install-release-tools-skill",
+      "sharedBaseline" : false,
+      "skill" : "install-release-tools",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "76c9419884d37bee5f640cc932f7daa237a35328",
+      "packagingNotes" : "Primary source is the public repo checkout under ~\/.local\/share\/skills.",
+      "phase" : 1,
+      "prerequisites" : [
+        "GitHub CLI authenticated against the target repository"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/make-pr-skill",
+      "sharedBaseline" : false,
+      "skill" : "make-pr",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex.app",
+        "Compatible Codex-style hosts"
+      ],
+      "lastSyncedRef" : "3dc6a2172e055750ecbdacfd78741a98ad02f056",
+      "packagingNotes" : "Codex-specific git escalation guidance for write-side git commands.",
+      "phase" : 2,
+      "prerequisites" : [
+        "A Codex-style host with command escalation support"
+      ],
+      "publicationClass" : "portable-with-prereqs",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/codex-git-skill",
+      "sharedBaseline" : false,
+      "skill" : "codex-git",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "40c991ab9dcddba8a1fbb800008d615829a4c55d",
+      "packagingNotes" : "Depends on a shared baseline layout and project-local AGENTS.md policy.",
+      "phase" : 3,
+      "prerequisites" : [
+        "A shared agents baseline repository"
+      ],
+      "publicationClass" : "environment-policy",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-agents-skill",
+      "sharedBaseline" : true,
+      "skill" : "refresh-agents",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "eeace4c64b26681ab4c2bf1c43d90b85fbabbcfb",
+      "packagingNotes" : "Designed for teams using shared AGENTS.md policy files.",
+      "phase" : 3,
+      "prerequisites" : [
+        "AGENTS.md-guided repositories",
+        "An optional shared baseline"
+      ],
+      "publicationClass" : "environment-policy",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-comments-skill",
+      "sharedBaseline" : true,
+      "skill" : "refresh-comments",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "55165b1775e22f5ba03f2deb86e3a23126e94c30",
+      "packagingNotes" : "Designed for teams using shared AGENTS.md policy files.",
+      "phase" : 3,
+      "prerequisites" : [
+        "AGENTS.md-guided repositories",
+        "An optional shared baseline"
+      ],
+      "publicationClass" : "environment-policy",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-docs-skill",
+      "sharedBaseline" : true,
+      "skill" : "refresh-docs",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "08e66a745b340387a7a13fd8314fe70c3f87c7a0",
+      "packagingNotes" : "Intentionally tied to a Codex rules environment.",
+      "phase" : 3,
+      "prerequisites" : [
+        "A Codex-style home directory",
+        "A shared rules repository"
+      ],
+      "publicationClass" : "environment-policy",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-rules-skill",
+      "sharedBaseline" : true,
+      "skill" : "refresh-rules",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "ee5516067cf223703d46882e8a67c2cdf00e4431",
+      "packagingNotes" : "Environment-coupled through ReleaseTools.",
+      "phase" : 2,
+      "prerequisites" : [
+        "ReleaseTools",
+        "Repositories with rt validate support"
+      ],
+      "publicationClass" : "portable-with-prereqs",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/validation-flow-skill",
+      "sharedBaseline" : false,
+      "skill" : "validation-flow",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "c5522b8385c5945a9b9d8088cf6d22edb17c3c32",
+      "linkSubpath" : "swiftui-pro",
+      "packagingNotes" : "Primary source is the fork checkout under ~\/.local\/share\/skills.",
+      "phase" : 4,
+      "prerequisites" : [
+        "SwiftUI projects"
+      ],
+      "publicationClass" : "fork",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/SwiftUI-Agent-Skill",
+      "sharedBaseline" : false,
+      "skill" : "swiftui-pro",
+      "status" : "forked",
+      "upstreamURL" : "https:\/\/github.com\/twostraws\/SwiftUI-Agent-Skill"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "80c79269ee4d7d4bc57015162f136e422191e140",
+      "linkSubpath" : "swift-concurrency-pro",
+      "packagingNotes" : "Primary source is the fork checkout under ~\/.local\/share\/skills.",
+      "phase" : 4,
+      "prerequisites" : [
+        "Swift concurrency projects"
+      ],
+      "publicationClass" : "fork",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/Swift-Concurrency-Agent-Skill",
+      "sharedBaseline" : false,
+      "skill" : "swift-concurrency-pro",
+      "status" : "forked",
+      "upstreamURL" : "https:\/\/github.com\/twostraws\/Swift-Concurrency-Agent-Skill"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "36380b1e0246b066f51d7e92e73d9aac681bc80d",
+      "linkSubpath" : "swift-testing-pro",
+      "packagingNotes" : "Canonical Swift Testing guidance, including test design, migration, and detailed framework review advice.",
+      "phase" : 4,
+      "prerequisites" : [
+        "Swift Testing projects"
+      ],
+      "publicationClass" : "fork",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/Swift-Testing-Agent-Skill",
+      "sharedBaseline" : false,
+      "skill" : "swift-testing-pro",
+      "status" : "forked",
+      "upstreamURL" : "https:\/\/github.com\/twostraws\/Swift-Testing-Agent-Skill"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "68872e17c3aeef805fd7247016db35a70f0b4ddd",
+      "linkSubpath" : "swiftdata-pro",
+      "packagingNotes" : "Primary source is the fork checkout under ~\/.local\/share\/skills.",
+      "phase" : 4,
+      "prerequisites" : [
+        "SwiftData projects"
+      ],
+      "publicationClass" : "fork",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/SwiftData-Agent-Skill",
+      "sharedBaseline" : false,
+      "skill" : "swiftdata-pro",
+      "status" : "forked",
+      "upstreamURL" : "https:\/\/github.com\/twostraws\/SwiftData-Agent-Skill"
+    }
+  ]
+}

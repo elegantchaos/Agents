@@ -33,7 +33,7 @@ Runtime symlinks in `~/.codex/skills` and `~/.agents/skills` should point to tho
 
 This repository stores:
 
-- registry metadata in `skills/public-skill-registry.tsv`
+- registry metadata in `skills/public-skill-registry.json`
 - role guidance in `skills/skill-role-map.md`
 - refresh tooling in `skills/refresh-public-skills/`
 - helper scripts in `../scripts/skills-public/`

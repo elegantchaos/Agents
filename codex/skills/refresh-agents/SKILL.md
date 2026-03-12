@@ -60,5 +60,5 @@ Once migration succeeds:
 ## Notes
 
 - This bootstrap exists so older checkouts can self-heal after pulling the latest shared agents repo.
-- The canonical shared skill sources are now the published repos listed in `codex/skills/public-skill-registry.tsv`.
+- The canonical shared skill sources are now the published repos listed in `codex/skills/public-skill-registry.json`.
 - The only repo-local skills that should remain under `codex/skills/` are local control-plane or bootstrap skills.

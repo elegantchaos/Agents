@@ -12,7 +12,7 @@ Each public skill repository under `elegantchaos/` is the shareable source of tr
 
 ## Inputs
 
-- Skill metadata in `codex/skills/public-skill-registry.tsv`
+- Skill metadata in `codex/skills/public-skill-registry.json`
 - Local skill repo checkouts under `~/.local/share/skills` by default
 - Maintenance scripts in `scripts/skills-public/`
 

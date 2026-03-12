@@ -13,7 +13,7 @@ The implementation is Swift-based; the existing script entry points are retained
 
 ## Metadata
 
-All scripts read `codex/skills/public-skill-registry.tsv` from the repository root.
+All scripts read `codex/skills/public-skill-registry.json` from the repository root.
 
 ## Local Checkout Home
 

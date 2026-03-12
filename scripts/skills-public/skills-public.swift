@@ -8,32 +8,38 @@ struct CommandResult {
     let stderr: String
 }
 
-struct SkillRecord {
-    var fields: [String]
+struct SkillRecord: Codable {
+    var skill: String
+    var repoURL: String
+    var publicationClass: String
+    var phase: Int
+    var status: String
+    var upstreamURL: String?
+    var lastSyncedRef: String
+    var agentHosts: [String]
+    var prerequisites: [String]
+    var sharedBaseline: Bool
+    var linkSubpath: String?
+    var packagingNotes: String
 
-    init(fields: [String]) {
-        self.fields = fields
+    enum CodingKeys: String, CodingKey {
+        case skill
+        case repoURL
+        case publicationClass
+        case phase
+        case status
+        case upstreamURL
+        case lastSyncedRef
+        case agentHosts
+        case prerequisites
+        case sharedBaseline
+        case linkSubpath
+        case packagingNotes
     }
+}
 
-    subscript(index: Int) -> String {
-        get { index < fields.count ? fields[index] : "" }
-        set {
-            if index >= fields.count {
-                fields.append(contentsOf: Array(repeating: "", count: index - fields.count + 1))
-            }
-            fields[index] = newValue
-        }
-    }
-
-    var skill: String { self[0] }
-    var repoURL: String { self[1] }
-    var publicationClass: String { self[2] }
-    var status: String { self[4] }
-    var lastSyncedRef: String {
-        get { self[6] }
-        set { self[6] = newValue }
-    }
-    var linkSubpath: String { self[10] }
+struct SkillRegistry: Codable {
+    var skills: [SkillRecord]
 }
 
 enum ToolError: Error, CustomStringConvertible {
@@ -61,7 +67,7 @@ final class SkillsPublicTool {
             .deletingLastPathComponent()
             .deletingLastPathComponent()
             .deletingLastPathComponent()
-        self.registryURL = repoRoot.appendingPathComponent("codex/skills/public-skill-registry.tsv")
+        self.registryURL = repoRoot.appendingPathComponent("codex/skills/public-skill-registry.json")
         let homeDirectory = fileManager.homeDirectoryForCurrentUser
         self.skillsHome = URL(fileURLWithPath: ProcessInfo.processInfo.environment["SKILLS_HOME"] ?? homeDirectory.appendingPathComponent(".local/share/skills").path)
         self.agentsSkillsDir = URL(fileURLWithPath: ProcessInfo.processInfo.environment["AGENTS_SKILLS_DIR"] ?? homeDirectory.appendingPathComponent(".agents/skills").path)
@@ -101,39 +107,32 @@ final class SkillsPublicTool {
         """
     }
 
-    private func loadRegistry() throws -> (header: [String], rows: [SkillRecord]) {
+    private func loadRegistry() throws -> SkillRegistry {
         guard fileManager.fileExists(atPath: registryURL.path) else {
             throw ToolError.message("Missing registry: \(registryURL.path)")
         }
 
-        let content = try String(contentsOf: registryURL, encoding: .utf8)
-        let lines = content.split(whereSeparator: \.isNewline).map(String.init)
-        guard let headerLine = lines.first else {
-            throw ToolError.message("Registry is empty: \(registryURL.path)")
-        }
-
-        let header = headerLine.split(separator: "\t", omittingEmptySubsequences: false).map(String.init)
-        let rows = lines.dropFirst().map { line in
-            SkillRecord(fields: line.split(separator: "\t", omittingEmptySubsequences: false).map(String.init))
-        }
-        return (header, rows)
+        let data = try Data(contentsOf: registryURL)
+        return try JSONDecoder().decode(SkillRegistry.self, from: data)
     }
 
-    private func saveRegistry(header: [String], rows: [SkillRecord]) throws {
-        let lines = [header.joined(separator: "\t")] + rows.map { $0.fields.joined(separator: "\t") }
-        try lines.joined(separator: "\n").appending("\n").write(to: registryURL, atomically: true, encoding: .utf8)
+    private func saveRegistry(_ registry: SkillRegistry) throws {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let data = try encoder.encode(registry)
+        try data.write(to: registryURL)
     }
 
     private func skillRecord(named skill: String) throws -> SkillRecord {
         let registry = try loadRegistry()
-        guard let row = registry.rows.first(where: { $0.skill == skill }) else {
+        guard let row = registry.skills.first(where: { $0.skill == skill }) else {
             throw ToolError.message("Unknown skill: \(skill)")
         }
         return row
     }
 
     private func allSkills() throws -> [SkillRecord] {
-        try loadRegistry().rows
+        try loadRegistry().skills
     }
 
     private func repoName(for record: SkillRecord) -> String {
@@ -147,8 +146,8 @@ final class SkillsPublicTool {
 
     private func runtimeDir(for record: SkillRecord) -> URL {
         let base = checkoutDir(for: record)
-        guard !record.linkSubpath.isEmpty else { return base }
-        return base.appendingPathComponent(record.linkSubpath)
+        guard let linkSubpath = record.linkSubpath, !linkSubpath.isEmpty else { return base }
+        return base.appendingPathComponent(linkSubpath)
     }
 
     private func packagedSkillDir(for record: SkillRecord) -> URL {
@@ -200,11 +199,11 @@ final class SkillsPublicTool {
 
     private func updateSyncedRef(skill: String, ref: String) throws {
         var registry = try loadRegistry()
-        guard let index = registry.rows.firstIndex(where: { $0.skill == skill }) else {
+        guard let index = registry.skills.firstIndex(where: { $0.skill == skill }) else {
             throw ToolError.message("Unknown skill: \(skill)")
         }
-        registry.rows[index].lastSyncedRef = ref
-        try saveRegistry(header: registry.header, rows: registry.rows)
+        registry.skills[index].lastSyncedRef = ref
+        try saveRegistry(registry)
     }
 
     private func selectedSkills(from arguments: [String], allowAll: Bool = true) throws -> [SkillRecord] {
