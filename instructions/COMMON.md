@@ -51,6 +51,7 @@ For detailed guidance, see `instructions/Principles.md`.
 - Avoid hidden coupling and surprising side effects.
 - Do not add dependencies without clear justification.
 - Never expose or commit credentials/secrets.
+- Prefer Swift for repository-maintained automation and helper scripts. Use small single-file Swift scripts when they stay simple, and Swift command-line apps when workflows need shared logic or multiple commands.
 
 ## Testing
 

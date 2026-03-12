@@ -42,6 +42,7 @@ Suggested type member order:
 - Mark classes `final` unless inheritance is intentional.
 - Avoid force unwraps and `try!` except in truly unrecoverable paths.
 - Use value semantics by default unless reference semantics are required.
+- For repository-maintained scripts and automation, prefer Swift over shell or other scripting languages unless the host environment specifically requires another format.
 
 ## Concurrency
 

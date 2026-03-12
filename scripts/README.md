@@ -29,7 +29,9 @@ See `catalog.md` for mapping notes and recommended placement.
 
 ## Conventions
 
-- Prefer writing Swift CLI scripts where practical.
+- Strongly prefer writing repository-maintained scripts in Swift.
+- Use single-file Swift scripts for small utilities.
+- Use Swift command-line apps when the workflow has multiple commands, shared logic, or enough complexity that a single script becomes hard to maintain.
 - Keep scripts idempotent where practical.
 - Prefer explicit arguments/environment variables over hard-coded project names.
 - Add header comments with purpose and usage.
