@@ -1,120 +1,64 @@
 ---
 name: refresh-agents
-description: Regenerate a project AGENTS.md and related guideline docs from the shared agents repository baseline. Use when updating stale project agent instructions, syncing standards into a repo, or running the refresh-agents skill.
+description: Legacy bootstrap skill for migrating from repo-local skill folders to the repo-based skill checkout layout under ~/.local/share/skills, then handing off to the published refresh-agents skill.
 ---
 
-# Agents Refresh
+# Agents Refresh Bootstrap
 
-Rebuild project instruction artifacts from shared guidance while preserving project-specific rules.
+This is a legacy compatibility copy of `refresh-agents`.
 
-## Shared Location
+Use it only to migrate a machine from the old repo-local skill layout to the current repo-based skill layout.
+After migration, the canonical skill lives at:
 
-Shared baseline files are in `~/.local/share/agents`.
+- `~/.local/share/skills/refresh-agents-skill/SKILL.md`
 
-When refreshing another repository, resolve shared inputs from this location:
-- `~/.local/share/agents/instructions/COMMON.md`
-- `~/.local/share/agents/instructions/`
+## When To Use This Bootstrap
 
-## Goal
+Use this bootstrap when:
 
-Produce a compact, project-targeted `AGENTS.md` for agents, while preserving project-local instructions and providing copied guidance docs that agents can read for full detail.
+- an older `AGENTS.md` or local instruction still points at `codex/skills/refresh-agents/SKILL.md`
+- `~/.agents/skills/refresh-agents` does not yet point to `~/.local/share/skills/refresh-agents-skill`
+- the public skill repos have not yet been synced onto this machine
 
-The rebuilt agents file should contain two main sections:
-- `Project Specific Rules`
-- `Standard Rules`
+## Migration Goal
 
-## Required Inputs
+Set up the current shared-skill runtime so that:
 
-- target project repository
-- target project's existing `AGENTS.md`
-- shared `instructions/COMMON.md` and relevant files under `instructions/` (including subfolders such as `languages/`, `technologies/`, and `services/`)
+- public skill repos are checked out under `~/.local/share/skills`
+- `~/.agents/skills/*` points at those repo checkouts
+- `~/.codex/skills/*` points at those repo checkouts
+- future use of `refresh-agents` resolves to `~/.local/share/skills/refresh-agents-skill`
 
-## Rebuild Workflow
+## Required Migration Workflow
 
-1. Load context
-- Read the target project's existing `AGENTS.md`.
-- Read shared common files and relevant instruction modules from `~/.local/share/agents`.
-- Detect technologies in use from repo evidence (for example: `.swift`, `Package.swift`, `.xcodeproj`, `pyproject.toml`, `requirements*.txt`, `package.json`, `tsconfig.json`).
+Run these commands from the shared agents repo root:
 
-2. Preserve Project Specific Rules
-- Retain project-specific policies, constraints, architecture notes, and workflows at the top of rebuilt `AGENTS.md`.
-- Remove or rewrite only clearly obsolete or contradictory local instructions.
+```bash
+scripts/skills-public/sync-skill-repos.sh --all
+scripts/skills-public/link-skill-repos.sh
+scripts/skills-public/status-skill-repos.sh
+```
 
-3. Rewrite Standard Rules
-- Replace the rest of the file with compact agent guidance, based on `instructions/COMMON.md`.
-- Always include core guidance from `instructions/COMMON.md` in rebuilt `AGENTS.md` (for example engineering principles, testing/validation expectations, safety, and source-quality rules).
-- Add stack-relevant guidance from `instructions/` modules only when those languages/tools/services are used by the project.
-- Prefer concrete, checkable instructions over narrative explanation.
-- Ensure compact instructions preserve enough context for an agent to locate and load full detail from referenced local guidance files.
-- When copied guidance files exist in the target repo, explicitly direct agents to read relevant files under `Extras/Documentation/Guidelines/`.
-- Exclude unrelated language/framework/service modules.
-- You may compress guidance for agent ingestion, but must preserve intent and principles.
-- Do not weaken mandatory baseline requirements with hedging language (for example: `when practical`, `where feasible`, `if possible`) unless the baseline itself includes such qualifiers.
+## Required Checks
 
-4. Add regeneration note
-- At the bottom of `AGENTS.md`, add this exact note: `To refresh this file, use the refresh-agents skill.`
+After running the commands above, confirm:
 
-5. Copy relevant guideline files
-- Copy relevant files from `instructions/` into `Extras/Documentation/Guidelines/`.
-- Include core cross-cutting modules by default (`Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`), then add only relevant language/technology/service modules.
-- Overwrite only managed copied files.
-- Avoid touching project-authored docs outside the managed set.
-- In each section of the new `AGENTS.md`, add links to local copies of relevant guidance files.
-- Treat copied files as agent-first references that capture full required guidance; they are not just human companion docs.
+- `refresh-agents` appears in the status output with `ok` symlinks
+- `~/.agents/skills/refresh-agents` points to `~/.local/share/skills/refresh-agents-skill`
+- `~/.codex/skills/refresh-agents` points to `~/.local/share/skills/refresh-agents-skill`
 
-6. Optionally regenerate a companion notes file
-- Create or update `Extras/Documentation/Guidelines/Agent-Guidance-Notes.md` with:
-- regenerated files
-- included and excluded modules
-- detected stack assumptions
-- unresolved local-vs-shared instruction conflicts
+If those checks fail, report the exact blocker rather than continuing with a partial migration.
 
-7. Verify mandatory baseline clauses
-- After drafting `AGENTS.md`, verify that mandatory baseline clauses from `instructions/COMMON.md` are still present in `Standard Rules` with equivalent force.
-- Required clauses (semantic equivalent wording allowed):
-  - testing: red/green TDD for non-UI code
-  - UI testing expectation: create previews for UI code
-  - validation discipline: follow testing/validation workflow and report skipped checks
-  - safety: do not perform destructive actions without explicit approval
-  - safety: if unexpected workspace changes appear, pause and confirm direction
-  - source quality: prefer trusted primary sources for technical decisions
-- If any required clause is intentionally omitted, record it in notes with a rationale.
+## After Migration
 
-8. Run a hedging-language lint on Standard Rules
-- Check for requirement-softening terms in mandatory clauses, including:
-  - `when practical`
-  - `where feasible`
-  - `if possible`
-  - `try to`
-  - `ideally`
-- Remove or rewrite hedged phrasing unless the source baseline explicitly uses it.
+Once migration succeeds:
 
-9. Produce a baseline verification summary
-- In either the companion notes file or the final response, include a short matrix:
-  - required clause
-  - status (`kept`, `rewritten-equivalent`, `omitted-intentional`)
-  - location in rebuilt `AGENTS.md`
+1. Use `~/.local/share/skills/refresh-agents-skill/SKILL.md` for all future agent refresh work.
+2. Treat this bootstrap copy as compatibility-only.
+3. Do not recreate repo-local copies of other published skills under `codex/skills/`.
 
-## Selection Rules
+## Notes
 
-- Treat `instructions/COMMON.md` as mandatory baseline guidance for every refresh.
-- Treat `instructions/` files as detailed, context-specific guidance.
-- Include non-specific principles in final `AGENTS.md` even when compacting text.
-- Prefer root-level instruction modules (`Principles.md`, `Testing.md`, `Trusted Sources.md`, `Good Code.md`) as the default copied set for agent consumption.
-- Include language modules only when that language is present.
-- Include technology/service modules only when actively used.
-- If uncertain, preserve shared principles in `AGENTS.md` and move optional detail to copied agent-readable docs.
-- Preserve mandatory baseline obligations explicitly; compacting must not reduce requirement strength.
-- Prefer one-way tightening over weakening: clarify or make rules stricter when needed, but do not silently relax shared requirements.
-
-## Output Checklist
-
-In the final response, always include:
-
-- Files changed
-- Modules included and excluded
-- Evidence used for stack detection
-- What was copied into guideline docs
-- Any unresolved local-vs-shared instruction conflicts
-- Mandatory baseline clause verification results
-- Any intentionally omitted baseline clauses with rationale
+- This bootstrap exists so older checkouts can self-heal after pulling the latest shared agents repo.
+- The canonical shared skill sources are now the published repos listed in `codex/skills/public-skill-registry.tsv`.
+- The only repo-local skills that should remain under `codex/skills/` are local control-plane or bootstrap skills.

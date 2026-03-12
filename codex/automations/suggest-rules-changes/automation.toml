@@ -1,7 +1,7 @@
 version = 1
 id = "suggest-rules-changes"
 name = "Suggest Rules Changes"
-prompt = "Use [$refresh-rules](~/.local/share/agents/codex/skills/refresh-rules/SKILL.md)."
+prompt = "Use [$refresh-rules](~/.local/share/skills/refresh-rules-skill/SKILL.md)."
 status = "ACTIVE"
 rrule = "RRULE:FREQ=WEEKLY;BYHOUR=10;BYMINUTE=15;BYDAY=MO,TU,WE,TH,FR"
 cwds = ["/Users/sam/Developer/Projects/Stack"]

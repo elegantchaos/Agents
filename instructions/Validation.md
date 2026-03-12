@@ -1,4 +1,4 @@
-# Testing and Validation
+# Validation and Verification
 
 Relevance: include this file for all projects where code changes can be validated by tests, linters, formatters, or build checks.
 
@@ -6,25 +6,21 @@ Relevance: include this file for all projects where code changes can be validate
 
 This module defines baseline expectations for proving behavior changes and reporting validation status clearly.
 
+Use specialist testing skills for framework-specific test design and API guidance. Use this module for validation policy and reporting expectations only.
+
 ## Baseline Expectations
 
-- Add tests for new behavior and bug fixes.
-- Use red/green testing; make the test first, then make it pass.
-- Prefer focused unit/integration tests over heavy end-to-end tests unless the risk requires full-stack coverage.
+- Add or update validation relevant to the behavior you changed.
+- Prefer red/green development for non-UI behavior where practical.
+- Run the narrowest checks that prove the change first, then broaden out.
+- If a change cannot be validated fully, report exactly what was skipped and why.
 
 ## Validation Workflow
 
 1. Run narrow checks closest to the change first.
 2. Run broader project checks next.
-3. Use the shared `validation-flow` skill (`codex/skills/validation-flow`) for standard validation (`rt validate`).
+3. Use the shared `validation-flow` skill checkout (`~/.local/share/skills/validation-flow-skill`) for standard validation (`rt validate`) when it applies.
 4. If validation cannot run, report exactly what was not validated and why.
-
-## Test Design Guidance
-
-- Test through stable interfaces where possible.
-- Keep tests explicit and readable.
-- Extract shared test helpers to improve clarity.
-- Cover edge cases and failure modes touched by the change.
 
 ## Reporting Guidance
 

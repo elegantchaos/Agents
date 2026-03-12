@@ -1,4 +1,0 @@
-interface:
-  display_name: "GH Draft Release"
-  short_description: "Create a GitHub draft release with commit-derived notes"
-  default_prompt: "Draft a GitHub release for a specified tag using commit history since the previous tag, then stop for manual review/publish."

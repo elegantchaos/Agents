@@ -1,4 +1,0 @@
-interface:
-  display_name: "Validation Flow"
-  short_description: "Run standard post-change format/lint/build/test validation"
-  default_prompt: "From the repository root, run post-change validation using ReleaseTools (`rt validate`): run comprehensive validation, then run `--target` for impacted targets, and report passes, failures, skips, and residual risks."

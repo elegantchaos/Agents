@@ -6,6 +6,16 @@ Relevance: include this file when the project contains Swift code (`.swift`, `Pa
 
 This module provides Swift-specific coding, organization, concurrency, and validation guidance for both agents and human contributors.
 
+For deeper framework or language-specialist guidance, prefer the dedicated skill checkouts when relevant:
+- `~/.local/share/skills/Swift-Concurrency-Agent-Skill/swift-concurrency-pro`
+- `~/.local/share/skills/Swift-Testing-Agent-Skill/swift-testing-pro`
+- `~/.local/share/skills/SwiftUI-Agent-Skill/swiftui-pro`
+- `~/.local/share/skills/SwiftData-Agent-Skill/swiftdata-pro`
+
+Use those skills for specialist detail rather than growing this baseline module into a second copy of their framework guidance.
+
+For Swift test design, migration, and API usage, prefer `swift-testing-pro` rather than introducing separate testing guidance in shared instruction modules.
+
 ## Version and Platform Expectations
 
 - Follow the project's current Swift and platform targets.
@@ -35,10 +45,9 @@ Suggested type member order:
 
 ## Concurrency
 
-- Prefer structured concurrency (`async/await`, `Task`, actors).
-- Minimize new `DispatchQueue` usage unless required for compatibility.
 - Define clear actor/thread ownership for shared mutable state.
 - Keep UI-facing logic on the main actor when appropriate.
+- Use the Swift concurrency specialist skill for concurrency correctness, migration detail, strict-concurrency guidance, and API-selection decisions.
 
 ## Errors and State Modeling
 

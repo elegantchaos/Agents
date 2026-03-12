@@ -9,4 +9,4 @@ Subfolders:
 - `diagnostics/`
 
 Validation is handled by the shared `validation-flow` skill at:
-- `codex/skills/validation-flow/` (`rt validate`)
+- `~/.local/share/skills/validation-flow-skill` (`rt validate`)

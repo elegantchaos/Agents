@@ -1,4 +1,0 @@
-interface:
-  display_name: "Refresh Docs"
-  short_description: "Recurring docs refresh from AGENTS with COMMON fallback"
-  default_prompt: "Refresh this repository's project documentation as recurring maintenance to match local AGENTS.md and linked guidance files. Use ~/.local/share/agents/instructions/COMMON.md only when local guidance is missing or ambiguous, then report updated files and unresolved conflicts."

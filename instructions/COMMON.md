@@ -56,7 +56,7 @@ For detailed guidance, see `instructions/Principles.md`.
 
 Use red/green TDD for non-UI code.
 Create previews for UI code.
-Follow `instructions/Testing.md` validation workflow and report gaps.
+Follow `instructions/Validation.md` validation workflow and report gaps.
 
 ## Research and Source Quality
 
@@ -87,3 +87,4 @@ Follow `instructions/Testing.md` validation workflow and report gaps.
 
 - Do not use `git -C <path> ...` unless explicitly required. Prefer setting `workdir` to the repository path and running plain `git ...` commands.
 - The purpose of this instruction is to allow `git` commands to match against the rules in `git.rules`.
+- For git operations in Codex.app, use the shared `codex-git` skill checkout (`~/.local/share/skills/codex-git-skill`) so write-side git commands are escalated correctly.

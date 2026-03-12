@@ -19,7 +19,7 @@ Keep this section project-authored and at the top when regenerating.
 
 Rebuild this section from:
 - `instructions/COMMON.md`
-- `codex/skills/refresh-agents/SKILL.md`
+- `~/.local/share/skills/refresh-agents-skill/SKILL.md`
 - stack-relevant modules under `instructions/`
 
 Apply these baseline expectations:
@@ -30,14 +30,17 @@ Apply these baseline expectations:
 - Avoid destructive actions without explicit approval.
 - Never expose or commit credentials/secrets.
 
-Prefer using applicable shared skills in `codex/skills/` for task-specific workflows instead of repeating skill internals in this file.
+Prefer using applicable shared skills from `~/.local/share/skills/` for task-specific workflows instead of repeating skill internals in this file.
+For git operations in Codex.app, prefer the `codex-git-skill` checkout so write-side git commands are escalated correctly.
+For Swift stacks, prefer routing to specialist skills such as `Swift-Testing-Agent-Skill/swift-testing-pro`, `SwiftUI-Agent-Skill/swiftui-pro`, `Swift-Concurrency-Agent-Skill/swift-concurrency-pro`, and `SwiftData-Agent-Skill/swiftdata-pro` rather than copying detailed framework rules into project-local instructions.
+Keep validation policy separate from framework-specific test guidance.
 When `Extras/Documentation/Guidelines/` contains copied guidance files, read the relevant files there to recover full required guidance for the current task.
 
 ## Managed Guidance Modules
 
 Core modules to copy into project docs by default:
 - `instructions/Principles.md`
-- `instructions/Testing.md`
+- `instructions/Validation.md`
 - `instructions/Trusted Sources.md`
 - `instructions/Good Code.md`
 
@@ -45,7 +48,6 @@ Add only modules relevant to the detected stack:
 - `instructions/languages/Swift.md`
 - `instructions/languages/Python.md`
 - `instructions/languages/JavaScript.md`
-- `instructions/technologies/SwiftUI.md`
 - `instructions/services/GitHub.md`
 
 These copied guidance files are agent-first references and may also be useful for humans.

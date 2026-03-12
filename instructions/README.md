@@ -1,6 +1,6 @@
 # Shared Instruction Modules
 
-These files are shared guidance modules used when rebuilding project `AGENTS.md` files from the common guidance set (`instructions/COMMON.md`, `codex/skills/refresh-agents/SKILL.md`).
+These files are shared guidance modules used when rebuilding project `AGENTS.md` files from the common guidance set (`instructions/COMMON.md`, `~/.local/share/skills/refresh-agents-skill/SKILL.md`).
 
 They are written to serve both:
 - agents selecting and applying task-relevant rules
@@ -18,7 +18,7 @@ When rebuilding project instructions, copy only relevant modules into the projec
 
 Suggested copied set by default:
 - `Principles.md`
-- `Testing.md`
+- `Validation.md`
 - `Trusted Sources.md`
 
-Add language/technology/service modules only when the project uses them.
+Add language/service modules only when the project uses them.

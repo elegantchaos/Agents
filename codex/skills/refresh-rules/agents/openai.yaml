@@ -1,4 +1,0 @@
-interface:
-  display_name: "Refresh Rules"
-  short_description: "Normalize Codex rules, clean default.rules, and fix symlinks"
-  default_prompt: "Rationalize rules by moving generic entries from default.rules into shared rules files, remove project-specific default rules, sort/de-dupe shared rules, reconcile symlinks into ~/.codex/rules, and report exactly what changed."
