@@ -1,5 +1,6 @@
 #!/usr/bin/env swift
 
+import Darwin
 import Foundation
 
 struct CommandResult {
@@ -220,9 +221,14 @@ final class SkillsPublicTool {
         try fileManager.createDirectory(at: url, withIntermediateDirectories: true)
     }
 
+    private func pathExistsIncludingBrokenSymlink(_ url: URL) -> Bool {
+        var info = stat()
+        return lstat(url.path, &info) == 0
+    }
+
     private func replaceSymlink(at destination: URL, with target: URL) throws {
-        if fileManager.fileExists(atPath: destination.path) || destination.hasDirectoryPath {
-            try? fileManager.removeItem(at: destination)
+        if pathExistsIncludingBrokenSymlink(destination) {
+            try fileManager.removeItem(at: destination)
         }
         try fileManager.createSymbolicLink(at: destination, withDestinationURL: target)
     }
