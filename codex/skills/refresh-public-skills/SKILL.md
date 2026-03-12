@@ -31,7 +31,7 @@ Each public skill repository under `elegantchaos/` is the shareable source of tr
 - Update the registry's `last_synced_ref` field when a git commit is available.
 
 3. `link`
-- Point `~/.agents/skills` and `~/.codex/skills` at the local skill repo checkouts.
+- Point `~/.agents/skills` at the local skill repo checkouts.
 - Keep local-only maintenance skills in this repository when there is no public repo checkout.
 
 4. `status`

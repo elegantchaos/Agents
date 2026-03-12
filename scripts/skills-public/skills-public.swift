@@ -59,7 +59,6 @@ final class SkillsPublicTool {
     private let registryURL: URL
     private let skillsHome: URL
     private let agentsSkillsDir: URL
-    private let codexSkillsDir: URL
     private let localMaintenanceSkill: URL
 
     init() {
@@ -72,7 +71,6 @@ final class SkillsPublicTool {
         let homeDirectory = fileManager.homeDirectoryForCurrentUser
         self.skillsHome = URL(fileURLWithPath: ProcessInfo.processInfo.environment["SKILLS_HOME"] ?? homeDirectory.appendingPathComponent(".local/share/skills").path)
         self.agentsSkillsDir = URL(fileURLWithPath: ProcessInfo.processInfo.environment["AGENTS_SKILLS_DIR"] ?? homeDirectory.appendingPathComponent(".agents/skills").path)
-        self.codexSkillsDir = URL(fileURLWithPath: ProcessInfo.processInfo.environment["CODEX_SKILLS_DIR"] ?? homeDirectory.appendingPathComponent(".codex/skills").path)
         self.localMaintenanceSkill = repoRoot.appendingPathComponent("codex/skills/refresh-public-skills")
     }
 
@@ -103,7 +101,7 @@ final class SkillsPublicTool {
           skills-public.swift audit <skill> [<skill> ...]
           skills-public.swift sync --all
           skills-public.swift sync <skill> [<skill> ...]
-          skills-public.swift link [--agents-only] [--codex-only]
+          skills-public.swift link
           skills-public.swift status
         """
     }
@@ -266,40 +264,21 @@ final class SkillsPublicTool {
     }
 
     private func runLink(arguments: [String]) throws {
-        var linkAgents = true
-        var linkCodex = true
-
-        if arguments.count > 1 {
+        if !arguments.isEmpty {
             throw ToolError.message(usage())
         }
-        if let flag = arguments.first {
-            switch flag {
-            case "--agents-only":
-                linkCodex = false
-            case "--codex-only":
-                linkAgents = false
-            default:
-                throw ToolError.message(usage())
-            }
-        }
 
-        if linkAgents { try makeDirectory(agentsSkillsDir) }
-        if linkCodex { try makeDirectory(codexSkillsDir) }
+        try makeDirectory(agentsSkillsDir)
 
         for record in try allSkills() {
             let target = runtimeDir(for: record)
             guard fileManager.fileExists(atPath: target.path) else {
                 throw ToolError.message("Missing checkout for \(record.skill): \(target.path)")
             }
-            if linkAgents {
-                try replaceSymlink(at: agentsSkillsDir.appendingPathComponent(record.skill), with: target)
-            }
-            if linkCodex {
-                try replaceSymlink(at: codexSkillsDir.appendingPathComponent(record.skill), with: target)
-            }
+            try replaceSymlink(at: agentsSkillsDir.appendingPathComponent(record.skill), with: target)
         }
 
-        if linkAgents, fileManager.fileExists(atPath: localMaintenanceSkill.path) {
+        if fileManager.fileExists(atPath: localMaintenanceSkill.path) {
             try replaceSymlink(at: agentsSkillsDir.appendingPathComponent("refresh-public-skills"), with: localMaintenanceSkill)
         }
     }
@@ -307,17 +286,16 @@ final class SkillsPublicTool {
     private func runStatus() throws {
         print("# Skill Repo Status\n")
         print("Checkout root: \(skillsHome.path)\n")
-        print("| Skill | Working Tree | Ahead/Behind | Registry Ref | ~/.agents | ~/.codex |")
-        print("| --- | --- | --- | --- | --- | --- |")
+        print("| Skill | Working Tree | Ahead/Behind | Registry Ref | ~/.agents |")
+        print("| --- | --- | --- | --- | --- |")
 
         for record in try allSkills() {
             let repoDir = checkoutDir(for: record)
             let targetDir = runtimeDir(for: record)
             let agentsLink = agentsSkillsDir.appendingPathComponent(record.skill)
-            let codexLink = codexSkillsDir.appendingPathComponent(record.skill)
 
             guard isGitCheckout(repoDir) else {
-                print("| \(record.skill) | missing checkout | - | - | - | - |")
+                print("| \(record.skill) | missing checkout | - | - | - |")
                 continue
             }
 
@@ -338,9 +316,8 @@ final class SkillsPublicTool {
 
             let refStatus = (!record.lastSyncedRef.isEmpty && record.lastSyncedRef != headRef) ? "registry-mismatch" : "ok"
             let agentsStatus = symlinkStatus(link: agentsLink, target: targetDir)
-            let codexStatus = symlinkStatus(link: codexLink, target: targetDir)
 
-            print("| \(record.skill) | \(dirty) | \(aheadBehind) | \(refStatus) | \(agentsStatus) | \(codexStatus) |")
+            print("| \(record.skill) | \(dirty) | \(aheadBehind) | \(refStatus) | \(agentsStatus) |")
         }
     }
 

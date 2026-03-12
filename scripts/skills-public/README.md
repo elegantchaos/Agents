@@ -8,7 +8,7 @@ The implementation is Swift-based; the existing script entry points are retained
 - `skills-public.swift`: shared Swift implementation for the maintenance commands
 - `audit-skill.sh`: audit one skill or all skills for publication blockers
 - `sync-skill-repos.sh`: clone or pull skill repositories into `~/.local/share/skills`
-- `link-skill-repos.sh`: point `~/.agents/skills` and `~/.codex/skills` at the skill repo checkouts
+- `link-skill-repos.sh`: point `~/.agents/skills` at the skill repo checkouts
 - `status-skill-repos.sh`: report missing checkouts, dirty repos, branch drift, and symlink mismatches
 
 ## Metadata

@@ -29,7 +29,7 @@ We do not track other files in `~/.codex` - they are ephemeral, tied to the loca
 Public sharing uses one repository per skill under `elegantchaos/`.
 
 Operational skill checkouts live outside this repository, under `~/.local/share/skills` by default.
-Runtime symlinks in `~/.codex/skills` and `~/.agents/skills` should point to those checkouts.
+Runtime symlinks for published shared skills should live in `~/.agents/skills`.
 
 This repository stores:
 

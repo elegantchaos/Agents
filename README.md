@@ -49,7 +49,7 @@ The operational model is:
 
 - each public skill lives in its own GitHub repository under `elegantchaos/`
 - local working copies are checked out under `~/.local/share/skills`
-- `~/.agents/skills` and `~/.codex/skills` symlink to those checkouts
+- `~/.agents/skills` symlinks to those checkouts
 - this repository stores the metadata, policies, templates, and scripts that keep that arrangement in sync
 
 This repository provides:

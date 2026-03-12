@@ -26,7 +26,6 @@ Set up the current shared-skill runtime so that:
 
 - public skill repos are checked out under `~/.local/share/skills`
 - `~/.agents/skills/*` points at those repo checkouts
-- `~/.codex/skills/*` points at those repo checkouts
 - future use of `refresh-agents` resolves to `~/.local/share/skills/refresh-agents-skill`
 
 ## Required Migration Workflow
@@ -45,7 +44,6 @@ After running the commands above, confirm:
 
 - `refresh-agents` appears in the status output with `ok` symlinks
 - `~/.agents/skills/refresh-agents` points to `~/.local/share/skills/refresh-agents-skill`
-- `~/.codex/skills/refresh-agents` points to `~/.local/share/skills/refresh-agents-skill`
 
 If those checks fail, report the exact blocker rather than continuing with a partial migration.
 
