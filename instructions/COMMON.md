@@ -72,7 +72,7 @@ Follow `instructions/Validation.md` validation workflow and report gaps.
 
 ## GitHub Workflows
 
-- For GitHub workflows in Codex.app, use the shared `codex-github` skill (`~/.local/share/skills/codex-github-skill/SKILL.md`).
+- For GitHub workflows, use the shared `codex-github` skill (`~/.local/share/skills/codex-github-skill/SKILL.md`).
 
 ## Documentation
 
@@ -97,4 +97,4 @@ Follow `instructions/Validation.md` validation workflow and report gaps.
 
 ## Git Command Style
 
-- For git operations in Codex.app, use the shared `codex-git` skill (`~/.local/share/skills/codex-git-skill/SKILL.md`).
+- For git operations, use the shared `codex-git` skill (`~/.local/share/skills/codex-git-skill/SKILL.md`).
