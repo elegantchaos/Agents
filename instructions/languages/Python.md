@@ -2,10 +2,6 @@
 
 Relevance: include this file when the project contains Python code (`.py`, `pyproject.toml`, `requirements*.txt`, or Python tooling).
 
-## Why this file exists
-
-This module defines Python-specific quality and maintainability expectations for shared agent and human workflows.
-
 ## Core Expectations
 
 - Prefer explicit, readable code over implicit behavior.

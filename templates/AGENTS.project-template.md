@@ -31,8 +31,8 @@ Apply these baseline expectations:
 - Never expose or commit credentials/secrets.
 
 Prefer using applicable shared skills from `~/.local/share/skills/` for task-specific workflows instead of repeating skill internals in this file.
-For git operations in Codex.app, use the `codex-git` skill rather than repeating git command-shape, escalation, or write-command rules in project-local instructions.
-For pull request and release workflows, prefer the `make-pr` and `draft-release` skills instead of embedding command-shape guidance here.
+For git operations in Codex.app, use the `codex-git` skill.
+For GitHub workflows such as pull requests and draft releases, use the `codex-github` skill.
 For Swift stacks, prefer routing to specialist skills such as `Swift-Testing-Agent-Skill/swift-testing-pro`, `SwiftUI-Agent-Skill/swiftui-pro`, `Swift-Concurrency-Agent-Skill/swift-concurrency-pro`, and `SwiftData-Agent-Skill/swiftdata-pro` rather than copying detailed framework rules into project-local instructions.
 Keep validation policy separate from framework-specific test guidance.
 When `Extras/Documentation/Guidelines/` contains copied guidance files, read the relevant files there to recover full required guidance for the current task.
@@ -49,7 +49,6 @@ Add only modules relevant to the detected stack:
 - `instructions/languages/Swift.md`
 - `instructions/languages/Python.md`
 - `instructions/languages/JavaScript.md`
-- `instructions/services/GitHub.md`
 
 These copied guidance files are agent-first references and may also be useful for humans.
 

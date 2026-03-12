@@ -2,19 +2,11 @@
 
 Relevance: include this file when the project contains Swift code (`.swift`, `Package.swift`, Xcode targets, or SwiftPM packages).
 
-## Why this file exists
-
-This module provides Swift-specific coding, organization, concurrency, and validation guidance for both agents and human contributors.
-
 For deeper framework or language-specialist guidance, prefer the dedicated skill checkouts when relevant:
 - `~/.local/share/skills/Swift-Concurrency-Agent-Skill/swift-concurrency-pro`
 - `~/.local/share/skills/Swift-Testing-Agent-Skill/swift-testing-pro`
 - `~/.local/share/skills/SwiftUI-Agent-Skill/swiftui-pro`
 - `~/.local/share/skills/SwiftData-Agent-Skill/swiftdata-pro`
-
-Use those skills for specialist detail rather than growing this baseline module into a second copy of their framework guidance.
-
-For Swift test design, migration, and API usage, prefer `swift-testing-pro` rather than introducing separate testing guidance in shared instruction modules.
 
 ## Version and Platform Expectations
 

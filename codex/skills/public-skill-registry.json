@@ -4,22 +4,6 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "ed3ce229d5a1a053a3c648fdcb763739979965a4",
-      "packagingNotes" : "Primary source is the public repo checkout under ~\/.local\/share\/skills.",
-      "phase" : 1,
-      "prerequisites" : [
-        "GitHub CLI authenticated against the target repository"
-      ],
-      "publicationClass" : "portable",
-      "repoURL" : "https:\/\/github.com\/elegantchaos\/draft-release-skill",
-      "sharedBaseline" : false,
-      "skill" : "draft-release",
-      "status" : "published"
-    },
-    {
-      "agentHosts" : [
-        "Codex-compatible skill hosts"
-      ],
       "lastSyncedRef" : "c80b27d7cd1cb07f5fd271b95dbe85d4d15cbcd5",
       "packagingNotes" : "Primary source is the public repo checkout under ~\/.local\/share\/skills.",
       "phase" : 1,
@@ -51,26 +35,10 @@
     },
     {
       "agentHosts" : [
-        "Codex-compatible skill hosts"
-      ],
-      "lastSyncedRef" : "76c9419884d37bee5f640cc932f7daa237a35328",
-      "packagingNotes" : "Primary source is the public repo checkout under ~\/.local\/share\/skills.",
-      "phase" : 1,
-      "prerequisites" : [
-        "GitHub CLI authenticated against the target repository"
-      ],
-      "publicationClass" : "portable",
-      "repoURL" : "https:\/\/github.com\/elegantchaos\/make-pr-skill",
-      "sharedBaseline" : false,
-      "skill" : "make-pr",
-      "status" : "published"
-    },
-    {
-      "agentHosts" : [
         "Codex.app",
         "Compatible Codex-style hosts"
       ],
-      "lastSyncedRef" : "6a932a184f1b0bc8f0701bf0471b15d6c5e74754",
+      "lastSyncedRef" : "6a932a15808cd4a6da9306590e8e9f7ea76e499c",
       "packagingNotes" : "Codex-specific git escalation guidance for write-side git commands.",
       "phase" : 2,
       "prerequisites" : [
@@ -80,6 +48,23 @@
       "repoURL" : "https:\/\/github.com\/elegantchaos\/codex-git-skill",
       "sharedBaseline" : false,
       "skill" : "codex-git",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "c0135d3f3c22df3b3afcad240c8680dc146ce1ae",
+      "packagingNotes" : "Canonical shared GitHub workflow skill for pull requests, draft releases, and safe gh CLI usage.",
+      "phase" : 2,
+      "prerequisites" : [
+        "GitHub CLI authenticated against the target repository",
+        "Use codex-git when git write commands are involved"
+      ],
+      "publicationClass" : "portable-with-prereqs",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/codex-github-skill",
+      "sharedBaseline" : false,
+      "skill" : "codex-github",
       "status" : "published"
     },
     {

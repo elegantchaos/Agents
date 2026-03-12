@@ -2,10 +2,6 @@
 
 Relevance: include this file when the project contains JavaScript or TypeScript (`package.json`, `.js`, `.ts`, frontend or Node tooling).
 
-## Why this file exists
-
-This module defines reliability and maintainability expectations for JS/TS projects used by both agents and human contributors.
-
 ## Core Expectations
 
 - Prefer TypeScript when the project supports it.

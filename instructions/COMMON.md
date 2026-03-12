@@ -1,6 +1,4 @@
-# Common Rules for Rebuilt AGENTS Files
-
-This file contains baseline shared rules that should be included in project `AGENTS.md` files when relevant.
+# Common Rules
 
 ## Methodology & Principles
 
@@ -32,8 +30,17 @@ For detailed guidance, see `instructions/Principles.md`.
 
 - Prefer minimal, focused changes that solve the requested problem.
 - Prefer fixing root causes over layered workarounds.
-- Preserve existing architecture/style unless change is requested or clearly needed.
-- Suggest architectural improvements or follow-up work.
+- Modernise or adopt a new architecture/style if appropriate.
+- Avoid creating code bases with mixed architecture/style.
+- When modernising, migrate everything (if trivial), or suggest follow-up work.
+
+## Refactoring and Compatibility
+
+- Do not add shims, wrappers, adapters, aliases, or backwards-compatibility layers unless the user explicitly asks for compatibility support.
+- When refactoring an API, tool, script, or interface, treat the refactored version as the new source of truth.
+- This applies to documentation and tests as well as the primary target of the refactor.
+- Update known call sites immediately as part of the same change rather than preserving old entry points by default.
+- If compatibility support is genuinely needed, make that an explicit decision and scope it clearly.
 
 ## Core Workflow Expectations
 
@@ -63,6 +70,10 @@ Follow `instructions/Validation.md` validation workflow and report gaps.
 
 - Use `instructions/Trusted Sources.md` for source selection and research policy.
 
+## GitHub Workflows
+
+- For GitHub workflows in Codex.app, use the shared `codex-github` skill (`~/.local/share/skills/codex-github-skill/SKILL.md`).
+
 ## Documentation
 
 - Keep docs factual and aligned with current behavior.
@@ -86,4 +97,4 @@ Follow `instructions/Validation.md` validation workflow and report gaps.
 
 ## Git Command Style
 
-- For git operations in Codex.app, use the shared `codex-git` skill (`~/.local/share/skills/codex-git-skill/SKILL.md`) rather than restating git command-shape, escalation, and write-command rules here.
+- For git operations in Codex.app, use the shared `codex-git` skill (`~/.local/share/skills/codex-git-skill/SKILL.md`).

@@ -2,10 +2,6 @@
 
 Relevance: include this file whenever tasks involve uncertain facts, API behavior, tooling semantics, policy requirements, or external references.
 
-## Why this file exists
-
-This module sets source-quality expectations so technical decisions rely on primary references rather than unverifiable summaries.
-
 ## Source Selection Rules
 
 - Prefer official vendor documentation, language specifications, and primary proposals.

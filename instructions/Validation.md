@@ -2,11 +2,7 @@
 
 Relevance: include this file for all projects where code changes can be validated by tests, linters, formatters, or build checks.
 
-## Why this file exists
-
-This module defines baseline expectations for proving behavior changes and reporting validation status clearly.
-
-Use specialist testing skills for framework-specific test design and API guidance. Use this module for validation policy and reporting expectations only.
+Use specialist testing skills for framework-specific test design and API guidance. Use this module for validation policy and reporting expectations.
 
 ## Baseline Expectations
 

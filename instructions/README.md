@@ -8,7 +8,7 @@ They are written to serve both:
 
 ## How to use this folder
 
-- Keep each module focused on a clear domain (principles, testing, sources, language, technology, or service).
+- Keep each module focused on a clear domain (principles, validation, sources, or language baseline).
 - Start each module with relevance criteria so agents can decide if it applies.
 - Write guidance in clear, direct language that remains useful after copying into project docs.
 - Prefer routing to shared skills for specialized or host-specific workflows instead of copying detailed skill procedures into these modules.
@@ -22,4 +22,4 @@ Suggested copied set by default:
 - `Validation.md`
 - `Trusted Sources.md`
 
-Add language/service modules only when the project uses them.
+Add language modules only when the project uses them.
