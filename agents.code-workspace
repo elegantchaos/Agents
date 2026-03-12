@@ -4,7 +4,13 @@
       "path": ".",
     },
     {
+      "path": "/Users/sam/.local/share/skills",
+    },
+    {
       "path": "/Users/sam/.codex",
+    },
+    {
+      "path": "/Users/sam/.agents",
     },
   ],
   "settings": {},
