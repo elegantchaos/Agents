@@ -4,20 +4,12 @@ Relevance: include this file when work involves GitHub operations, especially vi
 
 ## Why this file exists
 
-This module captures safe and repeatable GitHub CLI usage patterns to prevent shell quoting errors and malformed PR content.
+This module captures baseline GitHub workflow expectations.
 
-## PR Body Safety
-
-- Do not pass rich Markdown with backticks directly as an inline `--body "..."` argument.
-- Prefer `--body-file <path>` for PR creation and editing.
-- If using heredocs, use single-quoted delimiters to prevent shell substitution.
-
-## Command Construction Checks
-
-Before running `gh` commands that include user-authored markdown:
-- verify the shell command cannot trigger command substitution
-- verify expected newlines and markdown formatting are preserved
-- prefer deterministic non-interactive commands
+For task-specific GitHub workflows, use the owning shared skills instead of duplicating their command details here:
+- use `make-pr` for pull request creation and editing
+- use `draft-release` for GitHub draft release preparation
+- use `codex-git` for Codex-specific git write/escalation rules that accompany GitHub workflows
 
 ## Review and Workflow Hygiene
 

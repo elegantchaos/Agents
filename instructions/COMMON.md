@@ -86,6 +86,4 @@ Follow `instructions/Validation.md` validation workflow and report gaps.
 
 ## Git Command Style
 
-- Do not use `git -C <path> ...` unless explicitly required. Prefer setting `workdir` to the repository path and running plain `git ...` commands.
-- The purpose of this instruction is to allow `git` commands to match against the rules in `git.rules`.
-- For git operations in Codex.app, use the shared `codex-git` skill checkout (`~/.local/share/skills/codex-git-skill`) so write-side git commands are escalated correctly.
+- For git operations in Codex.app, use the shared `codex-git` skill (`~/.local/share/skills/codex-git-skill/SKILL.md`) rather than restating git command-shape, escalation, and write-command rules here.

@@ -11,6 +11,4 @@ Since this is itself a project, use the same common guidance baseline here.
 
 ## Git Command Style
 
-- Do not use `git -C <path> ...` unless explicitly required. Prefer setting `workdir` to the repository path and running plain `git ...` commands.
-- The purpose of this instruction is to allow `git` commands to match against the rules in `git.rules`.
-- When performing git operations in Codex.app, use `~/.local/share/skills/codex-git-skill/SKILL.md` for escalation and write-command guidance.
+- When performing git operations in Codex.app, use `~/.local/share/skills/codex-git-skill/SKILL.md` instead of restating git command-shape, escalation, and write-command rules here.

@@ -31,7 +31,8 @@ Apply these baseline expectations:
 - Never expose or commit credentials/secrets.
 
 Prefer using applicable shared skills from `~/.local/share/skills/` for task-specific workflows instead of repeating skill internals in this file.
-For git operations in Codex.app, prefer the `codex-git-skill` checkout so write-side git commands are escalated correctly.
+For git operations in Codex.app, use the `codex-git` skill rather than repeating git command-shape, escalation, or write-command rules in project-local instructions.
+For pull request and release workflows, prefer the `make-pr` and `draft-release` skills instead of embedding command-shape guidance here.
 For Swift stacks, prefer routing to specialist skills such as `Swift-Testing-Agent-Skill/swift-testing-pro`, `SwiftUI-Agent-Skill/swiftui-pro`, `Swift-Concurrency-Agent-Skill/swift-concurrency-pro`, and `SwiftData-Agent-Skill/swiftdata-pro` rather than copying detailed framework rules into project-local instructions.
 Keep validation policy separate from framework-specific test guidance.
 When `Extras/Documentation/Guidelines/` contains copied guidance files, read the relevant files there to recover full required guidance for the current task.

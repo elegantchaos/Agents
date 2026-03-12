@@ -70,7 +70,7 @@
         "Codex.app",
         "Compatible Codex-style hosts"
       ],
-      "lastSyncedRef" : "3dc6a2172e055750ecbdacfd78741a98ad02f056",
+      "lastSyncedRef" : "6a932a184f1b0bc8f0701bf0471b15d6c5e74754",
       "packagingNotes" : "Codex-specific git escalation guidance for write-side git commands.",
       "phase" : 2,
       "prerequisites" : [

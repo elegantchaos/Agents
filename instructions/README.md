@@ -11,6 +11,7 @@ They are written to serve both:
 - Keep each module focused on a clear domain (principles, testing, sources, language, technology, or service).
 - Start each module with relevance criteria so agents can decide if it applies.
 - Write guidance in clear, direct language that remains useful after copying into project docs.
+- Prefer routing to shared skills for specialized or host-specific workflows instead of copying detailed skill procedures into these modules.
 
 ## Intended project copy workflow
 
