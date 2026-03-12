@@ -12,20 +12,10 @@ Inclusion rule:
 - `skills-public/`: audit, extract, and refresh helpers for the repo-per-skill publication workflow
 - `xcode-app/release/`: release/submission scripts (including ReleaseTools workflows)
 - `xcode-app/build-phases/`: scripts intended for Xcode build phases
-- `xcode-app/diagnostics/`: local troubleshooting scripts
 
 ## Validation Flow
 
 - Standard post-change validation should use the `validation-flow` skill at `~/.local/share/skills/validation-flow-skill`.
-
-## First-Pass Sources
-
-Categorization and inclusion are based on:
-
-- `Stack/Extras/Scripts`
-- `ActionStatus/Extras/Scripts`
-
-See `catalog.md` for mapping notes and recommended placement.
 
 ## Conventions
 

@@ -6,7 +6,6 @@ Subfolders:
 
 - `release/`
 - `build-phases/`
-- `diagnostics/`
 
 Validation is handled by the shared `validation-flow` skill at:
 - `~/.local/share/skills/validation-flow-skill` (`rt validate`)
