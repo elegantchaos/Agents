@@ -2,7 +2,7 @@
 
 ## Methodology & Principles
 
-Always write good code; see `instructions/Good Code.md` for a definition of good code.
+Always write good code; see `~/.local/share/agents/instructions/Good Code.md` for a definition of good code.
 
 Apply these core principles when writing code:
 
@@ -24,7 +24,7 @@ Apply these core principles when writing code:
 - Design by Contract
 - Idempotency
 
-For detailed guidance, see `instructions/Principles.md`.
+For detailed guidance, see `~/.local/share/agents/instructions/Principles.md`.
 
 ## Scope and Change Strategy
 
@@ -64,11 +64,11 @@ For detailed guidance, see `instructions/Principles.md`.
 
 Use red/green TDD for non-UI code.
 Create previews for UI code.
-Follow `instructions/Validation.md` validation workflow and report gaps.
+Follow `~/.local/share/agents/instructions/Validation.md` validation workflow and report gaps.
 
 ## Research and Source Quality
 
-- Use `instructions/Trusted Sources.md` for source selection and research policy.
+- Use `~/.local/share/agents/instructions/Trusted Sources.md` for source selection and research policy.
 
 ## GitHub Workflows
 

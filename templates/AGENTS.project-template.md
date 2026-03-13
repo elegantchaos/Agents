@@ -18,9 +18,9 @@ Keep this section project-authored and at the top when regenerating.
 ## Standard Rules
 
 Rebuild this section from:
-- `instructions/COMMON.md`
+- `~/.local/share/agents/instructions/COMMON.md`
 - `~/.local/share/skills/refresh-agents-skill/SKILL.md`
-- stack-relevant modules under `instructions/`
+- stack-relevant modules under `~/.local/share/agents/instructions/`
 
 Apply these baseline expectations:
 - Make minimal, focused changes that solve the requested problem.
@@ -40,18 +40,18 @@ When `Extras/Documentation/Guidelines/` contains copied guidance files, read the
 ## Managed Guidance Modules
 
 Core modules to copy into project docs by default:
-- `instructions/Principles.md`
-- `instructions/Validation.md`
-- `instructions/Trusted Sources.md`
-- `instructions/Good Code.md`
+- `~/.local/share/agents/instructions/Principles.md`
+- `~/.local/share/agents/instructions/Validation.md`
+- `~/.local/share/agents/instructions/Trusted Sources.md`
+- `~/.local/share/agents/instructions/Good Code.md`
 
 Add only modules relevant to the detected stack:
-- `instructions/languages/Swift.md`
-- `instructions/languages/Python.md`
-- `instructions/languages/JavaScript.md`
+- `~/.local/share/agents/instructions/languages/Swift.md`
+- `~/.local/share/agents/instructions/languages/Python.md`
+- `~/.local/share/agents/instructions/languages/JavaScript.md`
 
 These copied guidance files are agent-first references and may also be useful for humans.
 
 ## Regeneration Note
 
-To refresh this file, use the `refresh-agents` skill.
+To refresh this file, use the `~/.local/share/skills/refresh-agents-skill/SKILL.md` skill.

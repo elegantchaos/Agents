@@ -71,7 +71,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "666883bc0ec3ee98cd98680e88292fdedc6c0a6a",
+      "lastSyncedRef" : "b925a322927f561384c848fec5cb31cc2caa97a9",
       "packagingNotes" : "Depends on a shared baseline layout and project-local AGENTS.md policy.",
       "phase" : 3,
       "prerequisites" : [
@@ -87,7 +87,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "9a7d3b2a314f5f59c12481284fbf0a8febc4206e",
+      "lastSyncedRef" : "0226c9535e508feb77993313f87672a303817563",
       "packagingNotes" : "Canonical project hygiene skill covering docs, comments, formatting, linting, and structural cleanup for AGENTS-guided repositories.",
       "phase" : 3,
       "prerequisites" : [
