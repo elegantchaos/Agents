@@ -1,9 +1,0 @@
-version = 1
-id = "refresh-principles"
-name = "Refresh Principles"
-prompt = "The file `COMMON.md` contains a list of principles to apply when writing code. The file `instructions/Principles.md` contains more detail explaining these principles.\n\nThe principles should be accepted software engineering terms such as “DRY”, “YAGNI”, “Dependency Injection” and so on.\n\nReview this list against current best practice. Suggest additions, edits or removals. Give reasons for your suggestions, and provide references for each principle."
-status = "ACTIVE"
-rrule = "RRULE:FREQ=WEEKLY;BYHOUR=12;BYMINUTE=0;BYDAY=MO"
-cwds = ["/Users/sam/.local/share/agents"]
-created_at = 1771928812320
-updated_at = 1771929741955

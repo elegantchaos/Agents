@@ -1,9 +1,0 @@
-version = 1
-id = "update-agents-md"
-name = "Update AGENTS.md"
-prompt = "Update AGENTS.md with newly discovered workflows and commands.\n\nConstraints:\n- Keep edits minimal, accurate, and grounded in repo usage.\n- Do not touch unrelated sections or auto-generated files.\n- If you are unsure, prefer adding a TODO with a short note rather than inventing."
-status = "PAUSED"
-rrule = "RRULE:FREQ=WEEKLY;BYHOUR=10;BYMINUTE=0;BYDAY=MO,TU,WE,TH,FR"
-cwds = ["/Users/sam/Developer/Projects/Stack"]
-created_at = 1770988637990
-updated_at = 1771927518010

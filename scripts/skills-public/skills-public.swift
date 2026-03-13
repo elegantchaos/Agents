@@ -352,8 +352,9 @@ final class SkillsPublicTool {
     private func classify(record: SkillRecord) throws -> (outcome: String, notes: [String]) {
         let source = skillSourceDir(for: record)
         let secretRegex = try NSRegularExpression(pattern: "BEGIN [A-Z ]+PRIVATE KEY|gh[pousr]_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{20,}|AKIA[0-9A-Z]{12,}|ASIA[0-9A-Z]{12,}|client_secret")
-        let portabilityRegex = try NSRegularExpression(pattern: "/Users/sam/")
-        let localLinkRegex = try NSRegularExpression(pattern: "file://|/Users/sam|git@github.com:")
+        let escapedHome = NSRegularExpression.escapedPattern(for: fileManager.homeDirectoryForCurrentUser.path)
+        let portabilityRegex = try NSRegularExpression(pattern: escapedHome)
+        let localLinkRegex = try NSRegularExpression(pattern: "file://|\(escapedHome)|git@github.com:")
 
         var foundSecrets = false
         var foundPortability = false
