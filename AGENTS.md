@@ -1,15 +1,15 @@
 ## Project Specific Rules
 
 - This repository is expected to live at `~/.local/share/agents`.
-- This repository is the canonical source for shared agent instructions, templates, skills, and configuration.
+- This repository is the canonical source for shared agent instructions, skills, and configuration.
 - When refreshing another repository from this baseline, treat `~/.local/share/agents/instructions/COMMON.md` as mandatory and select only the relevant modules under `~/.local/share/agents/instructions/`.
 - Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/instructions/COMMON.md` for shared baseline rules and `~/.local/share/skills/refresh-agents-skill/SKILL.md` for regeneration instructions.
-- Because this repository owns the shared baseline, agents working here should link directly to files under `~/.local/share/agents/instructions/` instead of copying them into `Extras/Documentation/Guidelines/`.
+- Because this repository owns the shared baseline, agents working here should link directly to files under `~/.local/share/agents/instructions/`.
 - For git operations in Codex.app, use `~/.local/share/skills/codex-git-skill/SKILL.md`.
 
 ## Standard Rules
 
-Read `~/.local/share/agents/instructions/COMMON.md` first, then load only the modules relevant to the task. For this repository, the default shared references are `~/.local/share/agents/instructions/Principles.md`, `~/.local/share/agents/instructions/Validation.md`, `~/.local/share/agents/instructions/Good Code.md`, `~/.local/share/agents/instructions/Trusted Sources.md`, and `~/.local/share/agents/instructions/languages/Swift.md`.
+Read `~/.local/share/agents/instructions/COMMON.md` first, then load only the modules relevant to the task. For this repository, the default shared references are `~/.local/share/agents/instructions/Principles.md`, `~/.local/share/agents/instructions/Validation.md`, `~/.local/share/agents/instructions/Good Code.md`, `~/.local/share/agents/instructions/Trusted Sources.md`, `~/.local/share/agents/instructions/Portability.md`, and `~/.local/share/agents/instructions/languages/Swift.md`.
 
 - Write good code as defined in `~/.local/share/agents/instructions/Good Code.md`.
 - Apply shared engineering principles from `~/.local/share/agents/instructions/Principles.md`: DRY, Single Source of Truth, KISS, YAGNI, Make Illegal States Unrepresentable, Dependency Injection, Composition Over Inheritance, Command-Query Separation, Law of Demeter, Structured Concurrency, Design by Contract, and Idempotency.
@@ -24,6 +24,7 @@ Read `~/.local/share/agents/instructions/COMMON.md` first, then load only the mo
 - Keep documentation factual and aligned with current behavior. Update local docs when workflows, commands, or architecture change.
 - Add concise documentation comments for types, methods, functions, and members when you modify them. Comments should explain intent and constraints, not restate names.
 - Use trusted primary sources for technical decisions. Follow `~/.local/share/agents/instructions/Trusted Sources.md`; prefer official vendor docs, language references, specifications, and primary proposals over secondary summaries.
+- Keep shared references portable. Follow `~/.local/share/agents/instructions/Portability.md` and use `~/...` paths for canonical shared resources.
 - For GitHub workflows, use `~/.local/share/skills/codex-github-skill/SKILL.md`.
 - Do not perform destructive actions without explicit approval.
 - If unexpected workspace changes appear, pause and confirm direction before proceeding.

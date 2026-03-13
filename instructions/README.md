@@ -4,22 +4,24 @@ These files are shared guidance modules used when rebuilding project `AGENTS.md`
 
 They are written to serve both:
 - agents selecting and applying task-relevant rules
-- humans reading copied guideline files inside projects
+- humans maintaining the shared baseline
 
 ## How to use this folder
 
 - Keep each module focused on a clear domain (principles, validation, sources, or language baseline).
 - Start each module with relevance criteria so agents can decide if it applies.
-- Write guidance in clear, direct language that remains useful after copying into project docs.
+- Write guidance in clear, direct language that remains useful when referenced directly from project docs.
 - Prefer routing to shared skills for specialized or host-specific workflows instead of copying detailed skill procedures into these modules.
 
-## Intended project copy workflow
+## Intended reference workflow
 
-When rebuilding project instructions, copy only relevant modules into the project's guideline directory (for example `Extras/Documentation/Guidelines/`).
+When rebuilding project instructions, reference only the relevant shared modules under `~/.local/share/agents/instructions/`.
 
-Suggested copied set by default:
+Suggested shared set by default:
 - `Principles.md`
 - `Validation.md`
 - `Trusted Sources.md`
+- `Good Code.md`
+- `Portability.md`
 
 Add language modules only when the project uses them.

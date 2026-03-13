@@ -70,6 +70,10 @@ Follow `~/.local/share/agents/instructions/Validation.md` validation workflow an
 
 - Use `~/.local/share/agents/instructions/Trusted Sources.md` for source selection and research policy.
 
+## Portability
+
+- Use `~/.local/share/agents/instructions/Portability.md` for shared path and portability rules.
+
 ## GitHub Workflows
 
 - For GitHub workflows, use the shared `codex-github` skill (`~/.local/share/skills/codex-github-skill/SKILL.md`).

@@ -7,7 +7,7 @@ Use specialist testing skills for framework-specific test design and API guidanc
 ## Baseline Expectations
 
 - Add or update validation relevant to the behavior you changed.
-- Prefer red/green development for non-UI behavior where practical.
+- Use red/green TDD for non-UI behavior.
 - Run the narrowest checks that prove the change first, then broaden out.
 - If a change cannot be validated fully, report exactly what was skipped and why.
 

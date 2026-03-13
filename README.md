@@ -1,61 +1,37 @@
 # Agents Repository
 
-This repository stores canonical agent-related instructions, shared configuration, and reusable utilities.
+This repository is the shared home for agent resources used across Elegant Chaos projects.
 
-It is intended for:
+GitHub: [github.com/elegantchaos/Agents](https://github.com/elegantchaos/Agents)
 
-- keeping a stable base of instructions that can be copied into project repos
-- storing reusable language/technology guidance that can be referenced on demand
-- maintaining global config that can optionally be symlinked into place (for example from `~/.codex`)
+It provides:
 
-## Installation
+- shared instruction modules under `~/.local/share/agents/instructions/`
+- shared Codex rule files under `~/.local/share/agents/codex/rules/`
+- shared skill metadata, scripts, and local control-plane files for published skills
 
-We expect this project to live in:
+## First Use
+
+Clone this repository to:
 
 - `~/.local/share/agents`
 
-This allows other projects to refer to files within it.
+Then sync and link the published shared skills:
 
-## Usage
+```bash
+./scripts/skills-public/sync-skill-repos.sh --all
+./scripts/skills-public/link-skill-repos.sh
+```
 
-Use this repo in two ways:
+## Shared Rules
 
-1. Copying:
-   - Copy files (for example `AGENTS.md` templates) into a project.
-   - Modify them locally in the project.
-   - Manually merge useful changes back into this repo.
-2. Linking:
-   - Keep canonical files here and symlink from tool-specific locations.
-   - Best for truly global config that should stay identical across machines.
+Shared reusable Codex approval rules live in `codex/rules/`. Runtime rule files under `~/.codex/rules/` should symlink to these shared files where applicable.
 
-## Structure
+## Shared Skills
 
-- `AGENTS.md`: local instructions for this project only
-- `~/.local/share/agents/instructions/COMMON.md`: shared baseline rules for inclusion in rebuilt `AGENTS.md`
-- `~/.local/share/skills/refresh-agents-skill/SKILL.md`: canonical skill instructions for regenerating project instruction artifacts
-- `~/.local/share/agents/instructions/`: modular instructions loaded only when relevant
-- `templates/`: starter templates for project-level agent files
-- `agents/`: tool-specific notes (Codex app, opencode CLI, Copilot/VSCode)
-- `scripts/`: reusable helper scripts
-- `skills/`: reusable skills and skill docs
-- `rules/`: reusable rules/checklists/policies
-- `config/`: canonical config files intended for copy or symlink workflows
+Published shared skills are checked out under `~/.local/share/skills/` and linked into `~/.agents/skills/`. This repository keeps the registry, maintenance scripts, and supporting guidance for that setup.
 
-## Public Skill Model
+## Maintenance Skills
 
-This repository is the control plane for public skill repositories.
-
-The operational model is:
-
-- each public skill lives in its own GitHub repository under `elegantchaos/`
-- local working copies are checked out under `~/.local/share/skills`
-- `~/.agents/skills` symlinks to those checkouts
-- this repository stores the metadata, policies, templates, and scripts that keep that arrangement in sync
-
-This repository provides:
-
-- shared metadata in `codex/skills/public-skill-registry.json`
-- role guidance in `codex/skills/skill-role-map.md`
-- maintenance scripts in `scripts/skills-public/`
-- the `refresh-public-skills` maintenance skill in `codex/skills/refresh-public-skills/`
-- local control-plane files under `codex/skills/` for skill orchestration only
+- Use `~/.local/share/skills/refresh-agents-skill/SKILL.md` to review or refresh this shared agents repository.
+- Use `codex/skills/refresh-public-skills/` to sync, link, audit, and verify the published shared skill checkouts.
