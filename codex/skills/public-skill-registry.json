@@ -87,34 +87,17 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "eeace4c64b26681ab4c2bf1c43d90b85fbabbcfb",
-      "packagingNotes" : "Designed for teams using shared AGENTS.md policy files.",
+      "lastSyncedRef" : "9a7d3b2a314f5f59c12481284fbf0a8febc4206e",
+      "packagingNotes" : "Canonical project hygiene skill covering docs, comments, formatting, linting, and structural cleanup for AGENTS-guided repositories.",
       "phase" : 3,
       "prerequisites" : [
         "AGENTS.md-guided repositories",
         "An optional shared baseline"
       ],
       "publicationClass" : "environment-policy",
-      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-comments-skill",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-hygiene-skill",
       "sharedBaseline" : true,
-      "skill" : "refresh-comments",
-      "status" : "published"
-    },
-    {
-      "agentHosts" : [
-        "Codex-compatible skill hosts"
-      ],
-      "lastSyncedRef" : "55165b1775e22f5ba03f2deb86e3a23126e94c30",
-      "packagingNotes" : "Designed for teams using shared AGENTS.md policy files.",
-      "phase" : 3,
-      "prerequisites" : [
-        "AGENTS.md-guided repositories",
-        "An optional shared baseline"
-      ],
-      "publicationClass" : "environment-policy",
-      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-docs-skill",
-      "sharedBaseline" : true,
-      "skill" : "refresh-docs",
+      "skill" : "refresh-hygiene",
       "status" : "published"
     },
     {
