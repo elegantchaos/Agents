@@ -91,7 +91,8 @@ Follow `instructions/Validation.md` validation workflow and report gaps.
 
 ## Safety and Discipline
 
-- Do not perform destructive actions without explicit approval.
+- Do not perform irreversible destructive actions without explicit approval.
+- Reversible changes inside source control, including deletion of tracked files, do not require special approval beyond the user’s request.
 - Avoid unrelated refactors during focused tasks.
 - If unexpected workspace changes appear, pause and confirm direction.
 
