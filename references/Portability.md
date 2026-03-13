@@ -15,14 +15,14 @@ Use this file to keep shared guidance portable across machines and repositories.
 
 ## Shared Baseline Rules
 
-- Treat `~/.local/share/agents/` as the canonical home for shared agent instructions and rule files.
-- Refer to shared instruction modules with explicit paths under `~/.local/share/agents/instructions/`.
+- Treat `~/.local/share/agents/` as the canonical home for shared agent references and rule files.
+- Refer to shared reference modules with explicit paths under `~/.local/share/agents/references/`.
 - Refer to shared rule files with explicit paths under `~/.local/share/agents/codex/rules/` when the path itself matters.
 - Refer to published shared skills with explicit paths under `~/.local/share/skills/`.
 
 ## Project Guidance Rules
 
-- Point project `AGENTS.md` files directly at the relevant shared modules under `~/.local/share/agents/instructions/`.
+- Point project `AGENTS.md` files directly at the relevant shared modules under `~/.local/share/agents/references/`.
 - Load only the modules relevant to the current project or task.
 
 ## Maintenance Rules

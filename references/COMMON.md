@@ -2,7 +2,7 @@
 
 ## Methodology & Principles
 
-Always write good code; see `~/.local/share/agents/instructions/Good Code.md` for a definition of good code.
+Always write good code; see `~/.local/share/agents/references/Good Code.md` for a definition of good code.
 
 Apply these core principles when writing code:
 
@@ -24,7 +24,7 @@ Apply these core principles when writing code:
 - Design by Contract
 - Idempotency
 
-For detailed guidance, see `~/.local/share/agents/instructions/Principles.md`.
+For detailed guidance, see `~/.local/share/agents/references/Principles.md`.
 
 ## Scope and Change Strategy
 
@@ -64,15 +64,15 @@ For detailed guidance, see `~/.local/share/agents/instructions/Principles.md`.
 
 Use red/green TDD for non-UI code.
 Create previews for UI code.
-Follow `~/.local/share/agents/instructions/Validation.md` validation workflow and report gaps.
+Follow `~/.local/share/agents/references/Validation.md` validation workflow and report gaps.
 
 ## Research and Source Quality
 
-- Use `~/.local/share/agents/instructions/Trusted Sources.md` for source selection and research policy.
+- Use `~/.local/share/agents/references/Trusted Sources.md` for source selection and research policy.
 
 ## Portability
 
-- Use `~/.local/share/agents/instructions/Portability.md` for shared path and portability rules.
+- Use `~/.local/share/agents/references/Portability.md` for shared path and portability rules.
 
 ## GitHub Workflows
 

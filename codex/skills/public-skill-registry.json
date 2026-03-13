@@ -4,7 +4,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "c80b27d7cd1cb07f5fd271b95dbe85d4d15cbcd5",
+      "lastSyncedRef" : "bc67860ac92a055548719a6285bf07e1c57d5e7b",
       "packagingNotes" : "Primary source is the public repo checkout under ~\/.local\/share\/skills.",
       "phase" : 1,
       "prerequisites" : [
@@ -20,7 +20,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "e2c1a793f0d18a4698398b562dfcea4b8b955d08",
+      "lastSyncedRef" : "7b72651196b920589448bfa11811d5ee39bd3888",
       "packagingNotes" : "Environment-coupled through Mint and ReleaseTools.",
       "phase" : 2,
       "prerequisites" : [
@@ -38,7 +38,7 @@
         "Codex.app",
         "Compatible Codex-style hosts"
       ],
-      "lastSyncedRef" : "6a932a15808cd4a6da9306590e8e9f7ea76e499c",
+      "lastSyncedRef" : "220a8448812fbc8d7effeb7b2abca8120953f71a",
       "packagingNotes" : "Codex-specific git escalation guidance for write-side git commands.",
       "phase" : 2,
       "prerequisites" : [
@@ -54,7 +54,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "c0135d3f3c22df3b3afcad240c8680dc146ce1ae",
+      "lastSyncedRef" : "3cf30eaa8c76a84dfb369b0eb352407be08d2b12",
       "packagingNotes" : "Canonical shared GitHub workflow skill for pull requests, draft releases, and safe gh CLI usage.",
       "phase" : 2,
       "prerequisites" : [
@@ -71,7 +71,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "b925a322927f561384c848fec5cb31cc2caa97a9",
+      "lastSyncedRef" : "a0a5b627a792e79f668810ed51b3f2361ff7d5f4",
       "packagingNotes" : "Depends on a shared baseline layout and project-local AGENTS.md policy.",
       "phase" : 3,
       "prerequisites" : [
@@ -87,7 +87,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "0226c9535e508feb77993313f87672a303817563",
+      "lastSyncedRef" : "302f115c4096a19ef70d582b6b92535753723fbf",
       "packagingNotes" : "Canonical project hygiene skill covering docs, comments, formatting, linting, and structural cleanup for AGENTS-guided repositories.",
       "phase" : 3,
       "prerequisites" : [
@@ -104,7 +104,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "ee5516067cf223703d46882e8a67c2cdf00e4431",
+      "lastSyncedRef" : "3ad544e51e8b92c4988b4e46369733bc1d32df97",
       "packagingNotes" : "Environment-coupled through ReleaseTools.",
       "phase" : 2,
       "prerequisites" : [

@@ -6,7 +6,7 @@ GitHub: [github.com/elegantchaos/Agents](https://github.com/elegantchaos/Agents)
 
 It provides:
 
-- shared instruction modules under `~/.local/share/agents/instructions/`
+- shared reference modules under `~/.local/share/agents/references/`
 - shared Codex rule files under `~/.local/share/agents/codex/rules/`
 - shared skill metadata, scripts, and local control-plane files for published skills
 

@@ -4,7 +4,7 @@ This file defines the intended role of shared skills so the control-plane repo, 
 
 ## Principles
 
-- Keep baseline cross-cutting policy in `~/.local/share/agents/instructions/**`.
+- Keep baseline cross-cutting policy in `~/.local/share/agents/references/**`.
 - Keep workflow and validation orchestration in local/shared skills that encode how we want work to be done.
 - Keep deep framework, language-version, and API-specific detail in specialist skill repos.
 - Prefer composing a workflow skill with a specialist skill rather than letting one skill absorb the other.
