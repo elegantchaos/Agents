@@ -40,6 +40,8 @@ Prefer indexed primary docs via MCP tools before broad web search.
 ## Secondary Sources (verify before relying)
 
 - [Hacking with Swift](https://www.hackingwithswift.com/)
+- [objc.io](https://www.objc.io/)
+- [SwiftTalk](https://talk.objc.io/)
 - [Swift Forums](https://forums.swift.org/)
 - [Apple Developer Forums](https://developer.apple.com/forums/)
 
