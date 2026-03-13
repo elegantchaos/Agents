@@ -71,7 +71,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "40c991ab9dcddba8a1fbb800008d615829a4c55d",
+      "lastSyncedRef" : "666883bc0ec3ee98cd98680e88292fdedc6c0a6a",
       "packagingNotes" : "Depends on a shared baseline layout and project-local AGENTS.md policy.",
       "phase" : 3,
       "prerequisites" : [
@@ -115,23 +115,6 @@
       "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-docs-skill",
       "sharedBaseline" : true,
       "skill" : "refresh-docs",
-      "status" : "published"
-    },
-    {
-      "agentHosts" : [
-        "Codex-compatible skill hosts"
-      ],
-      "lastSyncedRef" : "08e66a745b340387a7a13fd8314fe70c3f87c7a0",
-      "packagingNotes" : "Intentionally tied to a Codex rules environment.",
-      "phase" : 3,
-      "prerequisites" : [
-        "A Codex-style home directory",
-        "A shared rules repository"
-      ],
-      "publicationClass" : "environment-policy",
-      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-rules-skill",
-      "sharedBaseline" : true,
-      "skill" : "refresh-rules",
       "status" : "published"
     },
     {
