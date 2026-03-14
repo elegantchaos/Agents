@@ -1,6 +1,10 @@
 #!/usr/bin/env swift
 
+#if canImport(Darwin)
 import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#endif
 import Foundation
 
 struct CommandResult {
@@ -186,10 +190,6 @@ final class SkillsPublicTool {
         try runProcess("/usr/bin/env", arguments: ["git"] + arguments, currentDirectory: directory)
     }
 
-    private func gh(_ arguments: [String], in directory: URL? = nil) throws -> CommandResult {
-        try runProcess("/usr/bin/env", arguments: ["gh"] + arguments, currentDirectory: directory)
-    }
-
     private func readHead(in directory: URL) throws -> String? {
         let result = try git(["rev-parse", "HEAD"], in: directory)
         guard result.status == 0 else { return nil }
@@ -248,8 +248,7 @@ final class SkillsPublicTool {
                 }
             } else {
                 try? fileManager.removeItem(at: destination)
-                let repoPath = record.repoURL.replacingOccurrences(of: "https://github.com/", with: "")
-                let result = try gh(["repo", "clone", repoPath, destination.path], in: skillsHome)
+                let result = try git(["clone", record.repoURL, destination.path], in: skillsHome)
                 guard result.status == 0 else {
                     throw ToolError.message(result.stderr.isEmpty ? result.stdout : result.stderr)
                 }
