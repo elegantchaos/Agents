@@ -2,17 +2,21 @@
   // these paths assume that the workspace file is located in ~/.local/share/agents/
   "folders": [
     {
-      "path": ".",
+      "name": "agents",
+      "path": "."
     },
     {
-      "path": "../skills",
+      "name": "skills",
+      "path": "../skills"
     },
     {
-      "path": "../../../.codex",
+      "name": ".codex",
+      "path": "../../../.codex"
     },
     {
-      "path": "../../../.agents",
-    },
+      "name": ".agents",
+      "path": "../../../.agents"
+    }
   ],
   "settings": {},
 }
