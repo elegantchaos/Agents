@@ -54,6 +54,22 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
+      "lastSyncedRef" : "92bbf7ba50973a8371eff6729785b235513ba482",
+      "packagingNotes" : "Canonical shared cross-language coding standards skill for engineering principles, code quality, and implementation guidance.",
+      "phase" : 3,
+      "prerequisites" : [
+        "Software repositories"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/coding-standards-skill",
+      "sharedBaseline" : true,
+      "skill" : "coding-standards",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
       "lastSyncedRef" : "3cf30eaa8c76a84dfb369b0eb352407be08d2b12",
       "packagingNotes" : "Canonical shared GitHub workflow skill for pull requests, draft releases, and safe gh CLI usage.",
       "phase" : 2,
@@ -71,7 +87,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "a0a5b627a792e79f668810ed51b3f2361ff7d5f4",
+      "lastSyncedRef" : "a6615bf058ff22a4c5ac8c685e868735a67b77c7",
       "packagingNotes" : "Depends on a shared baseline layout and project-local AGENTS.md policy.",
       "phase" : 3,
       "prerequisites" : [
@@ -121,7 +137,55 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "c5522b8385c5945a9b9d8088cf6d22edb17c3c32",
+      "lastSyncedRef" : "31b6a0d1f9d0ac025dc9aa4ecc8758b303bf87e7",
+      "packagingNotes" : "Canonical shared baseline JavaScript and TypeScript guidance outside framework-specific specialist skills.",
+      "phase" : 4,
+      "prerequisites" : [
+        "JavaScript or TypeScript projects"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/javascript-skill",
+      "sharedBaseline" : true,
+      "skill" : "javascript",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "a4af4c4200cc3d046a7c2d4ba7b4303b448e78c8",
+      "packagingNotes" : "Canonical shared baseline Python guidance outside framework-specific specialist skills.",
+      "phase" : 4,
+      "prerequisites" : [
+        "Python projects"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/python-skill",
+      "sharedBaseline" : true,
+      "skill" : "python",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "7df3d9a4e175e524510e2b7c5982271bce14b3dc",
+      "packagingNotes" : "Canonical shared baseline Swift guidance outside the specialist SwiftUI, SwiftData, Swift Testing, and Swift concurrency skills.",
+      "phase" : 4,
+      "prerequisites" : [
+        "Swift projects"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/swift-skill",
+      "sharedBaseline" : true,
+      "skill" : "swift",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
+      "lastSyncedRef" : "36e1633dfa17c6400241c22aba105db8048b259a",
       "linkSubpath" : "swiftui-pro",
       "packagingNotes" : "Primary source is the fork checkout under ~\/.local\/share\/skills.",
       "phase" : 4,
@@ -139,7 +203,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "80c79269ee4d7d4bc57015162f136e422191e140",
+      "lastSyncedRef" : "5249ec3f871eb0ddcfebf96578cde80eeaaa9503",
       "linkSubpath" : "swift-concurrency-pro",
       "packagingNotes" : "Primary source is the fork checkout under ~\/.local\/share\/skills.",
       "phase" : 4,
@@ -157,7 +221,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "36380b1e0246b066f51d7e92e73d9aac681bc80d",
+      "lastSyncedRef" : "0f56141113a1011541e59182df3823811c9b6bc3",
       "linkSubpath" : "swift-testing-pro",
       "packagingNotes" : "Canonical Swift Testing guidance, including test design, migration, and detailed framework review advice.",
       "phase" : 4,
@@ -175,7 +239,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "68872e17c3aeef805fd7247016db35a70f0b4ddd",
+      "lastSyncedRef" : "34f120ff8a1cdb04a1955d77fccaee7762c7e1de",
       "linkSubpath" : "swiftdata-pro",
       "packagingNotes" : "Primary source is the fork checkout under ~\/.local\/share\/skills.",
       "phase" : 4,

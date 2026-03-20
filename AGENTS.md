@@ -4,30 +4,34 @@
 - This repository is the canonical source for shared agent references, skills, and configuration.
 - When refreshing another repository from this baseline, treat `~/.local/share/agents/references/COMMON.md` as mandatory and select only the relevant modules under `~/.local/share/agents/references/`.
 - Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/references/COMMON.md` for shared baseline rules and `~/.local/share/skills/refresh-agents-skill/SKILL.md` for regeneration instructions.
-- Because this repository owns the shared baseline, agents working here should link directly to files under `~/.local/share/agents/references/`.
-- For git operations in Codex.app, use `~/.local/share/skills/codex-git-skill/SKILL.md`.
+- Because this repository owns the shared baseline, agents working here should edit shared guidance at the source files and skill repos rather than creating duplicate local copies.
 
 ## Standard Rules
 
-Read `~/.local/share/agents/references/COMMON.md` first, then load only the modules relevant to the task. For this repository, the default shared references are `~/.local/share/agents/references/Principles.md`, `~/.local/share/agents/references/Validation.md`, `~/.local/share/agents/references/Good Code.md`, `~/.local/share/agents/references/Trusted Sources.md`, `~/.local/share/agents/references/Portability.md`, and `~/.local/share/agents/references/languages/Swift.md`.
-
-- Write good code as defined in `~/.local/share/agents/references/Good Code.md`.
-- Apply shared engineering principles from `~/.local/share/agents/references/Principles.md`: DRY, Single Source of Truth, KISS, YAGNI, Make Illegal States Unrepresentable, Dependency Injection, Composition Over Inheritance, Command-Query Separation, Law of Demeter, Structured Concurrency, Design by Contract, and Idempotency.
-- Prefer minimal, focused changes that solve the requested problem and fix root causes instead of layering workarounds.
-- Avoid mixed architecture or mixed style within the same code path. If a modernization is warranted, migrate coherently and update dependents in the same change.
-- Do not add shims, wrappers, adapters, aliases, or backward-compatibility layers unless the user explicitly asks for compatibility support.
-- Keep interfaces explicit, small, and unsurprising. Avoid hidden coupling, surprising side effects, unnecessary dependencies, and committed secrets.
-- Prefer Swift for repository-maintained automation and helper scripts.
+- Read `~/.local/share/agents/references/COMMON.md` first, then load only the remaining shared reference modules relevant to the task.
+- Keep generated `Standard Rules` sections limited to durable repo-wide policy. Put skill-owned procedural or domain guidance in `Skills`.
+- Always write good code.
+- Apply DRY and single-source-of-truth as required principles. Prefer KISS, YAGNI, make-illegal-states-unrepresentable, dependency injection, composition over inheritance, command-query separation, least knowledge, structured concurrency, design by contract, and idempotency.
+- Understand request boundaries, inspect relevant code and docs before editing, apply the smallest coherent change set, run relevant validation, and report residual risks.
 - Use red/green TDD for non-UI code.
 - Create previews for UI code.
-- Follow the validation workflow in `~/.local/share/agents/references/Validation.md` and report every check you ran, every check you skipped, and the reason for each skipped check.
-- Keep documentation factual and aligned with current behavior. Update local docs when workflows, commands, or architecture change.
-- Add concise documentation comments for types, methods, functions, and members when you modify them. Comments should explain intent and constraints, not restate names.
-- Use trusted primary sources for technical decisions. Follow `~/.local/share/agents/references/Trusted Sources.md`; prefer official vendor docs, language references, specifications, and primary proposals over secondary summaries.
-- Keep shared references portable. Follow `~/.local/share/agents/references/Portability.md` and use `~/...` paths for canonical shared resources.
-- For GitHub workflows, use `~/.local/share/skills/codex-github-skill/SKILL.md`.
+- Follow the validation workflow and report every check you ran, every check you skipped, and the reason for each skipped check.
+- Use trusted primary sources for technical decisions.
+- Keep shared references portable and use `~/...` paths for canonical shared resources.
+- Never expose or commit credentials or secrets.
 - Do not perform destructive actions without explicit approval.
 - If unexpected workspace changes appear, pause and confirm direction before proceeding.
 - Avoid unrelated refactors during focused tasks.
+
+## Skills
+
+- Follow `~/.local/share/skills/coding-standards-skill/SKILL.md` for cross-language coding standards, engineering principles, and general implementation guidance.
+- Follow `~/.local/share/skills/swift-skill/SKILL.md` for baseline Swift language guidance outside the specialist SwiftUI, SwiftData, Swift Testing, and Swift concurrency skills.
+- Use `~/.local/share/skills/validation-flow-skill/SKILL.md` when validating code changes.
+- Use `~/.local/share/skills/refresh-hygiene-skill/SKILL.md` when refreshing documentation, comments, formatting, or structure to match project guidance.
+- Use `~/.local/share/skills/codex-git-skill/SKILL.md` for git operations.
+- Use `~/.local/share/skills/codex-github-skill/SKILL.md` for GitHub operations.
+- Use `~/.local/share/skills/refresh-agents-skill/SKILL.md` to refresh project `AGENTS.md` files.
+- Use `~/.local/share/agents/codex/skills/refresh-public-skills/SKILL.md` when auditing, syncing, linking, or checking published skill repos.
 
 To refresh this file, use the `~/.local/share/skills/refresh-agents-skill/SKILL.md` skill.
