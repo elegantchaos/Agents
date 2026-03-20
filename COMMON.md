@@ -1,7 +1,7 @@
 # Common Rules
 
 These are the terse shared baseline rules that belong in `Standard Rules`.
-Keep detailed cross-language and language-specific guidance in dedicated skills rather than expanding this file into a second source of truth.
+Keep detailed cross-language, language-specific, and shared-baseline-maintenance guidance in dedicated skills or focused reference modules rather than expanding this file into a second source of truth.
 
 ## Methodology & Principles
 
@@ -48,7 +48,7 @@ Follow the validation workflow and report gaps.
 
 ## Portability
 
-- Keep shared references portable and avoid machine-specific absolute paths. Prefer repository-relative paths unless local guidance explicitly requires a canonical shared path.
+- Use portable path references in docs and guidance. Prefer repository-relative paths for files in the current repository and `~/...` home-relative paths for shared resources outside it. Avoid machine-specific absolute paths.
 
 ## Safety and Discipline
 

@@ -2,6 +2,7 @@
 
 - This repository is expected to live at `~/.local/share/agents`.
 - This repository is the canonical source for shared agent references, skills, and configuration.
+- When editing shared references, skills, or configuration here, keep canonical shared-resource paths home-relative (`~/...`) rather than machine-specific absolute paths.
 - When refreshing another repository from this baseline, treat `~/.local/share/agents/COMMON.md` as mandatory shared baseline guidance.
 - Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/COMMON.md` for shared baseline rules and the `refresh-agents` skill for regeneration instructions.
 - Because this repository owns the shared baseline, agents working here should edit shared guidance at the source files and skill repos rather than creating duplicate local copies.
@@ -17,7 +18,7 @@
 - Create previews for UI code.
 - Follow the validation workflow and report every check you ran, every check you skipped, and the reason for each skipped check.
 - Use trusted primary sources for technical decisions.
-- Keep shared references portable and avoid machine-specific absolute paths. Prefer repository-relative paths unless local guidance explicitly requires a canonical shared path.
+- Use portable path references in docs and guidance. Prefer repository-relative paths for files in this repository and `~/...` home-relative paths for shared resources outside it. Avoid machine-specific absolute paths.
 - Never expose or commit credentials or secrets.
 - Do not perform destructive actions without explicit approval.
 - If unexpected workspace changes appear, pause and confirm direction before proceeding.
