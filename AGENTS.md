@@ -17,7 +17,7 @@
 - Create previews for UI code.
 - Follow the validation workflow and report every check you ran, every check you skipped, and the reason for each skipped check.
 - Use trusted primary sources for technical decisions.
-- Keep shared references portable and use `~/...` paths for canonical shared resources.
+- Keep shared references portable and avoid machine-specific absolute paths. Prefer repository-relative paths unless local guidance explicitly requires a canonical shared path.
 - Never expose or commit credentials or secrets.
 - Do not perform destructive actions without explicit approval.
 - If unexpected workspace changes appear, pause and confirm direction before proceeding.
@@ -25,11 +25,10 @@
 
 ## Skills
 
-- Follow `~/.local/share/skills/coding-standards-skill/SKILL.md` for cross-language coding standards, engineering principles, and general implementation guidance.
+- Follow `~/.local/share/skills/coding-standards-skill/SKILL.md` for cross-language coding standards, engineering principles, implementation guidance, and repository hygiene guidance.
 - Follow `~/.local/share/skills/ruby-skill/SKILL.md` for baseline Ruby language guidance outside framework-specific specialist skills.
 - Follow `~/.local/share/skills/swift-skill/SKILL.md` for baseline Swift language guidance outside the specialist SwiftUI, SwiftData, Swift Testing, and Swift concurrency skills.
 - Use `~/.local/share/skills/validation-flow-skill/SKILL.md` when validating code changes.
-- Use `~/.local/share/skills/refresh-hygiene-skill/SKILL.md` when refreshing documentation, comments, formatting, or structure to match project guidance.
 - Use `~/.local/share/skills/codex-git-skill/SKILL.md` for git operations.
 - Use `~/.local/share/skills/codex-github-skill/SKILL.md` for GitHub operations.
 - Use `~/.local/share/skills/refresh-agents-skill/SKILL.md` to refresh project `AGENTS.md` files.

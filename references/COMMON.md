@@ -48,7 +48,7 @@ Follow the validation workflow and report gaps.
 
 ## Portability
 
-- Keep shared references portable and use `~/...` paths for canonical shared resources.
+- Keep shared references portable and avoid machine-specific absolute paths. Prefer repository-relative paths unless local guidance explicitly requires a canonical shared path.
 
 ## Safety and Discipline
 

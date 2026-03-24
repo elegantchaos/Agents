@@ -103,23 +103,6 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "302f115c4096a19ef70d582b6b92535753723fbf",
-      "packagingNotes" : "Canonical project hygiene skill covering docs, comments, formatting, linting, and structural cleanup for AGENTS-guided repositories.",
-      "phase" : 3,
-      "prerequisites" : [
-        "AGENTS.md-guided repositories",
-        "An optional shared baseline"
-      ],
-      "publicationClass" : "environment-policy",
-      "repoURL" : "https:\/\/github.com\/elegantchaos\/refresh-hygiene-skill",
-      "sharedBaseline" : true,
-      "skill" : "refresh-hygiene",
-      "status" : "published"
-    },
-    {
-      "agentHosts" : [
-        "Codex-compatible skill hosts"
-      ],
       "lastSyncedRef" : "3ad544e51e8b92c4988b4e46369733bc1d32df97",
       "packagingNotes" : "Environment-coupled through ReleaseTools.",
       "phase" : 2,
