@@ -70,7 +70,7 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
-      "lastSyncedRef" : "3cf30eaa8c76a84dfb369b0eb352407be08d2b12",
+      "lastSyncedRef" : "3f9f9ac71eeaa61ecddcf15b335cc5e9ed60b57f",
       "packagingNotes" : "Canonical shared GitHub workflow skill for pull requests, draft releases, and safe gh CLI usage.",
       "phase" : 2,
       "prerequisites" : [

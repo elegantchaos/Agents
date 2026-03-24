@@ -122,7 +122,10 @@ final class SkillsPublicTool {
     private func saveRegistry(_ registry: SkillRegistry) throws {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        let data = try encoder.encode(registry)
+        var data = try encoder.encode(registry)
+        if data.last != 0x0A {
+            data.append(0x0A)
+        }
         try data.write(to: registryURL)
     }
 
