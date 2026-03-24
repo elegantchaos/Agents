@@ -2,13 +2,13 @@
 
 - This repository is expected to live at `~/.local/share/agents`.
 - This repository is the canonical source for shared agent references, skills, and configuration.
-- When refreshing another repository from this baseline, treat `~/.local/share/agents/references/COMMON.md` as mandatory and select only the relevant modules under `~/.local/share/agents/references/`.
-- Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/references/COMMON.md` for shared baseline rules and `~/.local/share/skills/refresh-agents-skill/SKILL.md` for regeneration instructions.
+- When refreshing another repository from this baseline, treat `~/.local/share/agents/COMMON.md` as mandatory shared baseline guidance.
+- Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/COMMON.md` for shared baseline rules and `~/.local/share/skills/refresh-agents-skill/SKILL.md` for regeneration instructions.
 - Because this repository owns the shared baseline, agents working here should edit shared guidance at the source files and skill repos rather than creating duplicate local copies.
 
 ## Standard Rules
 
-- Read `~/.local/share/agents/references/COMMON.md` first, then load only the remaining shared reference modules relevant to the task.
+- Read `~/.local/share/agents/COMMON.md` first.
 - Keep generated `Standard Rules` sections limited to durable repo-wide policy. Put skill-owned procedural or domain guidance in `Skills`.
 - Always write good code.
 - Apply DRY and single-source-of-truth as required principles. Prefer KISS, YAGNI, make-illegal-states-unrepresentable, dependency injection, composition over inheritance, command-query separation, least knowledge, structured concurrency, design by contract, and idempotency.
