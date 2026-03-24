@@ -22,6 +22,7 @@ Suggested shared set by default:
 - `Portability.md`
 
 General coding standards and trusted-source guidance now live in `~/.local/share/skills/coding-standards-skill/SKILL.md`.
+Baseline Ruby guidance now lives in `~/.local/share/skills/ruby-skill/SKILL.md`.
 Baseline Swift language guidance now lives in `~/.local/share/skills/swift-skill/SKILL.md`.
 Baseline JavaScript and TypeScript guidance now lives in `~/.local/share/skills/javascript-skill/SKILL.md`.
 Baseline Python guidance now lives in `~/.local/share/skills/python-skill/SKILL.md`.

@@ -26,6 +26,7 @@
 ## Skills
 
 - Follow `~/.local/share/skills/coding-standards-skill/SKILL.md` for cross-language coding standards, engineering principles, and general implementation guidance.
+- Follow `~/.local/share/skills/ruby-skill/SKILL.md` for baseline Ruby language guidance outside framework-specific specialist skills.
 - Follow `~/.local/share/skills/swift-skill/SKILL.md` for baseline Swift language guidance outside the specialist SwiftUI, SwiftData, Swift Testing, and Swift concurrency skills.
 - Use `~/.local/share/skills/validation-flow-skill/SKILL.md` when validating code changes.
 - Use `~/.local/share/skills/refresh-hygiene-skill/SKILL.md` when refreshing documentation, comments, formatting, or structure to match project guidance.

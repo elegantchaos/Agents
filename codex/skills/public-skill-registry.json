@@ -169,6 +169,22 @@
       "agentHosts" : [
         "Codex-compatible skill hosts"
       ],
+      "lastSyncedRef" : "f05ffceec19d1aa424a1e22262e0e14e692bc703",
+      "packagingNotes" : "Canonical shared baseline Ruby guidance outside framework-specific specialist skills.",
+      "phase" : 4,
+      "prerequisites" : [
+        "Ruby projects"
+      ],
+      "publicationClass" : "portable",
+      "repoURL" : "https:\/\/github.com\/elegantchaos\/ruby-skill",
+      "sharedBaseline" : true,
+      "skill" : "ruby",
+      "status" : "published"
+    },
+    {
+      "agentHosts" : [
+        "Codex-compatible skill hosts"
+      ],
       "lastSyncedRef" : "7df3d9a4e175e524510e2b7c5982271bce14b3dc",
       "packagingNotes" : "Canonical shared baseline Swift guidance outside the specialist SwiftUI, SwiftData, Swift Testing, and Swift concurrency skills.",
       "phase" : 4,
