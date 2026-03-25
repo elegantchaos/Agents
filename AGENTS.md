@@ -3,7 +3,7 @@
 - This repository is expected to live at `~/.local/share/agents`.
 - This repository is the canonical source for shared agent references, skills, and configuration.
 - When refreshing another repository from this baseline, treat `~/.local/share/agents/COMMON.md` as mandatory shared baseline guidance.
-- Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/COMMON.md` for shared baseline rules and `~/.local/share/skills/refresh-agents-skill/SKILL.md` for regeneration instructions.
+- Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/COMMON.md` for shared baseline rules and the `refresh-agents` skill for regeneration instructions.
 - Because this repository owns the shared baseline, agents working here should edit shared guidance at the source files and skill repos rather than creating duplicate local copies.
 
 ## Standard Rules
@@ -25,13 +25,13 @@
 
 ## Skills
 
-- Follow `~/.local/share/skills/coding-standards-skill/SKILL.md` for cross-language coding standards, engineering principles, implementation guidance, and repository hygiene guidance.
-- Follow `~/.local/share/skills/ruby-skill/SKILL.md` for baseline Ruby language guidance outside framework-specific specialist skills.
-- Follow `~/.local/share/skills/swift-skill/SKILL.md` for baseline Swift language guidance outside the specialist SwiftUI, SwiftData, Swift Testing, and Swift concurrency skills.
-- Use `~/.local/share/skills/validation-flow-skill/SKILL.md` when validating code changes.
-- Use `~/.local/share/skills/codex-git-skill/SKILL.md` for git operations.
-- Use `~/.local/share/skills/codex-github-skill/SKILL.md` for GitHub operations.
-- Use `~/.local/share/skills/refresh-agents-skill/SKILL.md` to refresh project `AGENTS.md` files.
-- Use `~/.local/share/agents/codex/skills/refresh-public-skills/SKILL.md` when auditing, syncing, linking, or checking published skill repos.
+- Follow the `coding-standards` skill for cross-language coding standards, engineering principles, implementation guidance, and repository hygiene guidance.
+- Follow the `ruby` skill for baseline Ruby language guidance outside framework-specific specialist skills.
+- Follow the `swift` skill for baseline Swift language guidance.
+- Use the `validation-flow` skill when validating code changes.
+- Use the `codex-git` skill for git operations.
+- Use the `codex-github` skill for GitHub operations.
+- Use the `refresh-agents` skill to refresh project `AGENTS.md` files.
+- Use the `refresh-public-skills` skill when auditing, syncing, linking, or checking published skill repos.
 
-To refresh this file, use the `~/.local/share/skills/refresh-agents-skill/SKILL.md` skill.
+To refresh this file, use the `refresh-agents` skill.

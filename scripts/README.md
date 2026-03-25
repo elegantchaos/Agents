@@ -8,14 +8,14 @@ Inclusion rule:
 
 ## Layout
 
-- validation is handled via `~/.local/share/skills/validation-flow-skill` (`rt validate`)
+- validation is handled via the `validation-flow` skill (`rt validate`)
 - `skills-public/`: audit, extract, and refresh helpers for the repo-per-skill publication workflow
 - `xcode-app/release/`: release/submission scripts (including ReleaseTools workflows)
 - `xcode-app/build-phases/`: scripts intended for Xcode build phases
 
 ## Validation Flow
 
-- Standard post-change validation should use the `validation-flow` skill at `~/.local/share/skills/validation-flow-skill`.
+- Standard post-change validation should use the `validation-flow` skill.
 
 ## Conventions
 

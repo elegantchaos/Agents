@@ -51,7 +51,7 @@ If those checks fail, report the exact blocker rather than continuing with a par
 
 Once migration succeeds:
 
-1. Use `~/.local/share/skills/refresh-agents-skill/SKILL.md` for all future agent refresh work.
+1. Use the `refresh-agents` skill for all future agent refresh work.
 2. Treat this bootstrap copy as compatibility-only.
 3. Do not recreate repo-local copies of other published skills under `codex/skills/`.
 

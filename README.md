@@ -33,5 +33,5 @@ Published shared skills are checked out under `~/.local/share/skills/` and linke
 
 ## Maintenance Skills
 
-- Use `~/.local/share/skills/refresh-agents-skill/SKILL.md` to review or refresh this shared agents repository.
-- Use `codex/skills/refresh-public-skills/` to sync, link, audit, and verify the published shared skill checkouts.
+- Use the `refresh-agents` skill to review or refresh this shared agents repository.
+- Use the `refresh-public-skills` skill to sync, link, audit, and verify the published shared skill checkouts.
