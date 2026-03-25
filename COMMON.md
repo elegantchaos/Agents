@@ -39,7 +39,7 @@ Apply these core principles when writing code:
 ## Testing
 
 Use red/green TDD for non-UI code.
-Create previews for UI code.
+Create previews for SwiftUI code.
 Follow the validation workflow and report gaps.
 
 ## Research and Source Quality
@@ -57,3 +57,15 @@ Follow the validation workflow and report gaps.
 - Reversible changes inside source control, including deletion of tracked files, do not require special approval beyond the user’s request.
 - Avoid unrelated refactors during focused tasks.
 - If unexpected workspace changes appear, pause and confirm direction.
+
+## Xcode MCP
+
+For Xcode projects, if the Xcode MCP is configured, prefer its tools over generic alternatives:
+
+    DocumentationSearch — verify API availability and correct usage before writing code
+    BuildProject — build the project after making changes to confirm compilation succeeds
+    GetBuildLog — inspect build errors and warnings
+    RenderPreview — visually verify SwiftUI views using Xcode Previews
+    XcodeListNavigatorIssues — check for issues visible in the Xcode Issue Navigator
+    ExecuteSnippet — test a code snippet in the context of a source file
+    XcodeRead, XcodeWrite, XcodeUpdate — prefer these over generic file tools when working with Xcode project files
