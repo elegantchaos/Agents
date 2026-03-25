@@ -6,7 +6,6 @@ Canonical, shareable subset of `~/.codex`.
 
 - `config.toml.template` (sanitized from `~/.codex/config.toml`)
 - `rules/*.rules` (sym-linked into `~/.codex/rules`)
-- `skills/*` (sym-linked into `~/.codex/skills`)
 
 We do not track other files in `~/.codex` - they are ephemeral, tied to the local machine, and/or contain secrets.
 
@@ -15,12 +14,11 @@ We do not track other files in `~/.codex` - they are ephemeral, tied to the loca
 - Pull this project from git to ensure we have the latest changes
 - Examine `~/.codex` and `~/.agents` suggest updates to the config file (in both directions)
 - Offer to add symlinks into `~/.agents` for missing rules
-- Offer to add symlinks into `~/.codex` for missing skills
 - Offer to move new rules into here and replace the originals with sym-links
-- Keep `config.toml.template` sanitized: remove machine-local paths and trust mappings.
+- Keep `config.toml.template` sanitized: remove machine-local paths and trust mappings
 - Keep rules and skills sanitized and portable: avoid absolute paths or other machine-specific entries
-- Suggest other improvements we could make to Codex-related files and features.
-- Offer to commit and push changes to git.
+- Suggest other improvements we could make to Codex-related files and features
+- Offer to commit and push changes to git
 
 ## Public Skill Repositories
 
@@ -31,13 +29,11 @@ Runtime symlinks for published shared skills should live in `~/.agents/skills`.
 
 This repository stores:
 
-- published skill submodules in `../skills/`
-- role guidance in `skills/skill-role-map.md`
-- refresh tooling in `skills/refresh-public-skills/`
+- published shared skills in `../skills/`
+- refresh tooling in `../skills/refresh-public-skills/`
 - helper scripts in `../scripts/skills-public/`
-- local control-plane files under `skills/` for orchestration and bootstrap only
 
-Before linking runtime skill directories, initialize the skill submodules and run the publication audit/link workflows.
+Before linking runtime skill directories, initialize the shared skill submodules and run the publication audit/link workflows.
 
 ### Common Paths
 

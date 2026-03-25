@@ -8,7 +8,7 @@ It provides:
 
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
 - shared Codex rule files under `~/.local/share/agents/codex/rules/`
-- shared skill submodules, scripts, and local control-plane files for published skills
+- shared skills under `~/.local/share/agents/skills/` plus the maintenance scripts that manage them
 
 ## First Use
 
@@ -29,7 +29,7 @@ Shared reusable Codex approval rules live in `codex/rules/`. Runtime rule files 
 
 ## Shared Skills
 
-Published shared skills live as git submodules under `skills/` in this repository and are linked into `~/.agents/skills/`. Runtime names come from the discovered `name:` field in each skill's `SKILL.md`.
+Published shared skills live under `skills/` in this repository and are linked into `~/.agents/skills/`. Most are git submodules. Repo-local maintenance skills such as `skills/refresh-public-skills/` live alongside them. Runtime names come from the discovered `name:` field in each skill's `SKILL.md`.
 
 ## Maintenance Skills
 
