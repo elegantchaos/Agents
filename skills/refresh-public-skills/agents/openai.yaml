@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refresh Public Skills"
+  short_description: "Audit, sync, and relink shared skills managed from this repository"
+  default_prompt: "Use $refresh-public-skills to audit shared skills for publication blockers, sync the tracked skill submodules, relink ~/.agents/skills, or check the current shared-skill status."

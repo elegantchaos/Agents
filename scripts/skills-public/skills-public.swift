@@ -41,7 +41,6 @@ final class SkillsPublicTool {
     private let skillsRoot: URL
     private let agentsSkillsDir: URL
     private let localMaintenanceSkill: URL
-    private let refreshAgentsBootstrap: URL
 
     init() {
         let scriptURL = URL(fileURLWithPath: #filePath)
@@ -56,8 +55,7 @@ final class SkillsPublicTool {
             fileURLWithPath: ProcessInfo.processInfo.environment["AGENTS_SKILLS_DIR"]
                 ?? homeDirectory.appendingPathComponent(".agents/skills").path
         )
-        self.localMaintenanceSkill = repoRoot.appendingPathComponent("codex/skills/refresh-public-skills")
-        self.refreshAgentsBootstrap = repoRoot.appendingPathComponent("codex/skills/refresh-agents")
+        self.localMaintenanceSkill = repoRoot.appendingPathComponent("skills/refresh-public-skills")
     }
 
     func run(arguments: [String]) throws {
@@ -318,11 +316,6 @@ final class SkillsPublicTool {
             targets.append(LinkTarget(name: "refresh-public-skills", directory: localMaintenanceSkill))
         }
 
-        if !targets.contains(where: { $0.name == "refresh-agents" }),
-           fileManager.fileExists(atPath: refreshAgentsBootstrap.path) {
-            targets.append(LinkTarget(name: "refresh-agents", directory: refreshAgentsBootstrap))
-        }
-
         try ensureUniqueNames(
             targets.map { target in
                 (name: target.name, source: relativePath(for: target.directory))
@@ -503,15 +496,6 @@ final class SkillsPublicTool {
                 target: localMaintenanceSkill
             )
             print("| refresh-public-skills | \(relativePath(for: localMaintenanceSkill)) | repo-local | - | \(maintenanceStatus) |")
-        }
-
-        if !(try discoveredSkills().contains(where: { $0.name == "refresh-agents" })),
-           fileManager.fileExists(atPath: refreshAgentsBootstrap.path) {
-            let bootstrapStatus = symlinkStatus(
-                link: agentsSkillsDir.appendingPathComponent("refresh-agents"),
-                target: refreshAgentsBootstrap
-            )
-            print("| refresh-agents | \(relativePath(for: refreshAgentsBootstrap)) | bootstrap | - | \(bootstrapStatus) |")
         }
     }
 

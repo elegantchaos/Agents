@@ -1,4 +1,0 @@
-interface:
-  display_name: "Refresh Public Skills"
-  short_description: "Audit, extract, and refresh packaged skills for repo-per-skill publication"
-  default_prompt: "Use the public skill registry and scripts to audit packaged skills for publication readiness, extract one into its dedicated public repository, or refresh the packaged copy from a public repository checkout."

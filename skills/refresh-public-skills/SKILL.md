@@ -34,7 +34,7 @@ Each public skill repository under `elegantchaos/` is mounted into the top-level
 - Point `~/.agents/skills` at the discovered skill directories inside the submodules.
 - Use the front matter `name:` field from `SKILL.md` as the runtime skill name.
 - Fail if two discovered skills resolve to the same runtime name.
-- Keep repo-local maintenance skills linked from `codex/skills/` where needed.
+- Keep repo-local maintenance skills linked from `skills/` where needed.
 
 4. `status`
 - Report uninitialized submodules, dirty repos, branch drift, and runtime symlink mismatches.
