@@ -1,6 +1,6 @@
 ---
 name: refresh-agents
-description: Legacy bootstrap skill for migrating from repo-local skill folders to the repo-based skill checkout layout under ~/.local/share/skills, then handing off to the published refresh-agents skill.
+description: Legacy bootstrap skill for migrating from older shared-skill layouts to the current submodule-based skill layout inside ~/.local/share/agents.
 ---
 
 # Agents Refresh Bootstrap
@@ -10,23 +10,23 @@ This is a legacy compatibility copy of `refresh-agents`.
 Use it only to migrate a machine from the old repo-local skill layout to the current repo-based skill layout.
 After migration, the canonical skill lives at:
 
-- `~/.local/share/skills/refresh-agents-skill/SKILL.md`
+- `~/.local/share/agents/skills/refresh-agents-skill/SKILL.md`
 
 ## When To Use This Bootstrap
 
 Use this bootstrap when:
 
 - an older `AGENTS.md` or local instruction still points at `codex/skills/refresh-agents/SKILL.md`
-- `~/.agents/skills/refresh-agents` does not yet point to `~/.local/share/skills/refresh-agents-skill`
-- the public skill repos have not yet been synced onto this machine
+- `~/.agents/skills/refresh-agents` does not yet point to `~/.local/share/agents/skills/refresh-agents-skill`
+- the shared skill submodules have not yet been initialized on this machine
 
 ## Migration Goal
 
 Set up the current shared-skill runtime so that:
 
-- public skill repos are checked out under `~/.local/share/skills`
-- `~/.agents/skills/*` points at those repo checkouts
-- future use of `refresh-agents` resolves to `~/.local/share/skills/refresh-agents-skill`
+- public skill repos are initialized under `~/.local/share/agents/skills`
+- `~/.agents/skills/*` points at those repo-local submodule checkouts
+- future use of `refresh-agents` resolves to `~/.local/share/agents/skills/refresh-agents-skill`
 
 ## Required Migration Workflow
 
@@ -43,7 +43,7 @@ scripts/skills-public/status-skill-repos.sh
 After running the commands above, confirm:
 
 - `refresh-agents` appears in the status output with `ok` symlinks
-- `~/.agents/skills/refresh-agents` points to `~/.local/share/skills/refresh-agents-skill`
+- `~/.agents/skills/refresh-agents` points to `~/.local/share/agents/skills/refresh-agents-skill`
 
 If those checks fail, report the exact blocker rather than continuing with a partial migration.
 
@@ -58,5 +58,5 @@ Once migration succeeds:
 ## Notes
 
 - This bootstrap exists so older checkouts can self-heal after pulling the latest shared agents repo.
-- The canonical shared skill sources are now the published repos listed in `codex/skills/public-skill-registry.json`.
+- The canonical shared skill sources are now the published skill submodules mounted under `skills/`.
 - The only repo-local skills that should remain under `codex/skills/` are local control-plane or bootstrap skills.

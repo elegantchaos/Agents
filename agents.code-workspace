@@ -6,10 +6,6 @@
       "path": "."
     },
     {
-      "name": "skills",
-      "path": "../skills"
-    },
-    {
       "name": ".codex",
       "path": "../../../.codex"
     },

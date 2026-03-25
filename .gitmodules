@@ -1,0 +1,45 @@
+[submodule "skills/Swift-Concurrency-Agent-Skill"]
+	path = skills/Swift-Concurrency-Agent-Skill
+	url = git@github.com:elegantchaos/Swift-Concurrency-Agent-Skill
+[submodule "skills/Swift-Testing-Agent-Skill"]
+	path = skills/Swift-Testing-Agent-Skill
+	url = git@github.com:elegantchaos/Swift-Testing-Agent-Skill
+[submodule "skills/SwiftData-Agent-Skill"]
+	path = skills/SwiftData-Agent-Skill
+	url = git@github.com:elegantchaos/SwiftData-Agent-Skill
+[submodule "skills/SwiftUI-Agent-Skill"]
+	path = skills/SwiftUI-Agent-Skill
+	url = git@github.com:elegantchaos/SwiftUI-Agent-Skill
+[submodule "skills/codex-git-skill"]
+	path = skills/codex-git-skill
+	url = git@github.com:elegantchaos/codex-git-skill
+[submodule "skills/codex-github-skill"]
+	path = skills/codex-github-skill
+	url = git@github.com:elegantchaos/codex-github-skill
+[submodule "skills/coding-standards-skill"]
+	path = skills/coding-standards-skill
+	url = git@github.com:elegantchaos/coding-standards-skill
+[submodule "skills/install-mint-skill"]
+	path = skills/install-mint-skill
+	url = git@github.com:elegantchaos/install-mint-skill
+[submodule "skills/install-release-tools-skill"]
+	path = skills/install-release-tools-skill
+	url = git@github.com:elegantchaos/install-release-tools-skill
+[submodule "skills/javascript-skill"]
+	path = skills/javascript-skill
+	url = git@github.com:elegantchaos/javascript-skill
+[submodule "skills/python-skill"]
+	path = skills/python-skill
+	url = git@github.com:elegantchaos/python-skill
+[submodule "skills/refresh-agents-skill"]
+	path = skills/refresh-agents-skill
+	url = git@github.com:elegantchaos/refresh-agents-skill
+[submodule "skills/ruby-skill"]
+	path = skills/ruby-skill
+	url = git@github.com:elegantchaos/ruby-skill
+[submodule "skills/swift-skill"]
+	path = skills/swift-skill
+	url = git@github.com:elegantchaos/swift-skill
+[submodule "skills/validation-flow-skill"]
+	path = skills/validation-flow-skill
+	url = git@github.com:elegantchaos/validation-flow-skill

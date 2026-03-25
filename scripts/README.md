@@ -9,7 +9,7 @@ Inclusion rule:
 ## Layout
 
 - validation is handled via the `validation-flow` skill (`rt validate`)
-- `skills-public/`: audit, extract, and refresh helpers for the repo-per-skill publication workflow
+- `skills-public/`: audit, sync, and relink helpers for the submodule-based shared skill workflow
 - `xcode-app/release/`: release/submission scripts (including ReleaseTools workflows)
 - `xcode-app/build-phases/`: scripts intended for Xcode build phases
 

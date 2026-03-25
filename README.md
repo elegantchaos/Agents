@@ -8,7 +8,7 @@ It provides:
 
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
 - shared Codex rule files under `~/.local/share/agents/codex/rules/`
-- shared skill metadata, scripts, and local control-plane files for published skills
+- shared skill submodules, scripts, and local control-plane files for published skills
 
 ## First Use
 
@@ -16,7 +16,7 @@ Clone this repository to:
 
 - `~/.local/share/agents`
 
-Then sync and link the published shared skills:
+Then initialize and link the published shared skills:
 
 ```bash
 ./scripts/skills-public/sync-skill-repos.sh --all
@@ -29,9 +29,9 @@ Shared reusable Codex approval rules live in `codex/rules/`. Runtime rule files 
 
 ## Shared Skills
 
-Published shared skills are checked out under `~/.local/share/skills/` and linked into `~/.agents/skills/`. This repository keeps the registry, maintenance scripts, and supporting guidance for that setup.
+Published shared skills live as git submodules under `skills/` in this repository and are linked into `~/.agents/skills/`. Runtime names come from the discovered `name:` field in each skill's `SKILL.md`.
 
 ## Maintenance Skills
 
 - Use the `refresh-agents` skill to review or refresh this shared agents repository.
-- Use the `refresh-public-skills` skill to sync, link, audit, and verify the published shared skill checkouts.
+- Use the `refresh-public-skills` skill to sync, link, audit, and verify the published shared skill submodules.

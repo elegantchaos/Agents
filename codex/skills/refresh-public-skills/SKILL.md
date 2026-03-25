@@ -1,19 +1,19 @@
 ---
 name: refresh-public-skills
-description: Audit public skill repositories for publication readiness, sync their local checkouts, and link them into agent runtime directories.
+description: Audit, sync, and relink the published shared skill submodules managed by this repository.
 ---
 
 # Refresh Public Skills
 
-Manage the repo-per-skill publication workflow for skill repositories coordinated by this repository.
+Manage the submodule-based publication workflow for skill repositories coordinated by this repository.
 
 This skill treats the current repository as the control plane.
-Each public skill repository under `elegantchaos/` is the shareable source of truth for one skill.
+Each public skill repository under `elegantchaos/` is mounted into the top-level `skills/` directory as a git submodule.
 
 ## Inputs
 
-- Skill metadata in `codex/skills/public-skill-registry.json`
-- Local skill repo checkouts under `~/.local/share/skills` by default
+- Skill submodules under `skills/`
+- Front matter in each discovered `SKILL.md`
 - Maintenance scripts in `scripts/skills-public/`
 
 ## Modes
@@ -27,24 +27,25 @@ Each public skill repository under `elegantchaos/` is the shareable source of tr
   - `not suitable for public extraction`
 
 2. `sync`
-- Clone or pull one skill repo or all skill repos into the local checkout home.
-- Update the registry's `last_synced_ref` field when a git commit is available.
+- Initialize one skill or all skills to the git revisions recorded by the parent repository.
+- Target skills by runtime name once initialized, or by submodule directory name/path.
 
 3. `link`
-- Point `~/.agents/skills` at the local skill repo checkouts.
-- Keep local-only maintenance skills in this repository when there is no public repo checkout.
+- Point `~/.agents/skills` at the discovered skill directories inside the submodules.
+- Use the front matter `name:` field from `SKILL.md` as the runtime skill name.
+- Fail if two discovered skills resolve to the same runtime name.
+- Keep repo-local maintenance skills linked from `codex/skills/` where needed.
 
 4. `status`
-- Report missing local checkouts, dirty repos, branch drift, and runtime symlink mismatches.
+- Report uninitialized submodules, dirty repos, branch drift, and runtime symlink mismatches.
 
 ## Required Workflow
 
-1. Read the registry entry for each target skill.
-2. Run `sync` to ensure local repo checkouts exist under `~/.local/share/skills`.
-3. Run `audit` before first publication and after major edits.
-4. Sanitize portability findings before treating a skill as publish-ready.
-5. Run `link` so runtime skill directories point at the synced repo checkouts.
-6. Run `status` to catch drift or broken symlinks before relying on the local runtime setup.
+1. Run `sync` to ensure the skill submodules are initialized to the recorded revisions.
+2. Run `audit` before first publication and after major edits.
+3. Sanitize portability findings before treating a skill as publish-ready.
+4. Run `link` so runtime skill directories point at the repo-local submodule checkouts.
+5. Run `status` to catch drift or broken symlinks before relying on the local runtime setup.
 
 ## Commands
 
@@ -62,7 +63,7 @@ scripts/skills-public/status-skill-repos.sh
 Always report:
 
 - skills audited, synced, or linked
-- classification or sync result for each skill
+- discovered runtime name and source path for each skill
 - blockers or portability findings
 - files added or updated
 - any manual follow-up required before publication

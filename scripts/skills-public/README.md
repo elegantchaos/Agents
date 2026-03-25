@@ -1,24 +1,21 @@
 # Public Skill Maintenance Scripts
 
-These scripts support the repo-per-skill publication workflow.
+These scripts support the submodule-based shared skill workflow.
 The implementation is Swift-based; the existing script entry points are retained as Swift launchers for compatibility.
 
 ## Scripts
 
 - `skills-public.swift`: shared Swift implementation for the maintenance commands
 - `audit-skill.sh`: audit one skill or all skills for publication blockers
-- `sync-skill-repos.sh`: clone or pull skill repositories into `~/.local/share/skills`
-- `link-skill-repos.sh`: point `~/.agents/skills` at the skill repo checkouts
-- `status-skill-repos.sh`: report missing checkouts, dirty repos, branch drift, and symlink mismatches
+- `sync-skill-repos.sh`: initialize or update the recorded submodule revisions under `skills/`
+- `link-skill-repos.sh`: point `~/.agents/skills` at the discovered skill directories inside those submodules
+- `status-skill-repos.sh`: report uninitialized submodules, dirty repos, branch drift, and symlink mismatches
 
-## Metadata
+## Discovery
 
-All scripts read `codex/skills/public-skill-registry.json` from the repository root.
-
-## Local Checkout Home
-
-By default, public skill repositories are checked out under `~/.local/share/skills`.
-Set `SKILLS_HOME` to override this location.
+The scripts treat `skills/` as the source of truth.
+They search each submodule recursively for the first `SKILL.md`, then use the front matter `name:` field as the runtime skill name.
+Duplicate skill names fail the run.
 
 ## Typical Usage
 
