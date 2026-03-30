@@ -3,16 +3,18 @@
   "folders": [
     {
       "name": "agents",
-      "path": "."
+      "path": ".",
     },
     {
       "name": ".codex",
-      "path": "../../../.codex"
+      "path": "../../../.codex",
     },
     {
       "name": ".agents",
-      "path": "../../../.agents"
-    }
+      "path": "../../../.agents",
+    },
   ],
-  "settings": {},
+  "settings": {
+    "swift.autoGenerateLaunchConfigurations": false,
+  },
 }
