@@ -6,12 +6,12 @@ Keep detailed cross-language, language-specific, and shared-baseline-maintenance
 ## Methodology & Principles
 
 Always write good code.
-
-Apply these core principles when writing code:
+Always write modern, idiomatic code.
+Apply these core principles:
 
 ### Required
 
-- DRY (Avoid Duplication Thoughtfully)
+- DRY
 - Single Source Of Truth
 
 ### Preferred
@@ -31,41 +31,28 @@ Apply these core principles when writing code:
 
 1. Understand request boundaries.
 2. Inspect relevant code/docs before editing.
-3. Apply the smallest coherent change set.
-4. Add/update tests for behavior changes.
-5. Run relevant validation checks.
-6. Report changes, validation status, and residual risks.
+3. When writing new code or fixing bugs, apply smallest coherent change set.
+4. When instructed to modernise, clean up or refactor code, a larger change set is allowed; prioritise a consistent codebase.
+5. Add/update tests for behavior changes.
+6. Run relevant validation checks.
+7. Report changes, validation status, and residual risks.
 
 ## Testing
 
 Use red/green TDD for non-UI code.
-Create previews for SwiftUI code.
+Create UI previews if the tooling supports it (eg SwiftUI #Preview)
 Follow the validation workflow and report gaps.
-
-## Research and Source Quality
-
-- Use trusted primary sources for technical decisions.
 
 ## Portability
 
-- Use portable path references in docs and guidance. Prefer repository-relative paths for files in the current repository and `~/...` home-relative paths for shared resources outside it. Avoid machine-specific absolute paths.
+- Use portable path references in docs and guidance.
+- Prefer repository-relative paths for files in the current repository and `~/...` home-relative paths for shared resources outside it.
+- Avoid machine-specific absolute paths.
 
 ## Safety and Discipline
 
 - Never expose or commit credentials/secrets.
-- Do not perform irreversible destructive actions without explicit approval.
-- Reversible changes inside source control, including deletion of tracked files, do not require special approval beyond the user’s request.
-- Avoid unrelated refactors during focused tasks.
+- Never perform irreversible destructive actions without explicit approval.
+- Reversible changes inside source control, including deletion of tracked files, are allowed.
+- Avoid unrelated refactors during focused tasks, but suggest them as a follow-up if they are needed.
 - If unexpected workspace changes appear, pause and confirm direction.
-
-## Xcode MCP
-
-For Xcode projects, if the Xcode MCP is configured, prefer its tools over generic alternatives:
-
-    DocumentationSearch — verify API availability and correct usage before writing code
-    BuildProject — build the project after making changes to confirm compilation succeeds
-    GetBuildLog — inspect build errors and warnings
-    RenderPreview — visually verify SwiftUI views using Xcode Previews
-    XcodeListNavigatorIssues — check for issues visible in the Xcode Issue Navigator
-    ExecuteSnippet — test a code snippet in the context of a source file
-    XcodeRead, XcodeWrite, XcodeUpdate — prefer these over generic file tools when working with Xcode project files
