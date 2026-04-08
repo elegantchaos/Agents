@@ -7,9 +7,6 @@
 [submodule "skills/SwiftData-Agent-Skill"]
 	path = skills/SwiftData-Agent-Skill
 	url = git@github.com:elegantchaos/SwiftData-Agent-Skill
-[submodule "skills/SwiftUI-Agent-Skill"]
-	path = skills/SwiftUI-Agent-Skill
-	url = git@github.com:elegantchaos/SwiftUI-Agent-Skill
 [submodule "skills/codex-git-skill"]
 	path = skills/codex-git-skill
 	url = git@github.com:elegantchaos/codex-git-skill

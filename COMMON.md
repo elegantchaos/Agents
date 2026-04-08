@@ -32,7 +32,7 @@ Apply these core principles:
 1. Understand request boundaries.
 2. Inspect relevant code/docs before editing.
 3. When writing new code or fixing bugs, apply smallest coherent change set.
-4. When instructed to modernise, clean up or refactor code, a larger change set is allowed; prioritise a consistent codebase.
+4. When instructed to modernise, clean up or refactor code, a larger change set is allowed; prioritise correctness and consistency across the codebase.
 5. Add/update tests for behavior changes.
 6. Run relevant validation checks.
 7. Report changes, validation status, and residual risks.
