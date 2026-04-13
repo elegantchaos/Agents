@@ -32,10 +32,16 @@ Apply these core principles:
 1. Understand request boundaries.
 2. Inspect relevant code/docs before editing.
 3. When writing new code or fixing bugs, apply smallest coherent change set.
-4. When instructed to modernise, clean up or refactor code, a larger change set is allowed; prioritise correctness and consistency across the codebase.
+4. When instructed to modernise, clean up or refactor code, a larger change set is allowed; prioritise consistency across the codebase.
 5. Add/update tests for behavior changes.
 6. Run relevant validation checks.
-7. Report changes, validation status, and residual risks.
+
+## Communication
+
+- Before working, report planned actions.
+- Whilst working, report progress.
+- When finished, report changes, validation status, and residual risks.
+- Do not repeatedly advertise that the agent is verifying instead of guessing; that should be treated as default competence and only called out when there is real uncertainty or risk
 
 ## Testing
 
