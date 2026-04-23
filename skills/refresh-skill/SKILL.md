@@ -49,13 +49,13 @@ Examples:
 ## Public Skill Maintenance
 
 The public skill sync/link/status workflow is part of the global pass.
-Use the helper scripts in `scripts/skills-public/` from the shared agents repository root:
+Use `agent-tools` from the shared agents repository root:
 
 ```bash
-scripts/skills-public/sync-skill-repos.sh --all
-scripts/skills-public/link-skill-repos.sh
-scripts/skills-public/status-skill-repos.sh
-scripts/skills-public/audit-skill.sh --all
+swift run agent-tools skills sync --all
+swift run agent-tools skills link
+swift run agent-tools skills status
+swift run agent-tools skills audit --all
 ```
 
 Use audit for publication readiness, major edits, or explicit audit requests.

@@ -8,7 +8,7 @@ It provides:
 
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
 - shared Codex rule files under `~/.local/share/agents/codex/rules/`
-- shared skills under `~/.local/share/agents/skills/` plus the maintenance scripts that manage them
+- shared skills under `~/.local/share/agents/skills/` plus `agent-tools`, the SwiftPM maintenance tool that manages them
 
 ## First Use
 
@@ -19,8 +19,8 @@ Clone this repository to:
 Then initialize and link the published shared skills:
 
 ```bash
-./scripts/skills-public/sync-skill-repos.sh --all
-./scripts/skills-public/link-skill-repos.sh
+swift run agent-tools skills sync --all
+swift run agent-tools skills link
 ```
 
 ## Shared Rules

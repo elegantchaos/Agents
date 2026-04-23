@@ -10,7 +10,7 @@ It updates and verifies the shared agents infrastructure itself.
 - Shared canonical baseline guidance lives in `~/.local/share/agents/COMMON.md`.
 - Published shared skill submodules live under `~/.local/share/agents/skills/`.
 - Repo-local operational skills live under `~/.local/share/agents/skills/` as normal tracked files when they are tightly coupled to this repository.
-- Public skill maintenance scripts live under `~/.local/share/agents/scripts/skills-public/`.
+- The `~/.local/share/agents/scripts/agent-tools` SwiftPM command-line tool manages public skill maintenance.
 - Local runtime rules live in `<codex-home>/rules/*.rules`.
 - Runtime skill links live under `~/.agents/skills/`.
 - `default.rules` is a catch-all and should stay small. It may be empty.
@@ -62,10 +62,10 @@ If a command family appears repeatedly and does not fit an existing file cleanly
    - Pull the configured upstream when safe or when explicitly requested.
    - Report if the repository could not be updated.
 2. Refresh public skill submodules and runtime links from the shared agents repository root.
-   - Run `scripts/skills-public/sync-skill-repos.sh --all`.
-   - Run `scripts/skills-public/link-skill-repos.sh`.
-   - Run `scripts/skills-public/status-skill-repos.sh`.
-   - Run `scripts/skills-public/audit-skill.sh --all` for publication readiness, major edits, or explicit audit requests.
+   - Run `swift run agent-tools skills sync --all`.
+   - Run `swift run agent-tools skills link`.
+   - Run `swift run agent-tools skills status`.
+   - Run `swift run agent-tools skills audit --all` for publication readiness, major edits, or explicit audit requests.
    - If the user asked to advance skills to latest upstream commits, fetch/pull each relevant submodule safely, validate, and update the parent repository's submodule pointers.
    - Otherwise, sync to the revisions recorded by the parent repository and report any upstream drift from status.
 3. Read shared `~/.local/share/agents/codex/rules/*.rules`.
@@ -85,11 +85,13 @@ If a command family appears repeatedly and does not fit an existing file cleanly
    - shared principles and baseline guidance
    - the markdown files at the top level of `~/.local/share/agents/`, especially `COMMON.md`
 10. Base those suggestions on:
-   - current industry practice and established engineering guidance
-   - observed user behavior and repeated requests
-   - common patterns in code and repositories the user has been working with recently
-   - new language, tooling, framework, or platform features
-   - recurring friction seen in prior rule approvals, scripts, or skill usage
+
+- current industry practice and established engineering guidance
+- observed user behavior and repeated requests
+- common patterns in code and repositories the user has been working with recently
+- new language, tooling, framework, or platform features
+- recurring friction seen in prior rule approvals, scripts, or skill usage
+
 11. Verify the resulting shared files, runtime symlinks, final `default.rules` state, public skill status, and any concrete repo changes you make.
 
 ## Verification

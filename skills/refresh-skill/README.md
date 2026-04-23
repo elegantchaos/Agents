@@ -20,7 +20,7 @@ Use it for regular shared-maintenance passes, public skill sync/link/status chec
 
 - A shared agents baseline repository
 - A Codex-style home directory and shared rules repository for rule maintenance
-- The public skill maintenance scripts in `scripts/skills-public/`
+- The SwiftPM `agent-tools` command-line tool
 
 ## Shared Baseline
 

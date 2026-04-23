@@ -32,7 +32,7 @@ This repository stores:
 
 - published shared skills in `../skills/`
 - repo-local refresh workflow guidance in `../skills/refresh-skill/`
-- helper scripts in `../scripts/skills-public/`
+- the SwiftPM `agent-tools` command-line tool
 
 Before linking runtime skill directories, initialize the shared skill submodules and run the publication audit/link workflows.
 
