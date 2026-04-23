@@ -28,9 +28,6 @@
 [submodule "skills/python-skill"]
 	path = skills/python-skill
 	url = git@github.com:elegantchaos/python-skill
-[submodule "skills/refresh-agents-skill"]
-	path = skills/refresh-agents-skill
-	url = git@github.com:elegantchaos/refresh-agents-skill
 [submodule "skills/ruby-skill"]
 	path = skills/ruby-skill
 	url = git@github.com:elegantchaos/ruby-skill

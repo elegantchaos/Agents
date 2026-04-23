@@ -15,7 +15,8 @@ struct CommandResult {
 
 struct DiscoveredSkill {
     let name: String
-    let submodulePath: String
+    let sourcePath: String
+    let sourceKind: String
     let skillDirectory: URL
 }
 
@@ -40,7 +41,7 @@ final class SkillsPublicTool {
     private let repoRoot: URL
     private let skillsRoot: URL
     private let agentsSkillsDir: URL
-    private let localMaintenanceSkill: URL
+    private let repoLocalSkillPaths = ["skills/refresh-skill"]
 
     init() {
         let scriptURL = URL(fileURLWithPath: #filePath)
@@ -55,7 +56,6 @@ final class SkillsPublicTool {
             fileURLWithPath: ProcessInfo.processInfo.environment["AGENTS_SKILLS_DIR"]
                 ?? homeDirectory.appendingPathComponent(".agents/skills").path
         )
-        self.localMaintenanceSkill = repoRoot.appendingPathComponent("skills/refresh-public-skills")
     }
 
     func run(arguments: [String]) throws {
@@ -126,6 +126,12 @@ final class SkillsPublicTool {
     private func pathExistsIncludingBrokenSymlink(_ url: URL) -> Bool {
         var info = stat()
         return lstat(url.path, &info) == 0
+    }
+
+    private func isSymlink(_ url: URL) -> Bool {
+        var info = stat()
+        guard lstat(url.path, &info) == 0 else { return false }
+        return (info.st_mode & S_IFMT) == S_IFLNK
     }
 
     private func replaceSymlink(at destination: URL, with target: URL) throws {
@@ -246,14 +252,17 @@ final class SkillsPublicTool {
         return nil
     }
 
-    private func discoverSkill(in submodulePath: String) throws -> DiscoveredSkill? {
-        let submoduleDir = submoduleDirectory(for: submodulePath)
-        guard fileManager.fileExists(atPath: submoduleDir.path), isGitCheckout(submoduleDir) else {
+    private func discoverSkill(in sourcePath: String, sourceKind: String, requiresGitCheckout: Bool) throws -> DiscoveredSkill? {
+        let sourceDir = submoduleDirectory(for: sourcePath)
+        guard fileManager.fileExists(atPath: sourceDir.path) else {
+            return nil
+        }
+        guard !requiresGitCheckout || isGitCheckout(sourceDir) else {
             return nil
         }
 
-        guard let skillDirectory = try firstSkillDirectory(in: submoduleDir) else {
-            throw ToolError.message("No SKILL.md found in \(submodulePath)")
+        guard let skillDirectory = try firstSkillDirectory(in: sourceDir) else {
+            throw ToolError.message("No SKILL.md found in \(sourcePath)")
         }
 
         let skillFile = skillDirectory.appendingPathComponent("SKILL.md")
@@ -263,7 +272,8 @@ final class SkillsPublicTool {
 
         return DiscoveredSkill(
             name: skillName,
-            submodulePath: submodulePath,
+            sourcePath: sourcePath,
+            sourceKind: sourceKind,
             skillDirectory: skillDirectory
         )
     }
@@ -291,7 +301,12 @@ final class SkillsPublicTool {
     private func discoveredSkills() throws -> [DiscoveredSkill] {
         var skills: [DiscoveredSkill] = []
         for submodulePath in try registeredSubmodulePaths() {
-            if let skill = try discoverSkill(in: submodulePath) {
+            if let skill = try discoverSkill(in: submodulePath, sourceKind: "submodule", requiresGitCheckout: true) {
+                skills.append(skill)
+            }
+        }
+        for sourcePath in repoLocalSkillPaths {
+            if let skill = try discoverSkill(in: sourcePath, sourceKind: "repo-local", requiresGitCheckout: false) {
                 skills.append(skill)
             }
         }
@@ -308,12 +323,8 @@ final class SkillsPublicTool {
     }
 
     private func linkTargets() throws -> [LinkTarget] {
-        var targets = try discoveredSkills().map { skill in
+        let targets = try discoveredSkills().map { skill in
             LinkTarget(name: skill.name, directory: skill.skillDirectory)
-        }
-
-        if fileManager.fileExists(atPath: localMaintenanceSkill.path) {
-            targets.append(LinkTarget(name: "refresh-public-skills", directory: localMaintenanceSkill))
         }
 
         try ensureUniqueNames(
@@ -361,7 +372,9 @@ final class SkillsPublicTool {
         }
 
         let discoveredByName = Dictionary(
-            uniqueKeysWithValues: try discoveredSkills().map { ($0.name, $0.submodulePath) }
+            uniqueKeysWithValues: try discoveredSkills()
+                .filter { $0.sourceKind == "submodule" }
+                .map { ($0.name, $0.sourcePath) }
         )
         var selected: [String] = []
         var seen: Set<String> = []
@@ -404,8 +417,8 @@ final class SkillsPublicTool {
         for argument in arguments {
             guard let skill = allSkills.first(where: {
                 $0.name == argument
-                    || $0.submodulePath == argument
-                    || URL(fileURLWithPath: $0.submodulePath).lastPathComponent == argument
+                    || $0.sourcePath == argument
+                    || URL(fileURLWithPath: $0.sourcePath).lastPathComponent == argument
             }) else {
                 throw ToolError.message("Unknown skill: \(argument)")
             }
@@ -431,7 +444,7 @@ final class SkillsPublicTool {
         }
 
         for submodulePath in submodulePaths {
-            if let skill = try discoverSkill(in: submodulePath) {
+            if let skill = try discoverSkill(in: submodulePath, sourceKind: "submodule", requiresGitCheckout: true) {
                 print("\(skill.name): \(relativePath(for: skill.skillDirectory))")
             } else {
                 print("\(submodulePath): initialized")
@@ -445,6 +458,7 @@ final class SkillsPublicTool {
         }
 
         try makeDirectory(agentsSkillsDir)
+        try removeRetiredRuntimeLink(named: "refresh-public-skills")
 
         for target in try linkTargets() {
             guard fileManager.fileExists(atPath: target.directory.path) else {
@@ -458,6 +472,18 @@ final class SkillsPublicTool {
         }
     }
 
+    private func removeRetiredRuntimeLink(named name: String) throws {
+        let link = agentsSkillsDir.appendingPathComponent(name)
+        guard pathExistsIncludingBrokenSymlink(link) else { return }
+
+        guard isSymlink(link) else {
+            throw ToolError.message("Refusing to remove retired runtime skill path because it is a directory: \(link.path)")
+        }
+
+        try fileManager.removeItem(at: link)
+        print("\(name): retired runtime link removed")
+    }
+
     private func runStatus() throws {
         let submodulePaths = try registeredSubmodulePaths()
 
@@ -468,7 +494,7 @@ final class SkillsPublicTool {
 
         for submodulePath in submodulePaths {
             let submoduleDir = submoduleDirectory(for: submodulePath)
-            let discovered = try discoverSkill(in: submodulePath)
+            let discovered = try discoverSkill(in: submodulePath, sourceKind: "submodule", requiresGitCheckout: true)
             let skillName = discovered?.name ?? URL(fileURLWithPath: submodulePath).lastPathComponent
             let source = discovered.map { relativePath(for: $0.skillDirectory) } ?? submodulePath
 
@@ -490,13 +516,25 @@ final class SkillsPublicTool {
             print("| \(skillName) | \(source) | \(workingTree) | \(aheadBehind) | \(agentsStatus) |")
         }
 
-        if fileManager.fileExists(atPath: localMaintenanceSkill.path) {
-            let maintenanceStatus = symlinkStatus(
-                link: agentsSkillsDir.appendingPathComponent("refresh-public-skills"),
-                target: localMaintenanceSkill
+        for sourcePath in repoLocalSkillPaths {
+            guard let skill = try discoverSkill(in: sourcePath, sourceKind: "repo-local", requiresGitCheckout: false) else {
+                continue
+            }
+            let agentsStatus = symlinkStatus(
+                link: agentsSkillsDir.appendingPathComponent(skill.name),
+                target: skill.skillDirectory
             )
-            print("| refresh-public-skills | \(relativePath(for: localMaintenanceSkill)) | repo-local | - | \(maintenanceStatus) |")
+            print("| \(skill.name) | \(relativePath(for: skill.skillDirectory)) | repo-local | - | \(agentsStatus) |")
         }
+
+        reportRetiredRuntimeLink(named: "refresh-public-skills")
+    }
+
+    private func reportRetiredRuntimeLink(named name: String) {
+        let link = agentsSkillsDir.appendingPathComponent(name)
+        guard pathExistsIncludingBrokenSymlink(link) else { return }
+
+        print("| \(name) | retired | remove runtime link | - | stale |")
     }
 
     private func classify(source: URL) throws -> (outcome: String, notes: [String]) {

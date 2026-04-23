@@ -29,7 +29,6 @@
 - Use the `validation-flow` skill when validating code changes.
 - Use the `codex-git` skill for git operations.
 - Use the `codex-github` skill for GitHub operations.
-- Use the `refresh-agents` skill to refresh project `AGENTS.md` files.
-- Use the `refresh-public-skills` skill when auditing, syncing, linking, or checking published skill repos.
+- Use the `refresh` skill for shared resource maintenance, public skill sync/link/status checks, optional guidance research, and project `AGENTS.md` refreshes.
 
-To refresh this file, use the `refresh-agents` skill.
+To refresh this file, use the `refresh` skill.

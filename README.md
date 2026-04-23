@@ -29,9 +29,11 @@ Shared reusable Codex approval rules live in `codex/rules/`. Runtime rule files 
 
 ## Shared Skills
 
-Published shared skills live under `skills/` in this repository and are linked into `~/.agents/skills/`. Most are git submodules. Repo-local maintenance skills such as `skills/refresh-public-skills/` live alongside them. Runtime names come from the discovered `name:` field in each skill's `SKILL.md`.
+Published shared skills live under `skills/` in this repository and are linked into `~/.agents/skills/`.
+Most published skills are git submodules.
+Repo-local operational skills such as `skills/refresh-skill/` live alongside them because they are tightly coupled to this repository.
+Runtime names come from the discovered `name:` field in each skill's `SKILL.md`.
 
 ## Maintenance Skills
 
-- Use the `refresh-agents` skill to review or refresh this shared agents repository.
-- Use the `refresh-public-skills` skill to sync, link, audit, and verify the published shared skill submodules.
+- Use the `refresh` skill to update shared resources, sync and link published skill submodules, optionally research shared guidance improvements, and refresh a project's `AGENTS.md`.
