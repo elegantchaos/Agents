@@ -1,10 +1,7 @@
 ## Project Specific Rules
 
+- This repository is the canonical home for shared agent references, skills, and configuration.
 - This repository is expected to live at `~/.local/share/agents`.
-- This repository is the canonical source for shared agent references, skills, and configuration.
-- When editing shared references, skills, or configuration here, keep canonical shared-resource paths home-relative (`~/...`) rather than machine-specific absolute paths.
-- When refreshing another repository from this baseline, treat `~/.local/share/agents/COMMON.md` as mandatory shared baseline guidance.
-- Each project's `AGENTS.md` should direct agents to `~/.local/share/agents/COMMON.md` for shared baseline rules and the `refresh-agents` skill for regeneration instructions.
 - Because this repository owns the shared baseline, agents working here should edit shared guidance at the source files and skill repos rather than creating duplicate local copies.
 
 ## Standard Rules
