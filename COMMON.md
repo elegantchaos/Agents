@@ -71,18 +71,16 @@ Report validation gaps and residual risk.
 
 Prefer trusted primary sources for technical decisions, especially official platform, language, package, API, and dependency documentation.
 
-Trusted sources can be found in our coding standards and our language and platform specific skills.
-
 ## Journal
 
-Keep a journal as a seies of markdown files.
+If `Project Specific Rules` enables journalling, keep a journal as a series of Markdown files.
 
 Add dated entries that document current implementation work, research, prototype steps, experiments, approaches tried, findings, open questions, and ideas still to try.
 
 Keep an `index.md` file updated when adding new journal entries; use it as the quick guide to journal contents because filenames only provide rough chronology.
 
-Add or update a journal entry regularly when a work session produces useful context that future work should preserve.
+Add or update a journal entry when a work session produces useful context that future work should preserve.
 
 When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.
 
-If the repository has a root `Extras/` folder, put the journal in `Extras/Journal `, otherwise ask.
+If the repository has a root `Extras/` folder, put the journal in `Extras/Journal/`; otherwise use the repository's configured journal location.

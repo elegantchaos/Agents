@@ -1,6 +1,6 @@
 # Final Response Checklist
 
-Always include:
+Include the sections for phases that were run.
 
 ## Global Pass
 

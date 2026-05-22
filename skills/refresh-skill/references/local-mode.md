@@ -38,48 +38,63 @@ When inserting shared references into the `Skills` section:
 
 ## Workflow
 
-1. Load context.
-   - Detect whether the target repository already has an `AGENTS.md`.
-   - If it exists, read it first.
-   - Read `~/.local/share/agents/COMMON.md`.
-   - Read the shared skill instructions relevant to the detected stack and workflows when the shared baseline delegates detailed guidance to those skills.
-   - Detect technologies in use from repo evidence such as `.swift`, `Package.swift`, `.xcodeproj`, `pyproject.toml`, `requirements*.txt`, `package.json`, and `tsconfig.json`.
-2. Write `Project Specific Rules`.
-   - If `AGENTS.md` already exists, retain project-specific policies, constraints, architecture notes, and workflows at the top.
-   - Remove or rewrite only clearly obsolete or contradictory local rules.
-   - If `AGENTS.md` does not exist, start `Project Specific Rules` with exactly one bullet by default.
-   - Make that bullet a concise, durable statement of what the repository is for.
-   - Derive it from current repo evidence such as `README*`, package metadata, manifests, or top-level docs.
-   - Keep it short and factual.
-   - Do not add extra bullets unless the user explicitly asks for them.
-3. Write `Standard Rules`.
-   - Base this section on the shared baseline in `~/.local/share/agents/COMMON.md` and preserve the force of its requirements.
-   - Keep this section limited to durable repo-wide obligations and baseline engineering policy.
-   - Treat that baseline as minimal, not the home for detailed coding or language guidance.
-   - Include its core guidance, including principles, workflow expectations, testing and validation expectations, and safety.
-   - Include stack-specific rules here only when they are explicit repository policy that should remain true even if related shared skills or guides change.
-   - Prefer concrete, checkable instructions over narrative explanation.
-   - Compress for agent ingestion when helpful, but do not weaken meaning.
-   - Rewrite shared guidance as direct rules instead of citing local guidance files in this section.
-   - Do not mention skills, skill names, or raw `~/...` guidance paths directly in this section.
-   - Do not restate procedural, stylistic, framework-specific, language-specific, or workflow-specific guidance that is owned by a referenced skill or shared guide.
-   - If a rule would need to change when a referenced skill changes, it belongs in `Skills`, not `Standard Rules`.
-   - `Standard Rules` must not silently narrow, pin, or override guidance delegated to `Skills`.
-4. Write `Skills`.
-   - For software repositories, include `coding-standards` by default.
-   - For Swift repositories, include `swift` by default.
-   - For JavaScript or TypeScript repositories, include `javascript` by default.
-   - For Python repositories, include `python` by default.
-   - Refer to shared skills by name (using backticks - eg `my-skill`) when they are available in the current environment. If a required skill is unavailable, preserve the equivalent baseline guidance directly in `AGENTS.md` instead of emitting a dead reference.
-   - Add one bullet per shared skill that is in scope for the project.
-   - Use an imperative instruction for each bullet, such as "Use the `codex-git` skill for git operations." or "Follow the `swiftui-pro` skill for SwiftUI guidance."
-   - Include only the skills relevant to the detected stack and workflows.
-   - Treat each referenced skill or shared guide as the source of truth for that domain.
-   - If the repository intentionally overrides a referenced skill or shared guide, state that override explicitly in `Project Specific Rules`.
-5. Add the regeneration note.
-   - At the bottom of `AGENTS.md`, add "To refresh this file, use the `refresh` skill."
-6. Verify baseline requirements.
-7. Lint for softened requirement language in mandatory clauses.
+### Load Context
+
+- Detect whether the target repository already has an `AGENTS.md`.
+- If it exists, read it first.
+- Read `~/.local/share/agents/COMMON.md`.
+- Read the shared skill instructions relevant to the detected stack and workflows when the shared baseline delegates detailed guidance to those skills.
+- Detect technologies in use from repo evidence such as `.swift`, `Package.swift`, `.xcodeproj`, `pyproject.toml`, `requirements*.txt`, `package.json`, and `tsconfig.json`.
+
+### Write `Project Specific Rules`
+
+If `AGENTS.md` already exists:
+
+- Retain project-specific policies, constraints, architecture notes, and workflows at the top.
+- Remove or rewrite only clearly obsolete or contradictory local rules.
+
+If `AGENTS.md` does not exist:
+
+- Start `Project Specific Rules` with exactly two bullets by default.
+- Make the first bullet a concise, durable statement of what the repository is for.
+- Derive the first bullet from current repo evidence such as `README*`, package metadata, manifests, or top-level docs.
+- Keep the first bullet short and factual.
+- Make the second bullet exactly: "Keep a development journal in `Extras/Journal/`."
+- Do not add other extra bullets unless the user explicitly asks for them.
+
+### Write `Standard Rules`
+
+- Base this section on the shared baseline in `~/.local/share/agents/COMMON.md` and preserve the force of its requirements.
+- Keep this section limited to durable repo-wide obligations and baseline engineering policy.
+- Treat that baseline as minimal, not the home for detailed coding or language guidance.
+- Include its core guidance, including principles, workflow expectations, testing and validation expectations, and safety.
+- Include stack-specific rules here only when they are explicit repository policy that should remain true even if related shared skills or guides change.
+- Prefer concrete, checkable instructions over narrative explanation.
+- Compress for agent ingestion when helpful, but do not weaken meaning.
+- Rewrite shared guidance as direct rules instead of citing local guidance files in this section.
+- Do not mention skills, skill names, or raw `~/...` guidance paths directly in this section.
+- Do not restate procedural, stylistic, framework-specific, language-specific, or workflow-specific guidance that is owned by a referenced skill or shared guide.
+- If a rule would need to change when a referenced skill changes, it belongs in `Skills`, not `Standard Rules`.
+- `Standard Rules` must not silently narrow, pin, or override guidance delegated to `Skills`.
+
+### Write `Skills`
+
+- For software repositories, include `coding-standards` by default.
+- For Swift repositories, include `swift` by default.
+- For JavaScript or TypeScript repositories, include `javascript` by default.
+- For Python repositories, include `python` by default.
+- Refer to shared skills by name (using backticks - eg `my-skill`) when they are available in the current environment. If a required skill is unavailable, preserve the equivalent baseline guidance directly in `AGENTS.md` instead of emitting a dead reference.
+- Add one bullet per shared skill that is in scope for the project.
+- Use an imperative instruction for each bullet, such as "Use the `codex-git` skill for git operations." or "Follow the `coding-standards` skill for all coding."
+- Include only the skills relevant to the detected stack and workflows.
+- Treat each referenced skill or shared guide as the source of truth for that domain.
+- If the repository intentionally overrides a referenced skill or shared guide, state that override explicitly in `Project Specific Rules`.
+
+### Finish
+
+- At the bottom of `AGENTS.md`, add "To refresh this file, use the `refresh` skill."
+- Verify baseline requirements.
+- Lint for softened requirement language in mandatory clauses.
 
 ## Fresh File Rules
 
