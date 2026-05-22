@@ -1,0 +1,35 @@
+# Codex-style configuration snippets for MCP servers.
+#
+# These are copied here for reference.
+# They need to be merged into the main config.toml under the appropriate sections.
+
+[mcp_servers.playwright]
+args = ["@playwright/mcp@latest"]
+command = "npx"
+cwd = "~/Developer/Projects/Playwright"
+enabled = false
+
+[mcp_servers.cupertino]
+command = "/usr/local/bin/cupertino"
+args = ["serve"]
+
+[mcp_servers.cupertino.tools.search_docs]
+approval_mode = "approve"
+
+[mcp_servers.cupertino.tools.read_document]
+approval_mode = "approve"
+
+[mcp_servers.xcode]
+command = "xcrun"
+args = ["mcpbridge"]
+enabled = false
+
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+enabled = false
+
+[mcp_servers.excalidraw]
+url = "https://api.excalidraw.com/api/v1/mcp"
+
+[mcp_servers.excalidraw.headers]
+Authorization = "Bearer <token goes here>"
