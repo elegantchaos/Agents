@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:agents}/scripts/agent-tools",
+      "name": "Debug agent-tools (scripts/agent-tools)",
+      "target": "agent-tools",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug agent-tools (scripts/agent-tools)"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:agents}/scripts/agent-tools",
+      "name": "Release agent-tools (scripts/agent-tools)",
+      "target": "agent-tools",
+      "configuration": "release",
+      "preLaunchTask": "swift: Build Release agent-tools (scripts/agent-tools)"
+    }
+  ]
+}
