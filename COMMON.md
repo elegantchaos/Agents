@@ -9,12 +9,11 @@ Always write good, modern, idiomatic code.
 Prefer fixing root causes over layered workarounds.
 Keep interfaces explicit and intentionally small.
 Avoid hidden coupling and surprising side effects.
-Do not add compatibility shims, wrappers, aliases, or dependencies unless the user asks.
-Write documentation to reflect the current state; don't call back to previous history or behaviour unless the user asks.
+Write documentation to reflect the current state.
 
-## Principles
+## Design Principles
 
-Always apply the core principles `Don't Repeat Yourself (DRY)`, and `Single Source Of Truth`.
+Always apply `Don't Repeat Yourself (DRY)`, and `Single Source Of Truth`.
 
 Additional principles to use where relevant:
 
@@ -33,47 +32,23 @@ Additional principles to use where relevant:
 
 - Understand request boundaries.
 - Inspect relevant code/docs before editing.
-- When writing new code or fixing bugs, apply smallest coherent change set.
-- For cleanup, review, and modernisation requests, codebase-wide changes are acceptable when they improve consistency; avoid them during focused tasks and note follow-ups instead.
+- Match change scope to the request: keep focused fixes small and coherent; use codebase-wide cleanup when the task is cleanup, review, modernisation, or consistency work.
 - Add/update tests for behavior changes.
 - Run the relevant validation checks.
 
-## Refactoring Scope
-
-Apply a refactoring scope relevant to the task.
-
-For cleanup, review, and modernisation requests, use a wide across the whole code base. For new code and bug fixes, use a narrower scope.
-
-Our preferred policy is to refactor aggressively, and to keep the codebase consistent and modern, even if it risks breaking backwards compatibility.
-
-### Wide Scope
-
-Look for codebase-wide refactors that:
-
-- Modernise the code.
-- Make it cleaner.
-- Make it more consistent.
-- Make it more compliant with our guidelines.
-- Make it more idiomatic for the language or platform.
-- Improve overall test coverage.
-
-### Narrow Scope
-
-- Prefer minimal, focused changes that solve the requested problem.
-- Add or update tests for new behaviour.
-- Suggest wide scope refactors for follow-up.
-
 ## Communication
 
+- Keep communication compact by default unless the user explicitly asks for more detail.
 - Before working, report planned actions.
 - Whilst working, report progress.
 - When finished, report changes, validation status, and residual risks.
-- Do not repeatedly advertise that the agent is verifying instead of guessing; that should be treated as default competence and only called out when there is real uncertainty or risk
+- Do not repeatedly advertise that the agent is verifying instead of guessing; that should be treated as default competence and only called out when there is real uncertainty or risk.
+- Do not repeatedly stop to ask for confirmation when the next verification step is safe and obvious.
 
 ## Testing & Validation
 
 Use red/green TDD for non-UI code.
-Create UI previews if the tooling supports it (eg SwiftUI #Preview)
+Create UI previews if the tooling supports it (eg SwiftUI #Preview).
 Run the narrowest validation that proves the change first, then broaden to relevant project checks.
 Report skipped validation with the reason.
 Report validation gaps and residual risk.
@@ -94,6 +69,20 @@ Report validation gaps and residual risk.
 
 ## Research
 
-Prefer trusted primary sources for technical decisions, especially for Apple platform, Swift, package, and API behavior.
+Prefer trusted primary sources for technical decisions, especially official platform, language, package, API, and dependency documentation.
 
 Trusted sources can be found in our coding standards and our language and platform specific skills.
+
+## Journal
+
+Keep a journal as a seies of markdown files.
+
+Add dated entries that document current implementation work, research, prototype steps, experiments, approaches tried, findings, open questions, and ideas still to try.
+
+Keep an `index.md` file updated when adding new journal entries; use it as the quick guide to journal contents because filenames only provide rough chronology.
+
+Add or update a journal entry regularly when a work session produces useful context that future work should preserve.
+
+When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.
+
+If the repository has a root `Extras/` folder, put the journal in `Extras/Journal `, otherwise ask.
