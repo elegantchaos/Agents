@@ -13,7 +13,8 @@ struct AgentTools: ParsableCommand {
     commandName: "agent-tools",
     abstract: "Maintenance tools for the shared agents repository.",
     subcommands: [
-      Skills.self
+      Rules.self,
+      Skills.self,
     ]
   )
 }

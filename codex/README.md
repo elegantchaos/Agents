@@ -5,16 +5,17 @@ Canonical, shareable subset of `~/.codex`.
 ## Contents
 
 - `config.toml.template` (sanitized from `~/.codex/config.toml`)
-- `rules/*.rules` (sym-linked into `~/.codex/rules`)
+- `rules/*.rules` (copied into `~/.codex/rules` by `agent-tools rules sync`)
 
-We do not track other files in `~/.codex` - they are ephemeral, tied to the local machine, and/or contain secrets.
+We do not track `default.rules` or other files in `~/.codex` - they are ephemeral, tied to the local machine, and/or contain secrets.
 
 ## Update Procedure
 
 - Pull this project from git to ensure we have the latest changes
 - Examine `~/.codex` and `~/.agents` suggest updates to the config file (in both directions)
-- Offer to add symlinks into `~/.agents` for missing rules
-- Offer to move new rules into here and replace the originals with sym-links
+- Run `agent-tools rules status` before synchronization to identify drift and runtime-only rules
+- Promote reusable entries from `~/.codex/rules/default.rules` into the appropriate shared rule file
+- Run `agent-tools rules sync` to replace shared runtime rules with generated regular copies
 - Keep `config.toml.template` sanitized: remove machine-local paths and trust mappings
 - Keep rules and skills sanitized and portable: avoid absolute paths or other machine-specific entries
 - Suggest other improvements we could make to Codex-related files and features
