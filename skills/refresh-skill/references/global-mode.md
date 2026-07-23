@@ -62,10 +62,10 @@ If a command family appears repeatedly and does not fit an existing file cleanly
    - Pull the configured upstream when safe or when explicitly requested.
    - Report if the repository could not be updated.
 2. Refresh public skill submodules and runtime links from the shared agents repository root.
-   - Run `swift run agent-tools skills sync --all`.
-   - Run `swift run agent-tools skills link`.
-   - Run `swift run agent-tools skills status`.
-   - Run `swift run agent-tools skills audit --all` for publication readiness, major edits, or explicit audit requests.
+   - Run `swift run --package-path scripts/agent-tools agent-tools skills sync --all`.
+   - Run `swift run --package-path scripts/agent-tools agent-tools skills link`.
+   - Run `swift run --package-path scripts/agent-tools agent-tools skills status`.
+   - Run `swift run --package-path scripts/agent-tools agent-tools skills audit --all` for publication readiness, major edits, or explicit audit requests.
    - If the user asked to advance skills to latest upstream commits, fetch/pull each relevant submodule safely, validate, and update the parent repository's submodule pointers.
    - Otherwise, sync to the revisions recorded by the parent repository and report any upstream drift from status.
 3. Read shared `~/.local/share/agents/codex/rules/*.rules`.

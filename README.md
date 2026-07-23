@@ -19,8 +19,8 @@ Clone this repository to:
 Then initialize and link the published shared skills:
 
 ```bash
-swift run agent-tools skills sync --all
-swift run agent-tools skills link
+swift run --package-path scripts/agent-tools agent-tools skills sync --all
+swift run --package-path scripts/agent-tools agent-tools skills link
 ```
 
 ## Shared Rules
