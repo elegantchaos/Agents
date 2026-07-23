@@ -20,7 +20,7 @@ Use it for regular shared-maintenance passes, public skill sync/link/status chec
 
 - A shared agents baseline repository
 - A Codex-style home directory and shared rules repository for rule maintenance
-- The SwiftPM `agent-tools` command-line tool
+- The `agt` command-line tool, installed with `mint install elegantchaos/AgentTools`
 
 ## Shared Baseline
 

@@ -10,7 +10,7 @@ It updates and verifies the shared agents infrastructure itself.
 - Shared canonical baseline guidance lives in `~/.local/share/agents/COMMON.md`.
 - Published shared skill submodules live under `~/.local/share/agents/skills/`.
 - Repo-local operational skills live under `~/.local/share/agents/skills/` as normal tracked files when they are tightly coupled to this repository.
-- The `~/.local/share/agents/scripts/agent-tools` SwiftPM command-line tool manages public skill maintenance.
+- The standalone `agt` command-line tool manages public skill maintenance.
 - Local runtime rules live in `<codex-home>/rules/*.rules`.
 - Runtime skill links live under `~/.agents/skills/`.
 - Runtime `default.rules` is a catch-all and should stay small. It may be empty and must not be stored in the shared repository.
@@ -62,14 +62,14 @@ If a command family appears repeatedly and does not fit an existing file cleanly
    - Pull the configured upstream when safe or when explicitly requested.
    - Report if the repository could not be updated.
 2. Refresh public skill submodules and runtime links from the shared agents repository root.
-   - Run `swift run --package-path scripts/agent-tools agent-tools skills sync --all`.
-   - Run `swift run --package-path scripts/agent-tools agent-tools skills link`.
-   - Run `swift run --package-path scripts/agent-tools agent-tools skills status`.
-   - Run `swift run --package-path scripts/agent-tools agent-tools skills audit --all` for publication readiness, major edits, or explicit audit requests.
+   - Run `agt skills sync --all`.
+   - Run `agt skills link`.
+   - Run `agt skills status`.
+   - Run `agt skills audit --all` for publication readiness, major edits, or explicit audit requests.
    - If the user asked to advance skills to latest upstream commits, fetch/pull each relevant submodule safely, validate, and update the parent repository's submodule pointers.
    - Otherwise, sync to the revisions recorded by the parent repository and report any upstream drift from status.
 3. Inspect runtime rule drift before overwriting it.
-   - Run `swift run --package-path scripts/agent-tools agent-tools rules status`.
+   - Run `agt rules status`.
    - Read shared `~/.local/share/agents/codex/rules/*.rules`.
    - Read `<codex-home>/rules/default.rules` and any other runtime-only or divergent `*.rules` files reported by status.
    - Treat shared files as canonical; pull back a useful manual runtime edit only by explicitly applying it to the appropriate shared file before synchronization.
@@ -81,8 +81,8 @@ If a command family appears repeatedly and does not fit an existing file cleanly
 5. Sort each shared rule file lexicographically and remove duplicates within and across shared files.
 6. Rewrite runtime `default.rules` with only the remaining leftovers. If none remain, leave it empty.
 7. Synchronize and verify runtime rule copies.
-   - Run `swift run --package-path scripts/agent-tools agent-tools rules sync`.
-   - Run `swift run --package-path scripts/agent-tools agent-tools rules status`.
+   - Run `agt rules sync`.
+   - Run `agt rules status`.
    - Confirm each shared runtime rule is a regular file with the generated maintenance warning.
    - Confirm runtime `default.rules` remains runtime-only and is not created in the shared repository.
 8. Review the shared agents repository for worthwhile improvements to:

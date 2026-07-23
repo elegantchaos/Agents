@@ -1,4 +1,5 @@
 prefix_rule(pattern=[".venv/bin/python"], decision="allow")
+prefix_rule(pattern=["agt"], decision="allow")
 prefix_rule(pattern=["brew", "info", "xpkg-git"], decision="allow")
 prefix_rule(pattern=["brew", "install", "--HEAD"], decision="allow")
 prefix_rule(pattern=["brew", "postinstall", "xpkg-git"], decision="allow")

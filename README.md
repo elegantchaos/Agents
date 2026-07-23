@@ -8,7 +8,7 @@ It provides:
 
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
 - shared Codex rule files under `~/.local/share/agents/codex/rules/`
-- shared skills under `~/.local/share/agents/skills/` plus `agent-tools`, the SwiftPM maintenance tool that manages them
+- shared skills under `~/.local/share/agents/skills/`, maintained with the standalone `agt` command
 
 ## First Use
 
@@ -16,17 +16,18 @@ Clone this repository to:
 
 - `~/.local/share/agents`
 
-Then initialize and link the published shared skills:
+Install AgentTools with Mint, then initialize and link the published shared skills:
 
 ```bash
-swift run --package-path scripts/agent-tools agent-tools skills sync --all
-swift run --package-path scripts/agent-tools agent-tools skills link
-swift run --package-path scripts/agent-tools agent-tools rules sync
+mint install elegantchaos/AgentTools
+agt skills sync --all
+agt skills link
+agt rules sync
 ```
 
 ## Shared Rules
 
-Shared reusable Codex approval rules live in `codex/rules/`. Use `agent-tools rules sync` to copy them into `~/.codex/rules/` as generated regular files. The runtime-only `default.rules` file is intentionally not stored in this repository.
+Shared reusable Codex approval rules live in `codex/rules/`. Use `agt rules sync` to copy them into `~/.codex/rules/` as generated regular files. The runtime-only `default.rules` file is intentionally not stored in this repository.
 
 ## Shared Skills
 

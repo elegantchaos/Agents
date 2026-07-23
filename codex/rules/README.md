@@ -2,11 +2,11 @@
 
 This folder is the canonical source for reusable Codex rule files.
 
-Use `agent-tools` from the repository root to inspect and synchronize runtime copies:
+Use the installed `agt` command from the repository root to inspect and synchronize runtime copies:
 
 ```bash
-swift run --package-path scripts/agent-tools agent-tools rules status
-swift run --package-path scripts/agent-tools agent-tools rules sync
+agt rules status
+agt rules sync
 ```
 
 `rules status` reports missing, divergent, symlinked, and runtime-only files without making changes. Run it before synchronization when reviewing manually added runtime rules.

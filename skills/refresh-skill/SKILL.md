@@ -49,15 +49,15 @@ Examples:
 ## Shared Resource Maintenance
 
 The public skill and shared rules workflows are part of the global pass.
-Use `agent-tools` from the shared agents repository root:
+Use the installed `agt` command from the shared agents repository root:
 
 ```bash
-swift run --package-path scripts/agent-tools agent-tools rules status
-swift run --package-path scripts/agent-tools agent-tools rules sync
-swift run --package-path scripts/agent-tools agent-tools skills sync --all
-swift run --package-path scripts/agent-tools agent-tools skills link
-swift run --package-path scripts/agent-tools agent-tools skills status
-swift run --package-path scripts/agent-tools agent-tools skills audit --all
+agt rules status
+agt rules sync
+agt skills sync --all
+agt skills link
+agt skills status
+agt skills audit --all
 ```
 
 Use audit for publication readiness, major edits, or explicit audit requests.

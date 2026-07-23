@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-swift run --package-path scripts/agent-tools agent-tools skills sync --all
-swift run --package-path scripts/agent-tools agent-tools skills link
+agt skills sync --all
+agt skills link
