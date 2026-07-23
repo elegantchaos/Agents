@@ -12,7 +12,8 @@ Include the sections for phases that were run.
 - rules removed from `default.rules` as redundant
 - rules removed from `default.rules` as one-off or machine-specific
 - sort and de-dup verification result
-- symlink verification result
+- runtime rule copy and generated-header verification result
+- runtime rule drift or runtime-only files found before synchronization
 - any ambiguous rules that need user confirmation
 - any suggested new shared rule files
 - any risky broad approvals that deserve review

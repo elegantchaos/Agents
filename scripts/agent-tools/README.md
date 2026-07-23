@@ -18,6 +18,22 @@ agent-tools <command>
 
 ## Commands
 
+### `rules status`
+
+Report missing, divergent, symlinked, and runtime-only Codex rules without changing files.
+
+```bash
+swift run --package-path scripts/agent-tools agent-tools rules status
+```
+
+### `rules sync`
+
+Overwrite shared runtime rules in `~/.codex/rules/` with generated regular copies. Runtime-only files such as `default.rules` are preserved for refresh-time classification.
+
+```bash
+swift run --package-path scripts/agent-tools agent-tools rules sync
+```
+
 ### `skills sync [--all | <skill>...]`
 
 Initialize or update public skill submodules to recorded revisions.
@@ -65,6 +81,7 @@ Each source is scanned for a `SKILL.md` containing a `name:` front-matter field,
 | ------------------- | ------------------------------------------------------------------------------- |
 | `AGENTS_REPO_ROOT`  | Override repository root detection. Set to the absolute path of the repository. |
 | `AGENTS_SKILLS_DIR` | Override the runtime skills directory. Defaults to `~/.agents/skills`.          |
+| `CODEX_HOME`        | Override the Codex state root. Defaults to `~/.codex`.                          |
 
 ## Repository Root Detection
 
@@ -79,6 +96,12 @@ When `AGENTS_REPO_ROOT` is not set the tool walks up from the current directory 
 ```
 Sources/AgentTools/
   AgentToolsCommand.swift      — top-level @main entry point
+  RulesCommand.swift           — `rules` subcommand group
+  RulesStatusCommand.swift     — `rules status` subcommand
+  RulesSyncCommand.swift       — `rules sync` subcommand
+  RulesPublicTool.swift        — shared-to-runtime rule inspection and copying
+  RulesSyncEntry.swift         — per-file synchronization status
+  RulesSyncReport.swift        — synchronization report
   SkillsCommand.swift          — `skills` subcommand group
   SkillsAuditCommand.swift     — `skills audit` subcommand
   SkillsLinkCommand.swift      — `skills link` subcommand
@@ -93,4 +116,5 @@ Sources/AgentTools/
   ToolError.swift              — user-facing error type
 Tests/AgentToolsTests/
   RepoRootLocatorTests.swift   — unit tests for root detection
+  RulesPublicToolTests.swift   — rules synchronization behavior
 ```

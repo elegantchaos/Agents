@@ -21,11 +21,12 @@ Then initialize and link the published shared skills:
 ```bash
 swift run --package-path scripts/agent-tools agent-tools skills sync --all
 swift run --package-path scripts/agent-tools agent-tools skills link
+swift run --package-path scripts/agent-tools agent-tools rules sync
 ```
 
 ## Shared Rules
 
-Shared reusable Codex approval rules live in `codex/rules/`. Runtime rule files under `~/.codex/rules/` should symlink to these shared files where applicable.
+Shared reusable Codex approval rules live in `codex/rules/`. Use `agent-tools rules sync` to copy them into `~/.codex/rules/` as generated regular files. The runtime-only `default.rules` file is intentionally not stored in this repository.
 
 ## Shared Skills
 

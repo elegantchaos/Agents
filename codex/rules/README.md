@@ -1,34 +1,16 @@
-# Rules Symlink Setup
+# Shared Rules
 
-This folder is the canonical source for shared Codex rule files.
+This folder is the canonical source for reusable Codex rule files.
 
-To use these rules on another machine, symlink each `*.rules` file here into `~/.codex/rules`.
-
-## Prerequisites
-
-- Clone this repository to `~/.local/share/agents` (recommended path).
-- Ensure `~/.codex/rules` exists.
-
-## Create Symlinks
-
-From the repository root (`~/.local/share/agents`):
+Use `agent-tools` from the repository root to inspect and synchronize runtime copies:
 
 ```bash
-mkdir -p ~/.codex/rules
-for f in codex/rules/*.rules; do
-  ln -sfn "$PWD/$f" "$HOME/.codex/rules/$(basename "$f")"
-done
+swift run --package-path scripts/agent-tools agent-tools rules status
+swift run --package-path scripts/agent-tools agent-tools rules sync
 ```
 
-## Verify
+`rules status` reports missing, divergent, symlinked, and runtime-only files without making changes. Run it before synchronization when reviewing manually added runtime rules.
 
-```bash
-ls -l ~/.codex/rules/*.rules
-```
+`rules sync` writes each shared file into `~/.codex/rules/` as a regular file. Runtime copies include a generated-file warning and are always overwritten from this canonical directory.
 
-Each entry should point to a file under `~/.local/share/agents/codex/rules/`.
-
-## Notes
-
-- `ln -sfn` safely replaces existing links with updated targets.
-- If your clone path differs, run the same commands from your local repo root so `$PWD` resolves correctly.
+`~/.codex/rules/default.rules` is intentionally runtime-only. During refresh, classify its entries, promote reusable rules into the appropriate shared family file, remove redundant or one-off entries, and then synchronize.
