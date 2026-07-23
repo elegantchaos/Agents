@@ -126,6 +126,7 @@ Verify that these clauses remain present in `Standard Rules` with equivalent for
 - testing: red/green TDD for non-UI code
 - UI expectation: create previews for UI code
 - validation discipline: follow the validation workflow and reporting rules
+- tool discovery: when a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing
 - safety: do not perform destructive actions without explicit approval
 - safety: if unexpected workspace changes appear, pause and confirm direction
 - source quality: prefer trusted primary sources for technical decisions

@@ -5,7 +5,7 @@ Canonical, shareable subset of `~/.codex`.
 ## Contents
 
 - `config.toml.template` (sanitized from `~/.codex/config.toml`)
-- `rules/*.rules` (copied into `~/.codex/rules` by `agent-tools rules sync`)
+- `rules/*.rules` (copied into `~/.codex/rules` by `agt rules sync`)
 
 We do not track `default.rules` or other files in `~/.codex` - they are ephemeral, tied to the local machine, and/or contain secrets.
 
@@ -13,9 +13,9 @@ We do not track `default.rules` or other files in `~/.codex` - they are ephemera
 
 - Pull this project from git to ensure we have the latest changes
 - Examine `~/.codex` and `~/.agents` suggest updates to the config file (in both directions)
-- Run `agent-tools rules status` before synchronization to identify drift and runtime-only rules
+- Run `agt rules status` before synchronization to identify drift and runtime-only rules
 - Promote reusable entries from `~/.codex/rules/default.rules` into the appropriate shared rule file
-- Run `agent-tools rules sync` to replace shared runtime rules with generated regular copies
+- Run `agt rules sync` to replace shared runtime rules with generated regular copies
 - Keep `config.toml.template` sanitized: remove machine-local paths and trust mappings
 - Keep rules and skills sanitized and portable: avoid absolute paths or other machine-specific entries
 - Suggest other improvements we could make to Codex-related files and features
@@ -33,7 +33,7 @@ This repository stores:
 
 - published shared skills in `../skills/`
 - repo-local refresh workflow guidance in `../skills/refresh-skill/`
-- the SwiftPM `agent-tools` command-line tool
+- the standalone `agt` command-line tool
 
 Before linking runtime skill directories, initialize the shared skill submodules and run the publication audit/link workflows.
 
