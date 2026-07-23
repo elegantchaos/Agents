@@ -58,6 +58,7 @@ Report validation gaps and residual risk.
 - Use portable path references in docs and guidance.
 - Prefer repository-relative paths for files in the current repository and `~/...` home-relative paths for shared resources outside it.
 - Avoid machine-specific absolute paths.
+- When a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing.
 
 ## Safety and Discipline
 
