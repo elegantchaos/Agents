@@ -28,8 +28,7 @@
 - Follow the `ruby` skill for baseline Ruby language guidance outside framework-specific specialist skills.
 - Follow the `swift` skill for baseline Swift language guidance.
 - Use the `validation-flow` skill when validating code changes.
-- Use the `codex-git` skill for git operations.
-- Use the `codex-github` skill for GitHub operations.
+- Use the `codex-git` skill for git and GitHub operations.
 - Use the `refresh` skill for shared resource maintenance, public skill sync/link/status checks, optional guidance research, and project `AGENTS.md` refreshes.
 
 To refresh this file, use the `refresh` skill.
