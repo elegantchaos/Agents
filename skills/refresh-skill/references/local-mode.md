@@ -69,6 +69,7 @@ If `AGENTS.md` does not exist:
 - Treat that baseline as minimal, not the home for detailed coding or language guidance.
 - Include its core guidance, including principles, workflow expectations, testing and validation expectations, and safety.
 - Include stack-specific rules here only when they are explicit repository policy that should remain true even if related shared skills or guides change.
+- When a Swift repository uses ReleaseTools, state that `rt` is its canonical validation command and that target mode runs the matching SwiftPM test target when present.
 - Prefer concrete, checkable instructions over narrative explanation.
 - Compress for agent ingestion when helpful, but do not weaken meaning.
 - Rewrite shared guidance as direct rules instead of citing local guidance files in this section.

@@ -49,7 +49,7 @@ Additional principles to use where relevant:
 
 Use red/green TDD for non-UI code.
 Create UI previews if the tooling supports it (eg SwiftUI #Preview).
-Run the narrowest validation that proves the change first, then broaden to relevant project checks.
+Use the project's canonical validation command to run the narrowest validation that proves the change first, then broaden to relevant project checks.
 Report skipped validation with the reason.
 Report validation gaps and residual risk.
 
