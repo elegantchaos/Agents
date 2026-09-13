@@ -9,6 +9,7 @@ It provides:
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
 - shared Codex rule files under `~/.local/share/agents/codex/rules/`
 - shared skills under `~/.local/share/agents/skills/`, maintained with the standalone `agt` command
+- plugin prototypes under `plugins/`, maintained directly in this repository; see the [Swift plugin](plugins/swift/README.md)
 
 ## First Use
 
