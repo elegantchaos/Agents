@@ -1,15 +1,13 @@
 ---
 name: testing
-description: Design, write, and review Swift tests using the Swift Testing framework, including deterministic async tests and requested migration from XCTest.
+description: Write and review Swift Testing tests, including deterministic async tests and migration from XCTest.
 ---
 
 # Swift Testing
 
-Prototype scope: test design and implementation with Swift Testing. Detailed references are pending source review.
-
-- Prefer Swift Testing for new tests supported by the project's toolchain and testing requirements. Discourage new XCTest usage where Swift Testing meets the need.
-- Treat XCTest as a legacy choice in this skill's policy, not as an assertion of official Apple deprecation. Retain it for requirements Swift Testing does not cover, such as existing XCTest-based UI automation.
-- Keep maintenance of existing XCTest tests scoped. Propose broader migration separately unless requested.
+- Use Swift Testing. When changing XCTest tests, migrate the affected tests and fixtures to Swift Testing. Flag remaining XCTest usage in reviews.
+- Do not extend XCTest or add legacy helpers to avoid migration. Remove superseded tests and helpers after verifying replacement coverage.
+- If a required testing capability blocks migration, report the blocker and the decision needed. Do not silently retain XCTest or drop coverage.
 - Design tests around observable behavior, explicit dependencies, and deterministic coordination rather than timing assumptions.
 - Inspect isolation and parallel execution assumptions for async tests and shared fixtures.
-- Test execution, formatting, linting, build selection, and coverage reporting belong to validation. Do not require Xcode for portable package tests.
+- Use the validation skill, when available, for verification commands and coverage reporting. Portable package tests must not require Xcode.

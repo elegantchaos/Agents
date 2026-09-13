@@ -5,8 +5,6 @@ description: Run and report a Swift project's formatting, linting, compilation, 
 
 # Swift validation
 
-Prototype scope: verification orchestration and reporting, separate from test design. Detailed command and failure-handling policy is pending review of the existing validation skill.
-
 - Discover the repository's canonical validation workflow and required coverage before running checks. Use `rt` where the project adopts ReleaseTools; otherwise use its documented commands.
 - Select checks appropriate to the changed targets and project policy. An IDE build does not automatically satisfy formatting, linting, test, or broader platform requirements.
 - Keep Xcode tooling conditional on an Xcode project and available tools. Do not require Xcode or install ReleaseTools merely because a project contains Swift.
