@@ -1,14 +1,12 @@
 ---
 name: swiftdata
-description: Design, implement, and review SwiftData models, queries, persistence, and migrations, including requested migration from Core Data.
+description: Implement and review SwiftData models, queries, persistence, and migration from Core Data.
 ---
 
 # SwiftData
 
-Prototype scope: the SwiftData framework, not general storage architecture. Detailed references are pending source review.
-
-- Prefer SwiftData for new Apple-platform persistence work where supported by the project's requirements and deployment targets. Discourage introducing Core Data when SwiftData can meet the need.
-- Treat Core Data as a legacy choice in this skill's policy, not as an assertion that Apple has officially deprecated it.
-- When maintaining existing Core Data code, keep changes scoped and propose migration separately unless requested. If a requirement cannot be met with SwiftData, explain the specific limitation before recommending an alternative.
-- Check platform availability, schema evolution, relationship behavior, and persistence implications before changing models. Do not assume a destructive datastore reset is an acceptable migration.
-- Do not introduce a SwiftData dependency into portable Swift targets that cannot support it.
+- Use SwiftData for Apple-platform persistence. When changing Core Data code, migrate the affected persistence path and its dependencies to SwiftData. Flag remaining Core Data usage in reviews.
+- Do not extend Core Data or add legacy compatibility layers to avoid migration. Remove superseded code after verifying migration.
+- Preserve persisted data and required behavior. Check schema evolution and relationship behavior; a destructive datastore reset is not a migration.
+- If platform support or a required capability blocks migration, report the blocker and the decision needed. Do not fall back to Core Data or discard behavior silently.
+- Keep SwiftData dependencies out of unsupported targets.

@@ -1,15 +1,15 @@
 {
   "name": "swift",
   "version": "0.1.0",
-  "description": "Elegant Chaos Swift language, framework, concurrency, testing, and validation skills.",
+  "description": "Swift language, SwiftUI, SwiftData, concurrency, testing, and validation skills.",
   "author": {
     "name": "Sam Deane"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Swift",
-    "shortDescription": "Swift development guidance from Elegant Chaos.",
-    "longDescription": "A prototype family of focused Swift skills with portable language and workflow guidance and specialist Apple framework skills. Detailed source review and migration are pending.",
+    "shortDescription": "Swift development and validation skills.",
+    "longDescription": "Portable Swift language and workflow guidance with specialist SwiftUI, SwiftData, concurrency, and Swift Testing skills.",
     "developerName": "Elegant Chaos",
     "category": "Productivity",
     "capabilities": [],

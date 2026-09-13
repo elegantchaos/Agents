@@ -3,7 +3,7 @@
 ## Agreed direction
 
 - Maintain one Swift plugin in this repository with six separately scoped skills.
-- Prefer SwiftData over Core Data and Swift Testing over XCTest for new work. Treat the older frameworks as legacy choices in our guidance, not as a claim of official Apple deprecation.
+- Migrate Core Data to SwiftData and XCTest to Swift Testing during relevant implementation work. Preserve data, behavior, and test coverage; report migration blockers. Exclude legacy-maintenance guidance.
 - Keep validation orchestration separate from test design.
 - Keep portable Swift guidance useful without Xcode or Apple frameworks.
 - Evaluate Apple guidance individually; distinguish technical requirements from architecture and style preferences.
@@ -25,5 +25,3 @@
 - [Paul Hudson's Swift agent skill directory](https://github.com/twostraws/Swift-Agent-Skills), following original repository links and verifying ancestry.
 - Xcode's `Contents/PlugIns/IDEIntelligenceChat.framework/Versions/A/Resources/`: specialist `.idechatprompttemplate` files, their references, and `AdditionalDocumentation`.
 - Primary Swift and Apple documentation to verify technical claims and availability.
-
-No source comparison or behavioral evaluation is marked complete by creating this skeleton.
