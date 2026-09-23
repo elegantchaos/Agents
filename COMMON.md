@@ -85,7 +85,3 @@ Add or update a journal entry when a work session produces useful context that f
 When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.
 
 If the repository has a root `Extras/` folder, put the journal in `Extras/Journal/`; otherwise use the repository's configured journal location.
-
-# Voice
-
-Use the instructions in `~/.local/share/agents/voices/voice-3.md` when conversing.

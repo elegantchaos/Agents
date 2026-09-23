@@ -6,38 +6,54 @@ Tick items off as they land, and record decisions inline.
 
 ## Current State
 
-- Codex reads `AGENTS.md`; Claude Code reads `CLAUDE.md` and ignores `AGENTS.md` unless imported.
-- `~/.claude` has no `CLAUDE.md`, `settings.json`, or `skills/`, so Claude Code sees none of the shared baseline.
+- Codex reads `AGENTS.md`. Claude Code v2.1.277+ reads a project's `AGENTS.md` when no project `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md` exists in the working directory or above it. `~/.claude/CLAUDE.md` does not block this and loads alongside.
+- Claude Code has no global `AGENTS.md`; global instructions must come from `~/.claude/CLAUDE.md`.
+- `~/.claude` has no `settings.json` or `skills/`.
 - `SKILL.md` frontmatter (`name`, `description`) is already compatible with Claude Code.
 - `agents/openai.yaml` files are Codex-only UI metadata; Claude ignores them, so they can stay.
 - Codex-specific pieces: `runtimes/codex/rules/*.rules`, `runtimes/codex/config.toml.template`, `runtimes/codex/mcp.toml`, `plugins/swift/.codex-plugin/`, the `codex-git` skill, and parts of the `refresh` skill.
 
+## Decisions
+
+- `COMMON.md` is opt-in per project, never loaded globally. Each project's `AGENTS.md` references it explicitly.
+- The voice is a personal preference, so it lives in the user-global files only, never in `COMMON.md` or project files.
+
 ## Stage 1: Instruction Loading
 
-Goal: Claude Code loads the shared baseline globally and each project's `AGENTS.md`.
+Goal: both runtimes load the chosen voice globally and each project's `AGENTS.md`.
 
-- [ ] Create `~/.claude/CLAUDE.md` containing `@~/.local/share/agents/COMMON.md`.
-- [x] Rename voice files to space-free names (for example `voices/voice-2.md`) so they can be imported, and update the reference in `COMMON.md`.
-- [ ] Make one voice file the single source; replace the inline voice copy in `~/.codex/AGENTS.md` with the chosen file's content (or a link to it, see Stage 2).
-- [ ] Add a root `CLAUDE.md` to this repository containing `@AGENTS.md`.
-- [ ] Update `skills/refresh-skill/references/local-mode.md` so a local refresh creates a one-line `CLAUDE.md` containing `@AGENTS.md` when missing, and never adds other content to it.
+- [x] Rename voice files to space-free names so they can be imported.
+- [x] Remove the voice section from `COMMON.md`.
+- [x] Create `~/.claude/CLAUDE.md` containing `@~/.local/share/agents/voices/voice-3.md`.
+- [x] Replace the inline voice copy in `~/.codex/AGENTS.md` with a symlink to `voices/voice-3.md`.
+- [ ] Confirm Codex follows the `~/.codex/AGENTS.md` symlink; if not, have `agt` maintain a generated copy.
+- [ ] Document the global voice setup (both runtimes) in `README.md` First Use, since it lives outside the repository.
+- [ ] Update `skills/refresh-skill/references/local-mode.md` so a local refresh never creates a project `CLAUDE.md`, and warns when one (or `CLAUDE.local.md`) exists, since it stops Claude Code reading `AGENTS.md` by default.
 
-Verify: start a Claude Code session in this repo and run `/memory` to confirm `COMMON.md`, the voice file, and `AGENTS.md` are loaded.
+Project `CLAUDE.md` files that import `AGENTS.md` are not needed: Claude Code reads `AGENTS.md` natively. Fall back to a `CLAUDE.md` containing `@AGENTS.md` only for sessions where native support is unavailable (third-party providers such as Bedrock, or telemetry disabled).
+
+Verify: start a Claude Code session in this repo, confirm the `AGENTS.md loaded` notice, and run `/memory` to confirm the voice file is loaded.
 
 ## Stage 2: Single-Source Baseline
 
 Goal: stop restating `COMMON.md` inside every project `AGENTS.md`.
 
-Generated `AGENTS.md` files both say "read `COMMON.md` first" and restate it under `Standard Rules`. That violates DRY and, once Stage 1 lands, loads the baseline twice in Claude Code.
+Generated `AGENTS.md` files both say "read `COMMON.md` first" and restate it under `Standard Rules`. That violates DRY, and the restated copy drifts from the source.
 
-- [ ] Decide: load `COMMON.md` globally in both runtimes and drop restated baseline from project files? *(decision needed)*
-- [ ] Codex: make `~/.codex/AGENTS.md` a symlink to `COMMON.md` (or have `agt` generate it), and confirm Codex follows the symlink.
-- [ ] Claude: already covered by the Stage 1 global import.
-- [ ] Update the refresh skill's output contract: project `AGENTS.md` keeps `Project Specific Rules`, `Skills`, and explicit overrides only.
-- [ ] Rewrite the `Baseline Verification` section of `local-mode.md` to check the global baseline instead of per-project restatement.
+Replace the restated `Standard Rules` with one import line, written without backticks so Claude Code expands it:
+
+```markdown
+Read and follow @~/.local/share/agents/COMMON.md before starting work.
+```
+
+Claude Code expands the `@` import at launch (after a one-time approval per project, because the path is outside the project). Codex has no import syntax and reads it as an instruction to open the file, which matches today's behaviour.
+
+- [ ] Update the refresh skill's output contract: project `AGENTS.md` keeps `Project Specific Rules`, the `COMMON.md` import line, `Skills`, and explicit overrides only.
+- [ ] Rewrite the `Baseline Verification` section of `local-mode.md` to check the import line is present instead of checking per-project restatement.
 - [ ] Refresh this repository's own `AGENTS.md` under the new contract.
+- [ ] Refresh other projects' `AGENTS.md` files as they are next worked on.
 
-Verify: in a fresh session of each runtime, the baseline rules appear exactly once.
+Verify: in a fresh session of each runtime, the baseline rules appear exactly once; in Claude Code, `/memory` lists `COMMON.md` as imported.
 
 ## Stage 3: Skill Linking
 
@@ -97,7 +113,7 @@ Goal: `plugins/swift` installs in both runtimes from the same `skills/` director
 
 Goal: repository structure and docs treat both runtimes as peers.
 
-- [x] Move `codex/` to `runtimes/codex/` and update every path reference; `agt` updated to match (AgentTools `feature/runtimes-layout`).
+- [x] Move `codex/` to `runtimes/codex/` and update every path reference; requires `agt` 2.0.0 or later.
 - [ ] Add `runtimes/claude/` when the first Claude template or note lands.
 - [ ] Update `README.md` First Use and Shared Rules for both runtimes.
 - [ ] Update the `refresh` skill so its global pass maintains both runtimes.
