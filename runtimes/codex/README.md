@@ -25,14 +25,14 @@ We do not track `default.rules` or other files in `~/.codex` - they are ephemera
 
 Public sharing usually uses one repository per skill under `elegantchaos/`.
 
-Published operational skill checkouts live inside this repository as git submodules under `../skills/`.
-Repo-local operational skills live under `../skills/` as normal tracked files when they are tightly coupled to this repository.
+Published operational skill checkouts live inside this repository as git submodules under `../../skills/`.
+Repo-local operational skills live under `../../skills/` as normal tracked files when they are tightly coupled to this repository.
 Runtime symlinks for shared skills should live in `~/.agents/skills`.
 
 This repository stores:
 
-- published shared skills in `../skills/`
-- repo-local refresh workflow guidance in `../skills/refresh-skill/`
+- published shared skills in `../../skills/`
+- repo-local refresh workflow guidance in `../../skills/refresh-skill/`
 - the standalone `agt` command-line tool
 
 Before linking runtime skill directories, initialize the shared skill submodules and run the publication audit/link workflows.

@@ -6,7 +6,7 @@ It updates and verifies the shared agents infrastructure itself.
 ## Scope
 
 - Shared agents repository lives at `~/.local/share/agents`.
-- Shared canonical rules live in `~/.local/share/agents/codex/rules/*.rules`.
+- Shared canonical rules live in `~/.local/share/agents/runtimes/codex/rules/*.rules`.
 - Shared canonical baseline guidance lives in `~/.local/share/agents/COMMON.md`.
 - Published shared skill submodules live under `~/.local/share/agents/skills/`.
 - Repo-local operational skills live under `~/.local/share/agents/skills/` as normal tracked files when they are tightly coupled to this repository.
@@ -70,7 +70,7 @@ If a command family appears repeatedly and does not fit an existing file cleanly
    - Otherwise, sync to the revisions recorded by the parent repository and report any upstream drift from status.
 3. Inspect runtime rule drift before overwriting it.
    - Run `agt rules status`.
-   - Read shared `~/.local/share/agents/codex/rules/*.rules`.
+   - Read shared `~/.local/share/agents/runtimes/codex/rules/*.rules`.
    - Read `<codex-home>/rules/default.rules` and any other runtime-only or divergent `*.rules` files reported by status.
    - Treat shared files as canonical; pull back a useful manual runtime edit only by explicitly applying it to the appropriate shared file before synchronization.
 4. Classify each entry in runtime `default.rules`.

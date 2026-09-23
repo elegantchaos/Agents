@@ -7,7 +7,7 @@ GitHub: [github.com/elegantchaos/Agents](https://github.com/elegantchaos/Agents)
 It provides:
 
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
-- shared Codex rule files under `~/.local/share/agents/codex/rules/`
+- shared Codex rule files under `~/.local/share/agents/runtimes/codex/rules/`
 - shared skills under `~/.local/share/agents/skills/`, maintained with the standalone `agt` command
 
 ## First Use
@@ -27,7 +27,7 @@ agt rules sync
 
 ## Shared Rules
 
-Shared reusable Codex approval rules live in `codex/rules/`. Use `agt rules sync` to copy them into `~/.codex/rules/` as generated regular files. The runtime-only `default.rules` file is intentionally not stored in this repository.
+Shared reusable Codex approval rules live in `runtimes/codex/rules/`. Use `agt rules sync` to copy them into `~/.codex/rules/` as generated regular files. The runtime-only `default.rules` file is intentionally not stored in this repository.
 
 ## Shared Skills
 

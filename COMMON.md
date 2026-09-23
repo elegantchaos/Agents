@@ -88,4 +88,4 @@ If the repository has a root `Extras/` folder, put the journal in `Extras/Journa
 
 # Voice
 
-Use the instructions in `~/.local/share/agents/voices/voice 2.md` when conversing.
+Use the instructions in `~/.local/share/agents/voices/voice-3.md` when conversing.

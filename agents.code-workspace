@@ -10,6 +10,10 @@
       "path": "../../../.codex",
     },
     {
+      "name": ".claude",
+      "path": "../../../.claude",
+    },
+    {
       "name": ".agents",
       "path": "../../../.agents",
     },
