@@ -1,26 +1,40 @@
 # Swift plugin
 
-Swift skills maintained in `plugins/swift/` in this repository.
+Opinionated Swift skills from Elegant Chaos, packaged as one plugin for Claude Code and Codex.
 
 | Skill | Owns |
 | --- | --- |
-| [language](skills/language/SKILL.md) | Swift language, API design, and toolchain assumptions |
-| [swiftui](skills/swiftui/SKILL.md) | Views, state flow, navigation, accessibility, and UI performance |
-| [swiftdata](skills/swiftdata/SKILL.md) | SwiftData models, queries, persistence, and migration |
-| [concurrency](skills/concurrency/SKILL.md) | Swift isolation, task lifetimes, cancellation, and synchronization |
-| [testing](skills/testing/SKILL.md) | Swift Testing test design and implementation |
-| [validation](skills/validation/SKILL.md) | Formatting, linting, compilation, test execution, and coverage reporting |
+| [swift:language](skills/language/SKILL.md) | Swift language, file organisation, errors and state, localisation, and toolchain assumptions |
+| [swift:swiftui](skills/swiftui/SKILL.md) | Views, data flow, navigation, design, accessibility, and UI performance |
+| [swift:validation](skills/validation/SKILL.md) | ReleaseTools (`rt validate`) formatting, linting, build, and test validation |
 
-## Prototype status
+## Installation
 
-The skeleton is not yet a replacement for the existing skills. Source comparison, detailed references, and behavioral evaluation are pending; see [REVIEW.md](REVIEW.md).
+The marketplace manifests live at the root of this repository: `.claude-plugin/marketplace.json` for Claude Code and `.agents/plugins/marketplace.json` for Codex.
 
-Not installed or registered in a marketplace. Before installation, resolve overlapping standalone skills, especially `swiftui`.
+Claude Code loads the plugin in place, so edits take effect in new sessions:
 
-Skills use plain `SKILL.md` files. Xcode tools are optional; Apple framework guidance applies only to supported targets.
+```bash
+claude plugin marketplace add ~/.local/share/agents
+claude plugin install swift@elegantchaos
+```
 
-`rt` and `agt` are maintained separately and are not bundled.
+Codex installs a cached copy, so upgrade after changes:
 
-## Maintenance
+```bash
+codex plugin marketplace add ~/.local/share/agents
+codex plugin add swift@elegantchaos
+codex plugin marketplace upgrade elegantchaos
+```
 
-Keep each rule in its owning skill. Load references only when relevant. Preserve attribution and licenses when adapting sources.
+Both runtimes name the skills `swift:<skill>`.
+
+## Status
+
+The skills are direct copies of the former standalone `swift`, `swift-validation`, and `swiftui` skills, renamed to fit the plugin. Our content is the baseline; outside material is reviewed against it, not merged over it. See [REVIEW.md](REVIEW.md).
+
+Concurrency, Swift Testing, and SwiftData guidance still comes from the standalone `swift-concurrency-pro`, `swift-testing-pro`, and `swiftdata-pro` skills, which are forks of Paul Hudson's work. They are planned to move into this plugin once reviewed.
+
+## Licence
+
+MIT, © Elegant Chaos. Third-party attribution is in [NOTICE.md](NOTICE.md).

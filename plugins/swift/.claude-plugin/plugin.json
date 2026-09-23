@@ -1,0 +1,12 @@
+{
+  "name": "swift",
+  "version": "0.2.0",
+  "description": "Opinionated Swift language, SwiftUI, and validation skills from Elegant Chaos.",
+  "author": {
+    "name": "Elegant Chaos",
+    "url": "https://elegantchaos.com"
+  },
+  "homepage": "https://github.com/elegantchaos/Agents/tree/main/plugins/swift",
+  "repository": "https://github.com/elegantchaos/Agents",
+  "license": "MIT"
+}

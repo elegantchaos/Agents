@@ -1,15 +1,19 @@
 {
   "name": "swift",
-  "version": "0.1.0",
-  "description": "Swift language, SwiftUI, SwiftData, concurrency, testing, and validation skills.",
+  "version": "0.2.0",
+  "description": "Opinionated Swift language, SwiftUI, and validation skills from Elegant Chaos.",
   "author": {
-    "name": "Sam Deane"
+    "name": "Elegant Chaos",
+    "url": "https://elegantchaos.com"
   },
+  "homepage": "https://github.com/elegantchaos/Agents/tree/main/plugins/swift",
+  "repository": "https://github.com/elegantchaos/Agents",
+  "license": "MIT",
   "skills": "./skills/",
   "interface": {
     "displayName": "Swift",
-    "shortDescription": "Swift development and validation skills.",
-    "longDescription": "Portable Swift language and workflow guidance with specialist SwiftUI, SwiftData, concurrency, and Swift Testing skills.",
+    "shortDescription": "Swift language, SwiftUI, and validation skills.",
+    "longDescription": "Opinionated Swift language, SwiftUI, and ReleaseTools validation guidance from Elegant Chaos.",
     "developerName": "Elegant Chaos",
     "category": "Productivity",
     "capabilities": [],

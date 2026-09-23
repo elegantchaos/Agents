@@ -1,0 +1,20 @@
+{
+  "name": "elegantchaos",
+  "interface": {
+    "displayName": "Elegant Chaos"
+  },
+  "plugins": [
+    {
+      "name": "swift",
+      "source": {
+        "source": "local",
+        "path": "./plugins/swift"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

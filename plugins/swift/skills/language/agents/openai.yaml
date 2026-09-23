@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift"
+  short_description: "General Swift language guidance"
+  default_prompt: "Use $swift:language for general Swift language guidance, file organization, error handling, state modeling, localization, and baseline Swift practices outside specialist Swift skills."

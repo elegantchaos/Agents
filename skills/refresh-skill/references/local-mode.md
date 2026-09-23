@@ -81,7 +81,7 @@ If `AGENTS.md` does not exist:
 ### Write `Skills`
 
 - For software repositories, include `coding-standards` by default.
-- For Swift repositories, include `swift` by default.
+- For Swift repositories, include `swift:language` by default (from the `swift` plugin in this repository).
 - For JavaScript or TypeScript repositories, include `javascript` by default.
 - For Python repositories, include `python` by default.
 - Refer to shared skills by name (using backticks - eg `my-skill`) when they are available in the current environment. If a required skill is unavailable, preserve the equivalent baseline guidance directly in `AGENTS.md` instead of emitting a dead reference.

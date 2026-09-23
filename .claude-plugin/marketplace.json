@@ -1,0 +1,15 @@
+{
+  "name": "elegantchaos",
+  "description": "Shared agent plugins from Elegant Chaos.",
+  "owner": {
+    "name": "Elegant Chaos",
+    "url": "https://elegantchaos.com"
+  },
+  "plugins": [
+    {
+      "name": "swift",
+      "source": "./plugins/swift",
+      "description": "Opinionated Swift language, SwiftUI, and validation skills."
+    }
+  ]
+}

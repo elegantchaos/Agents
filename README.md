@@ -9,7 +9,7 @@ It provides:
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
 - shared Codex rule files under `~/.local/share/agents/runtimes/codex/rules/`
 - shared skills under `~/.local/share/agents/skills/`, maintained with the standalone `agt` command
-- plugin prototypes under `plugins/`, maintained directly in this repository; see the [Swift plugin](plugins/swift/README.md)
+- plugins under `plugins/`, maintained directly in this repository and installable in Claude Code and Codex; see the [Swift plugin](plugins/swift/README.md)
 
 ## First Use
 
@@ -24,6 +24,15 @@ mint install elegantchaos/AgentTools
 agt skills sync --all
 agt skills link
 agt rules sync
+```
+
+Install the shared plugins in each runtime (see the [Swift plugin](plugins/swift/README.md) for details):
+
+```bash
+claude plugin marketplace add ~/.local/share/agents
+claude plugin install swift@elegantchaos
+codex plugin marketplace add ~/.local/share/agents
+codex plugin add swift@elegantchaos
 ```
 
 ## Shared Rules
