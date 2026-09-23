@@ -65,8 +65,8 @@ Claude Code does not read `~/.agents/skills`, so `~/.agents` is retired. `agt sk
 - [x] Update `~/.agents/skills` references in `README.md`, `runtimes/codex/README.md`, and the refresh skill.
 - [x] Release `agt` 2.0.1 and run `agt skills link`.
 - [x] Confirm Codex still loads user skills from `~/.codex/skills` (verified, although its current docs only list `~/.agents/skills`).
-- [ ] Decide whether the stray `~/.codex/skills/validation-flow` link (duplicate of `swift-validation`) and the unmanaged `find-skills` skill should stay.
-- [ ] Confirm nested submodule skills (`swift-concurrency-pro`, `swift-testing-pro`, `swiftdata-pro`) resolve correctly in Claude Code.
+- [x] Remove the stray `~/.codex/skills/validation-flow` link and the third-party `find-skills` skill.
+- [x] Confirm nested submodule skills (`swift-concurrency-pro`, `swift-testing-pro`, `swiftdata-pro`) resolve correctly in Claude Code.
 
 Verify: skills appear in each runtime's skill list and trigger from their descriptions.
 
@@ -131,3 +131,5 @@ Claude-only features are out of scope until a concrete need appears:
 - hooks (for example enforcing validation before stop)
 - subagent definitions
 - output styles
+
+OpenCode is not in use. If it returns: it already reads skills from `~/.claude/skills` and project `AGENTS.md` files; symlink `~/.config/opencode/AGENTS.md` to the chosen voice file, because OpenCode does not expand the `@` import in `~/.claude/CLAUDE.md`.
