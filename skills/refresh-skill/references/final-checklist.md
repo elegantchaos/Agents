@@ -37,6 +37,6 @@ Include the sections for phases that were run.
 - any shared guidance files explicitly referenced from the `Skills` section
 - unresolved local-vs-shared guidance conflicts
 - any intentional repository overrides to referenced skills or shared guides
-- confirmation that no `Standard Rules` bullet depends on the current wording of an in-scope skill
-- a baseline verification matrix with clause, status (`kept`, `rewritten-equivalent`, or `omitted-intentional`), and location in `AGENTS.md`
-- any intentionally omitted baseline clauses with rationale
+- confirmation that `Standard Rules` is exactly the `COMMON.md` import line
+- restated baseline rules removed, and any restated rules moved to `Project Specific Rules` as genuine repository policy
+- any `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md` found, and what the user decided

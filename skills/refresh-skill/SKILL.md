@@ -9,7 +9,7 @@ Run one coherent maintenance pass:
 
 - `global`: update and verify shared resources under `~/.local/share/agents`, including the shared repository, public skill submodules, runtime skill links, shared rules, scripts, references, and principles
 - `research`: optionally compare selected skills and guidance against trusted primary or high-quality source material, then propose or implement sensible revisions
-- `local`: refresh the current project's `AGENTS.md` from the shared baseline while preserving project-specific rules and generating `Project Specific Rules`, `Standard Rules`, and `Skills`
+- `local`: refresh the current project's `AGENTS.md` while preserving project-specific rules: `Project Specific Rules`, a `Standard Rules` section that imports the shared baseline from `COMMON.md`, and `Skills`
 
 The default path is `global` followed by `local`.
 Run `research` only when requested, when maintaining the shared agents repo itself, or when there is concrete evidence that a skill may be stale.
@@ -43,7 +43,7 @@ Point to skills to support selection, not invite eager loading.
 Use skill names, not explicit file paths.
 
 Examples:
-- Good: `Use the swiftui-pro skill for SwiftUI view work.`
+- Good: `Use the swift:swiftui skill for SwiftUI view work.`
 - Bad: `Also consider these 12 related skills...`
 
 ## Shared Resource Maintenance

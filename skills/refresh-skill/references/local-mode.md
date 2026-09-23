@@ -42,7 +42,7 @@ When inserting shared references into the `Skills` section:
 
 - Detect whether the target repository already has an `AGENTS.md`.
 - If it exists, read it first.
-- Read `~/.local/share/agents/COMMON.md`.
+- Read `~/.local/share/agents/COMMON.md`, so restated baseline rules in an existing `AGENTS.md` can be recognised.
 - Read the shared skill instructions relevant to the detected stack and workflows when the shared baseline delegates detailed guidance to those skills.
 - Detect technologies in use from repo evidence such as `.swift`, `Package.swift`, `.xcodeproj`, `pyproject.toml`, `requirements*.txt`, `package.json`, and `tsconfig.json`.
 
@@ -64,19 +64,16 @@ If `AGENTS.md` does not exist:
 
 ### Write `Standard Rules`
 
-- Base this section on the shared baseline in `~/.local/share/agents/COMMON.md` and preserve the force of its requirements.
-- Keep this section limited to durable repo-wide obligations and baseline engineering policy.
-- Treat that baseline as minimal, not the home for detailed coding or language guidance.
-- Include its core guidance, including principles, workflow expectations, testing and validation expectations, and safety.
-- Include stack-specific rules here only when they are explicit repository policy that should remain true even if related shared skills or guides change.
-- When a Swift repository uses ReleaseTools, state that `rt` is its canonical validation command and that target mode runs the matching SwiftPM test target when present.
-- Prefer concrete, checkable instructions over narrative explanation.
-- Compress for agent ingestion when helpful, but do not weaken meaning.
-- Rewrite shared guidance as direct rules instead of citing local guidance files in this section.
-- Do not mention skills, skill names, or raw `~/...` guidance paths directly in this section.
-- Do not restate procedural, stylistic, framework-specific, language-specific, or workflow-specific guidance that is owned by a referenced skill or shared guide.
-- If a rule would need to change when a referenced skill changes, it belongs in `Skills`, not `Standard Rules`.
-- `Standard Rules` must not silently narrow, pin, or override guidance delegated to `Skills`.
+`Standard Rules` references the shared baseline instead of restating it. The section contains exactly this line and nothing else:
+
+```markdown
+Read and follow @~/.local/share/agents/COMMON.md before starting work.
+```
+
+- Write the line as plain text, never inside backticks or a code block. Claude Code expands a bare `@path` as an import when it loads `AGENTS.md`; Codex and other agents read it as an instruction to open the file.
+- When an existing `AGENTS.md` restates baseline rules from `COMMON.md`, replace them with the import line.
+- When an existing restated rule is genuine repository policy that goes beyond the baseline, move it to `Project Specific Rules` instead of dropping it.
+- Do not add stack-specific, skill-owned, or workflow rules to this section; they belong in `Skills` or, for explicit repository overrides, in `Project Specific Rules`.
 
 ### Write `Skills`
 
@@ -94,7 +91,7 @@ If `AGENTS.md` does not exist:
 ### Finish
 
 - At the bottom of `AGENTS.md`, add "To refresh this file, use the `refresh` skill."
-- Verify baseline requirements.
+- Run the Baseline Verification checks below.
 - Lint for softened requirement language in mandatory clauses.
 
 ## Fresh File Rules
@@ -122,25 +119,17 @@ Good sentence patterns:
 
 ## Baseline Verification
 
-Verify that these clauses remain present in `Standard Rules` with equivalent force:
+Verify that:
 
-- testing: red/green TDD for non-UI code
-- UI expectation: create previews for UI code
-- validation discipline: follow the validation workflow and reporting rules
-- tool discovery: when a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing
-- safety: do not perform destructive actions without explicit approval
-- safety: if unexpected workspace changes appear, pause and confirm direction
-- source quality: prefer trusted primary sources for technical decisions
-
-If any required clause is intentionally omitted, record the rationale in the final response.
-
-Also verify that `Standard Rules` does not contain explicit skill references or raw `~/...` guidance paths, and that those explicit references appear under `Skills` instead.
-
-Also verify that each `Standard Rules` bullet is either baseline policy or durable repository policy, and that no `Standard Rules` bullet would need rewriting solely because an in-scope skill changed.
+- `Standard Rules` contains exactly the `COMMON.md` import line, as plain text outside backticks and code blocks.
+- No other part of `AGENTS.md` restates rules owned by `COMMON.md`.
+- No `Project Specific Rules` bullet weakens or contradicts `COMMON.md` unless it is stated as an explicit repository override.
+- Explicit skill references appear only under `Skills`, apart from the regeneration note.
+- The repository has no `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md`. Any of these stops Claude Code reading `AGENTS.md` by default. Never create one; if one exists, report it and ask whether to remove it or fold its content into `AGENTS.md`.
 
 ## Softened Requirement Phrases
 
-Remove softening phrases from mandatory clauses unless the source baseline explicitly uses them. For example:
+Remove softening phrases from mandatory clauses in `Project Specific Rules` and `Skills`. For example:
 
 - `when practical`
 - `where feasible`

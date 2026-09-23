@@ -28,7 +28,7 @@ Goal: both runtimes load the chosen voice globally and each project's `AGENTS.md
 - [x] Replace the inline voice copy in `~/.codex/AGENTS.md` with a symlink to `voices/voice-3.md`.
 - [x] Confirm Codex follows the `~/.codex/AGENTS.md` symlink.
 - [ ] Document the global voice setup (both runtimes) in `README.md` First Use, since it lives outside the repository.
-- [ ] Update `skills/refresh-skill/references/local-mode.md` so a local refresh never creates a project `CLAUDE.md`, and warns when one (or `CLAUDE.local.md`) exists, since it stops Claude Code reading `AGENTS.md` by default.
+- [x] Update `skills/refresh-skill/references/local-mode.md` so a local refresh never creates a project `CLAUDE.md`, and warns when one (or `CLAUDE.local.md`) exists, since it stops Claude Code reading `AGENTS.md` by default.
 
 Project `CLAUDE.md` files that import `AGENTS.md` are not needed: Claude Code reads `AGENTS.md` natively. Fall back to a `CLAUDE.md` containing `@AGENTS.md` only for sessions where native support is unavailable (third-party providers such as Bedrock, or telemetry disabled).
 
@@ -48,9 +48,9 @@ Read and follow @~/.local/share/agents/COMMON.md before starting work.
 
 Claude Code expands the `@` import at launch (after a one-time approval per project, because the path is outside the project). Codex has no import syntax and reads it as an instruction to open the file, which matches today's behaviour.
 
-- [ ] Update the refresh skill's output contract: project `AGENTS.md` keeps `Project Specific Rules`, the `COMMON.md` import line, `Skills`, and explicit overrides only.
-- [ ] Rewrite the `Baseline Verification` section of `local-mode.md` to check the import line is present instead of checking per-project restatement.
-- [ ] Refresh this repository's own `AGENTS.md` under the new contract.
+- [x] Update the refresh skill's output contract: project `AGENTS.md` keeps `Project Specific Rules`, the `COMMON.md` import line, `Skills`, and explicit overrides only.
+- [x] Rewrite the `Baseline Verification` section of `local-mode.md` to check the import line is present instead of checking per-project restatement.
+- [x] Refresh this repository's own `AGENTS.md` under the new contract.
 - [ ] Refresh other projects' `AGENTS.md` files as they are next worked on.
 
 Verify: in a fresh session of each runtime, the baseline rules appear exactly once; in Claude Code, `/memory` lists `COMMON.md` as imported.
