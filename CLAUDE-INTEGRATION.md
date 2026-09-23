@@ -28,7 +28,7 @@ Goal: both runtimes load the chosen voice globally and each project's `AGENTS.md
 - [x] Replace the inline voice copy in `~/.codex/AGENTS.md` with a symlink to `voices/voice-3.md`.
 - [x] Confirm Codex follows the `~/.codex/AGENTS.md` symlink.
 - [ ] Document the global voice setup (both runtimes) in `README.md` First Use, since it lives outside the repository.
-- [x] Update `skills/refresh-skill/references/local-mode.md` so a local refresh never creates a project `CLAUDE.md`, and warns when one (or `CLAUDE.local.md`) exists, since it stops Claude Code reading `AGENTS.md` by default.
+- [x] Update `plugins/baseline/skills/refresh/references/local-mode.md` so a local refresh never creates a project `CLAUDE.md`, and warns when one (or `CLAUDE.local.md`) exists, since it stops Claude Code reading `AGENTS.md` by default.
 
 Project `CLAUDE.md` files that import `AGENTS.md` are not needed: Claude Code reads `AGENTS.md` natively. Fall back to a `CLAUDE.md` containing `@AGENTS.md` only for sessions where native support is unavailable (third-party providers such as Bedrock, or telemetry disabled).
 
@@ -52,7 +52,7 @@ Claude Code expands the `@` import at launch (after a one-time approval per proj
 - [x] Rewrite the `Baseline Verification` section of `local-mode.md` to check the import line is present instead of checking per-project restatement.
 - [x] Refresh this repository's own `AGENTS.md` under the new contract.
 - [ ] Refresh other projects' `AGENTS.md` files as they are next worked on.
-- [x] Keep journal and decision-log rules in `COMMON.md` as an opt-in `Project Records` section (decided against a separate skill). The import loads all of `COMMON.md`, about 1,050 tokens.
+- [x] Slim `COMMON.md` to always-on rules (about 280 words, roughly 380 tokens); coding standards and project records move to the `baseline` plugin. TDD stays always-on.
 
 Verify: in a fresh session of each runtime, the baseline rules appear exactly once; in Claude Code, `/memory` lists `COMMON.md` as imported.
 
@@ -77,7 +77,7 @@ Goal: skill names and content do not assume Codex.
 
 - [ ] Rename `codex-git` to a neutral name (for example `git-workflow`); update the submodule, runtime links, and every `AGENTS.md` that references it.
 - [ ] Rewrite its "Sandboxing and Escalation" section as conditional guidance ("if your environment sandboxes `.git/` writes…") with short per-runtime notes.
-- [ ] Generalise `skills/refresh-skill/references/global-mode.md`: replace `<codex-home>`-only assumptions with per-runtime locations.
+- [ ] Generalise `plugins/baseline/skills/refresh/references/global-mode.md`: replace `<codex-home>`-only assumptions with per-runtime locations.
 - [ ] Update the refresh skill's `default_prompt` wording so it does not rely on Codex's `$refresh` syntax alone (Claude invokes skills as `/refresh`).
 - [ ] Sweep remaining skills for Codex-only terminology.
 
@@ -117,6 +117,16 @@ Goal: `plugins/swift` installs in both runtimes from the same `skills/` director
 - [ ] Confirm the plugin skills appear in a fresh Claude Code desktop session.
 - [ ] Archive the six former Swift skill repositories on GitHub with a pointer to the plugin (deferred).
 - [ ] Keep plugin versions in sync between the two manifests (or generate one from the other).
+
+## Stage 7b: Baseline Plugin
+
+Goal: our cross-language skills ship as a plugin, and `COMMON.md` holds only always-on rules.
+
+- [x] Create `plugins/baseline` with `baseline:standards` (from `coding-standards-skill`), `baseline:records` (new, from `COMMON.md`), and `baseline:refresh` (moved from `skills/refresh-skill`, with `scripts/ensure-agt.sh`).
+- [x] Move procedural guidance out of `COMMON.md` after checking each rule is covered by the owning skill.
+- [x] Retire the `coding-standards-skill` submodule and update references.
+- [ ] Remove the obsolete `skills/refresh-skill` repo-local path from `agt`.
+- [ ] Decide whether `install-mint` and `install-release-tools` are still needed.
 
 ## Stage 8: Layout and Docs
 

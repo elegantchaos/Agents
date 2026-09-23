@@ -24,7 +24,7 @@ If doing partial work, load only the relevant reference files.
 
 - This fork is the specialist Swift Testing reference layer. Local workflow, validation order, and reporting conventions belong in baseline instructions or a separate workflow skill.
 - Use the `swift:language` skill for baseline Swift language, file-organization, and toolchain guidance.
-- Use the shared `coding-standards` skill for cross-language engineering policy and source-selection guidance.
+- Use the `baseline:standards` skill for cross-language engineering policy and source-selection guidance.
 - Swift 6.2 or later with current Swift Testing APIs is the recommended baseline for new projects.
 - For older projects, recommend upgrading the toolchain and Swift Testing usage to Swift 6.2-era conventions before falling back to older patterns. If the user chooses not to upgrade, work within the project's current constraints and say so clearly.
 - Treat compiler diagnostics, the installed toolchain, and primary-source documentation as authoritative when API behavior or availability is uncertain. Do not assume this skill overrides them.

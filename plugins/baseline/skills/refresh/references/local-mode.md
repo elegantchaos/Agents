@@ -78,13 +78,13 @@ Read and follow @~/.local/share/agents/COMMON.md before starting work.
 
 ### Write `Skills`
 
-- For software repositories, include `coding-standards` by default.
+- For software repositories, include `baseline:standards` by default (from the `baseline` plugin in this repository).
 - For Swift repositories, include `swift:language` by default (from the `swift` plugin in this repository).
 - For JavaScript or TypeScript repositories, include `javascript` by default.
 - For Python repositories, include `python` by default.
 - Refer to shared skills by name (using backticks - eg `my-skill`) when they are available in the current environment. If a required skill is unavailable, preserve the equivalent baseline guidance directly in `AGENTS.md` instead of emitting a dead reference.
 - Add one bullet per shared skill that is in scope for the project.
-- Use an imperative instruction for each bullet, such as "Use the `codex-git` skill for git operations." or "Follow the `coding-standards` skill for all coding."
+- Use an imperative instruction for each bullet, such as "Use the `codex-git` skill for git operations." or "Follow the `baseline:standards` skill for all coding."
 - Include only the skills relevant to the detected stack and workflows.
 - Treat each referenced skill or shared guide as the source of truth for that domain.
 - If the repository intentionally overrides a referenced skill or shared guide, state that override explicitly in `Project Specific Rules`.
@@ -95,13 +95,12 @@ Make this offer only on a project's first refresh under the current contract: wh
 
 - Ask whether to enable a decision log and backfill it.
 - If the user agrees, add the decision-log opt-in bullet to `Project Specific Rules`.
-- To backfill, gather candidate decisions already established in the project, from design documents, the journal, `README*`, and the code's structure and dependencies. Present them as a short list, each with a one-line summary and its evidence.
-- Record only the candidates the user confirms, following the `Decisions` rules in `COMMON.md`. List unconfirmed or still-emerging candidates as deferred in a journal entry when the project keeps a journal; otherwise report them.
+- Backfill the log with the `baseline:records` skill.
 - If the user declines, do not ask again on later refreshes.
 
 ### Finish
 
-- At the bottom of `AGENTS.md`, add "To refresh this file, use the `refresh` skill."
+- At the bottom of `AGENTS.md`, add "To refresh this file, use the `baseline:refresh` skill."
 - Run the Baseline Verification checks below.
 - Lint for softened requirement language in mandatory clauses.
 

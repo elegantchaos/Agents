@@ -10,6 +10,11 @@
       "name": "swift",
       "source": "./plugins/swift",
       "description": "Opinionated Swift language, SwiftUI, concurrency, testing, SwiftData, and validation skills."
+    },
+    {
+      "name": "baseline",
+      "source": "./plugins/baseline",
+      "description": "Coding standards, project records, and shared-agent maintenance."
     }
   ]
 }

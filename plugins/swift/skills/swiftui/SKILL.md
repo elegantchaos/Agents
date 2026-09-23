@@ -13,7 +13,7 @@ Avoid the potentially harmful patterns. Flag them in existing code.
 
 Other guidelines:
 
-- Use the `swift:language` and `coding-standards` skills to ensure the code is modern, clean, and maintainable.
+- Use the `swift:language` and `baseline:standards` skills to ensure the code is modern, clean, and maintainable.
 - Don't use deprecated API - see `references/api.md`.
 - Follow the rules in `references/views.md`.
 - Implement the data flow using `references/data.md`.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coding Standards"
+  short_description: "Shared coding principles and cross-language engineering guidance"
+  default_prompt: "Use $baseline:standards for general coding standards, engineering principles, code quality expectations, and cross-language guidance that is not tied to one specific language or framework."

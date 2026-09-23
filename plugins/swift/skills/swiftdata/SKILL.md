@@ -23,7 +23,7 @@ If doing partial work, load only the relevant reference files.
 ## Local Integration Notes
 
 - Use the `swift:language` skill for baseline Swift language, file-organization, and toolchain guidance.
-- Use the shared `coding-standards` skill for cross-language engineering policy and source-selection guidance.
+- Use the `baseline:standards` skill for cross-language engineering policy and source-selection guidance.
 - Swift 6.2 or later with current SwiftData APIs is the recommended baseline for new projects. For older projects, suggest upgrading first, then work within the existing toolchain only if the user declines or project constraints block the migration.
 
 

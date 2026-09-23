@@ -31,7 +31,7 @@ If doing a partial review, load only the relevant reference files.
 
 - This fork is the specialist Swift concurrency reference layer. Baseline project workflow, validation order, and reporting conventions belong in shared instructions or workflow skills rather than here.
 - Use the `swift:language` skill for baseline Swift language, file-organization, and toolchain guidance.
-- Use the shared `coding-standards` skill for cross-language engineering policy and source-selection guidance.
+- Use the `baseline:standards` skill for cross-language engineering policy and source-selection guidance.
 - Swift 6.2 with strict concurrency checking is the recommended baseline for new projects. For older projects, recommend upgrading before falling back to older concurrency patterns. If the user declines or project constraints block the migration, work within those constraints and say so clearly.
 - For modern toolchains, treat this skill's concurrency guidance as authoritative unless compiler diagnostics or the installed toolchain clearly disagree. When supporting older toolchains, fall back to the project's actual constraints and available APIs.
 

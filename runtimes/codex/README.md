@@ -32,7 +32,7 @@ Runtime symlinks for shared skills live in `~/.codex/skills` and `~/.claude/skil
 This repository stores:
 
 - published shared skills in `../../skills/`
-- repo-local refresh workflow guidance in `../../skills/refresh-skill/`
+- the refresh workflow in the `baseline` plugin (`../../plugins/baseline/skills/refresh/`)
 - the standalone `agt` command-line tool
 
 Before linking runtime skill directories, initialize the shared skill submodules and run the publication audit/link workflows.

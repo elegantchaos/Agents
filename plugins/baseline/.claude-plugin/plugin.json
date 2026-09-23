@@ -1,0 +1,12 @@
+{
+  "name": "baseline",
+  "version": "0.1.0",
+  "description": "Elegant Chaos baseline: coding standards, project records, and shared-agent maintenance.",
+  "author": {
+    "name": "Elegant Chaos",
+    "url": "https://elegantchaos.com"
+  },
+  "homepage": "https://github.com/elegantchaos/Agents/tree/main/plugins/baseline",
+  "repository": "https://github.com/elegantchaos/Agents",
+  "license": "MIT"
+}

@@ -1,9 +1,6 @@
 [submodule "skills/codex-git-skill"]
 	path = skills/codex-git-skill
 	url = git@github.com:elegantchaos/codex-git-skill
-[submodule "skills/coding-standards-skill"]
-	path = skills/coding-standards-skill
-	url = git@github.com:elegantchaos/coding-standards-skill
 [submodule "skills/install-mint-skill"]
 	path = skills/install-mint-skill
 	url = git@github.com:elegantchaos/install-mint-skill

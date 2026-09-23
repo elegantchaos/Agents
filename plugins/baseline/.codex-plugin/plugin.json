@@ -1,0 +1,22 @@
+{
+  "name": "baseline",
+  "version": "0.1.0",
+  "description": "Elegant Chaos baseline: coding standards, project records, and shared-agent maintenance.",
+  "author": {
+    "name": "Elegant Chaos",
+    "url": "https://elegantchaos.com"
+  },
+  "homepage": "https://github.com/elegantchaos/Agents/tree/main/plugins/baseline",
+  "repository": "https://github.com/elegantchaos/Agents",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Baseline",
+    "shortDescription": "Coding standards, project records, and shared-agent maintenance.",
+    "longDescription": "Elegant Chaos cross-language coding standards, development journal and decision log practice, and the refresh workflow for shared agent resources.",
+    "developerName": "Elegant Chaos",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Review this project against our coding standards."
+  }
+}
