@@ -1,12 +1,3 @@
-[submodule "skills/Swift-Concurrency-Agent-Skill"]
-	path = skills/Swift-Concurrency-Agent-Skill
-	url = git@github.com:elegantchaos/Swift-Concurrency-Agent-Skill
-[submodule "skills/Swift-Testing-Agent-Skill"]
-	path = skills/Swift-Testing-Agent-Skill
-	url = git@github.com:elegantchaos/Swift-Testing-Agent-Skill
-[submodule "skills/SwiftData-Agent-Skill"]
-	path = skills/SwiftData-Agent-Skill
-	url = git@github.com:elegantchaos/SwiftData-Agent-Skill
 [submodule "skills/codex-git-skill"]
 	path = skills/codex-git-skill
 	url = git@github.com:elegantchaos/codex-git-skill

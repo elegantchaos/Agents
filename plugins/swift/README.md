@@ -6,6 +6,9 @@ Opinionated Swift skills from Elegant Chaos, packaged as one plugin for Claude C
 | --- | --- |
 | [swift:language](skills/language/SKILL.md) | Swift language, file organisation, errors and state, localisation, and toolchain assumptions |
 | [swift:swiftui](skills/swiftui/SKILL.md) | Views, data flow, navigation, design, accessibility, and UI performance |
+| [swift:concurrency](skills/concurrency/SKILL.md) | Actor isolation, structured and unstructured tasks, cancellation, and async streams |
+| [swift:testing](skills/testing/SKILL.md) | Swift Testing test design, async tests, and migration from XCTest |
+| [swift:swiftdata](skills/swiftdata/SKILL.md) | SwiftData models, queries, predicates, indexing, and CloudKit |
 | [swift:validation](skills/validation/SKILL.md) | ReleaseTools (`rt validate`) formatting, linting, build, and test validation |
 
 ## Installation
@@ -30,9 +33,7 @@ Both runtimes name the skills `swift:<skill>`.
 
 ## Status
 
-The skills are direct copies of the former standalone `swift`, `swift-validation`, and `swiftui` skills, renamed to fit the plugin. Our content is the baseline; outside material is reviewed against it, not merged over it. See [REVIEW.md](REVIEW.md).
-
-Concurrency, Swift Testing, and SwiftData guidance still comes from the standalone `swift-concurrency-pro`, `swift-testing-pro`, and `swiftdata-pro` skills, which are forks of Paul Hudson's work. They are planned to move into this plugin once reviewed.
+The skills are direct copies of the former standalone skills, renamed to fit the plugin: `swift`, `swift-validation`, and `swiftui` (ours), and `swift-concurrency-pro`, `swift-testing-pro`, and `swiftdata-pro` (our forks of Paul Hudson's skills). Our content is the baseline; outside material is reviewed against it, not merged over it. See [REVIEW.md](REVIEW.md).
 
 ## Licence
 

@@ -1,0 +1,10 @@
+interface:
+  display_name: "SwiftData"
+  short_description: "Reviews SwiftData code for modern best practices."
+  icon_small: "./assets/swiftdata-icon.svg"
+  icon_large: "./assets/swiftdata-icon.png"
+  brand_color: "#5A7585"
+  default_prompt: "Use $swift:swiftdata to review my project."
+
+policy:
+  allow_implicit_invocation: true

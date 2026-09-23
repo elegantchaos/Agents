@@ -111,10 +111,10 @@ Goal: `plugins/swift` installs in both runtimes from the same `skills/` director
 - [x] Check the current Claude Code plugin and marketplace manifest schema against the official docs before writing files.
 - [x] Add `plugins/swift/.claude-plugin/plugin.json` alongside `.codex-plugin/plugin.json`.
 - [x] Add repo-root marketplaces: `.claude-plugin/marketplace.json` (Claude Code) and `.agents/plugins/marketplace.json` (Codex).
-- [x] Seed the plugin with direct copies of our `swift`, `swift-validation`, and `swiftui` skills as `swift:language`, `swift:validation`, and `swift:swiftui`; retire their standalone submodules; add LICENSE and NOTICE.md.
+- [x] Seed the plugin with direct copies of all six Swift skills (`swift:language`, `swift:swiftui`, `swift:concurrency`, `swift:testing`, `swift:swiftdata`, `swift:validation`); retire their standalone submodules; add LICENSE and NOTICE.md.
 - [x] Install in both runtimes; both name the skills `swift:<skill>`.
 - [ ] Confirm the plugin skills appear in a fresh Claude Code desktop session.
-- [ ] Archive the public `swift-skill`, `swiftui-skill`, and `validation-flow-skill` repositories with a pointer to the plugin.
+- [ ] Archive the six former Swift skill repositories on GitHub with a pointer to the plugin (deferred).
 - [ ] Keep plugin versions in sync between the two manifests (or generate one from the other).
 
 ## Stage 8: Layout and Docs

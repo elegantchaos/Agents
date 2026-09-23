@@ -9,7 +9,7 @@
     {
       "name": "swift",
       "source": "./plugins/swift",
-      "description": "Opinionated Swift language, SwiftUI, and validation skills."
+      "description": "Opinionated Swift language, SwiftUI, concurrency, testing, SwiftData, and validation skills."
     }
   ]
 }

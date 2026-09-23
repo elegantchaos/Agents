@@ -13,10 +13,6 @@
       "name": ".claude",
       "path": "../../../.claude",
     },
-    {
-      "name": ".agents",
-      "path": "../../../.agents",
-    },
   ],
   "settings": {
     "swift.autoGenerateLaunchConfigurations": false,

@@ -41,7 +41,7 @@ For baseline observation-model guidance, follow the `swift:language` skill. The 
 
 - If you only need the number of items matching a query, consider `ModelContext.fetchCount()` with a fetch descriptor. This will _not_ live update if the data changes unless something else triggers the update, such as `@Query`, so it should be used carefully.
 
-For more help with SwiftData, suggest the `swiftdata-pro` skill.
+For more help with SwiftData, suggest the `swift:swiftdata` skill.
 
 ## If the project uses SwiftData with CloudKit
 

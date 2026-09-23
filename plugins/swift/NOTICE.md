@@ -6,11 +6,20 @@ The guidance is intentionally opinionated. It reflects Elegant Chaos's own exper
 
 ## Third-party work
 
-### SwiftUI Agent Skill, by Paul Hudson
+### Agent skills by Paul Hudson
 
-The `swiftui` skill is an evolution of Paul Hudson's [SwiftUI Agent Skill](https://github.com/twostraws/SwiftUI-Agent-Skill). Parts of its reference material began as copies of that work. It has since been extended, reorganised, and revised to reflect our own preferences, and it may now diverge heavily from the original. Differences are ours, not Paul's, and should not be taken as his recommendations.
+Four skills in this plugin are evolutions of Paul Hudson's agent skills:
 
-Paul's work is used under the following licence:
+| Skill | Upstream |
+| --- | --- |
+| `swiftui` | [SwiftUI Agent Skill](https://github.com/twostraws/SwiftUI-Agent-Skill) |
+| `concurrency` | [Swift Concurrency Agent Skill](https://github.com/twostraws/Swift-Concurrency-Agent-Skill) |
+| `testing` | [Swift Testing Agent Skill](https://github.com/twostraws/Swift-Testing-Agent-Skill) |
+| `swiftdata` | [SwiftData Agent Skill](https://github.com/twostraws/SwiftData-Agent-Skill) |
+
+Parts of these skills began as copies of Paul's work, including the icons for `concurrency`, `testing`, and `swiftdata`. They have since been extended, reorganised, and revised to reflect our own preferences, and they may now diverge heavily from the originals. Differences are ours, not Paul's, and should not be taken as his recommendations.
+
+Paul's work is used under the following licence, which is identical for all four repositories:
 
 ```text
 MIT License

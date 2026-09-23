@@ -1,7 +1,7 @@
 {
   "name": "swift",
-  "version": "0.2.0",
-  "description": "Opinionated Swift language, SwiftUI, and validation skills from Elegant Chaos.",
+  "version": "0.3.0",
+  "description": "Opinionated Swift language, SwiftUI, concurrency, Swift Testing, SwiftData, and validation skills from Elegant Chaos.",
   "author": {
     "name": "Elegant Chaos",
     "url": "https://elegantchaos.com"
@@ -12,8 +12,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Swift",
-    "shortDescription": "Swift language, SwiftUI, and validation skills.",
-    "longDescription": "Opinionated Swift language, SwiftUI, and ReleaseTools validation guidance from Elegant Chaos.",
+    "shortDescription": "Swift language, SwiftUI, concurrency, testing, SwiftData, and validation skills.",
+    "longDescription": "Opinionated Swift language, SwiftUI, concurrency, Swift Testing, SwiftData, and ReleaseTools validation guidance from Elegant Chaos.",
     "developerName": "Elegant Chaos",
     "category": "Productivity",
     "capabilities": [],
