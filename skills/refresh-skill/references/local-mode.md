@@ -73,6 +73,7 @@ Read and follow @~/.local/share/agents/COMMON.md before starting work.
 - Write the line as plain text, never inside backticks or a code block. Claude Code expands a bare `@path` as an import when it loads `AGENTS.md`; Codex and other agents read it as an instruction to open the file.
 - When an existing `AGENTS.md` restates baseline rules from `COMMON.md`, replace them with the import line.
 - When an existing restated rule is genuine repository policy that goes beyond the baseline, move it to `Project Specific Rules` instead of dropping it.
+- When an existing `AGENTS.md` keeps a journal or decision log, in any section, keep it enabled with the matching opt-in bullet from the `Project Records` section of `COMMON.md` in `Project Specific Rules`.
 - Do not add stack-specific, skill-owned, or workflow rules to this section; they belong in `Skills` or, for explicit repository overrides, in `Project Specific Rules`.
 
 ### Write `Skills`

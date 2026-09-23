@@ -52,6 +52,7 @@ Claude Code expands the `@` import at launch (after a one-time approval per proj
 - [x] Rewrite the `Baseline Verification` section of `local-mode.md` to check the import line is present instead of checking per-project restatement.
 - [x] Refresh this repository's own `AGENTS.md` under the new contract.
 - [ ] Refresh other projects' `AGENTS.md` files as they are next worked on.
+- [x] Keep journal and decision-log rules in `COMMON.md` as an opt-in `Project Records` section (decided against a separate skill). The import loads all of `COMMON.md`, about 1,050 tokens.
 
 Verify: in a fresh session of each runtime, the baseline rules appear exactly once; in Claude Code, `/memory` lists `COMMON.md` as imported.
 

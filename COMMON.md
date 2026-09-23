@@ -72,16 +72,28 @@ Report validation gaps and residual risk.
 
 Prefer trusted primary sources for technical decisions, especially official platform, language, package, API, and dependency documentation.
 
-## Journal
+## Project Records
 
-If `Project Specific Rules` enables journalling, keep a journal as a series of Markdown files.
+Projects opt in to these records through `Project Specific Rules`, for example "Keep a development journal in `Extras/Journal/`." or "Keep a decision log in `Extras/Decisions/`." Apply only the records a project enables. If the repository has a root `Extras/` folder, use `Extras/Journal/` and `Extras/Decisions/`; otherwise use its configured locations.
 
-Add dated entries that document current implementation work, research, prototype steps, experiments, approaches tried, findings, open questions, and ideas still to try.
+Each kind of record has one job:
 
-Keep an `index.md` file updated when adding new journal entries; use it as the quick guide to journal contents because filenames only provide rough chronology.
+- Core documentation describes the system as it is now. Keep it current.
+- Decisions record why an important choice was made and what it binds.
+- The journal records work as it happened.
 
-Add or update a journal entry when a work session produces useful context that future work should preserve.
+### Journal
 
-When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.
+- Add a dated Markdown entry when a session produces context worth preserving: implementation work, research, experiments, approaches tried, findings, open questions, and ideas still to try.
+- Keep `index.md` updated as the guide to the journal, because filenames only give rough chronology.
+- Treat entries as history. Do not rewrite past entries to match later changes; record the change in a new entry or a clearly separated follow-up section.
+- Link entries to the decisions they establish or apply.
+- When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.
 
-If the repository has a root `Extras/` folder, put the journal in `Extras/Journal/`; otherwise use the repository's configured journal location.
+### Decisions
+
+- Record one Markdown file per important decision: a choice that later work must follow, such as an architectural boundary, technology baseline, or cross-cutting policy. Keep implementation detail, naming, and emergent or unconfirmed directions in the journal.
+- Ask for explicit user confirmation before recording a decision.
+- Check relevant decisions before implementing new code. If the work would conflict with a decision, raise it with the user instead of diverging.
+- Give each decision a status, date, context, the decision itself, alternatives considered (distinguishing rejected options from ones retained for later), and consequences. Follow the repository's existing naming scheme.
+- Do not rewrite a decision's rationale, scope, or consequences. Record a new decision that supersedes it. Terminology updates that leave the meaning unchanged are allowed.
