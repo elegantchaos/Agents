@@ -6,6 +6,7 @@ Include the sections for phases that were run.
 
 - shared agents repository update result
 - public skill sync/link/status result
+- shared plugin install or refresh result for each runtime, including any runtime skipped because its CLI was not on `PATH`
 - skills audited, if audit was run
 - runtime skill links changed or retired
 - rules moved from `default.rules` into shared files

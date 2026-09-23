@@ -13,6 +13,7 @@ It updates and verifies the shared agents infrastructure itself.
 - The standalone `agt` command-line tool manages public skill maintenance.
 - Local runtime rules live in `<codex-home>/rules/*.rules`.
 - Runtime skill links live under `~/.codex/skills/` and `~/.claude/skills/`.
+- Shared plugins live under `~/.local/share/agents/plugins/`, listed in `.claude-plugin/marketplace.json` (Claude Code) and `.agents/plugins/marketplace.json` (Codex). Claude Code loads them in place; Codex runs from a cached copy that must be refreshed after changes.
 - Runtime `default.rules` is a catch-all and should stay small. It may be empty and must not be stored in the shared repository.
 
 ## Path Conventions
@@ -68,6 +69,7 @@ If a command family appears repeatedly and does not fit an existing file cleanly
    - Run `agt skills audit --all` for publication readiness, major edits, or explicit audit requests.
    - If the user asked to advance skills to latest upstream commits, fetch/pull each relevant submodule safely, validate, and update the parent repository's submodule pointers.
    - Otherwise, sync to the revisions recorded by the parent repository and report any upstream drift from status.
+   - Install or refresh every shared plugin in each runtime by running `scripts/refresh`, which also performs the `agt skills sync --all` and `agt skills link` steps above. It is idempotent. If `claude` or `codex` is not on `PATH`, it skips that runtime; report the skip.
 3. Inspect runtime rule drift before overwriting it.
    - Run `agt rules status`.
    - Read shared `~/.local/share/agents/runtimes/codex/rules/*.rules`.

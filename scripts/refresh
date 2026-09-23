@@ -1,4 +1,31 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$root"
 
 agt skills sync --all
 agt skills link
+
+# Install, or refresh, every plugin listed in each runtime's marketplace.
+# Claude Code loads plugins in place; Codex runs from a cached copy that `plugin add` replaces.
+if command -v claude >/dev/null; then
+  marketplace=$(jq -r .name .claude-plugin/marketplace.json)
+  claude plugin marketplace add "$root"
+  claude plugin marketplace update "$marketplace"
+  for plugin in $(jq -r '.plugins[].name' .claude-plugin/marketplace.json); do
+    claude plugin install "$plugin@$marketplace"
+  done
+else
+  echo "claude not found on PATH; skipping Claude Code plugins"
+fi
+
+if command -v codex >/dev/null; then
+  marketplace=$(jq -r .name .agents/plugins/marketplace.json)
+  codex plugin marketplace add "$root"
+  for plugin in $(jq -r '.plugins[].name' .agents/plugins/marketplace.json); do
+    codex plugin add "$plugin@$marketplace"
+  done
+else
+  echo "codex not found on PATH; skipping Codex plugins"
+fi

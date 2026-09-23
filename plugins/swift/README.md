@@ -19,12 +19,11 @@ claude plugin marketplace add ~/.local/share/agents
 claude plugin install swift@elegantchaos
 ```
 
-Codex installs a cached copy, so upgrade after changes:
+Codex installs a cached copy. Re-run `codex plugin add` after changes to refresh it:
 
 ```bash
 codex plugin marketplace add ~/.local/share/agents
 codex plugin add swift@elegantchaos
-codex plugin marketplace upgrade elegantchaos
 ```
 
 Both runtimes name the skills `swift:<skill>`.

@@ -63,6 +63,8 @@ agt skills audit --all
 Use audit for publication readiness, major edits, or explicit audit requests.
 For routine daily refreshes, `sync`, `link`, and `status` are usually sufficient.
 
+Run `scripts/refresh` from the shared agents repository to sync and link skills and to install or refresh the shared plugins in Claude Code and Codex.
+
 ## References
 
 - `references/global-mode.md`: shared-resource maintenance pass, public skill sync/link/status, shared rules cleanup, and verification
