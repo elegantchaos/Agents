@@ -89,6 +89,16 @@ Read and follow @~/.local/share/agents/COMMON.md before starting work.
 - Treat each referenced skill or shared guide as the source of truth for that domain.
 - If the repository intentionally overrides a referenced skill or shared guide, state that override explicitly in `Project Specific Rules`.
 
+### Offer a Decision Log
+
+Make this offer only on a project's first refresh under the current contract: when `AGENTS.md` is missing, or its `Standard Rules` is not yet the `COMMON.md` import line. Skip it when the project already keeps a decision log.
+
+- Ask whether to enable a decision log and backfill it.
+- If the user agrees, add the decision-log opt-in bullet to `Project Specific Rules`.
+- To backfill, gather candidate decisions already established in the project, from design documents, the journal, `README*`, and the code's structure and dependencies. Present them as a short list, each with a one-line summary and its evidence.
+- Record only the candidates the user confirms, following the `Decisions` rules in `COMMON.md`. List unconfirmed or still-emerging candidates as deferred in a journal entry when the project keeps a journal; otherwise report them.
+- If the user declines, do not ask again on later refreshes.
+
 ### Finish
 
 - At the bottom of `AGENTS.md`, add "To refresh this file, use the `refresh` skill."

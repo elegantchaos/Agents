@@ -40,3 +40,4 @@ Include the sections for phases that were run.
 - confirmation that `Standard Rules` is exactly the `COMMON.md` import line
 - restated baseline rules removed, and any restated rules moved to `Project Specific Rules` as genuine repository policy
 - any `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md` found, and what the user decided
+- decision log offer: not applicable, declined, or accepted, with the decisions recorded and candidates deferred
