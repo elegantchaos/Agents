@@ -12,7 +12,7 @@ It updates and verifies the shared agents infrastructure itself.
 - Repo-local operational skills live under `~/.local/share/agents/skills/` as normal tracked files when they are tightly coupled to this repository.
 - The standalone `agt` command-line tool manages public skill maintenance.
 - Local runtime rules live in `<codex-home>/rules/*.rules`.
-- Runtime skill links live under `~/.agents/skills/`.
+- Runtime skill links live under `~/.codex/skills/` and `~/.claude/skills/`.
 - Runtime `default.rules` is a catch-all and should stay small. It may be empty and must not be stored in the shared repository.
 
 ## Path Conventions

@@ -12,7 +12,7 @@ We do not track `default.rules` or other files in `~/.codex` - they are ephemera
 ## Update Procedure
 
 - Pull this project from git to ensure we have the latest changes
-- Examine `~/.codex` and `~/.agents` suggest updates to the config file (in both directions)
+- Examine `~/.codex` and suggest updates to the config file (in both directions)
 - Run `agt rules status` before synchronization to identify drift and runtime-only rules
 - Promote reusable entries from `~/.codex/rules/default.rules` into the appropriate shared rule file
 - Run `agt rules sync` to replace shared runtime rules with generated regular copies
@@ -27,7 +27,7 @@ Public sharing usually uses one repository per skill under `elegantchaos/`.
 
 Published operational skill checkouts live inside this repository as git submodules under `../../skills/`.
 Repo-local operational skills live under `../../skills/` as normal tracked files when they are tightly coupled to this repository.
-Runtime symlinks for shared skills should live in `~/.agents/skills`.
+Runtime symlinks for shared skills live in `~/.codex/skills` and `~/.claude/skills`.
 
 This repository stores:
 
@@ -42,7 +42,7 @@ Before linking runtime skill directories, initialize the shared skill submodules
 The following paths are ok to use, as they will exist on all machines:
 
 - ~/.codex
-- ~/.agents
+- ~/.claude
 - ~/.local/share/agents
 - ~/Developer/Projects
 - ~/Developer/Websites

@@ -31,7 +31,7 @@ Shared reusable Codex approval rules live in `runtimes/codex/rules/`. Use `agt r
 
 ## Shared Skills
 
-Published shared skills live under `skills/` in this repository and are linked into `~/.agents/skills/`.
+Published shared skills live under `skills/` in this repository and are linked into `~/.codex/skills/` and `~/.claude/skills/` by `agt skills link`.
 Most published skills are git submodules.
 Repo-local operational skills such as `skills/refresh-skill/` live alongside them because they are tightly coupled to this repository.
 Runtime names come from the discovered `name:` field in each skill's `SKILL.md`.

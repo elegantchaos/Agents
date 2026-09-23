@@ -8,7 +8,7 @@ Tick items off as they land, and record decisions inline.
 
 - Codex reads `AGENTS.md`. Claude Code v2.1.277+ reads a project's `AGENTS.md` when no project `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md` exists in the working directory or above it. `~/.claude/CLAUDE.md` does not block this and loads alongside.
 - Claude Code has no global `AGENTS.md`; global instructions must come from `~/.claude/CLAUDE.md`.
-- `~/.claude` has no `settings.json` or `skills/`.
+- `~/.claude` has no `settings.json`.
 - `SKILL.md` frontmatter (`name`, `description`) is already compatible with Claude Code.
 - `agents/openai.yaml` files are Codex-only UI metadata; Claude ignores them, so they can stay.
 - Codex-specific pieces: `runtimes/codex/rules/*.rules`, `runtimes/codex/config.toml.template`, `runtimes/codex/mcp.toml`, `plugins/swift/.codex-plugin/`, the `codex-git` skill, and parts of the `refresh` skill.
@@ -26,7 +26,7 @@ Goal: both runtimes load the chosen voice globally and each project's `AGENTS.md
 - [x] Remove the voice section from `COMMON.md`.
 - [x] Create `~/.claude/CLAUDE.md` containing `@~/.local/share/agents/voices/voice-3.md`.
 - [x] Replace the inline voice copy in `~/.codex/AGENTS.md` with a symlink to `voices/voice-3.md`.
-- [ ] Confirm Codex follows the `~/.codex/AGENTS.md` symlink; if not, have `agt` maintain a generated copy.
+- [x] Confirm Codex follows the `~/.codex/AGENTS.md` symlink.
 - [ ] Document the global voice setup (both runtimes) in `README.md` First Use, since it lives outside the repository.
 - [ ] Update `skills/refresh-skill/references/local-mode.md` so a local refresh never creates a project `CLAUDE.md`, and warns when one (or `CLAUDE.local.md`) exists, since it stops Claude Code reading `AGENTS.md` by default.
 
@@ -57,13 +57,18 @@ Verify: in a fresh session of each runtime, the baseline rules appear exactly on
 
 ## Stage 3: Skill Linking
 
-Goal: shared skills are discoverable from `~/.claude/skills`.
+Goal: shared skills are discoverable by both runtimes.
 
-- [ ] Decide between a symlink `~/.claude/skills -> ~/.agents/skills` (simplest) and extending `agt skills link` to write to multiple targets (cleaner, handles machines where `~/.claude/skills` already has content). *(decision needed)*
-- [ ] Implement the chosen option and update `README.md` First Use.
-- [ ] Confirm nested submodule skills (`swift-concurrency-pro`, `swift-testing-pro`, `swiftdata-pro`) resolve correctly.
+Claude Code does not read `~/.agents/skills`, so `~/.agents` is retired. `agt skills link` links each skill into `~/.codex/skills` and `~/.claude/skills` (honouring `CODEX_HOME` and `CLAUDE_CONFIG_DIR`), and refuses to replace anything that is not a symlink.
 
-Verify: skills appear in Claude Code's skill list and trigger from their descriptions.
+- [x] Extend `agt skills link` and `agt skills status` to handle both runtime directories.
+- [x] Update `~/.agents/skills` references in `README.md`, `runtimes/codex/README.md`, and the refresh skill.
+- [x] Release `agt` 2.0.1 and run `agt skills link`.
+- [x] Confirm Codex still loads user skills from `~/.codex/skills` (verified, although its current docs only list `~/.agents/skills`).
+- [ ] Decide whether the stray `~/.codex/skills/validation-flow` link (duplicate of `swift-validation`) and the unmanaged `find-skills` skill should stay.
+- [ ] Confirm nested submodule skills (`swift-concurrency-pro`, `swift-testing-pro`, `swiftdata-pro`) resolve correctly in Claude Code.
+
+Verify: skills appear in each runtime's skill list and trigger from their descriptions.
 
 ## Stage 4: Runtime-Neutral Skills
 
