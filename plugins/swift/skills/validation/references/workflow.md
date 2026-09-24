@@ -2,30 +2,37 @@
 
 ## Getting `agt`
 
-Validation runs `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
+Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
-If the installed `agt` has no `validate` command (AgentTools before 2.1.0), run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
+If the installed `agt` has no `format` command (AgentTools before 3.0.0), run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
 
 ## Commands
 
-- Comprehensive mode:
+- Format and lint every Swift file:
+  - `agt format`
+- Comprehensive validation:
   - `agt validate`
-- Targeted mode:
+- Targeted validation:
   - `agt validate --target <target-name>`
 - Options:
+  - `agt format --help`
   - `agt validate --help`
 
-Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt validate`, which takes the same options.
+`agt validate` never modifies the project, so always run `agt format` first.
+
+Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt format` followed by `agt validate`, which takes the same options.
 
 ## Required Workflow
 
-If only an individual target has been changed, you may run targeted validation first to quickly validate the impacted target for errors.
+Run `agt format` after every change. It formats every Swift file in the repository and then lints them, reporting findings without failing. Fix lint findings in files you changed. Report the number of remaining findings elsewhere, but do not fix them unless the user asks.
+
+If only an individual target has been changed, you may then run targeted validation to quickly validate the impacted target for errors.
 
 If targeted validation fails, stop validation at that point.
 
 When quick targeted validation passes, or if it would not save time, run comprehensive validation.
 
-If validation fails, stop the standard Swift validation, analyze the output, and report the failure clearly. Do not treat successful earlier stages as a successful validation result. For example, if formatting and lint pass but the workspace build fails, report `agt validate` as failed.
+If validation fails, stop the standard Swift validation, analyze the output, and report the failure clearly. Do not treat successful earlier stages as a successful validation result. For example, if formatting passes but the workspace build fails, report `agt validate` as failed.
 
 ## Failure Classification
 
@@ -69,6 +76,6 @@ If the validation command fails, produce output that includes:
 
 We own the `agt` command, and the source code can usually be found in `~/Developer/Projects/AgentTools`.
 
-If validation fails due to blockages or other structural problems, consider whether `agt validate` could be improved to prevent them.
+If validation fails due to blockages or other structural problems, consider whether `agt format` or `agt validate` could be improved to prevent them.
 
-If there are improvements that could be made to `agt validate`, suggest them.
+If there are improvements that could be made to `agt format` or `agt validate`, suggest them.

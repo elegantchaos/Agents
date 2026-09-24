@@ -1,11 +1,11 @@
 ---
 name: validation
-description: Run standard post-change validation for Swift repositories that use AgentTools (`agt validate`, formerly ReleaseTools' `rt validate`). Use when code has been changed. It reformats code, runs linters, builds relevant targets, and executes tests to ensure code quality and functionality.
+description: Run standard post-change formatting and validation for Swift repositories that use AgentTools (`agt format` and `agt validate`, formerly ReleaseTools' `rt validate`). Use when code has been changed. It reformats code, runs linters, builds relevant targets, and executes tests to ensure code quality and functionality.
 ---
 
 # Swift Validation
 
-Run standard AgentTools validation for Swift repositories.
+Run standard AgentTools formatting and validation for Swift repositories.
 
 Read `references/workflow.md` before running validation.
 
@@ -30,4 +30,4 @@ Do not use it for Python, Ruby, JavaScript, or other non-Swift projects unless t
 
 ## References
 
-- `references/workflow.md`: getting `agt`, command list, targeted-vs-comprehensive workflow, and output checklist
+- `references/workflow.md`: getting `agt`, command list, format-then-validate workflow, and output checklist
