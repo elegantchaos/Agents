@@ -4,7 +4,7 @@
 
 Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
-This skill needs AgentTools 3.3.0 or later, which can run inside an agent's sandbox and supports `agt validate --plan`. Check with `agt --version`, which prints, for example, `AgentTools v3.3.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
+This skill needs AgentTools 3.4.0 or later, whose full validation builds every platform and runs the tests of the product and its local packages. Check with `agt --version`, which prints, for example, `AgentTools v3.4.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
 
 ## Commands
 
@@ -22,9 +22,11 @@ This skill needs AgentTools 3.3.0 or later, which can run inside an agent's sand
 
 `agt validate` never modifies the project, so always run `agt format` first.
 
+Comprehensive validation builds every product scheme for every platform the product supports, then runs, platform by platform, the product's tests and the tests of the local Swift packages that are part of the product, on simulators where needed. Local packages in git submodules are tested only when the submodule has changed. Projects configure schemes, platforms, test platforms, submodule testing, and excluded packages in `.agt/config.json`, with per-machine overrides in `.agt/local/config.json`; see `agt validate --help`. Do not create or change these files unless the user asks.
+
 Use `agt validate --plan` when you need to know what validation covers, for example to report which schemes, platforms, packages, and tests were checked, or to explain a skipped check. Validation caches what it discovers about the project in `.build/agt`, so the first run in a project is slower than later ones.
 
-Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt format` followed by `agt validate`, which takes the same options.
+Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt format` followed by `agt validate`.
 
 ## Required Workflow
 
