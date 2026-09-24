@@ -128,6 +128,7 @@ Goal: our cross-language skills ship as a plugin, and `COMMON.md` holds only alw
 - [x] Remove the obsolete `skills/refresh-skill` repo-local path from `agt`.
 - [x] Retire the `install-mint` and `install-release-tools` skills: both plugins carry `scripts/ensure-agt.sh`, which installs Mint (via Homebrew) and AgentTools, and `--update` installs the latest release.
 - [x] Move `validate` from `rt` into `agt` (AgentTools), then switch `swift:validation` to `agt` via its `ensure-agt.sh`.
+- [x] Let both runtimes' sandboxes write the caches Swift validation needs: `scripts/configure-sandboxes`, run by `scripts/refresh`, merges this machine's SwiftPM cache and clang module cache paths into `~/.claude/settings.json` and `~/.codex/config.toml`.
 
 ## Stage 8: Layout and Docs
 

@@ -17,7 +17,7 @@ Clone this repository to:
 
 - `~/.local/share/agents`
 
-With [Homebrew](https://brew.sh) installed, run the refresh script. It installs Mint and `agt` if they are missing (and updates `agt` to the latest release), syncs and links the shared skills, and installs the shared plugins in Claude Code and Codex (skipping a runtime whose CLI is not on `PATH`):
+With [Homebrew](https://brew.sh) installed, run the refresh script. It installs Mint and `agt` if they are missing (and updates `agt` to the latest release), syncs and links the shared skills, lets both runtimes' sandboxes write the caches that Swift validation needs (`scripts/configure-sandboxes`, which merges this machine's paths into `~/.claude/settings.json` and `~/.codex/config.toml`), and installs the shared plugins in Claude Code and Codex (skipping a runtime whose CLI is not on `PATH`):
 
 ```bash
 ~/.local/share/agents/scripts/refresh

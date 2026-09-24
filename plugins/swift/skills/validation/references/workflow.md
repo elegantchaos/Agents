@@ -4,7 +4,7 @@
 
 Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
-If the installed `agt` has no `format` command (AgentTools before 3.0.0), run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
+Run `scripts/ensure-agt.sh --update` to install the latest release when the installed `agt` has no `format` command, or when validation fails with `sandbox_apply: Operation not permitted` (releases before 3.1.0 cannot run inside an agent's sandbox). This needs network access.
 
 ## Commands
 
@@ -43,6 +43,8 @@ A source failure is caused by code, tests, project configuration, or generated p
 When a source failure can be corrected within the user's request without a material design decision, fix it and rerun the failed validation command. Otherwise, report the failure and ask the user for direction.
 
 An external blockage prevents validation without indicating an error in the changed source. Examples include a locked build database, a missing SDK, unavailable credentials, an unavailable service, or a network failure.
+
+A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Ask the user to run `~/.local/share/agents/scripts/refresh`, which allows those caches in Claude Code's and Codex's sandboxes, then start a new session.
 
 For an external blockage, do not modify the environment or run separate fallback verification automatically. Report the validation as blocked, identify the blocker and skipped stages, then request permission for any proposed fallback command.
 
