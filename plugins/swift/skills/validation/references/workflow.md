@@ -4,7 +4,7 @@
 
 Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
-This skill needs AgentTools 3.1.0 or later, which can run inside an agent's sandbox. Check with `agt --version`, which prints, for example, `AgentTools v3.2.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
+This skill needs AgentTools 3.3.0 or later, which can run inside an agent's sandbox and supports `agt validate --plan`. Check with `agt --version`, which prints, for example, `AgentTools v3.3.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
 
 ## Commands
 
@@ -14,11 +14,15 @@ This skill needs AgentTools 3.1.0 or later, which can run inside an agent's sand
   - `agt validate`
 - Targeted validation:
   - `agt validate --target <target-name>`
+- List the steps validation would run, with their commands, without running them:
+  - `agt validate --plan`
 - Options:
   - `agt format --help`
   - `agt validate --help`
 
 `agt validate` never modifies the project, so always run `agt format` first.
+
+Use `agt validate --plan` when you need to know what validation covers, for example to report which schemes, platforms, packages, and tests were checked, or to explain a skipped check. Validation caches what it discovers about the project in `.build/agt`, so the first run in a project is slower than later ones.
 
 Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt format` followed by `agt validate`, which takes the same options.
 
