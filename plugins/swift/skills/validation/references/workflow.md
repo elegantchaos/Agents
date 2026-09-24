@@ -1,15 +1,21 @@
 # Swift Validation Workflow
 
-If `rt` is not installed, prompt the user to install ReleaseTools from:
+## Getting `agt`
 
-- https://github.com/elegantchaos/ReleaseTools
+Validation runs `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
+
+If the installed `agt` has no `validate` command (AgentTools before 2.1.0), run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
 
 ## Commands
 
 - Comprehensive mode:
-  - `rt validate`
+  - `agt validate`
 - Targeted mode:
-  - `rt validate --target <target-name>`
+  - `agt validate --target <target-name>`
+- Options:
+  - `agt validate --help`
+
+Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt validate`, which takes the same options.
 
 ## Required Workflow
 
@@ -19,7 +25,7 @@ If targeted validation fails, stop validation at that point.
 
 When quick targeted validation passes, or if it would not save time, run comprehensive validation.
 
-If validation fails, stop the standard Swift validation, analyze the output, and report the failure clearly. Do not treat successful earlier stages as a successful validation result. For example, if formatting and lint pass but the workspace build fails, report `rt validate` as failed.
+If validation fails, stop the standard Swift validation, analyze the output, and report the failure clearly. Do not treat successful earlier stages as a successful validation result. For example, if formatting and lint pass but the workspace build fails, report `agt validate` as failed.
 
 ## Failure Classification
 
@@ -59,12 +65,10 @@ If the validation command fails, produce output that includes:
 - suggested fixes for any failures
 - suggested next steps based on the results
 
-## Release Tools
+## AgentTools
 
-We own the `rt` command, and the source code can usually be found in `~/Developer/Projects/ReleaseTools`.
+We own the `agt` command, and the source code can usually be found in `~/Developer/Projects/AgentTools`.
 
-Check that the installed version of `rt` in the path matches the latest tagged version. If not, suggest that the user updates to the latest version.
+If validation fails due to blockages or other structural problems, consider whether `agt validate` could be improved to prevent them.
 
-If validation fails due to blockages or other structural problems, consider whether the `rt` command could be improved to prevent them.
-
-If there are improvements that could be made to the `rt validate` command, or new commands that could be added to `rt`, suggest them.
+If there are improvements that could be made to `agt validate`, suggest them.

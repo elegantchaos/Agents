@@ -17,7 +17,7 @@
 2. Inventory guidance and referenced resources in `/Applications/Xcode-27.0.0-rc.app`. Record the actual bundle version and build. Search supporting locations under `~/Library` only if missing resources or references point there.
 3. Compare substantive rules. Record each source, version/platform/build-setting assumptions, existing local rule, recommendation, rationale, destination skill, and decision status. Classify recommendations as adopt, adapt, retain, reject, or investigate. Review preference changes before implementation.
 4. Pilot the testing skill, including the upstream serialized-suite correction and the boundary with validation. Adapt accepted material with attribution, then apply the structure to concurrency and SwiftData. Review language and SwiftUI alongside their original sources.
-5. Reconcile shared baseline instructions, project overrides, Xcode MCP usage, and `rt` validation. Decide when targeted checks suffice, when broader checks are required, and how blocked verification is handled.
+5. Reconcile shared baseline instructions, project overrides, Xcode MCP usage, and `agt` validation. Decide when targeted checks suffice, when broader checks are required, and how blocked verification is handled.
 6. Evaluate realistic requests against an Apple app, a portable Swift package, older deployment targets, mixed concurrency settings, async tests, and a blocked build. Check skill selection, correctness, scope control, tool calls, and honest coverage reporting. Compile technical examples where supported.
 7. Installation and discovery are done: both runtimes install from this repository and name skills `swift:<skill>`. Keep tools independently released unless a later decision changes that boundary.
 

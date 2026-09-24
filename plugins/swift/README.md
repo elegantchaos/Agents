@@ -9,7 +9,7 @@ Opinionated Swift skills from Elegant Chaos, packaged as one plugin for Claude C
 | [swift:concurrency](skills/concurrency/SKILL.md) | Actor isolation, structured and unstructured tasks, cancellation, and async streams |
 | [swift:testing](skills/testing/SKILL.md) | Swift Testing test design, async tests, and migration from XCTest |
 | [swift:swiftdata](skills/swiftdata/SKILL.md) | SwiftData models, queries, predicates, indexing, and CloudKit |
-| [swift:validation](skills/validation/SKILL.md) | ReleaseTools (`rt validate`) formatting, linting, build, and test validation |
+| [swift:validation](skills/validation/SKILL.md) | AgentTools (`agt validate`) formatting, linting, build, and test validation |
 
 ## Installation
 
@@ -31,7 +31,7 @@ codex plugin add swift@elegantchaos
 
 Both runtimes name the skills `swift:<skill>`.
 
-`swift:validation` carries a copy of the baseline plugin's `scripts/ensure-agt.sh`, for when validation moves from `rt validate` to `agt`. The repository's `scripts/refresh` warns if the copies drift.
+`swift:validation` carries a copy of the baseline plugin's `scripts/ensure-agt.sh`, which it uses to get `agt` for `agt validate`. The repository's `scripts/refresh` warns if the copies drift.
 
 ## Status
 
