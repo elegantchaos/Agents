@@ -4,23 +4,27 @@
 
 Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
-This skill needs AgentTools 3.4.0 or later, whose full validation builds every platform and runs the tests of the product and its local packages. Check with `agt --version`, which prints, for example, `AgentTools v3.4.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
+This skill needs AgentTools 3.5.0 or later, which adds fast validation of uncommitted changes. Check with `agt --version`, which prints, for example, `AgentTools v3.5.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
 
 ## Commands
 
 - Format and lint every Swift file:
   - `agt format`
+- Fast validation of the uncommitted changes:
+  - `agt validate --fast`
+- Fast validation of one target:
+  - `agt validate --target <target-name>`
 - Comprehensive validation:
   - `agt validate`
-- Targeted validation:
-  - `agt validate --target <target-name>`
 - List the steps validation would run, with their commands, without running them:
-  - `agt validate --plan`
+  - `agt validate --plan` or `agt validate --fast --plan`
 - Options:
   - `agt format --help`
   - `agt validate --help`
 
 `agt validate` never modifies the project, so always run `agt format` first.
+
+Fast validation builds, for macOS, only the package targets, packages, or product that the uncommitted changes touched, and runs the test targets that depend on them. It ignores changes that do not affect a build, such as documentation, and runs nothing when there are none.
 
 Comprehensive validation builds every product scheme for every platform the product supports, then runs, platform by platform, the product's tests and the tests of the local Swift packages that are part of the product, on simulators where needed. Local packages in git submodules are tested only when the submodule has changed. Projects configure schemes, platforms, test platforms, submodule testing, and excluded packages in `.agt/config.json`, with per-machine overrides in `.agt/local/config.json`; see `agt validate --help`. Do not create or change these files unless the user asks.
 
@@ -32,11 +36,9 @@ Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `
 
 Run `agt format` after every change. It formats every Swift file in the repository and then lints them, reporting findings without failing. Fix lint findings in files you changed. Report the number of remaining findings elsewhere, but do not fix them unless the user asks.
 
-If only an individual target has been changed, you may then run targeted validation to quickly validate the impacted target for errors.
+Then run `agt validate --fast` after every change. If it fails, stop validation at that point and fix the failure.
 
-If targeted validation fails, stop validation at that point.
-
-When quick targeted validation passes, or if it would not save time, run comprehensive validation.
+Run comprehensive validation with `agt validate` before reporting work as complete, before committing, and whenever fast validation cannot cover the change, for example after changing build settings or platform-specific code. Passing fast validation is not comprehensive validation; report which one ran.
 
 If validation fails, stop the standard Swift validation, analyze the output, and report the failure clearly. Do not treat successful earlier stages as a successful validation result. For example, if formatting passes but the workspace build fails, report `agt validate` as failed.
 
