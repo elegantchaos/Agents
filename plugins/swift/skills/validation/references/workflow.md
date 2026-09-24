@@ -4,7 +4,7 @@
 
 Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
-Run `scripts/ensure-agt.sh --update` to install the latest release when the installed `agt` has no `format` command, or when validation fails with `sandbox_apply: Operation not permitted` (releases before 3.1.0 cannot run inside an agent's sandbox). This needs network access.
+This skill needs AgentTools 3.1.0 or later, which can run inside an agent's sandbox. Check with `agt --version`, which prints, for example, `AgentTools v3.2.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
 
 ## Commands
 
