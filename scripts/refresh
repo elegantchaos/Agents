@@ -4,7 +4,13 @@ set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 
-agt=$("$root/plugins/baseline/skills/refresh/scripts/ensure-agt.sh")
+# Each plugin that needs agt carries its own copy of ensure-agt.sh; report any that have drifted.
+canonical=plugins/baseline/skills/refresh/scripts/ensure-agt.sh
+for copy in plugins/*/skills/*/scripts/ensure-agt.sh; do
+  cmp -s "$canonical" "$copy" || echo "warning: $copy differs from $canonical" >&2
+done
+
+agt=$("$root/$canonical" --update)
 "$agt" skills sync --all
 "$agt" skills link
 

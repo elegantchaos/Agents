@@ -126,7 +126,8 @@ Goal: our cross-language skills ship as a plugin, and `COMMON.md` holds only alw
 - [x] Move procedural guidance out of `COMMON.md` after checking each rule is covered by the owning skill.
 - [x] Retire the `coding-standards-skill` submodule and update references.
 - [ ] Remove the obsolete `skills/refresh-skill` repo-local path from `agt`.
-- [ ] Decide whether `install-mint` and `install-release-tools` are still needed.
+- [x] Retire the `install-mint` and `install-release-tools` skills: both plugins carry `scripts/ensure-agt.sh`, which installs Mint (via Homebrew) and AgentTools, and `--update` installs the latest release.
+- [ ] Move `validate` from `rt` into `agt` (AgentTools), then switch `swift:validation` to `agt` via its `ensure-agt.sh`.
 
 ## Stage 8: Layout and Docs
 

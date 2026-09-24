@@ -8,7 +8,7 @@ Elegant Chaos baseline skills, packaged as one plugin for Claude Code and Codex.
 | [baseline:records](skills/records/SKILL.md) | Development journals and decision logs, including backfilling a decision log |
 | [baseline:refresh](skills/refresh/SKILL.md) | Maintaining shared agent resources and refreshing a project's `AGENTS.md` |
 
-`baseline:refresh` includes `scripts/ensure-agt.sh`, which installs AgentTools with Mint when `agt` is missing.
+`baseline:refresh` includes `scripts/ensure-agt.sh`, which prints the path to `agt`, installing AgentTools (and Mint, via Homebrew) when it is missing. `--update` also installs the latest AgentTools release.
 
 ## Installation
 

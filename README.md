@@ -17,7 +17,7 @@ Clone this repository to:
 
 - `~/.local/share/agents`
 
-With [Mint](https://github.com/yonaskolb/Mint) installed, run the refresh script. It installs `agt` if it is missing, syncs and links the shared skills, and installs the shared plugins in Claude Code and Codex (skipping a runtime whose CLI is not on `PATH`):
+With [Homebrew](https://brew.sh) installed, run the refresh script. It installs Mint and `agt` if they are missing (and updates `agt` to the latest release), syncs and links the shared skills, and installs the shared plugins in Claude Code and Codex (skipping a runtime whose CLI is not on `PATH`):
 
 ```bash
 ~/.local/share/agents/scripts/refresh

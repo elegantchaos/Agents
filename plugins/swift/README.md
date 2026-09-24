@@ -31,6 +31,8 @@ codex plugin add swift@elegantchaos
 
 Both runtimes name the skills `swift:<skill>`.
 
+`swift:validation` carries a copy of the baseline plugin's `scripts/ensure-agt.sh`, for when validation moves from `rt validate` to `agt`. The repository's `scripts/refresh` warns if the copies drift.
+
 ## Status
 
 The skills are direct copies of the former standalone skills, renamed to fit the plugin: `swift`, `swift-validation`, and `swiftui` (ours), and `swift-concurrency-pro`, `swift-testing-pro`, and `swiftdata-pro` (our forks of Paul Hudson's skills). Our content is the baseline; outside material is reviewed against it, not merged over it. See [REVIEW.md](REVIEW.md).

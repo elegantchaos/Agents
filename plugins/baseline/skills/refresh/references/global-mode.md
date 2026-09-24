@@ -10,7 +10,7 @@ It updates and verifies the shared agents infrastructure itself.
 - Shared canonical baseline guidance lives in `~/.local/share/agents/COMMON.md`.
 - Published shared skill submodules live under `~/.local/share/agents/skills/`.
 - Repo-local operational skills live under `~/.local/share/agents/skills/` as normal tracked files when they are tightly coupled to this repository.
-- The standalone `agt` command-line tool manages public skill maintenance. This skill's `scripts/ensure-agt.sh` installs it with Mint when it is missing.
+- The standalone `agt` command-line tool manages public skill maintenance. This skill's `scripts/ensure-agt.sh` installs it with Mint when it is missing, and installs the latest release with `--update`.
 - Local runtime rules live in `<codex-home>/rules/*.rules`.
 - Runtime skill links live under `~/.codex/skills/` and `~/.claude/skills/`.
 - Shared plugins live under `~/.local/share/agents/plugins/`, listed in `.claude-plugin/marketplace.json` (Claude Code) and `.agents/plugins/marketplace.json` (Codex). Claude Code loads them in place; Codex runs from a cached copy that must be refreshed after changes.
