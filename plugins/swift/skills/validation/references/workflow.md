@@ -27,7 +27,9 @@ This skill needs AgentTools 3.6.0 or later, which adds full validation in the ba
   - `agt format --help`
   - `agt validate --help`
 
-`agt validate` never modifies the project, so always run `agt format` first.
+`agt validate` never modifies the project's source, so always run `agt format` first.
+
+Builds during validation may re-resolve Swift package dependencies and update Xcode and SwiftPM `Package.resolved` files. Keep those updates; do not revert them.
 
 Fast validation builds, for macOS, only the package targets, packages, or product that the uncommitted changes touched, and runs the test targets that depend on them. It ignores changes that do not affect a build, such as documentation, and runs nothing when there are none.
 
