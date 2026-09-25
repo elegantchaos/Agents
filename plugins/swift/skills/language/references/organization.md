@@ -26,6 +26,12 @@ For classes/structs, prefer this order:
 4. public methods
 5. private methods (often in private extensions)
 
+Declare nested types after the members that give the type its purpose, so the
+main type's state and behaviour are what a reader sees first. Prefer a same-file
+extension after the primary definition. When a nested type must be declared in
+the primary definition, place it at the end of that definition. This applies to
+nested protocols, classes, structs, enums, and type aliases, however small.
+
 For enums, prefer:
 
 1. cases
