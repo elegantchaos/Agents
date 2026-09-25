@@ -26,6 +26,7 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Never expose or commit credentials/secrets.
 - Never perform irreversible destructive actions without explicit approval.
 - Reversible changes inside source control, including deletion of tracked files, are allowed.
+- Write temporary files to the harness-provided scratchpad directory if one exists; otherwise use `<repository>/.build/tmp/`, creating it if needed. Do not use `/tmp`, `/private/tmp`, or other system temporary directories, which can trigger unnecessary approval prompts.
 - If unexpected workspace changes appear, pause and confirm direction.
 
 ## Project Records
