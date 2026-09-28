@@ -9,6 +9,7 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Inspect relevant code/docs before editing.
 - Follow the `baseline:standards` skill for all code work: reading, creating, refactoring, or reviewing code.
 - Use red/green TDD for non-UI code.
+- Work on a branch and use a pull request for every change to `main`. Do not merge until the repository's required full validation has passed for the final PR head.
 - When a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing.
 
 ## Communication
