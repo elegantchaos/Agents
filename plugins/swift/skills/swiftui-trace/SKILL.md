@@ -8,7 +8,7 @@ metadata:
 
 # SwiftUI Trace Analyzer
 
-The analysis script was written by Miguel de Icaza. See the plugin's `NOTICE.md`.
+This skill and its analysis script were written by Miguel de Icaza. See the plugin's `NOTICE.md`.
 
 ## When to use
 

@@ -40,4 +40,4 @@ The skills are direct copies of the former standalone skills, renamed to fit the
 
 ## Licence
 
-MIT, © Elegant Chaos, except the `swiftui-trace` analysis script. Third-party attribution is in [NOTICE.md](NOTICE.md).
+MIT, © Elegant Chaos, except the `swiftui-trace` skill. Third-party attribution is in [NOTICE.md](NOTICE.md).
