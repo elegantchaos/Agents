@@ -49,7 +49,7 @@ Examples:
 ## Shared Resource Maintenance
 
 The public skill and shared rules workflows are part of the global pass.
-Use the `agt` command from the shared agents repository root. Start by running this skill's `scripts/ensure-agt.sh --update`, which installs the latest AgentTools release (and Mint, via Homebrew, if needed) and prints the path to `agt`. This needs network access. The workflow needs AgentTools 3.8.0 or later:
+Use the `agt` command from the shared agents repository root. Start by running this skill's `scripts/ensure-agt.sh --update`, which installs the latest AgentTools release (and Mint, via Homebrew, if needed) and prints the path to `agt`. This needs network access:
 
 ```bash
 agt refresh

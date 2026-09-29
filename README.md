@@ -23,6 +23,8 @@ Clone this repository to:
 ~/.local/share/agents/plugins/baseline/skills/refresh/scripts/ensure-agt.sh --update
 ```
 
+The commands below assume `agt` is on your `PATH`. If `ensure-agt.sh` printed `~/.mint/bin/agt`, add `~/.mint/bin` to your `PATH` first.
+
 Then, from the repository root, run `agt refresh`. It syncs and links the shared skills, lets both runtimes' sandboxes write the caches that Swift validation needs (`agt sandbox configure`, which merges this machine's paths into `~/.claude/settings.json` and `~/.codex/config.toml`), and installs the shared plugins in Claude Code and Codex (skipping a runtime that is not installed):
 
 ```bash
