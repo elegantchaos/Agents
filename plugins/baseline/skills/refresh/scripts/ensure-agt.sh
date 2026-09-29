@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Prints the path to the `agt` command, installing AgentTools with Mint if it is missing.
 # With --update, also installs the latest AgentTools release (this needs network access).
-# Identical copies live in each plugin that needs `agt`; scripts/refresh reports any drift.
+# Identical copies live in each plugin that needs `agt`; `agt refresh` reports any drift.
 set -euo pipefail
 
 # Resolves a command from PATH, falling back to ~/.mint/bin for Mint-installed tools.

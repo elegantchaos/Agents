@@ -12,7 +12,7 @@ Elegant Chaos baseline skills, packaged as one plugin for Claude Code and Codex.
 
 ## Installation
 
-The repository's `scripts/refresh` installs this plugin in both runtimes. See the [Swift plugin](../swift/README.md) for the manual commands; substitute `baseline` for `swift`.
+`agt refresh`, run from the repository root, installs this plugin in both runtimes. See the [Swift plugin](../swift/README.md) for the manual commands; substitute `baseline` for `swift`.
 
 ## Licence
 

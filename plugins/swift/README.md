@@ -32,7 +32,7 @@ codex plugin add swift@elegantchaos
 
 Both runtimes name the skills `swift:<skill>`.
 
-`swift:validation` carries a copy of the baseline plugin's `scripts/ensure-agt.sh`, which it uses to get `agt` for `agt format` and `agt validate`. The repository's `scripts/refresh` warns if the copies drift.
+`swift:validation` carries a copy of the baseline plugin's `scripts/ensure-agt.sh`, which it uses to get `agt` for `agt format` and `agt validate`. `agt refresh` warns if the copies drift.
 
 ## Status
 

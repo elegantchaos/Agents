@@ -65,7 +65,7 @@ When a source failure can be corrected within the user's request without a mater
 
 An external blockage prevents validation without indicating an error in the changed source. Examples include a locked build database, a missing SDK, unavailable credentials, an unavailable service, or a network failure.
 
-A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Ask the user to run `~/.local/share/agents/scripts/refresh`, which allows those caches in Claude Code's and Codex's sandboxes, then start a new session.
+A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Ask the user to run `agt sandbox configure` (AgentTools 3.8.0 or later), which allows those caches in Claude Code's and Codex's sandboxes, then start a new session.
 
 For an external blockage, do not modify the environment or run separate fallback verification automatically. Report the validation as blocked, identify the blocker and skipped stages, then request permission for any proposed fallback command.
 
