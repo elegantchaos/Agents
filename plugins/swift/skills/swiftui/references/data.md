@@ -8,7 +8,7 @@ For baseline observation-model guidance, follow the `swift:language` skill. The 
 
 ## Local state
 
-- Always declare `@State` as `private` (`@State private var`), and only own it in the view that created it. A non-private `@State` property becomes a parameter of the memberwise initializer, so its default expression, e.g. `M()`, is evaluated every time a parent constructs the view. Private state is excluded from the memberwise initializer, which lets the SDK 27 `@State` macro create the initial value lazily, once per view lifetime.
+- Always declare `@State` as `private` (`@State private var`), and only own it in the view that created it. A non-private `@State` property becomes a parameter of the memberwise initializer, so its default expression, e.g. `M()`, is evaluated every time a parent constructs the view. Private state is excluded from the memberwise initializer, so the SDK 27 `@State` macro creates its initial value lazily, once per view lifetime. The compiler does not enforce `private`, so this is our rule: without it the default expression can run on every view initialisation, which is unexpected and can be a performance problem.
 - Do not use `@State` for a value that never changes; use `private let`.
 - Give a locally owned `@Observable` model `@State` storage. A plain `let` or `var` is recreated, and its state lost, whenever the parent re-evaluates and recreates the view.
 - Do not create a `@State` model from a view input in `init`. State keeps the first model when the input later changes, so it goes stale. Store an optional model, create it in `.task(id: input)`, and only present results from a model whose input matches the current one.
