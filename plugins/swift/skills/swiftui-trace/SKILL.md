@@ -1,11 +1,14 @@
 ---
-name: swiftui-trace-analyzer
-description: Analyze Xcode Instruments SwiftUI .trace files with the bundled analyze-swiftui-trace.py script to diagnose invalidation causes and View.body evaluations.
+name: swiftui-trace
+description: Analyze Xcode Instruments SwiftUI .trace files with the bundled analyze-swiftui-trace.py script to diagnose invalidation causes and View.body evaluations. Use when investigating SwiftUI performance from a recorded trace.
 metadata:
+  author: Miguel de Icaza, packaged by Elegant Chaos
   short-description: Analyze SwiftUI .trace files
 ---
 
 # SwiftUI Trace Analyzer
+
+The analysis script was written by Miguel de Icaza. See the plugin's `NOTICE.md`.
 
 ## When to use
 
@@ -17,6 +20,8 @@ Use this skill when you need to inspect a SwiftUI Instruments `.trace` file and 
 - The trace must be recorded with the **SwiftUI** Instruments template.
 
 ## Quick start
+
+Run this skill's `scripts/analyze-swiftui-trace.py`. The examples below assume the skill directory as the working directory; otherwise use the script's full path.
 
 ```bash
 ./scripts/analyze-swiftui-trace.py ~/MyApp.trace

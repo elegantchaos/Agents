@@ -45,6 +45,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+### SwiftUI trace analyzer by Miguel de Icaza
+
+The `swiftui-trace` skill's `scripts/analyze-swiftui-trace.py` was written by [Miguel de Icaza](https://github.com/migueldeicaza), and shared with us directly. We know of no published upstream copy. It carries no licence statement, so it is not covered by this plugin's MIT licence; rights remain with its author. The skill wrapper around it is ours.
+
 ## Acknowledgements
 
 Some ideas in the `swiftui` skill were drawn from Natalia Panferova's book [The SwiftUI Way](https://books.nilcoalescing.com/the-swiftui-way).
