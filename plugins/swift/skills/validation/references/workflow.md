@@ -4,8 +4,6 @@
 
 Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
-This skill needs AgentTools 3.6.0 or later, which adds full validation in the background. Check with `agt --version`, which prints, for example, `AgentTools v3.6.0.`. If the command fails (releases before 3.2.0 have no `--version`) or reports an older release, run `scripts/ensure-agt.sh --update` to install the latest release. This needs network access.
-
 ## Commands
 
 - Format and lint every Swift file:
@@ -65,9 +63,9 @@ When a source failure can be corrected within the user's request without a mater
 
 An external blockage prevents validation without indicating an error in the changed source. Examples include a locked build database, a missing SDK, unavailable credentials, an unavailable service, or a network failure.
 
-A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Ask the user to run `~/.local/share/agents/scripts/refresh`, which allows those caches in Claude Code's and Codex's sandboxes, then start a new session.
+A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Run `scripts/ensure-agt.sh --update`, which needs network access, to install the latest AgentTools release and get the path to `agt`. Then ask the user to run `<path> sandbox configure`, giving the absolute path it printed, and to start a new session. That command lets Claude Code's and Codex's sandboxes write those caches. If the sandbox also blocks `ensure-agt.sh --update`, which builds AgentTools with SwiftPM, ask the user to run it too.
 
-For an external blockage, do not modify the environment or run separate fallback verification automatically. Report the validation as blocked, identify the blocker and skipped stages, then request permission for any proposed fallback command.
+Apart from that update, for an external blockage, do not modify the environment or run separate fallback verification automatically. Report the validation as blocked, identify the blocker and skipped stages, then request permission for any proposed fallback command.
 
 Before separate fallback verification for an external blockage, ask the user for permission, naming:
 

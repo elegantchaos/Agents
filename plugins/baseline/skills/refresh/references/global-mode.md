@@ -69,7 +69,7 @@ If a command family appears repeatedly and does not fit an existing file cleanly
    - Run `agt skills audit --all` for publication readiness, major edits, or explicit audit requests.
    - If the user asked to advance skills to latest upstream commits, fetch/pull each relevant submodule safely, validate, and update the parent repository's submodule pointers.
    - Otherwise, sync to the revisions recorded by the parent repository and report any upstream drift from status.
-   - Install or refresh every shared plugin in each runtime by running `scripts/refresh`, which also performs the `agt skills sync --all` and `agt skills link` steps above. It is idempotent. If `claude` or `codex` is not on `PATH`, it skips that runtime; report the skip.
+   - Install or refresh every shared plugin in each runtime by running `agt refresh`, which also performs the `agt skills sync --all` and `agt skills link` steps above, and `agt sandbox configure`. It is idempotent. It finds `claude` and `codex` on `PATH` or in their usual install locations, including the copies bundled with the Claude and ChatGPT apps, and skips a runtime it cannot find; report the skip.
 3. Inspect runtime rule drift before overwriting it.
    - Run `agt rules status`.
    - Read shared `~/.local/share/agents/runtimes/codex/rules/*.rules`.

@@ -49,9 +49,10 @@ Examples:
 ## Shared Resource Maintenance
 
 The public skill and shared rules workflows are part of the global pass.
-Use the `agt` command from the shared agents repository root. If it is not available, run this skill's `scripts/ensure-agt.sh`, which prints the path to `agt` after installing AgentTools (and Mint, via Homebrew) if needed. `scripts/refresh` runs it with `--update` to install the latest AgentTools release:
+Use the `agt` command from the shared agents repository root. Start by running this skill's `scripts/ensure-agt.sh --update`, which installs the latest AgentTools release (and Mint, via Homebrew, if needed) and prints the path to `agt`. This needs network access:
 
 ```bash
+agt refresh
 agt rules status
 agt rules sync
 agt skills sync --all
@@ -61,9 +62,9 @@ agt skills audit --all
 ```
 
 Use audit for publication readiness, major edits, or explicit audit requests.
-For routine daily refreshes, `sync`, `link`, and `status` are usually sufficient.
+For routine daily refreshes, `agt refresh` and `agt skills status` are usually sufficient.
 
-Run `scripts/refresh` from the shared agents repository to sync and link skills and to install or refresh the shared plugins in Claude Code and Codex.
+Run `agt refresh` from the shared agents repository to sync and link skills, configure both runtimes' sandboxes, and install or refresh the shared plugins in Claude Code and Codex.
 
 ## References
 

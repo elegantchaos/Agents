@@ -17,10 +17,18 @@ Clone this repository to:
 
 - `~/.local/share/agents`
 
-With [Homebrew](https://brew.sh) installed, run the refresh script. It installs Mint and `agt` if they are missing (and updates `agt` to the latest release), syncs and links the shared skills, lets both runtimes' sandboxes write the caches that Swift validation needs (`scripts/configure-sandboxes`, which merges this machine's paths into `~/.claude/settings.json` and `~/.codex/config.toml`), and installs the shared plugins in Claude Code and Codex (skipping a runtime whose CLI is not on `PATH`):
+`agt`, from [AgentTools](https://github.com/elegantchaos/AgentTools), is the only tool this repository needs. With [Homebrew](https://brew.sh) installed, install it, or update it to the latest release, with the `baseline` plugin's helper, which installs Mint first if it is missing and prints the path to `agt` (usually `~/.mint/bin/agt`):
 
 ```bash
-~/.local/share/agents/scripts/refresh
+~/.local/share/agents/plugins/baseline/skills/refresh/scripts/ensure-agt.sh --update
+```
+
+The commands below assume `agt` is on your `PATH`. If `ensure-agt.sh` printed `~/.mint/bin/agt`, add `~/.mint/bin` to your `PATH` first.
+
+Then, from the repository root, run `agt refresh`. It syncs and links the shared skills, lets both runtimes' sandboxes write the caches that Swift validation needs (`agt sandbox configure`, which merges this machine's paths into `~/.claude/settings.json` and `~/.codex/config.toml`), and installs the shared plugins in Claude Code and Codex (skipping a runtime that is not installed):
+
+```bash
+agt refresh
 ```
 
 Then synchronize the shared Codex rules:
