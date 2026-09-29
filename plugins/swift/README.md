@@ -8,6 +8,7 @@ Opinionated Swift skills from Elegant Chaos, packaged as one plugin for Claude C
 | [swift:swiftui](skills/swiftui/SKILL.md) | Views, data flow, navigation, design, accessibility, and UI performance |
 | [swift:concurrency](skills/concurrency/SKILL.md) | Actor isolation, structured and unstructured tasks, cancellation, and async streams |
 | [swift:testing](skills/testing/SKILL.md) | Swift Testing test design, async tests, and migration from XCTest |
+| [swift:swiftui-trace](skills/swiftui-trace/SKILL.md) | Analysing SwiftUI Instruments `.trace` files for invalidation causes and `View.body` costs, using Miguel de Icaza's script |
 | [swift:swiftdata](skills/swiftdata/SKILL.md) | SwiftData models, queries, predicates, indexing, and CloudKit |
 | [swift:validation](skills/validation/SKILL.md) | AgentTools (`agt format`, `agt validate`) formatting, linting, build, and test validation |
 
@@ -39,4 +40,4 @@ The skills are direct copies of the former standalone skills, renamed to fit the
 
 ## Licence
 
-MIT, © Elegant Chaos. Third-party attribution is in [NOTICE.md](NOTICE.md).
+MIT, © Elegant Chaos, except the `swiftui-trace` skill. Third-party attribution is in [NOTICE.md](NOTICE.md).

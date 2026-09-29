@@ -45,6 +45,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+### SwiftUI trace analyzer by Miguel de Icaza
+
+The `swiftui-trace` skill, including `scripts/analyze-swiftui-trace.py`, was written by [Miguel de Icaza](https://github.com/migueldeicaza). He shared the original skill, `swiftui-trace-analyzer`, as [a download](https://tirania.org/tmp/swiftui-perf-skill.tar.gz) in [a Mastodon post](https://mastodon.social/@Migueldeicaza/116423282754011998) on 18 April 2026. The script here is identical to that copy; we know of no other published upstream. Our changes are limited to `SKILL.md`: the rename, how the script is invoked, and metadata. The skill carries no licence statement, so it is not covered by this plugin's MIT licence; rights remain with its author.
+
 ## Acknowledgements
 
 Some ideas in the `swiftui` skill were drawn from Natalia Panferova's book [The SwiftUI Way](https://books.nilcoalescing.com/the-swiftui-way).

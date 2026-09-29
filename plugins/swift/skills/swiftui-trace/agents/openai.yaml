@@ -1,0 +1,8 @@
+interface:
+  display_name: "SwiftUI Trace Analyzer"
+  short_description: "Analyzes SwiftUI Instruments traces for invalidations and body costs."
+  brand_color: "#006AFD"
+  default_prompt: "Use $swift:swiftui-trace to analyze my SwiftUI .trace file."
+
+policy:
+  allow_implicit_invocation: true
