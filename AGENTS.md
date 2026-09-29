@@ -3,6 +3,7 @@
 - This repository is the canonical home for shared agent references, skills, and configuration.
 - This repository is expected to live at `~/.local/share/agents`.
 - Because this repository owns the shared baseline, agents working here should edit shared guidance at the source files and skill repos rather than creating duplicate local copies.
+- Keep a development journal in `extras/journal/`.
 
 ## Standard Rules
 
