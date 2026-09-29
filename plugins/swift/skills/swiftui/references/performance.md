@@ -16,6 +16,13 @@
 - Keep `List` and lazy-container rows unary: make each row a single top-level container, with any `if` or `switch` inside it. `Group` is a passthrough, not a row container.
 - Do not use `AnyView` for a list row. Replacing it with a `@ViewBuilder` helper alone is insufficient when that helper still produces a top-level conditional shape.
 - Use `-LogForEachSlowPath YES` when diagnosing non-constant row builders in a large list.
+- Do not read shared external collections, e.g. `favoriteIDs.contains(item.id)`, inside a row closure when the answer can be carried by the element or passed as a narrow per-row value; every row then depends on the whole collection.
+
+## Diagnosing view updates
+
+- To see why a `body` was evaluated, add `let _ = Self._printChanges()` inside `#if DEBUG` at the top of `body`. Use `let _ =`, not a bare call plus `return` and not `_ =`; `_ =` is an assignment expression and fails inside a `ViewBuilder`. Remove it before finishing.
+- A view's initializer can run without its `body` running. SwiftUI compares the view's stored inputs with the previous value and skips `body` when they are equal. Log `init` separately when investigating.
+- Use `swift:swiftui-trace` for recorded Instruments traces.
 
 Example:
 

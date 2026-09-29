@@ -8,7 +8,10 @@ For baseline observation-model guidance, follow the `swift:language` skill. The 
 
 ## Local state
 
-- `@State` should be marked `private` and only owned by the view that created it.
+- Always declare `@State` as `private` (`@State private var`), and only own it in the view that created it. A non-private `@State` property becomes a parameter of the memberwise initializer, so its default expression, e.g. `M()`, is evaluated every time a parent constructs the view. Private state is excluded from the memberwise initializer, so the SDK 27 `@State` macro creates its initial value lazily, once per view lifetime. The compiler does not enforce `private`, so this is our rule: without it the default expression can run on every view initialisation, which is unexpected and can be a performance problem.
+- Do not use `@State` for a value that never changes; use `private let`.
+- Give a locally owned `@Observable` model `@State` storage. A plain `let` or `var` is recreated, and its state lost, whenever the parent re-evaluates and recreates the view.
+- Do not create a `@State` model from a view input in `init`. State keeps the first model when the input later changes, so it goes stale. Store an optional model, create it in `.task(id: input)`, and only present results from a model whose input matches the current one.
 - If a view stores a class instance that contains expensive-to-recompute data, e.g. `CIContext`, it can be stored using `@State` even though it is not an observable object. This effectively uses `@State` as a cache – storing something persistently, but not doing any change tracking on it since it's not an observable object.
 
 ## Observable models
@@ -18,10 +21,12 @@ For baseline observation-model guidance, follow the `swift:language` skill. The 
 - Prefer `Equatable` types for frequently assigned stored properties of an `@Observable` model. Observation can then skip invalidation when a new value equals the old one.
 - Observation is per stored property, not per field within a stored struct or per element of a stored collection. Expose frequently and independently observed fields as separate properties; cache a derived value rather than hiding a wide collection read behind a computed property.
 - Pass a collection element directly to its row. Do not make every row look an element up again from the parent collection.
+- Do not compute a derived value in a parent from frequently changing state and forward it to a child, e.g. `hasActiveFilter` from `searchText`. The parent then depends on every change. Store the derived value on the model, update it when its sources change, and let the consuming view read it directly.
 
 ## Bindings
 
 - Strongly prefer to avoid creating bindings using `Binding(get:set:)` in view body code. Prefer a projected binding from `@State`, `@Binding`, or `@Bindable`; when a model needs a computed binding, expose a subscript or property that can be addressed through `@Bindable` rather than creating closures in `body`.
+- Avoid passing closures as view inputs, e.g. `toggleFavorite: { model.toggle() }`. A new closure is created each time the parent evaluates, so SwiftUI cannot skip the child's body. Pass a `Binding` from a projected model subscript, or an ID and let the child call a method.
 - Use `onChange` only for a genuine side effect. When a value is read solely for `onChange` and the host view is expensive, isolate the observation in a small `ViewModifier` or subview so that the expensive view does not subscribe to the change.
 - If the user needs to enter a number into a `TextField`, bind the `TextField` to a numeric value such as `Int` or `Double`, then use its `format` initializer like this: `TextField("Enter your score", value: $score, format: .number)`. Apply either `.keyboardType(.numberPad)` (for integers) or `.keyboardType(.decimalPad)` (for floating-point numbers) as appropriate. Using the modifier alone is _not_ sufficient.
 
@@ -32,6 +37,7 @@ For baseline observation-model guidance, follow the `swift:language` skill. The 
 
 ## Environment values
 
+- Do not forward a value through intermediate views that never use it. Put it in the environment and read it in the view that uses it.
 - Put broadly shared, infrequently changing configuration in the environment; do not put timers, scroll offsets, sensor streams, or other high-frequency state there.
 - Prefer `@Entry` for custom environment, transaction, container, and focused values, but require a stable default. Literals, `nil`, enum cases, and a `static let` instance are stable; `Model()`, `Date()`, `UUID()`, a fresh allocation, or a captured runtime value are not.
 - For a complex default that must be memoized, a manual `EnvironmentKey` with `static let defaultValue` is appropriate. Use an optional `nil` default when absence is the actual domain state.
