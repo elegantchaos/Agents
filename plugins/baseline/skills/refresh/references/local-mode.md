@@ -24,7 +24,7 @@ Produce a compact, project-targeted `AGENTS.md` with exactly these sections:
 - `Project Specific Rules`
 - `Standard Rules`
 
-Use `../assets/AGENTS.md` as the canonical output template. Replace only `{{PROJECT_SPECIFIC_RULES}}` and `{{SKILL_BULLETS}}`; preserve all other bytes, including headings, numbering, wording, blank lines, and the final newline. For an existing project, retain its project-specific block verbatim. The skill list is selected for the project.
+Use `../assets/AGENTS.md` as the canonical output template. Replace only `{{PROJECT_SPECIFIC_RULES}}` and `{{SKILL_BULLETS}}`; preserve all other bytes, including headings, numbering, wording, blank lines, and the final newline. For an existing project, retain its project-specific block verbatim, allowing the structural-migration exception below. The skill list is selected for the project.
 
 When inserting skill references into `Standard Rules`:
 
@@ -54,7 +54,8 @@ When inserting skill references into `Standard Rules`:
 If `AGENTS.md` already exists:
 
 - Retain the contents of `Project Specific Rules` verbatim, including its purpose statement, policies, constraints, architecture notes, workflows, and record opt-ins.
-- Change that block only when the user explicitly requests a policy change or opts in to an additional project record. Flag suspected obsolete or contradictory policies for review.
+- During structural migration, relocate existing repository policies and record opt-ins into `Project Specific Rules`, preserving their wording and meaning. This may extend the block while retaining its existing prose verbatim.
+- Policy changes require explicit user instruction. Additional project-record opt-ins require user agreement. Flag suspected obsolete or contradictory policies for review.
 
 If `AGENTS.md` does not exist:
 
@@ -71,7 +72,7 @@ Render `Standard Rules` from `../assets/AGENTS.md` verbatim, substituting only i
 
 - Replace restated baseline rules with the numbered instructions.
 - Move genuine repository policy that goes beyond the baseline to `Project Specific Rules`.
-- Preserve journal and decision-log opt-ins from any existing section using the matching bullets from `COMMON.md`.
+- Relocate existing journal and decision-log opt-ins from other sections into `Project Specific Rules`, preserving their wording and meaning. Use the matching bullets from `COMMON.md` for newly agreed opt-ins.
 - Move existing skill selections from a separate `Skills` section into `Standard Rules`; remove the separate heading.
 
 ### Select Skill Bullets
@@ -140,7 +141,7 @@ Verify that:
 
 - The file has exactly the two required sections and no separate `Skills` section.
 - The output matches `../assets/AGENTS.md` byte for byte after substituting the two placeholders.
-- Existing project-specific prose is unchanged except for explicitly requested changes; only the skill list varies with the detected stack and workflows.
+- Existing project-specific prose is unchanged except for explicitly requested policy changes. Structural migration may relocate existing policies and record opt-ins into `Project Specific Rules` without changing their wording or meaning. Skill selection varies with the detected stack and workflows.
 - `Standard Rules` contains the template's five numbered instructions outside a code block, followed by project-relevant skill bullets.
 - Skill names resolve from the shared content, including plugin-provided skills; report any missing required guidance.
 - Skill bullets cover their domain without restrictions based only on the current implementation.

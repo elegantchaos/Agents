@@ -38,7 +38,7 @@ Include the sections for phases that were run.
 - unresolved local-vs-shared guidance conflicts
 - any intentional repository overrides to referenced skills or shared guides
 - confirmation that the output matches the canonical template verbatim after substituting project rules and skill bullets
-- confirmation that existing project rules were preserved and additive skills use broad domain scope and "Also use" wording
+- confirmation that existing project rules were preserved, any structural migration relocated policy prose and record opt-ins without changing their wording or meaning, and additive skills use broad domain scope and "Also use" wording
 - legacy `Skills` section merged, restated baseline rules removed, and genuine repository policy retained in `Project Specific Rules`
 - any `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md` found, and what the user decided
 - decision log offer: not applicable, declined, or accepted, with the decisions recorded and candidates deferred
