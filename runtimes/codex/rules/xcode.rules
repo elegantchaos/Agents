@@ -1,2 +1,3 @@
 prefix_rule(pattern=["xcodebuild", "-workspace"], decision="allow")
 prefix_rule(pattern=["xcodebuild"], decision="allow")
+prefix_rule(pattern=["xcrun", "simctl", "list", "devices", "booted"], decision="allow")
