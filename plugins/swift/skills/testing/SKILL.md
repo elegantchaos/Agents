@@ -17,7 +17,7 @@ Review process:
 1. Ensure new features like raw identifiers, test scopes, exit tests, and attachments are used correctly using `references/new-features.md`.
 1. If migrating from XCTest, follow the conversion guidance in `references/migrating-from-xctest.md`.
 
-If doing partial work, load only the relevant reference files.
+`references/core-rules.md` and `references/writing-better-tests.md` are required whenever tests are written, changed, or reviewed. Read the other references when the work touches their topic.
 
 
 ## Local Integration Notes

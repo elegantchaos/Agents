@@ -46,6 +46,7 @@ For protocols, prefer:
 ## Documentation comments
 
 - Add `///` documentation comments to all declarations (types/members/cases etc), including private ones.
+- A member that satisfies a protocol requirement may rely on the protocol's documentation when a linter cannot tell protocol members from new ones. Opt out explicitly, for example with a file-level `swift-format-ignore-file` comment, and still document the type and any members the protocol does not declare.
 - Don't insert a blank line between the `///` comment and the declaration it is attached to.
 - Do insert a blank line between doc+declaration blocks, to visually separate them.
 - Explain intent, behavior and intended usage in doc comments, not just the symbol name.

@@ -1,6 +1,6 @@
 {
   "name": "swift",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Opinionated Swift language, SwiftUI, SwiftUI trace analysis, concurrency, Swift Testing, SwiftData, and validation skills from Elegant Chaos.",
   "author": {
     "name": "Elegant Chaos",
