@@ -68,7 +68,7 @@ If `AGENTS.md` does not exist:
 
 ### Write `Standard Rules`
 
-Render `Standard Rules` from `../assets/AGENTS.md` verbatim, substituting only its skill-list placeholder. The template is the single source of truth for the five numbered instructions and regeneration note. Agents resolve the shared content before reading COMMON.md.
+Render `Standard Rules` from `../assets/AGENTS.md` verbatim, substituting only its skill-list placeholder. The template is the single source of truth for the seven numbered instructions and regeneration note. Agents resolve the shared content before reading COMMON.md. Rule 2's `@~/.local/share/agents/COMMON.md` is written without backticks so that Claude Code imports the file at launch; keep it that way.
 
 - Replace restated baseline rules with the numbered instructions.
 - Move genuine repository policy that goes beyond the baseline to `Project Specific Rules`.
@@ -142,7 +142,7 @@ Verify that:
 - The file has exactly the two required sections and no separate `Skills` section.
 - The output matches `../assets/AGENTS.md` byte for byte after substituting the two placeholders.
 - Existing project-specific prose is unchanged except for explicitly requested policy changes. Structural migration may relocate existing policies and record opt-ins into `Project Specific Rules` without changing their wording or meaning. Skill selection varies with the detected stack and workflows.
-- `Standard Rules` contains the template's five numbered instructions outside a code block, followed by project-relevant skill bullets.
+- `Standard Rules` contains the template's seven numbered instructions outside a code block, followed by project-relevant skill bullets.
 - Skill names resolve from the shared content, including plugin-provided skills; report any missing required guidance.
 - Skill bullets cover their domain without restrictions based only on the current implementation.
 - No other part of `AGENTS.md` restates rules owned by `COMMON.md`.

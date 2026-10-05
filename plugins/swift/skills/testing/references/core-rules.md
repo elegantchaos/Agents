@@ -32,7 +32,7 @@ This guide provides core rules you must always follow to ensure you're making na
 - Swift Testing supports `@available` on individual tests, but *not* on test suites. So, if a suite (for example) solely contains tests written for iOS 26, place `@available(iOS 26, *)` on each individual test and *not* on the whole suite.
 - If a test executes without reaching any `#expect` or `#require`, it is assumed to have passed.
 - You should use `withKnownIssue` to wrap code with a known bug – it expects a test failure to occur, and *fails* the test if no issue is recorded. Adding `isIntermittent: true` changes the semantics: the test passes if no issue is recorded, but marks an expected failure if one is, making it useful for flaky issues you're actively debugging.
-- Never use `!` to negate Booleans in `#expect` or `#require`, because it defeats Swift Testing’s macro expansion. So, `#expect(!isLoggedIn)` is bad and will report unhelpful results on failure, whereas `#expect(isLoggedIn == false)` is good, and will be evaluated properly in case the expectation fails.
+- Never use `!` to negate Booleans in `#expect` or `#require`. When such an expectation fails, Swift Testing reports the negated operand's value inverted (observed with Swift 6.4), so the failure message is misleading. Write `#expect(isLoggedIn == false)`, not `#expect(!isLoggedIn)`. This applies to test expectations only; production code negates with `!`.
 
 Finally, use `@Tag` to create custom Swift Testing tags like this:
 

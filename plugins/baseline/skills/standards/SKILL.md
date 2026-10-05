@@ -8,12 +8,31 @@ description: Applies shared coding standards, engineering principles, code-quali
 Use this skill as the baseline for software work.
 It covers code quality, engineering principles, change strategy, repository hygiene, interface design, maintainability, and source-selection guidance that should stay consistent across languages.
 
-Load only the references that matter for the task:
+## Required References
 
-1. Read `references/good-code.md` to guide quality criteria covering code, tests, docs, and maintainability.
-2. Read `references/principles.md` to guide design, abstraction, or when architecture tradeoffs are in play.
-3. Read `references/implementation.md` to guide change scope, precedence, compatibility, interfaces, documentation, comments, formatting, linting, structure, cleanup, and generic path portability.
-4. Read `references/scripting.md` to guide writing or reviewing repository-maintained scripts, automation, or task runners.
-5. Read `references/testing.md` to guide unit, integration and UI test coverage, and UI previews.
-6. Read `references/external.md` when searching for external references, vendor APIs, language semantics, or policy guidance.
-7. If the task has a language or framework specialist skill, use the guidance here as a baseline. Treat the specialist skill as authoritative for domain-specific detail.
+Read these before writing, changing, or reviewing code:
+
+- `references/implementation.md`: change scope, precedence, compatibility, interfaces, documentation, comments, formatting, linting, structure, and cleanup.
+- `references/testing.md`: unit, integration and UI test coverage, and UI previews.
+
+## Further References
+
+Read these when the task touches their topic:
+
+- `references/good-code.md`: quality criteria covering code, tests, docs, and maintainability.
+- `references/principles.md`: design, abstraction, and architecture tradeoffs.
+- `references/scripting.md`: repository-maintained scripts, automation, and task runners.
+- `references/external.md`: external references, vendor APIs, language semantics, and policy guidance.
+
+If the task has a language or framework specialist skill, use the guidance here as a baseline. Treat the specialist skill as authoritative for domain-specific detail.
+
+## Checklist
+
+Check every changed file before reporting work complete:
+
+- New behaviour has tests, written first for non-UI code.
+- Documentation and comments describe the current behaviour, with no references to past behaviour.
+- Every type and member has a documentation comment, including private ones.
+- Root problems are fixed rather than worked around, with no shims or compatibility layers unless requested.
+- No duplicated code, dead code, or stale comments remain.
+- Lint findings in changed files are fixed, even when the linter reports them as warnings.
