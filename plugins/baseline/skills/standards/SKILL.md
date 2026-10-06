@@ -12,6 +12,8 @@ It covers code quality, engineering principles, change strategy, repository hygi
 
 Read these before writing, changing, or reviewing code:
 
+- `references/good-code.md`: quality criteria covering code, tests, docs, and maintainability.
+- `references/principles.md`: design, abstraction, and architecture tradeoffs.
 - `references/implementation.md`: change scope, precedence, compatibility, interfaces, documentation, comments, formatting, linting, structure, and cleanup.
 - `references/testing.md`: unit, integration and UI test coverage, and UI previews.
 
@@ -19,8 +21,6 @@ Read these before writing, changing, or reviewing code:
 
 Read these when the task touches their topic:
 
-- `references/good-code.md`: quality criteria covering code, tests, docs, and maintainability.
-- `references/principles.md`: design, abstraction, and architecture tradeoffs.
 - `references/scripting.md`: repository-maintained scripts, automation, and task runners.
 - `references/external.md`: external references, vendor APIs, language semantics, and policy guidance.
 
