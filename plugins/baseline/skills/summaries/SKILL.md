@@ -45,7 +45,7 @@ The user's login shell may not be bash. Run loops over projects as a bash script
 
 ### Git
 
-- For projects without a journal, and to catch work the journal missed, list commits in the period: `git log --branches --remotes --since=<start> --until=<end> --author=<user's git email> --format='%cd %s' --date=short`. Use `--branches --remotes`, not `--all`, which includes stash commits. Print the committer date (`%cd`), which is what `--since` filters on; the author date of rebased work can fall outside the period.
+- For projects without a journal, and to catch work the journal missed, list commits in the period: `git log --branches --remotes --since=<start> --until=<end> --author=<user's git email> --format='%cd %s' --date=short`. Use `--branches --remotes`, not `--all`, which includes stash commits. Print the committer date (`%cd`), which is what `--since` filters on; the author date of rebased work can fall outside the period. Give `--since` and `--until` a time, such as `--since='2026-10-07 00:00'`: a bare date means that date at the current time of day, which silently drops the morning's commits.
 - For start-of-day and project summaries, also note the current branch, uncommitted changes, and unmerged feature branches.
 - With the `gh` CLI available, list the user's open pull requests in each active repository (`gh pr list --author @me`, run in that repository). Do not use `gh search prs`, which returns stale pull requests from every repository the user has ever contributed to. Skip it quietly when `gh` is unavailable or a repository has no GitHub remote.
 
