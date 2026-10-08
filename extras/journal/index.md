@@ -15,3 +15,5 @@
   Emphasis-principles branch delivery: required principles references and local refresh default; baseline 0.4.4, validation waived by Sam. Decision records need a separate confirmation naming the record; baseline 0.4.5.
 
   Shared Python environment: COMMON.md directs both agents to the venv for agent utilities; security inspection, asdf Python 3.14.8t migration, patched native libraries and hashed pip/PyYAML lock, both validators passing.
+
+  Deferred setup work: investigate dependency ownership and bootstrap order across Homebrew, Mint, asdf, Python and homebrew-xpkg before adding automatic environment setup.
