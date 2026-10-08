@@ -5,13 +5,14 @@ description: Refresh shared agent resources and then refresh the current project
 
 # Refresh
 
-Run one coherent maintenance pass:
+Run one or more maintenance passes:
 
 - `global`: update and verify shared resources under `~/.local/share/agents`, including the shared repository, public skill submodules, runtime skill links, shared rules, scripts, references, and principles
 - `research`: optionally compare selected skills and guidance against trusted primary or high-quality source material, then propose or implement sensible revisions
 - `local`: refresh the current project's `AGENTS.md` while preserving project-specific rules: `Project Specific Rules` and a combined `Standard Rules` section that locates shared content, requires `COMMON.md`, and selects relevant skills
 
-The default path is `global` followed by `local`.
+The default path is `local`.
+Run `global` when maintaining shared resources under `~/.local/share/agents` or when the shared agents repository itself needs updating.
 Run `research` only when requested, when maintaining the shared agents repo itself, or when there is concrete evidence that a skill may be stale.
 
 ## Use This Skill When
@@ -33,18 +34,20 @@ Run `research` only when requested, when maintaining the shared agents repo itse
 ## Skill References
 
 When you mention other skills, follow these practical rules to avoid wasting context:
-  - Mention skills explicitly when they are genuinely repo-relevant.
-  - Prefer a short conditional instruction over a bare link dump.
-  - Keep operational skill references centralized in `Standard Rules`; avoid scattering them elsewhere except for the required regeneration note.
-  - Keep base skill instructions broad and prefer "Also use" for additive specialist skills.
-  - Do not narrow a skill to the current API that established its relevance; SwiftUI guidance applies to all SwiftUI code.
-  - Do not summarize the skill in `AGENTS.md`; let the skill own its own detail.
+
+- Mention skills explicitly when they are genuinely repo-relevant.
+- Prefer a short conditional instruction over a bare link dump.
+- Keep operational skill references centralized in `Standard Rules`; avoid scattering them elsewhere except for the required regeneration note.
+- Keep base skill instructions broad and prefer "Also use" for additive specialist skills.
+- Do not narrow a skill to the current API that established its relevance; e.g: SwiftUI guidance applies to all SwiftUI code.
+- Do not summarize the skill in `AGENTS.md`; let the skill own its own detail.
 
 Do not add skill references just for discovery. Resolve relevant skills from the shared agents content, including skills supplied by plugins.
 Point to skills to support selection, not invite eager loading.
 Use skill names, not explicit file paths.
 
 Examples:
+
 - Good: `Also use the swift:swiftui skill for SwiftUI code.`
 - Bad: `Also consider these 12 related skills...`
 
