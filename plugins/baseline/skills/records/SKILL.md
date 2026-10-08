@@ -24,7 +24,8 @@ Each kind of record has one job:
 ## Decisions
 
 - Record one Markdown file per important decision: a choice that later work must follow, such as an architectural boundary, technology baseline, or cross-cutting policy. Keep implementation detail, naming, and emergent or unconfirmed directions in the journal.
-- Ask for explicit user confirmation before recording a decision.
+- Before writing or changing any decision record, ask a separate question that names the record (its new number and title, or the existing decision being amended) and summarises what it will say. Only a direct yes to that question confirms it.
+- Agreement with a design or policy choice is not confirmation to record it, and a question that bundles the two does not count. Changes to existing decisions, including added cross-reference or "Refined by" lines, need the same confirmation.
 - Check relevant decisions before implementing new code. If the work would conflict with a decision, raise it with the user instead of diverging.
 - Give each decision a status, date, context, the decision itself, alternatives considered (distinguishing rejected options from ones retained for later), and consequences. Follow the repository's existing naming scheme; default to `NNNN-short-title.md`.
 - Do not rewrite a decision's rationale, scope, or consequences. Record a new decision that supersedes it. Terminology updates that leave the meaning unchanged are allowed.
