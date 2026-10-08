@@ -10,6 +10,8 @@ Formatting and validation run `agt format` and `agt validate` from AgentTools. R
   - `agt format`
 - Fast validation of the uncommitted changes, then full validation in the background when preparing to merge:
   - `agt validate --fast --background`
+- Start full validation in the background directly, including on a clean checkout:
+  - `agt validate --background`
 - Fast validation of the uncommitted changes only:
   - `agt validate --fast`
 - Report, or wait for, the result of background validation:
@@ -45,7 +47,9 @@ Run `agt format` after every change. It formats every Swift file in the reposito
 
 Then run `agt validate --fast` after each meaningful code change. Fix failures before continuing. Fast validation is enough while developing, committing, and opening a PR. Report it as fast validation, not comprehensive validation.
 
-Before merging the PR, run `agt validate` locally on a clean checkout of its final head and require it to pass. You may start this with `agt validate --fast --background` once the change is ready for review, then use `agt validate --wait` to confirm a passing full result for that tree. If the result is stale or missing, run `agt validate` in the foreground. Do not run foreground validation merely to check a background run: it stops the background run and starts again. After any change to the PR head, run full validation again before merging.
+Agents may start full validation optimistically in the background while continuing other work, without prior confirmation, including before asking the user whether a full result is needed. Use `agt validate --background`, or `agt validate --fast --background` to run fast validation first and start full validation only if it passes. Starting a background run does not require waiting for completion. Wait when the user agrees that a full result is needed, or when an already-authorized action requires it, such as merging a PR. Do not ask again when the user has already authorized that action.
+
+Before merging the PR, require full validation to pass locally on a clean checkout of its final head. Use `agt validate --wait` to confirm a passing full background result for that tree. If the result is stale or missing, start full validation again and wait, or run `agt validate` in the foreground. Do not run foreground validation merely to check a background run: it stops the background run and starts again. After any change to the PR head, run full validation again before merging.
 
 Record the passing full result on the PR before merging. Until CI runs full validation as a required check, the person merging must verify this local result; GitHub branch protection alone cannot enforce it.
 

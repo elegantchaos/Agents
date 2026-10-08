@@ -1,7 +1,7 @@
 {
   "name": "baseline",
-  "version": "0.3.0",
-  "description": "Elegant Chaos baseline: coding standards, project records, and shared-agent maintenance.",
+  "version": "0.4.3",
+  "description": "Elegant Chaos baseline: coding standards, project records, work summaries, and shared-agent maintenance.",
   "author": {
     "name": "Elegant Chaos",
     "url": "https://elegantchaos.com"
