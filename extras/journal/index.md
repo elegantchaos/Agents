@@ -11,3 +11,5 @@
 - [2026-10-07](2026-10-07.md): `baseline:summaries` skill for weekly, daily, project and start-of-day summaries from journals and git history; baseline 0.4.0.
 
 - [2026-10-08](2026-10-08.md): PR #14 review and fixes: historical sources for coming-week planning, complete calendar coverage, baseline 0.4.1; metadata and whitespace checks, validator dependency gap. Calendar authorization runs directly when summaries need access, with an explanation before the command; baseline 0.4.3.
+
+  Emphasis-principles branch delivery: required principles references and local refresh default; baseline 0.4.4, validation waived by Sam.
