@@ -9,3 +9,5 @@
 - [2026-10-06](2026-10-06.md): Optimistic background validation without prior confirmation, waiting tied to user agreement or an authorized action, final-head merge requirement preserved; swift 0.10.1.
 
 - [2026-10-07](2026-10-07.md): `baseline:summaries` skill for weekly, daily, project and start-of-day summaries from journals and git history; baseline 0.4.0.
+
+- [2026-10-08](2026-10-08.md): PR #14 review and fixes: historical sources for coming-week planning, complete calendar coverage, baseline 0.4.1; metadata and whitespace checks, validator dependency gap.
