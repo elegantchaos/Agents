@@ -13,3 +13,5 @@
 - [2026-10-08](2026-10-08.md): PR #14 review and fixes: historical sources for coming-week planning, complete calendar coverage, baseline 0.4.1; metadata and whitespace checks, validator dependency gap. Calendar authorization runs directly when summaries need access, with an explanation before the command; baseline 0.4.3.
 
   Emphasis-principles branch delivery: required principles references and local refresh default; baseline 0.4.4, validation waived by Sam. Decision records need a separate confirmation naming the record; baseline 0.4.5.
+
+  Shared Python environment: COMMON.md directs both agents to the venv for agent utilities; security inspection, asdf Python 3.14.8t migration, patched native libraries and hashed pip/PyYAML lock, both validators passing.

@@ -13,6 +13,8 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Work is complete only when changed files have been checked against the required skills' checklists, and lint findings in them are fixed.
 - Work on a branch and use a pull request for every change to `main`. Do not merge until the repository's required full validation has passed for the final PR head.
 - When a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing.
+- Run Python-based agent utilities, including skill validators, using `~/.local/share/agents/.venv/bin/python` explicitly. Use each project's own environment for project Python code. If the shared environment or a required dependency is missing, report it.
+- Install shared Python agent dependencies from `~/.local/share/agents/requirements-agent-tools.lock` with `--require-hashes --only-binary=:all:`. Review version and hash changes before updating the lock file.
 
 ## Communication
 
