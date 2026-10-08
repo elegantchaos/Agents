@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work Summaries"
+  short_description: "Summaries of recent work, plans, and start-of-day briefings from project journals"
+  default_prompt: "Use $baseline:summaries to summarise what I worked on last week across my projects, and what is still open."

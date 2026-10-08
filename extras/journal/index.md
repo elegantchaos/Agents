@@ -7,3 +7,7 @@
 - [2026-10-05](2026-10-05.md): Guidance compliance: COMMON.md import and stricter skill-reading rules in the AGENTS template, required references and checklists in core skills, corrected negation rule, CLAUDE-INTEGRATION.md retired into the README; baseline 0.3.0, swift 0.10.0.
 
 - [2026-10-06](2026-10-06.md): Optimistic background validation without prior confirmation, waiting tied to user agreement or an authorized action, final-head merge requirement preserved; swift 0.10.1.
+
+- [2026-10-07](2026-10-07.md): `baseline:summaries` skill for weekly, daily, project and start-of-day summaries from journals and git history; baseline 0.4.0.
+
+- [2026-10-08](2026-10-08.md): PR #14 review and fixes: historical sources for coming-week planning, complete calendar coverage, baseline 0.4.1; metadata and whitespace checks, validator dependency gap.
