@@ -33,6 +33,8 @@ Check every changed Swift file before reporting work complete:
 - The file starts with the standard header comment.
 - The file defines one type; extension files carry one focused responsibility. Private helper types may sit beside the type they serve.
 - Every declaration has a `///` documentation comment, including private ones, separated from the previous declaration by a blank line.
+- Significant type comments meet `baseline:standards`' documentation quality criteria,
+  with concrete responsibilities and usage verified against the Swift implementation.
 - Nested types come after the members that give the type its purpose.
 - Classes are `final` unless inheritance is intended, and visibility is as tight as possible.
 - No force unwraps or `try!` outside genuinely unrecoverable paths.

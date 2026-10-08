@@ -52,8 +52,10 @@ For protocols, prefer:
 - Explain intent, behavior and intended usage in doc comments, not just the symbol name.
 - Document individual parameters or return values if they are not obvious.
 - Add inline comments only where intent is not obvious.
-- For types that are key to the library or app, add a more comprehensive doc comment.
-- Comprehensive comments should explain the purpose and design of the type, and how it interacts with other key types.
+- For types that are key to the library or app, apply the significant-type documentation
+  criteria in `baseline:standards`' required `references/implementation.md`. Explain the
+  concrete responsibility, owned state and how callers use the type; for services, describe
+  the roles of any distinct state, operation and access interfaces.
 
 ## Log Channels
 
