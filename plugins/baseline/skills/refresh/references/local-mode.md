@@ -77,13 +77,14 @@ Render `Standard Rules` from `../assets/AGENTS.md` verbatim, substituting only i
 
 ### Select Skill Bullets
 
-- For software repositories, include `baseline:standards` by default.
+- For software repositories, include `baseline:standards` and `baseline:review` by default.
 - For Swift repositories, include `swift:language` by default for all Swift code.
 - For JavaScript or TypeScript repositories, include `javascript` by default.
 - For Python repositories, include `python` by default.
 - Refer to shared skills by name in backticks. Resolve them from the shared content even when they are absent from the current runtime's available-skills list. Report a required skill that cannot be found; do not emit a dead reference or copy its instructions into AGENTS.md.
 - Add one imperative bullet per relevant skill. Use these exact bullets when applicable:
   - Follow the `baseline:standards` skill for all coding.
+  - Use the `baseline:review` skill for reviewing pull requests and completed work.
   - Use the `baseline:records` skill for the development journal and decision log.
   - Use the `codex-git` skill for git and GitHub operations.
   - Use the `swift:language` skill for all Swift code.
