@@ -18,7 +18,8 @@ The third question matters as much as the first two. A change can be correct and
 - Review the whole change. Do not stop after the first few findings.
 - Read beyond the diff: every changed file in full, the callers of changed code, and sibling code that does similar jobs.
 - Back every finding with evidence: a `file:line`, a search result, or a test outcome. Mark findings you could not confirm as unverified.
-- Record what you checked, including checks that found nothing. A clean result without that record is not a review result.
+- When you find a defect, search the whole codebase for other instances of it, including code the change did not touch. Report every instance found.
+- Record what you checked, including checks that found nothing. Name each search with its pattern or command, each file you read, and what it returned. A list of areas checked is not a record. A clean result without that record is not a review result.
 - Apply the same process to guidance, documentation, and configuration changes. For these, callers are the files, skills, and scripts that reference them.
 - Do not change code, push, or post review comments unless asked. When asked to post, follow the `codex-git` skill's review-comment guidance.
 - Use this skill in preference to built-in review commands, such as Claude Code's `/code-review` or Codex's `/review`. They can supplement the correctness pass. They do not replace this process.
@@ -80,7 +81,7 @@ Most severe first. Each with severity (blocking, should fix, or suggestion), loc
 ### Duplication
 ### Design Clarity
 
-Under each: findings, then "Checked:" with the searches and reads performed.
+Under each: findings, then "Checked:" listing each search pattern or command, each file read, and what it returned.
 
 ## Follow-ups
 
@@ -97,6 +98,7 @@ Check before reporting the review:
 
 - Intent is stated, or its absence is a finding.
 - Every changed file was read in full and checked against the applicable skill checklists.
-- All four codebase-effect sections are present, each with a "Checked:" record.
+- All four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files.
 - Every finding has evidence and a recommended action.
+- Every defect was searched for across the codebase, and all instances are reported.
 - Tests and linters were run, or Not Checked says why not.
