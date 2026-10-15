@@ -45,7 +45,7 @@ Claude Code and Codex are both supported.
 
 - **Project guidance.** Each project's `AGENTS.md` comes from the `baseline:refresh` template. Codex reads it directly. Claude Code reads it when the project has no `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md`, so the refresh skill never creates one and warns when one exists. The template's `@~/.local/share/agents/COMMON.md` line makes Claude Code import `COMMON.md` at launch; Codex reads it as an instruction to open the file.
 - **`COMMON.md` is opt-in per project.** It is never loaded globally; each project's `AGENTS.md` refers to it.
-- **The voice is personal.** It lives only in the user-global files, never in `COMMON.md` or project files: `~/.claude/CLAUDE.md` imports `VOICE.md` with an `@` line, and `~/.codex/AGENTS.md` tells Codex to read the same file.
+- **The voice is personal.** It reflects one user's taste, so it must not reach other people's sessions. It lives only in the user-global files, never in `COMMON.md` or project files: `~/.claude/CLAUDE.md` imports `VOICE.md` with an `@` line, and `~/.codex/AGENTS.md` tells Codex to read the same file.
 - **Skills and plugins.** `agt skills link` links shared skills into `~/.claude/skills/` and `~/.codex/skills/`, and `agt refresh` installs the plugins in both runtimes. Bump a plugin's version in both its `.claude-plugin` and `.codex-plugin` manifests whenever its guidance changes, or installed copies keep the old text.
 
 ## Shared Rules
