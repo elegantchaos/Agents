@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-08 Significant Type Documentation](2026-10-08-type-documentation.md): Concrete responsibilities, state and usage in significant type comments; separate meaning review, shared standards criteria and Swift integration.
+
 - [2026-09-29](2026-09-29.md): `agt` becomes the only dependency (#6), stale skills removed from `AGENTS.md` (#7), rules pass blocked, auto modes instead of approval rules under consideration, SwiftUI workshop guidance added to the swiftui skill, view-debugging helper idea noted.
 
 - [2026-10-02](2026-10-02.md): Draft combined Standard Rules format, shared-content fallback, skill scope, and migration checks for baseline:refresh; baseline 0.2.1 version bump and successful runtime cache refresh.
@@ -17,3 +19,7 @@
   Shared Python environment: COMMON.md directs both agents to the venv for agent utilities; security inspection, asdf Python 3.14.8t migration, patched native libraries and hashed pip/PyYAML lock, both validators passing.
 
   Deferred setup work: investigate dependency ownership and bootstrap order across Homebrew, Mint, asdf, Python and homebrew-xpkg before adding automatic environment setup.
+
+- [2026-10-14](2026-10-14.md): `baseline:review` skill for broad PR and work reviews, with a required codebase-effect pass and checked-evidence report; refresh default; baseline 0.5.0.
+
+- [2026-10-15](2026-10-15.md): PR #20 review: UI description length exceeds the metadata limit; frontmatter, manifests, paths, template, and whitespace checks pass; runtime and review-quality evaluation remain untested. Follow-up: four over-length UI descriptions fixed; review skill requires repo-wide defect searches and specific checked records; baseline 0.5.1, swift 0.10.2.

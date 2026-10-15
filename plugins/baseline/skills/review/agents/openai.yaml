@@ -1,0 +1,4 @@
+interface:
+  display_name: "Broad Review"
+  short_description: "Reviews correctness, standards, and wider codebase effects"
+  default_prompt: "Use $baseline:review to review this pull request for correctness, our standards, and its effect on the wider codebase."

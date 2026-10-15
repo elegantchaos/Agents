@@ -99,7 +99,33 @@ Look for codebase-wide refactors that:
 - To allow IDEs to surface documentation in their UIs.
 - They should be compact but informative.
 - They do not need to slavishly repeat every parameter or return type.
-- Add a larger comment before each type definition giving its purpose and design.
+- Scale type comments to the type's significance. A small value or helper may need one
+  precise sentence; a service, coordinator or central model needs enough context to explain
+  its purpose and design to someone who has not read its members.
+
+For significant types:
+
+- Lead with the concrete job and outcome. Say what the type does for its callers; phrases
+  such as "manages state" or "maintains the route" are incomplete without naming that state
+  or explaining the operation.
+- Explain the state or resources it owns and the main operations it performs. Name key
+  collaborators and say what work is delegated to them when this clarifies responsibility.
+- Explain how callers use the type, including distinct read and mutation interfaces when
+  present. Include lifecycle, persistence, side effects or constraints that affect correct use.
+- Check each claim against the implementation and relevant design documentation. Describe
+  implemented behaviour, preserve meaningful limits, and avoid promises based on intended
+  architecture alone.
+- Keep the explanation selective. Do not catalogue every member, repeat signatures or pad
+  simple types to a fixed length.
+
+For example, "Owns import state" gives little guidance. "Reads source files through
+registered importers, holds reconciled proposals for review, and writes accepted records
+through storage. Views observe the pending proposal; commands start or apply the import."
+explains the responsibility and usage.
+
+When reviewing comments, check their meaning separately from documentation lint. Ask
+whether a reader can explain what the type does, what it owns and how to use it without
+opening its implementation. Revise vague summaries even when every declaration has a comment.
 
 ## Path Portability
 
