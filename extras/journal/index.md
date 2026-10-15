@@ -15,3 +15,7 @@
 - [2026-10-08](2026-10-08.md): PR #14 review and fixes: historical sources for coming-week planning, complete calendar coverage, baseline 0.4.1; metadata and whitespace checks, validator dependency gap. Calendar authorization runs directly when summaries need access, with an explanation before the command; baseline 0.4.3.
 
   Emphasis-principles branch delivery: required principles references and local refresh default; baseline 0.4.4, validation waived by Sam. Decision records need a separate confirmation naming the record; baseline 0.4.5.
+
+- [2026-10-14](2026-10-14.md): `baseline:review` skill for broad PR and work reviews, with a required codebase-effect pass and checked-evidence report; refresh default; baseline 0.5.0.
+
+- [2026-10-15](2026-10-15.md): PR #20 review: UI description length exceeds the metadata limit; frontmatter, manifests, paths, template, and whitespace checks pass; runtime and review-quality evaluation remain untested. Follow-up: four over-length UI descriptions fixed; review skill requires repo-wide defect searches and specific checked records; baseline 0.5.1, swift 0.10.2.
