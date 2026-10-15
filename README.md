@@ -17,7 +17,7 @@ Clone this repository to:
 
 - `~/.local/share/agents`
 
-`agt`, from [AgentTools](https://github.com/elegantchaos/AgentTools), is the only tool this repository needs. With [Homebrew](https://brew.sh) installed, install it, or update it to the latest release, with the `baseline` plugin's helper, which installs Mint first if it is missing and prints the path to `agt` (usually `~/.mint/bin/agt`):
+`agt`, from [AgentTools](https://github.com/elegantchaos/AgentTools), manages shared resources. With [Homebrew](https://brew.sh) installed, install it, or update it to the latest release, with the `baseline` plugin's helper, which installs Mint first if it is missing and prints the path to `agt` (usually `~/.mint/bin/agt`):
 
 ```bash
 ~/.local/share/agents/plugins/baseline/skills/refresh/scripts/ensure-agt.sh --update
@@ -38,6 +38,39 @@ agt rules sync
 ```
 
 After that, use the `baseline:refresh` skill for routine maintenance.
+
+## Shared Python Utilities
+
+Both agents run Python-based agent utilities with `~/.local/share/agents/.venv/bin/python`. Project Python code uses its project's environment. The shared interpreter version is pinned in `.tool-versions`; [requirements-agent-tools.lock](requirements-agent-tools.lock) pins pip and PyYAML with SHA-256 hashes of published wheels. The venv and build scratch directory are ignored by Git.
+
+Install the pinned Python with asdf from the repository root. Skipping Homebrew and MacPorts discovery lets python-build build its pinned OpenSSL instead of linking to those package managers' TLS libraries. Homebrew's `xz` supplies LZMA support through explicit compiler flags; install it with `brew install xz` if absent. Disabling default Python packages prevents asdf from installing extra, unlocked packages:
+
+```sh
+cd ~/.local/share/agents
+mkdir -p .build/tmp/python-build/sources
+PYTHON_BUILD_SKIP_HOMEBREW=1 PYTHON_BUILD_SKIP_MACPORTS=1 \
+  LIBLZMA_CFLAGS="-I$(brew --prefix xz)/include" \
+  LIBLZMA_LIBS="-L$(brew --prefix xz)/lib -llzma" \
+  ASDF_PYTHON_DEFAULT_PACKAGES_FILE=/dev/null \
+  TMPDIR="$PWD/.build/tmp/python-build" \
+  PYTHON_BUILD_CACHE_PATH="$PWD/.build/tmp/python-build/sources" \
+  asdf install python
+```
+
+Create the environment only when `.venv` does not exist. To replace an existing environment, preserve it as a recovery copy first; recreating a venv in place can retain old interpreter symlinks and packages.
+
+```sh
+asdf exec python3 -m venv .venv
+.venv/bin/python -m pip --isolated install --force-reinstall --no-cache-dir \
+  --index-url https://pypi.org/simple \
+  --require-hashes --only-binary=:all: -r requirements-agent-tools.lock
+.venv/bin/python -m pip config --site set global.require-hashes true
+.venv/bin/python -m pip config --site set global.only-binary :all:
+.venv/bin/python -m pip check
+.venv/bin/python -c 'import sys, ssl, pyexpat, yaml; print(sys._base_executable); print(sys.version); print(ssl.OPENSSL_VERSION); print(pyexpat.EXPAT_VERSION); print(yaml.__version__)'
+```
+
+`--force-reinstall` makes pip verify and reinstall packages even if their versions already match. The environment's pip configuration enables hash checking and wheel-only installs by default. Hashes establish that downloaded artifacts match the reviewed lock; they do not prove the initial artifacts are trustworthy. The lock excludes source distributions and includes all non-yanked wheels for each pinned release. Review security advisories and artifact provenance when updating versions and hashes. Python and its native libraries need separate security checks and updates; the package lock does not cover them.
 
 ## Runtime Support
 
