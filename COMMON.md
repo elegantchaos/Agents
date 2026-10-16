@@ -32,6 +32,7 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Never perform irreversible destructive actions without explicit approval.
 - Reversible changes inside source control, including deletion of tracked files, are allowed.
 - Write temporary files to the harness-provided scratchpad directory if one exists; otherwise use `<repository>/.build/tmp/`, creating it if needed. Do not use `/tmp`, `/private/tmp`, or other system temporary directories, which can trigger unnecessary approval prompts.
+- `.build/tmp/` is for working files, not a store: nothing there should need to outlive the task that made it. Remove your own files from it once the task no longer needs them, including build output, logs and copies of large files. When you find files there from earlier sessions, report their size and offer to clear them, since another session may still be using some.
 - If unexpected workspace changes appear, pause and confirm direction.
 
 ## Project Records

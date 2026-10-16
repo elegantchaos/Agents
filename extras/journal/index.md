@@ -23,3 +23,7 @@
 - [2026-10-14](2026-10-14.md): `baseline:review` skill for broad PR and work reviews, with a required codebase-effect pass and checked-evidence report; refresh default; baseline 0.5.0.
 
 - [2026-10-15](2026-10-15.md): PR #20 review: UI description length exceeds the metadata limit; frontmatter, manifests, paths, template, and whitespace checks pass; runtime and review-quality evaluation remain untested. Follow-up: four over-length UI descriptions fixed; review skill requires repo-wide defect searches and specific checked records; baseline 0.5.1, swift 0.10.2. Voice revision: single `VOICE.md`, explicit but moderated profanity with American slang, "sexy" defined as self-possession.
+
+- [2026-10-16](2026-10-16.md): SwiftUI skill gains required references, a debugging section and the fixed-outermost-view rule after a toolbar flicker; standards debugging rule; review skill distinguishes diff and full reviews, with full reviews offered after PRs on small or long-unreviewed packages; `.build/tmp/` cleanup rule in `COMMON.md`; baseline 0.6.0, swift 0.11.0.
+
+- [2026-10-16 PR #22 Review](2026-10-16-pr22-review.md): Narrow the conditional-container rule to preserve omission semantics; clarify full-review record identity and debugging audit scope. Metadata, reference paths and whitespace checks pass; runtime behavior remains unverified.
