@@ -35,8 +35,9 @@ Read these when the task touches their topic:
 ## Debugging
 
 When tracking down a SwiftUI bug or regression, such as flicker, lost state or a control that
-does not update, read every reference above, not only the required ones. Then audit every view
-in the failing path against them before experimenting: the views the change touched, their
+does not update, read every reference above, not only the required ones. Logs and probes such as
+`Self._printChanges()` can come first to locate the failing path. Then audit every view in that
+path against the references before experimenting with changes: the views the change touched, their
 hosts and containers, and reusable controls from dependencies, including code no recent change
 touched. Check identity and structure even where a branch never changes. Build any reproduction
 by copying the real view code and removing parts, not by re-creating what seems relevant.
@@ -56,8 +57,9 @@ This helps to decouple the view from the business logic and makes it easier to t
 
 Check every changed SwiftUI file before reporting work complete:
 
-- Reusable controls, and content placed in toolbars, menus or list rows, have a fixed outermost
-  view, with any conditional inside a container, as `references/performance.md` describes.
+- Toolbar item content has a fixed outermost view, as `references/performance.md` describes,
+  and any container added for it keeps the intended omission and layout; list rows are omitted
+  by filtering data.
 - Modifier values toggle with expressions, not by branching between view hierarchies.
 - No `Binding(get:set:)`, stored escaping view-builder closures or closures passed as view
   inputs where `references/data.md` and `references/performance.md` offer an alternative.

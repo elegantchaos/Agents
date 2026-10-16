@@ -96,7 +96,7 @@ Avoid these patterns when writing new code or refactoring existing code. When re
 - Using `if/else` inside modifiers or helper APIs to return different view types for styling changes.
 - Creating generic conditional helpers like `applyIf` that hide structural branching and reset lifetime when conditions toggle.
 - Rebuilding expensive subtrees with `if` when a stable hidden view would preserve state more safely.
-- Making a conditional the outermost view of a reusable control, or of content placed in a toolbar, menu or list row. Platform-hosted containers can rebuild around it on every update, even when the branch never changes; see `performance.md`.
+- Making a conditional the outermost view of toolbar item content. On macOS the whole toolbar can rebuild around it on every update, even when the branch never changes; see `performance.md`, including when a wrapping container is acceptable.
 
 ### Over-broad dependencies
 
@@ -143,7 +143,7 @@ Avoid these patterns when writing new code or refactoring existing code. When re
 These patterns are good candidates to incorporate into the SwiftUI skill’s review language:
 
 - Flag identity-breaking conditional modifiers and generic `applyIf` helpers as high-priority architecture issues.
-- Flag reusable controls and toolbar, menu or row content whose outermost view is conditional.
+- Flag toolbar item content whose outermost view is conditional, and check that any fix preserves whether the item is omitted.
 - Flag broad data dependencies in leaf views as both performance and reusability issues.
 - Flag heavy work in `init`, `body`, or frequently recomputed computed properties.
 - Prefer `@Observable` plus `@State` for modern model ownership unless project constraints require older observation.

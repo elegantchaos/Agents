@@ -27,14 +27,14 @@ Choose the mode from the request, and state it at the start of the review:
 When a request fits more than one row, or none, ask which is meant.
 
 - **Diff review.** Reviews a pull request, branch, diff, or completed task. Its scope is the change, the code the change calls or newly depends on, and existing code the change places in a new context, such as a reusable control it puts in a toolbar for the first time. Defects in that newly exercised code are in scope even though the diff does not touch it.
-- **Full review.** Reviews a whole package, or an entire codebase with all its packages, reading every source file against every reference of every relevant skill. It finds defects that diff reviews miss because the code that contains them never changes. Follow the same process, applied to the whole scope: intent becomes the package's or codebase's purpose as its documentation states it, and the codebase-effect sections cover the whole scope, including dead code, duplication, and documentation that no longer matches the code. An entire-codebase review is more than the sum of its packages' reviews, as Reviewing an Entire Codebase describes.
+- **Full review.** Reviews a whole package, or an entire codebase with all its packages, reading every source file against every reference of every relevant skill. It finds defects that diff reviews miss because the code that contains them never changes. For a package, follow the same process, applied to the whole package: intent becomes the package's purpose as its documentation states it, and the codebase-effect sections cover the whole package, including dead code, duplication, and documentation that no longer matches the code. An entire-codebase review follows its own method and report, in Reviewing an Entire Codebase, because it is more than the sum of its packages' reviews.
 
 After a diff review of a pull request, also offer a full review of each package the change touches when either:
 
 - the package has at most 5,000 lines of source, excluding tests; or
 - its last full review is more than 30 days old or predates its last release, or no full review is recorded.
 
-Find the last full review in the project's journal, where each full review is recorded as an entry whose title begins "Full Review" and names the packages it covered. Say when you cannot tell. Record each full review in the journal that way, so the next decision can find it.
+Find the last full review in the project's journal. Record each full review there as an entry whose title begins "Full Review", stating the date, each package covered with its path, the commit or release reviewed, and whether coverage was complete or partial, listing what a partial review left out. A package's last full review is the latest complete one that names it; compare its reviewed commit or release with the package's latest release. Say when you cannot tell.
 
 ### Reviewing an Entire Codebase
 
@@ -166,8 +166,8 @@ Check before reporting the review:
 - The mode was chosen from the request, or the user was asked which was meant.
 - For an entire-codebase review, the scope and map are stated, a split was proposed when the scope exceeded about 10,000 lines, the report follows the codebase structure with the seams and whole-codebase findings first, every package has its own findings, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
-- Every changed file was read in full and checked against the applicable skill checklists.
-- All four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files.
+- Every changed file, or for a full review every file in scope, was read in full and checked against the applicable skill checklists.
+- For a diff or package review, all four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present, each with a "Checked:" record, and between them they cover what the four sections ask: obsolete code, possible simplification, duplication and design clarity.
 - Every finding has evidence and a recommended action.
 - Every defect was searched for across the codebase, and all instances are reported.
 - Tests and linters were run, or Not Checked says why not.
