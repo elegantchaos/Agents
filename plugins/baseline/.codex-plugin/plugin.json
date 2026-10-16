@@ -1,7 +1,7 @@
 {
   "name": "baseline",
-  "version": "0.6.0",
-  "description": "Elegant Chaos baseline: coding standards, reviews, project records, work summaries, and shared-agent maintenance.",
+  "version": "0.7.0",
+  "description": "Elegant Chaos baseline: coding standards, Git and GitHub, reviews, project records, work summaries, and shared-agent maintenance.",
   "author": {
     "name": "Elegant Chaos",
     "url": "https://elegantchaos.com"
@@ -12,8 +12,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Baseline",
-    "shortDescription": "Coding standards, reviews, project records, work summaries, and shared-agent maintenance.",
-    "longDescription": "Elegant Chaos cross-language coding standards, broad reviews of pull requests and completed work, development journal and decision log practice, summaries of recent work, and the refresh workflow for shared agent resources.",
+    "shortDescription": "Coding standards, GitHub, reviews, and project records.",
+    "longDescription": "Elegant Chaos cross-language coding standards, Git and GitHub workflows, broad reviews of pull requests and completed work, development journal and decision log practice, summaries of recent work, and the refresh workflow for shared agent resources.",
     "developerName": "Elegant Chaos",
     "category": "Productivity",
     "capabilities": [],

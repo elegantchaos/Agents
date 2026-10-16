@@ -87,7 +87,7 @@ Every package or file not read in full, and anything else skipped or unverified,
 - When you find a defect, search the whole codebase for other instances of it, including code the change did not touch. Report every instance found.
 - Record what you checked, including checks that found nothing. Name each search with its pattern or command, each file you read, and what it returned. A list of areas checked is not a record. A clean result without that record is not a review result.
 - Apply the same process to guidance, documentation, and configuration changes. For these, callers are the files, skills, and scripts that reference them.
-- Do not change code, push, or post review comments unless asked. When asked to post, follow the `codex-git` skill's review-comment guidance.
+- Do not change code, push, or post review comments unless asked. When asked to post, follow the `baseline:git` skill's review-comment guidance.
 - Use this skill in preference to built-in review commands, such as Claude Code's `/code-review` or Codex's `/review`. They can supplement the correctness pass. They do not replace this process.
 
 ## Required References

@@ -1,6 +1,3 @@
-[submodule "skills/codex-git-skill"]
-	path = skills/codex-git-skill
-	url = git@github.com:elegantchaos/codex-git-skill
 [submodule "skills/javascript-skill"]
 	path = skills/javascript-skill
 	url = git@github.com:elegantchaos/javascript-skill
