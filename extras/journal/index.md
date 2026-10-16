@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-16 PR #23 Review](2026-10-16-pr23-review.md): Existing draft target handling needs clarification; draft-state preflight and shared-Python pointer suggested; packaging and six skill validators pass.
+
 - [2026-10-16 Baseline Git](2026-10-16-baseline-git.md): Standalone Git skill moved to baseline:git in a worktree; Codex/Claude comparison, permission and text-handling findings, recommended revisions approved and implemented.
 
 - [2026-10-08 Significant Type Documentation](2026-10-08-type-documentation.md): Concrete responsibilities, state and usage in significant type comments; separate meaning review, shared standards criteria and Swift integration.

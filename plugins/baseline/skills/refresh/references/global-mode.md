@@ -105,6 +105,12 @@ If a command family appears repeatedly and does not fit an existing file cleanly
 
 ## Verification
 
+For Python-based skill/plugin checks, follow `COMMON.md`'s shared Python utility
+rule: invoke `~/.local/share/agents/.venv/bin/python` explicitly, including from
+worktrees. The worktree's tool-version selection or system Python is not a
+substitute for that environment. Report a missing environment or dependency;
+keep dependency setup and version policy in the shared rule and root README.
+
 Check all of the following before finishing:
 
 - shared agents repository update status is known
