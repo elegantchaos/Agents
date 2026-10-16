@@ -1,6 +1,6 @@
 ---
 name: review
-description: Performs a broad review of a pull request, branch, diff, plan, or another agent's completed work, covering correctness, conformance to our standards, design quality, and the change's effect on the wider codebase. Use when asked to review any of these. Use in preference to built-in review commands, which focus on bugs in the diff.
+description: Performs a broad review of a pull request, branch, diff, plan, or another agent's completed work, covering correctness, conformance to our standards, design quality, and the change's effect on the wider codebase, or a full review of a whole package or codebase. Use when asked to review any of these. Use in preference to built-in review commands, which focus on bugs in the diff.
 ---
 
 # Review
@@ -13,10 +13,22 @@ A review answers three questions:
 
 The third question matters as much as the first two. A change can be correct and compliant and still leave the codebase more confusing, duplicated, or inconsistent. Answering it requires reading beyond the diff.
 
+## Review Modes
+
+- **Diff review.** Reviews a pull request, branch, diff, or completed task. Its scope is the change, the code the change calls or newly depends on, and existing code the change places in a new context, such as a reusable control it puts in a toolbar for the first time. Defects in that newly exercised code are in scope even though the diff does not touch it.
+- **Full review.** Reviews a whole package or codebase, every source file, against every reference of every relevant skill. It finds defects that diff reviews miss because the code that contains them never changes. Follow the same process, applied to the whole codebase: intent becomes the package's purpose as its documentation states it, and the codebase-effect sections cover the whole codebase, including dead code, duplication, and documentation that no longer matches the code.
+
+After a diff review of a pull request, also offer a full review of each package the change touches when either:
+
+- the package has at most 5,000 lines of source, excluding tests; or
+- its last full review is more than 30 days old or predates its last release, or no full review is recorded.
+
+Find the last full review in the project's journal, where each full review is recorded as an entry whose title begins "Full Review". Say when you cannot tell. Record each full review in the journal that way, so the next decision can find it.
+
 ## Rules
 
 - Review the whole change. Do not stop after the first few findings.
-- Read beyond the diff: every changed file in full, the callers of changed code, and sibling code that does similar jobs.
+- Read beyond the diff: every changed file in full, the callers of changed code, the code the change newly depends on or places in a new context, and sibling code that does similar jobs.
 - Back every finding with evidence: a `file:line`, a search result, or a test outcome. Mark findings you could not confirm as unverified.
 - When you find a defect, search the whole codebase for other instances of it, including code the change did not touch. Report every instance found.
 - Record what you checked, including checks that found nothing. Name each search with its pattern or command, each file you read, and what it returned. A list of areas checked is not a record. A clean result without that record is not a review result.
@@ -96,6 +108,7 @@ What was skipped or could not be verified, and why.
 
 Check before reporting the review:
 
+- The review mode is stated, and after a diff review of a pull request, whether a full review is due and why.
 - Intent is stated, or its absence is a finding.
 - Every changed file was read in full and checked against the applicable skill checklists.
 - All four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files.

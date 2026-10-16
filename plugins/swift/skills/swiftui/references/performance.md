@@ -1,6 +1,7 @@
 # Performance
 
 - When toggling modifier values, prefer ternary expressions over if/else view branching to avoid `_ConditionalContent`, preserve structural identity, and avoid repeatedly recreating underlying platform views.
+- Give reusable controls, and content placed in toolbars, menus or list rows, a fixed outermost view. When such a view shows or hides its content, put the `if` inside a container, such as `VStack(spacing: 0)`, or a `ViewModifier` whose body is one, instead of making the conditional the outermost view of `body`. `Group` does not count: it is a passthrough. The harm does not depend on the branch changing. On macOS, a toolbar item whose content's outermost view was a bare `if` made SwiftUI rebuild every item in the window's toolbar each time that content re-evaluated, though the condition never changed, so the whole toolbar flickered whenever a command's availability changed.
 - Avoid `AnyView` unless absolutely required. Use `@ViewBuilder`, `Group`, or generics instead.
 - If a `ScrollView` has an opaque, static, and solid background, prefer to use `scrollContentBackground(.visible)` to improve scroll-edge rendering efficiency.
 - It is more efficient to break views up by making dedicated SwiftUI views rather than place them into computed properties or methods. Using `@ViewBuilder` on a property or method does not solve this; breaking views up is strongly preferred.

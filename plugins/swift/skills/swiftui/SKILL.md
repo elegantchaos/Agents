@@ -7,25 +7,60 @@ metadata:
   version: "1.0"
 ---
 
-Adopt the recommended patterns in `references/patterns.md` as the basis for writing, refactoring and reviewing SwiftUI code.
+Use this skill for writing, refactoring, reviewing and debugging SwiftUI code.
 
-Avoid the potentially harmful patterns. Flag them in existing code.
+## Required References
 
-Other guidelines:
+Read these before writing, changing, or reviewing SwiftUI code:
 
-- Use the `swift:language` and `baseline:standards` skills to ensure the code is modern, clean, and maintainable.
-- Don't use deprecated API - see `references/api.md`.
-- Follow the rules in `references/views.md`.
-- Implement the data flow using `references/data.md`.
-- Read `references/localization.md` when writing or reviewing user-facing strings.
-- Ensure navigation is updated and performant using `references/navigation.md`.
-- Ensure the code uses designs that are accessible and follow guidelines using `references/design.md`.
-- Validate accessibility compliance including Dynamic Type, VoiceOver, and Reduce Motion using `references/accessibility.md`.
-- Ensure the code is able to run efficiently using `references/performance.md`.
-- Read `references/sdk27.md` when targeting SDK 27 APIs, resolving SwiftUI source incompatibilities after an SDK update, or adding availability-sensitive features.
+- `references/patterns.md`: recommended and potentially harmful patterns. Adopt the recommended
+  patterns, avoid the harmful ones, and flag harmful ones in existing code.
+- `references/performance.md`: view identity, update cost and structure. Its rules prevent
+  visible glitches as well as slowness, so it applies to every view, not only hot paths.
+- `references/views.md`: rules for view structure and bodies.
+- `references/data.md`: data flow, state ownership, bindings and environment values.
+- `references/api.md`: modern API in place of deprecated API.
+
+## Further References
+
+Read these when the task touches their topic:
+
+- `references/navigation.md`: navigation and presentation, including alerts and dialogs.
+- `references/design.md`: design guidelines, adaptability and system styling.
+- `references/accessibility.md`: Dynamic Type, VoiceOver, Reduce Motion and accessible controls.
+- `references/localization.md`: user-facing strings.
+- `references/sdk27.md`: SDK 27 APIs, source incompatibilities after an SDK update, and
+  availability-sensitive features.
+
+## Debugging
+
+When tracking down a SwiftUI bug or regression, such as flicker, lost state or a control that
+does not update, read every reference above, not only the required ones. Then audit every view
+in the failing path against them before experimenting: the views the change touched, their
+hosts and containers, and reusable controls from dependencies, including code no recent change
+touched. Check identity and structure even where a branch never changes. Build any reproduction
+by copying the real view code and removing parts, not by re-creating what seems relevant.
+
+## Other Guidelines
+
+- Use the `swift:language` and `baseline:standards` skills to ensure the code is modern, clean,
+  and maintainable.
 - Avoid UIKit and AppKit unless requested, and use SwiftUI equivalents instead.
 
 ## Command Pattern
 
 If `elegantchaos/Commands` is in the project dependencies, use the Command pattern for actions that are triggered by user interaction.
 This helps to decouple the view from the business logic and makes it easier to test and maintain.
+
+## Checklist
+
+Check every changed SwiftUI file before reporting work complete:
+
+- Reusable controls, and content placed in toolbars, menus or list rows, have a fixed outermost
+  view, with any conditional inside a container, as `references/performance.md` describes.
+- Modifier values toggle with expressions, not by branching between view hierarchies.
+- No `Binding(get:set:)`, stored escaping view-builder closures or closures passed as view
+  inputs where `references/data.md` and `references/performance.md` offer an alternative.
+- Views depend only on the data they render.
+- No deprecated API from `references/api.md`.
+- Previews exist for new views.

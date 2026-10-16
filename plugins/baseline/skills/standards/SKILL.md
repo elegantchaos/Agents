@@ -24,6 +24,15 @@ Read these when the task touches their topic:
 - `references/scripting.md`: repository-maintained scripts, automation, and task runners.
 - `references/external.md`: external references, vendor APIs, language semantics, and policy guidance.
 
+## Debugging
+
+When tracking down a bug or regression, read every reference of every relevant skill, including
+the further references, not only the required ones: the deepest context gives the best chance of
+recognising the cause. Audit the code in the failing path against that guidance before running
+experiments, including code in dependencies and code no recent change touched. Test first the
+hypotheses the guidance flags, and build any reproduction from a copy of the real code, removing
+parts until the behaviour changes.
+
 If the task has a language or framework specialist skill, use the guidance here as a baseline. Treat the specialist skill as authoritative for domain-specific detail.
 
 ## Checklist
