@@ -14,7 +14,7 @@
     {
       "name": "baseline",
       "source": "./plugins/baseline",
-      "description": "Coding standards, project records, and shared-agent maintenance."
+      "description": "Coding standards, Git and GitHub, reviews, project records, work summaries, and shared-agent maintenance."
     }
   ]
 }

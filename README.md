@@ -9,7 +9,7 @@ It provides:
 - shared baseline guidance in `~/.local/share/agents/COMMON.md`
 - shared Codex rule files under `~/.local/share/agents/runtimes/codex/rules/`
 - shared skills under `~/.local/share/agents/skills/`, maintained with the standalone `agt` command
-- plugins under `plugins/`, maintained directly in this repository and installable in Claude Code and Codex: the [baseline plugin](plugins/baseline/README.md) (coding standards, project records, refresh) and the [Swift plugin](plugins/swift/README.md)
+- plugins under `plugins/`, maintained directly in this repository and installable in Claude Code and Codex: the [baseline plugin](plugins/baseline/README.md) (coding standards, Git and GitHub, reviews, project records, summaries, refresh) and the [Swift plugin](plugins/swift/README.md)
 
 ## First Use
 

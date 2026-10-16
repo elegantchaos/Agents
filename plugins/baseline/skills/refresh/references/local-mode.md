@@ -86,13 +86,13 @@ Render `Standard Rules` from `../assets/AGENTS.md` verbatim, substituting only i
   - Follow the `baseline:standards` skill for all coding.
   - Use the `baseline:review` skill for reviewing pull requests and completed work.
   - Use the `baseline:records` skill for the development journal and decision log.
-  - Use the `codex-git` skill for git and GitHub operations.
+  - Use the `baseline:git` skill for git and GitHub operations.
   - Use the `swift:language` skill for all Swift code.
   - Also use the `swift:swiftui` skill for SwiftUI code.
   - Also use the `swift:testing` skill for Swift Testing work.
   - Also use the `swift:concurrency` skill for actor isolation and shared mutable state.
 - Adapt only the record types in the `baseline:records` bullet if the project enables just one.
-- Include `baseline:records` when project records are enabled and `codex-git` when the project uses git. Keep the order above for applicable entries; add other project-relevant skills with similarly direct wording.
+- Include `baseline:records` when project records are enabled and `baseline:git` when the project uses git. Keep the order above for applicable entries; add other project-relevant skills with similarly direct wording.
 - Select skills based on the repository's stack and workflows. Give each selected skill its full domain scope; do not restrict it to the current integration or implementation detail that established its relevance.
 - Include `swift:swiftui` for Swift projects with user interface work or SwiftUI integration. Its instruction covers all SwiftUI code, including future UI work.
 - Prefer "Also use" for additive skills: specialist guidance supplements the language or baseline skill. Keep the base skill instruction broad, such as "for all Swift code".
