@@ -16,14 +16,23 @@ The third question matters as much as the first two. A change can be correct and
 ## Review Modes
 
 - **Diff review.** Reviews a pull request, branch, diff, or completed task. Its scope is the change, the code the change calls or newly depends on, and existing code the change places in a new context, such as a reusable control it puts in a toolbar for the first time. Defects in that newly exercised code are in scope even though the diff does not touch it.
-- **Full review.** Reviews a whole package or codebase, every source file, against every reference of every relevant skill. It finds defects that diff reviews miss because the code that contains them never changes. Follow the same process, applied to the whole codebase: intent becomes the package's purpose as its documentation states it, and the codebase-effect sections cover the whole codebase, including dead code, duplication, and documentation that no longer matches the code.
+- **Full review.** Reviews a whole package, or an entire codebase with all its packages, reading every source file against every reference of every relevant skill. It finds defects that diff reviews miss because the code that contains them never changes. Follow the same process, applied to the whole scope: intent becomes the package's or codebase's purpose as its documentation states it, and the codebase-effect sections cover the whole scope, including dead code, duplication, and documentation that no longer matches the code.
 
 After a diff review of a pull request, also offer a full review of each package the change touches when either:
 
 - the package has at most 5,000 lines of source, excluding tests; or
 - its last full review is more than 30 days old or predates its last release, or no full review is recorded.
 
-Find the last full review in the project's journal, where each full review is recorded as an entry whose title begins "Full Review". Say when you cannot tell. Record each full review in the journal that way, so the next decision can find it.
+Find the last full review in the project's journal, where each full review is recorded as an entry whose title begins "Full Review" and names the packages it covered. Say when you cannot tell. Record each full review in the journal that way, so the next decision can find it.
+
+### Reviewing an Entire Codebase
+
+An entire codebase is too large to read as one pass without skimming. Work in this order:
+
+1. **Inventory.** List every package and target with its source size, and state the scope: which packages are included, and whether dependencies the project owns, such as packages in submodules, are in or out. Ask when the scope is unclear.
+2. **Each package.** Give each package its own full review: every file read in full and checked against the applicable skill checklists, with its own findings and codebase-effect record. When the user agrees, the packages can be reviewed in separate sessions and their reports combined.
+3. **Across packages.** Then review what no single package shows: duplication between packages, code that belongs in a shared package, dependency direction and package boundaries against the architecture documentation and recorded decisions, idioms applied inconsistently from one package to another, and whether the documentation index, design documents and journal still describe the codebase.
+4. **Report.** Start with a codebase summary and the most severe findings across it, then each package's findings, then the cross-package findings. Under Not Checked, list every package or file not read in full. A codebase review that sampled files is reported as sampled, never as complete.
 
 ## Rules
 
@@ -109,6 +118,7 @@ What was skipped or could not be verified, and why.
 Check before reporting the review:
 
 - The review mode is stated, and after a diff review of a pull request, whether a full review is due and why.
+- For an entire-codebase review, the inventory and scope are stated, every package has its own findings, the cross-package pass is reported, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
 - Every changed file was read in full and checked against the applicable skill checklists.
 - All four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files.
