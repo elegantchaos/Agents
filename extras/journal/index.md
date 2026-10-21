@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-21 Review Decision Coverage](2026-10-21-review-decision-coverage.md): Complete decision reading, evidence-backed compliance assessment, and partial verdicts for coverage gaps; baseline 0.8.1.
+
 - [2026-10-19 Review: Special Cases The General Form Can Absorb](2026-10-19-review-special-cases.md): New review item for variants a general mechanism could represent, prompted by Bookish PR #90; baseline 0.8.0.
 
 - [2026-10-16 PR #23 Review](2026-10-16-pr23-review.md): Existing draft target handling needs clarification; draft-state preflight and shared-Python pointer suggested; packaging and six skill validators pass.
