@@ -72,7 +72,7 @@ A project that requires data preservation can state:
 
 - Keep interfaces explicit, intentionally small, and unsurprising.
 - Avoid hidden coupling and unexpected side effects.
-- Do not add dependencies without clear justification.
+- Do not add external dependencies without explicit permission and clear justification. Each dependency should remove meaningful complexity or provide capability the standard library and existing dependencies do not supply.
 - Keep secrets and credentials out of source control and out of committed configuration.
 - Use wrappers and adapters only when they have a concrete responsibility, such as translating an external contract, enforcing isolation, or managing resource lifetime. Explain why that boundary is needed.
 - Do not add forwarding or translation layers merely to make an existing design appear to satisfy a guideline. Fix the underlying design.

@@ -60,5 +60,3 @@ When summarizing work:
 - Prefer the repo's configured linter/formatter. If the repo has no linter yet, keep style conservative and idiomatic for the language.
 - Run project commands to respect local environment settings (`swift run`, `bundle exec`, `penv` etc)
 - Add or update executable validation when behavior changes: tests for logic changes, lint or format checks for style-sensitive work, and packaging checks for metadata or executable wiring.
-- Don't add external dependencies without explicit permission.
-- Keep dependency additions justified. Every new dependency should remove meaningful complexity or supply capability the standard library or existing dependency graph does not already cover.

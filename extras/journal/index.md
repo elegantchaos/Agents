@@ -1,5 +1,9 @@
 # Journal
 
+- [2026-10-22 Standards Completion Checklist](2026-10-22-standards-checklist.md): Checklist aligned with revised guidance, with checks applicable to the work performed; pending baseline 0.8.7.
+
+- [2026-10-22 Consolidated Dependency Policy](2026-10-22-dependency-policy.md): Permission and justification requirements consolidated in implementation guidance; duplicate testing bullets removed; baseline 0.8.7.
+
 - [2026-10-22 Failure Handling And Resource Ownership](2026-10-22-failure-resource-guidance.md): Explicit failure outcomes, error propagation, cleanup, cancellation, safe retries, and required recovery machinery; baseline 0.8.6.
 
 - [2026-10-22 Behavior-Focused Testing Guidance](2026-10-22-testing-guidance.md): Meaningful red failures, state isolation, behavior-focused coverage, and quality checks for existing tests; baseline 0.8.5.
