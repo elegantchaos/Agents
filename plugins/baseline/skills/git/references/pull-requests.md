@@ -4,7 +4,7 @@
 
 - Make every change to `main` through a pull request. Keep direct pushes and local merges off `main`.
 - Inspect branch protection or rulesets when relevant. Configure them only when requested. Do not require a full-validation status check until CI actually runs it reliably for the repository.
-- Before merging, verify that the repository's required full validation passed for the final PR head. Record the result in the PR and rerun it after changes to that head.
+- Before merging, verify that the repository's required full validation passed for the PR's latest commit that changes more than documentation files. Record the result and that commit in the PR. Rerun it after a later commit changes code, tests, configuration or other build inputs; a commit that changes only documentation files, such as guides, journal entries and decision records, does not need it.
 - Honor established change scope. Inspect status and the diff, stage explicit paths, and preserve unrelated work. Ask only when ownership or intended scope is ambiguous; do not default to `git add -A` in a mixed tree.
 - Push the intended head before creating a PR or publishing new commits. Editing only a PR title or body does not require a push.
 - If a required push fails, stop the dependent PR operation and report the exact push error.

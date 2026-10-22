@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-22 Full Validation Skips Documentation-Only Commits](2026-10-22-docs-only-validation.md): Merging needs full validation on the PR's latest commit that changes more than documentation files; `COMMON.md`, `baseline:git` and `swift:validation` agree; baseline 0.8.10, swift 0.11.1.
+
 - [2026-10-22 Decision Record Shape](2026-10-22-decision-record-shape.md): Records skill gains the decision shape: Decision first, compact Context, Details, Alternatives and Consequences, and what counts as a decision; baseline 0.8.9.
 
 - [2026-10-22 Standards Completion Checklist](2026-10-22-standards-checklist.md): Checklist aligned with revised guidance, with checks applicable to the work performed; pending baseline 0.8.7.
