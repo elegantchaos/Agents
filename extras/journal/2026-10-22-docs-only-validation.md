@@ -1,4 +1,4 @@
-# Full Validation Skips Documentation-Only Commits
+# Full Validation Skips Documentation-Only Commits, And Worktrees Get Semantic Names
 
 Date: 2026-10-22
 
@@ -18,6 +18,11 @@ Three places carried the final-head rule, and all now say the same thing:
   which fingerprints the exact tree and so reports a result as stale after a later
   documentation-only commit. Confirm with `git diff --name-only <validated-commit> HEAD`
   that only documentation files changed, and rely on the recorded result.
+
+Sam also asked for worktrees to have semantic names. The Bookish session ran in a worktree
+the harness had named `xenodochial-hofstadter-117f77`; `remove-writer-browser-refreshes`,
+matching its branch, would have said what it was for. `COMMON.md` now asks for worktree names
+that describe the task and match the branch name without its prefix.
 
 Documentation files means files outside the build, so doc comments in source files still
 count as code changes. Baseline advances to 0.8.10 and swift to 0.11.1.
