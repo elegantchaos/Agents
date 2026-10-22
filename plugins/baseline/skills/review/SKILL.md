@@ -33,12 +33,12 @@ If any record is unread or an applicable constraint remains unchecked, decision 
 
 Choose the mode from the request, and state it at the start of the review:
 
-| Request | Mode | Report |
-| --- | --- | --- |
-| A pull request, branch, commit range, diff, or completed task | Diff review | The structure in Process step 5 |
-| A named package, module, or target | Full review of that package | The structure in Process step 5, with the package's purpose in place of intent |
-| The codebase, the project, or the repository | Full review of the entire codebase | The structure in Reviewing an Entire Codebase |
-| A plan or design document | Diff review of the document | The structure in Process step 5 |
+| Request                                                       | Mode                               | Report                                                                         |
+| ------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------ |
+| A pull request, branch, commit range, diff, or completed task | Diff review                        | The structure in Process step 5                                                |
+| A named package, module, or target                            | Full review of that package        | The structure in Process step 5, with the package's purpose in place of intent |
+| The codebase, the project, or the repository                  | Full review of the entire codebase | The structure in Reviewing an Entire Codebase                                  |
+| A plan or design document                                     | Diff review of the document        | The structure in Process step 5                                                |
 
 When a request fits more than one row, or none, ask which is meant.
 
@@ -80,6 +80,7 @@ Each package's role, size and public API in a line or two; the dependency graph,
 Most severe first, from the seams and the whole-codebase pass. Each with severity (blocking, should fix, or suggestion), the packages involved, evidence, and recommended action.
 
 ### Seams
+
 ### Across the Whole
 
 Under each: findings, then "Checked:" listing each boundary, search pattern or command, and file read, and what it returned.
@@ -136,6 +137,7 @@ Every package or file not read in full, and anything else skipped or unverified,
 - Check each changed file against the checklists of the skills listed in Required References.
 - Check the change against the engineering principles and change strategy in `baseline:standards`. Flag workarounds where a root fix was possible, complexity added without justification, and new idioms or architecture not applied consistently across the codebase.
 - Check each applicable decision constraint against the change and newly exercised existing code, recording evidence in the decision assessment. Report conflicts explicitly; mark unverified constraints as coverage gaps.
+- Check for compliance with the spirit and not just the letter of all applicable standards, principles, and guidelines. Flag thin translation layers that merely wrap existing functionality so that it fits a required standard, without adding real value or addressing the underlying design intent.
 
 ### 4. Effect on the Codebase
 
@@ -144,7 +146,7 @@ Work through each item. Record the searches and reads you did for each, whatever
 - **Made obsolete.** For each symbol, file, option, or behaviour the change removes, renames, or replaces, search for remaining references in code, tests, documentation, comments, configuration, and scripts. Look for code that existed only to support the old behaviour.
 - **Simplification now possible.** For each edge case, state, or input the change eliminates or makes impossible, find the guards, branches, fallbacks, tests, and documentation that handled it. List those that can now be removed or simplified.
 - **Special cases the general form can absorb.** Look for representations that keep variants side by side, such as enum cases, optional fields set in mutually exclusive combinations, parallel accessors, `isX` flags, or separate code paths, where one variant is a general mechanism and the others exist only for what it apparently cannot handle. Ask whether the special case could become an instance of the general one: a type conforming to the same protocol, a value of the same type, or an input the general path already accepts. Signs include switches whose branches do the same job by different means, accessors that return nil for the other variant, equality, encoding or display defined per variant, and a variant that exists because one requirement of the general form does not fit it, such as a static member, a non-optional field, or a fixed type. Treat that requirement as open to change: relaxing it is often enough. When it is, recommend the change and list the cases, branches, accessors and tests that collapse. For example, a payload with typed and raw cases collapses into one once raw payloads become a type conforming to the payload protocol, with the protocol's static kind made an instance property. Report these under Simplification Now Possible.
-- **Duplication.** For each new function, type, or significant block, search for existing code that does the same or a similar job: related names, the same APIs or libraries, and similar shapes. Report duplication the change introduces, and existing duplicates the change makes easier to merge.
+- **Duplication.** For each new function, type, or significant block, search for existing code that does the same or a similar job: related names, the same APIs or libraries, and similar shapes. Report duplication the change introduces, and existing duplicates the change makes easier to merge. Suggest merges.
 - **Design clarity.** For each new concept, type, or layer, check whether it overlaps an existing one, and whether names and boundaries make clear which to use. Flag old and new ways of doing the same thing left side by side. Check that documentation describing the design still matches it.
 
 Report work beyond the change's scope as a follow-up, separate from issues that block the change.
@@ -169,8 +171,11 @@ Most severe first. Each with severity (blocking, should fix, or suggestion), loc
 ## Codebase Effect
 
 ### Made Obsolete
+
 ### Simplification Now Possible
+
 ### Duplication
+
 ### Design Clarity
 
 Under each: findings, then "Checked:" listing each search pattern or command, each file read, and what it returned.

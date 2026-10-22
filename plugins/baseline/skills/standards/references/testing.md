@@ -1,8 +1,5 @@
 # Testing
 
-These are general rules for how to go about testing, and what tooling to use.
-Platform-specific rules are allowed to take precedence.
-
 ## Non-UI Code
 
 - Use red/green TDD. Write the tests first.
@@ -10,6 +7,7 @@ Platform-specific rules are allowed to take precedence.
 - Consider adding unit tests for older code to improve coverage.
 - Tests should be deterministic.
 - Unit tests should not require network access.
+- Unit tests should be fast, with a predictable duration.
 - Full end-to-end integration tests can require network access if it is essential.
 - Focus testing on changed behavior, important failure paths, and regression risk rather than chasing raw coverage numbers.
 - Prefer tests through stable interfaces, and avoid excessive mocking when cheap real collaborators are available.
@@ -25,7 +23,8 @@ If the platform has a live preview feature (for example, #Preview for SwiftUI), 
 
 If the platform has a UI-testing framework (for example, XCTest UI testing for Swift), use it.
 Create UI tests that target important behaviours, state changes, and key navigation.
-UI tests can be fragile - avoid creating tests that are sensitive to stylistic or layout changes.
+Create UI when needed to test that an implementation is working as expected.
+Avoid creating fragile UI tests that are sensitive to stylistic or layout changes.
 
 Use previews to support fast iteration, but do not treat them as a full replacement for other relevant UI or integration validation.
 

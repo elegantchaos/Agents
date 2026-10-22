@@ -1,6 +1,6 @@
 # Writing Good Code
 
-Use this file when you need a shared definition of code quality across languages and frameworks.
+Use this definition of code quality across languages and frameworks.
 
 Good code has these properties:
 

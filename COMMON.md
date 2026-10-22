@@ -6,12 +6,13 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 ## Core Workflow
 
 - Understand request boundaries.
-- Inspect relevant code/docs before editing.
+- Inspect documentation and decision logs before editing.
 - Follow the `baseline:standards` skill for all code work: reading, creating, refactoring, or reviewing code.
 - Use red/green TDD for non-UI code.
 - In code you write or change, follow the guidelines rather than the style of the surrounding code.
+- Follow the spirit of all guidelines, not just the letter. Avoid workarounds which superficially make a pattern fit by adding a forwarding or translation layer.
 - Work is complete only when changed files have been checked against the required skills' checklists, and lint findings in them are fixed.
-- Work on a branch and use a pull request for every change to `main`. Do not merge until the repository's required full validation has passed for the final PR head.
+- Work on a branch and worktree, and use a pull request for every change to `main`. Do not merge until the repository's required full validation has passed for the final PR head.
 - When a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing.
 - Run Python-based agent utilities, including skill validators, using `~/.local/share/agents/.venv/bin/python` explicitly. Use each project's own environment for project Python code. If the shared environment or a required dependency is missing, report it.
 - Install shared Python agent dependencies from `~/.local/share/agents/requirements-agent-tools.lock` with `--require-hashes --only-binary=:all:`. Review version and hash changes before updating the lock file.
@@ -25,6 +26,7 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Report every check you ran, every check you skipped with the reason, and any validation gaps.
 - Do not repeatedly advertise that the agent is verifying instead of guessing; that should be treated as default competence and only called out when there is real uncertainty or risk.
 - Do not repeatedly stop to ask for confirmation when the next verification step is safe and obvious.
+- Ask permission before making major architectural changes. As for guidance when you are not sure which alternative to choose.
 
 ## Safety and Discipline
 
