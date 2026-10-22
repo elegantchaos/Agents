@@ -24,16 +24,36 @@ Each kind of record has one job:
 
 ## Decisions
 
-- Record one Markdown file per important decision: a choice that later work must follow, such as an architectural boundary, technology baseline, or cross-cutting policy.
-- Decisions should be compact, focused, and self-contained, capturing only the essential rationale and consequences; keep design and implementation detail in documentation; keep naming and emergent or unconfirmed directions in the journal.
+### What to record
+
+- Record one Markdown file per important decision: a choice that later work must follow, such as an architectural boundary, technology baseline, or cross-cutting policy. A record should guide where future code goes or how it must behave.
+- A design change is not a decision. When a choice follows from existing decisions, or only describes how something is built, record it in documentation and the journal instead. Keep naming and emergent or unconfirmed directions in the journal.
+- Check decisions before implementing new code. If the work would conflict with a decision, raise it with the user instead of diverging.
+
+### Confirming
+
 - Before writing or changing any decision record, ask a separate question that names the record (its new number and title, or the existing decision being amended) and summarises what it will say. Only a direct yes to that question confirms it.
 - Agreement with a design or policy choice is not confirmation to record it, and a question that bundles the two does not count. Changes to existing decisions, including added cross-reference or "Refined by" lines, need the same confirmation.
-- Check decisions before implementing new code. If the work would conflict with a decision, raise it with the user instead of diverging.
-- Give each decision a status, date, context, the decision itself, alternatives considered (distinguishing rejected options from ones retained for later), and consequences. Follow the repository's existing naming scheme; default to `NNNN-short-title.md`.
+
+### Shape
+
+Decision records are read in full into agent context, so every line must earn its place. Follow the repository's existing naming scheme; default to `NNNN-short-title.md`. Use this order:
+
+1. **Title and status lines.** Status, date, and relationship lines such as Refines, Refined by, Applies, Related and Supersedes, each linking the other decision. A revision line gives its date only; Git records what changed.
+2. **`## Decision`.** The decision itself, first, so the opening lines say what was decided. Do not add a separate summary above it. Keep it to the main rules, in a few paragraphs.
+3. **`## Context`**, only when the decision needs placing in the project. One to three sentences on how it fits into the overall project. No history of what the code or project used to do, no argument against alternatives, and no repeat of the status lines.
+4. **`## Details`**, only when the decision has more than a few paragraphs of rules. Move the secondary rules here, after the context, instead of restating them.
+5. **`## Alternatives considered`.** Compact, but with enough reason to prevent accidental reversal. Distinguish rejected options from ones retained for later.
+6. **`## Consequences`.** Only obligations and effects a reader would not infer from the decision. Do not restate the decision or its alternatives, and do not record migration, reset or transition notes; those belong in the journal or implementation documentation.
+
+Write in the present tense, as current fact and intent. Keep design and implementation detail in documentation, linking to it with a trailing pointer where a reader needs it.
+
+### Changing decisions
+
 - Do not rewrite a decision's rationale, scope, or consequences, unless explicitly instructed to do so. Record a new decision that supersedes it. Terminology updates that leave the meaning unchanged are allowed.
+- When a decision is folded into another, reduce it to its title, status lines and a pointer to the decision that now holds it.
+- When compacting a decision, move anything still useful into the appropriate documentation rather than discarding it.
 - Keep a clear link between decisions and the journal entries or documentation that provide context and evidence for them.
-- Keep decision records concise and focused, avoiding unnecessary detail that belongs in the journal or other documentation.
-- Keep documentation of alternative options and rejected choices compact, but with enough context to avoid accidental reversal or misunderstanding.
 
 ## Backfilling a Decision Log
 

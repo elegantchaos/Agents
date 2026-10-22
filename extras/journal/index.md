@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-22 Decision Record Shape](2026-10-22-decision-record-shape.md): Records skill gains the decision shape: Decision first, compact Context, Details, Alternatives and Consequences, and what counts as a decision; baseline 0.8.9.
+
 - [2026-10-22 Standards Completion Checklist](2026-10-22-standards-checklist.md): Checklist aligned with revised guidance, with checks applicable to the work performed; pending baseline 0.8.7.
 
 - [2026-10-22 Consolidated Dependency Policy](2026-10-22-dependency-policy.md): Permission and justification requirements consolidated in implementation guidance; duplicate testing bullets removed; baseline 0.8.7.
