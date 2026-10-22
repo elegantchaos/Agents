@@ -50,10 +50,17 @@ Look for codebase-wide refactors that:
 
 - Assume that backwards compatibility is not required, unless explicitly requested.
 - Assume that you can break existing API contracts, unless explicitly prohibited.
-- Do not add shims, wrappers, adapters, aliases, or backward-compatibility layers, unless explicitly requested.
+- Do not add shims, aliases, or other layers whose purpose is to preserve superseded APIs or behavior, unless compatibility support is explicitly requested.
 - Treat a refactored API, tool, script, or interface as the new source of truth.
 - Update known call sites, tests, and documentation as part of the same change.
 - If compatibility support is requested, make it explicit and keep its scope tight.
+- Treat data preservation as a requirement only when project documentation explicitly requires avoiding data loss, preferably under `Project Specific Rules` in `AGENTS.md`.
+- Otherwise, assume existing data can be reset. Do not add migrations, schema-version handling, or data-preservation layers merely to retain it.
+- When preservation is required, keep its implementation scoped to the documented requirement.
+
+A project that requires data preservation can state:
+
+> Preserve user data across application updates and storage-format changes.
 
 ## Interfaces And Dependencies
 
@@ -61,7 +68,8 @@ Look for codebase-wide refactors that:
 - Avoid hidden coupling and unexpected side effects.
 - Do not add dependencies without clear justification.
 - Keep secrets and credentials out of source control and out of committed configuration.
-- Avoid creating thin wrappers that forward or take closures, just to conform to an interface or to fix dependency issues.
+- Use wrappers and adapters only when they have a concrete responsibility, such as translating an external contract, enforcing isolation, or managing resource lifetime. Explain why that boundary is needed.
+- Do not add forwarding or translation layers merely to make an existing design appear to satisfy a guideline. Fix the underlying design.
 
 ## Formatting
 
