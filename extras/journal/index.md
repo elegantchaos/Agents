@@ -1,5 +1,9 @@
 # Journal
 
+- [2026-10-22 Full Review: Baseline Standards Skill](2026-10-22-standards-review.md): Adapter and compatibility clarifications; proposed decision, testing, failure-handling, and checklist improvements. Written guidance coverage complete; behavior untested.
+
+- [2026-10-22 Engineering Principle Descriptions](2026-10-22-principle-descriptions.md): Compact definitions for twelve existing principles and four approved additions; baseline 0.8.2.
+
 - [2026-10-21 Review Decision Coverage](2026-10-21-review-decision-coverage.md): Complete decision reading, evidence-backed compliance assessment, and partial verdicts for coverage gaps; baseline 0.8.1.
 
 - [2026-10-19 Review: Special Cases The General Form Can Absorb](2026-10-19-review-special-cases.md): New review item for variants a general mechanism could represent, prompted by Bookish PR #90; baseline 0.8.0.
