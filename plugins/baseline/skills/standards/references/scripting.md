@@ -1,6 +1,6 @@
 # Scripting
 
-For repository-maintained scripts and automation, prefer Swift over shell or another scripting language unless the host environment clearly requires something else.
+For repository-maintained scripts and automation, use Swift unless the host environment clearly requires something else.
 
 Treat all scripts as first-class citizens and follow coding standards when writing scripts.
 
@@ -19,3 +19,5 @@ Consider usability, clarity and discoverability when designing script CLIs.
 Make failure output actionable and concise.
 
 Document non-obvious prerequisites close to the script entry point.
+
+If a script would fit into `ReleaseTools` or `AgentTools`, suggest that instead.

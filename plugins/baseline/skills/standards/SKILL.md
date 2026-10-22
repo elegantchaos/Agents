@@ -39,13 +39,16 @@ If the task has a language or framework specialist skill, use the guidance here 
 
 ## Checklist
 
-Check every changed file before reporting work complete:
+Check the changed files and resulting design before reporting work complete. Apply checks relevant to the work performed; editing guidance does not itself require executing the workflows it describes.
 
-- New behaviour has tests, written first for non-UI code.
-- Documentation and comments describe the current behaviour, with no references to past behaviour.
-- Every type and member has a documentation comment, including private ones.
-- Significant type comments explain concrete responsibilities, owned state and intended use,
-  checked against the implementation; a comment's presence alone is insufficient.
-- Root problems are fixed rather than worked around, with no shims or compatibility layers unless requested.
-- No duplicated code, dead code, or stale comments remain.
-- Lint findings in changed files are fixed, even when the linter reports them as warnings.
+- Where a decision log exists, every record has been considered and applicable constraints checked; conflicts and coverage gaps are reported.
+- Root problems are fixed, and the resulting design is applied consistently without competing implementations or superficial compliance layers.
+- Compatibility support is explicitly requested; data-preservation machinery follows explicit project requirements.
+- New external dependencies have explicit permission and clear justification.
+- Where applicable, failure, cancellation, partial completion, and resource cleanup follow the operation's contract.
+- Changed behavior has meaningful tests. For non-UI behavior, the expected failure was observed before implementation.
+- Existing tests affected by the change meet the testing guidance; implementation-mirroring or redundant tests have been removed or rewritten.
+- Documentation and comments describe current behavior. Every type and member, including private ones, has a documentation comment; significant type comments explain concrete responsibilities, owned state, and intended use, verified against the implementation.
+- No obsolete code, duplicated logic, or stale comments remain from the change.
+- Lint findings in changed files are fixed, including warnings.
+- Required validation has passed before claiming completion. Report failed or skipped checks and their residual risks explicitly.

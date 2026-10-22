@@ -1,5 +1,27 @@
 # Journal
 
+- [2026-10-22 Decision Record Shape](2026-10-22-decision-record-shape.md): Records skill gains the decision shape: Decision first, compact Context, Details, Alternatives and Consequences, and what counts as a decision; baseline 0.8.9.
+
+- [2026-10-22 Standards Completion Checklist](2026-10-22-standards-checklist.md): Checklist aligned with revised guidance, with checks applicable to the work performed; pending baseline 0.8.7.
+
+- [2026-10-22 Consolidated Dependency Policy](2026-10-22-dependency-policy.md): Permission and justification requirements consolidated in implementation guidance; duplicate testing bullets removed; baseline 0.8.7.
+
+- [2026-10-22 Failure Handling And Resource Ownership](2026-10-22-failure-resource-guidance.md): Explicit failure outcomes, error propagation, cleanup, cancellation, safe retries, and required recovery machinery; baseline 0.8.6.
+
+- [2026-10-22 Behavior-Focused Testing Guidance](2026-10-22-testing-guidance.md): Meaningful red failures, state isolation, behavior-focused coverage, and quality checks for existing tests; baseline 0.8.5.
+
+- [2026-10-22 Decision Coverage Before Design And Implementation](2026-10-22-implementation-decision-coverage.md): Conditional complete decision reading, reuse of unchanged records, conflict handling, and checklist coverage; baseline 0.8.4.
+
+- [2026-10-22 Explicit Data Preservation Requirements](2026-10-22-data-preservation-default.md): Finding 2 withdrawn; preservation support requires an explicit project requirement, with resettable data as the default; pending baseline 0.8.3.
+
+- [2026-10-22 Adapter Guidance](2026-10-22-adapter-guidance.md): Approved distinction between substantive adapters, superficial compliance layers, and compatibility scaffolding; baseline 0.8.3.
+
+- [2026-10-22 Full Review: Baseline Standards Skill](2026-10-22-standards-review.md): Adapter and compatibility clarifications; proposed decision, testing, failure-handling, and checklist improvements. Written guidance coverage complete; behavior untested.
+
+- [2026-10-22 Engineering Principle Descriptions](2026-10-22-principle-descriptions.md): Compact definitions for twelve existing principles and four approved additions; baseline 0.8.2.
+
+- [2026-10-21 Review Decision Coverage](2026-10-21-review-decision-coverage.md): Complete decision reading, evidence-backed compliance assessment, and partial verdicts for coverage gaps; baseline 0.8.1.
+
 - [2026-10-19 Review: Special Cases The General Form Can Absorb](2026-10-19-review-special-cases.md): New review item for variants a general mechanism could represent, prompted by Bookish PR #90; baseline 0.8.0.
 
 - [2026-10-16 PR #23 Review](2026-10-16-pr23-review.md): Existing draft target handling needs clarification; draft-state preflight and shared-Python pointer suggested; packaging and six skill validators pass.

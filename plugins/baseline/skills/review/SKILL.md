@@ -13,16 +13,32 @@ A review answers three questions:
 
 The third question matters as much as the first two. A change can be correct and compliant and still leave the codebase more confusing, duplicated, or inconsistent. Answering it requires reading beyond the diff.
 
+## Decision Coverage
+
+This requirement applies to every review mode, including plans and design documents.
+
+Before assessing the implementation or proposed design, enumerate the project's complete decision log and read every decision record in full. Determine applicability after reading each record; do not select records by title, keyword, diff scope, or perceived relevance. An index, summary, search excerpt, previous review, or an author's compliance claim does not substitute for reading the records. Follow references needed to understand their constraints. If the project has no decision log, record that explicitly.
+
+Maintain a compact decision assessment covering the complete inventory:
+
+- Record each decision's identifier or path, status, and applicability to the review scope, including newly exercised existing code.
+- For each applicable decision, identify its binding constraints and the source or design evidence showing compliance, conflict, or an unresolved gap. Independently verify the author's assessment.
+- Explain non-applicability briefly; records sharing the same reason may be grouped if each remains identifiable. Consider draft and superseded records in context, but do not enforce them as accepted current policy. Report unclear status, conflicting records, or uncertain supersession explicitly.
+
+Existing code patterns, passing tests, and compiler acceptance do not establish compliance with a decision or authorize an exception. Report contradictions as findings with the governing constraint and conflicting evidence. Do not silently reinterpret a decision to fit the implementation.
+
+If any record is unread or an applicable constraint remains unchecked, decision coverage is incomplete. Continue useful review work, identify every gap and its reason in Not Checked, and qualify the verdict as partial. Do not issue an unqualified ready verdict or claim architectural compliance. Time or context limits do not justify silently sampling the decision log. Resolve coverage gaps before making a complete compliance claim.
+
 ## Review Modes
 
 Choose the mode from the request, and state it at the start of the review:
 
-| Request | Mode | Report |
-| --- | --- | --- |
-| A pull request, branch, commit range, diff, or completed task | Diff review | The structure in Process step 5 |
-| A named package, module, or target | Full review of that package | The structure in Process step 5, with the package's purpose in place of intent |
-| The codebase, the project, or the repository | Full review of the entire codebase | The structure in Reviewing an Entire Codebase |
-| A plan or design document | Diff review of the document | The structure in Process step 5 |
+| Request                                                       | Mode                               | Report                                                                         |
+| ------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------ |
+| A pull request, branch, commit range, diff, or completed task | Diff review                        | The structure in Process step 5                                                |
+| A named package, module, or target                            | Full review of that package        | The structure in Process step 5, with the package's purpose in place of intent |
+| The codebase, the project, or the repository                  | Full review of the entire codebase | The structure in Reviewing an Entire Codebase                                  |
+| A plan or design document                                     | Diff review of the document        | The structure in Process step 5                                                |
 
 When a request fits more than one row, or none, ask which is meant.
 
@@ -49,7 +65,11 @@ A codebase review is not a series of package reviews. Its main subject is how th
 ```markdown
 ## Summary
 
-The codebase's purpose, the scope reviewed, a verdict on its overall health, and the most important findings, in three or four sentences.
+The codebase's purpose, the scope reviewed, a verdict on its overall health, and the most important findings, in three or four sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
+
+## Decision Compliance
+
+The complete decision inventory, statuses, applicability, binding constraints and checked evidence, as required by Decision Coverage. State whether coverage is complete and identify conflicts or unresolved gaps; link a detailed assessment when needed.
 
 ## Map
 
@@ -60,6 +80,7 @@ Each package's role, size and public API in a line or two; the dependency graph,
 Most severe first, from the seams and the whole-codebase pass. Each with severity (blocking, should fix, or suggestion), the packages involved, evidence, and recommended action.
 
 ### Seams
+
 ### Across the Whole
 
 Under each: findings, then "Checked:" listing each boundary, search pattern or command, and file read, and what it returned.
@@ -93,13 +114,14 @@ Every package or file not read in full, and anything else skipped or unverified,
 ## Required References
 
 - The `baseline:standards` skill, its required references, and any language or framework skills that apply to the changed files.
-- The project's `AGENTS.md`, and its decision log when it keeps one.
+- The project's `AGENTS.md`, every record in its decision log when it keeps one, and references needed to understand those records' constraints. Follow Decision Coverage before assessing the change.
 
 ## Process
 
 ### 1. Establish Intent
 
-- Read the PR description, linked issues, commit messages, and relevant journal entries and decisions.
+- Read the PR description, linked issues, commit messages, and relevant journal entries.
+- Complete the decision-log reading and applicability assessment required by Decision Coverage before assessing the implementation or proposed design.
 - State in one or two sentences what the change is meant to achieve. If you cannot, report that as a finding.
 - Note anything the change claims to do that the diff does not do, and anything the diff does that nothing explains.
 
@@ -114,7 +136,8 @@ Every package or file not read in full, and anything else skipped or unverified,
 
 - Check each changed file against the checklists of the skills listed in Required References.
 - Check the change against the engineering principles and change strategy in `baseline:standards`. Flag workarounds where a root fix was possible, complexity added without justification, and new idioms or architecture not applied consistently across the codebase.
-- Check that the change does not conflict with recorded decisions.
+- Check each applicable decision constraint against the change and newly exercised existing code, recording evidence in the decision assessment. Report conflicts explicitly; mark unverified constraints as coverage gaps.
+- Check for compliance with the spirit and not just the letter of all applicable standards, principles, and guidelines. Flag thin translation layers that merely wrap existing functionality so that it fits a required standard, without adding real value or addressing the underlying design intent.
 
 ### 4. Effect on the Codebase
 
@@ -123,7 +146,7 @@ Work through each item. Record the searches and reads you did for each, whatever
 - **Made obsolete.** For each symbol, file, option, or behaviour the change removes, renames, or replaces, search for remaining references in code, tests, documentation, comments, configuration, and scripts. Look for code that existed only to support the old behaviour.
 - **Simplification now possible.** For each edge case, state, or input the change eliminates or makes impossible, find the guards, branches, fallbacks, tests, and documentation that handled it. List those that can now be removed or simplified.
 - **Special cases the general form can absorb.** Look for representations that keep variants side by side, such as enum cases, optional fields set in mutually exclusive combinations, parallel accessors, `isX` flags, or separate code paths, where one variant is a general mechanism and the others exist only for what it apparently cannot handle. Ask whether the special case could become an instance of the general one: a type conforming to the same protocol, a value of the same type, or an input the general path already accepts. Signs include switches whose branches do the same job by different means, accessors that return nil for the other variant, equality, encoding or display defined per variant, and a variant that exists because one requirement of the general form does not fit it, such as a static member, a non-optional field, or a fixed type. Treat that requirement as open to change: relaxing it is often enough. When it is, recommend the change and list the cases, branches, accessors and tests that collapse. For example, a payload with typed and raw cases collapses into one once raw payloads become a type conforming to the payload protocol, with the protocol's static kind made an instance property. Report these under Simplification Now Possible.
-- **Duplication.** For each new function, type, or significant block, search for existing code that does the same or a similar job: related names, the same APIs or libraries, and similar shapes. Report duplication the change introduces, and existing duplicates the change makes easier to merge.
+- **Duplication.** For each new function, type, or significant block, search for existing code that does the same or a similar job: related names, the same APIs or libraries, and similar shapes. Report duplication the change introduces, and existing duplicates the change makes easier to merge. Suggest merges.
 - **Design clarity.** For each new concept, type, or layer, check whether it overlaps an existing one, and whether names and boundaries make clear which to use. Flag old and new ways of doing the same thing left side by side. Check that documentation describing the design still matches it.
 
 Report work beyond the change's scope as a follow-up, separate from issues that block the change.
@@ -135,7 +158,11 @@ Use this structure:
 ```markdown
 ## Summary
 
-Intent, verdict (ready, ready after fixes, or needs rework), and the most important findings, in two or three sentences.
+Intent, verdict (ready, ready after fixes, or needs rework), and the most important findings, in two or three sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
+
+## Decision Compliance
+
+The complete decision inventory, statuses, applicability, binding constraints and checked evidence, as required by Decision Coverage. State whether coverage is complete and identify conflicts or unresolved gaps; link a detailed assessment when needed.
 
 ## Findings
 
@@ -144,8 +171,11 @@ Most severe first. Each with severity (blocking, should fix, or suggestion), loc
 ## Codebase Effect
 
 ### Made Obsolete
+
 ### Simplification Now Possible
+
 ### Duplication
+
 ### Design Clarity
 
 Under each: findings, then "Checked:" listing each search pattern or command, each file read, and what it returned.
@@ -167,6 +197,9 @@ Check before reporting the review:
 - The mode was chosen from the request, or the user was asked which was meant.
 - For an entire-codebase review, the scope and map are stated, a split was proposed when the scope exceeded about 10,000 lines, the report follows the codebase structure with the seams and whole-codebase findings first, every package has its own findings, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
+- The decision inventory is complete and reconciled with the assessment: every record was read in full and considered, with status and applicability recorded, or each missing read is explicitly listed as a coverage gap. If no decision log exists, that is stated.
+- Every applicable decision constraint has checked evidence or an explicit gap; non-applicability is explained, contradictions are findings, and unclear status or supersession is reported.
+- Decision Compliance is present in the report. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
 - Every changed file, or for a full review every file in scope, was read in full and checked against the applicable skill checklists.
 - For a diff or package review, all four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present, each with a "Checked:" record, and between them they cover what the four sections ask: obsolete code, possible simplification, duplication and design clarity.
 - Every finding has evidence and a recommended action.

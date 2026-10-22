@@ -1,19 +1,21 @@
 # Testing
 
-These are general rules for how to go about testing, and what tooling to use.
-Platform-specific rules are allowed to take precedence.
-
 ## Non-UI Code
 
-- Use red/green TDD. Write the tests first.
+- Use red/green TDD. Run the test before changing the implementation and confirm that it fails because the required behavior is missing or incorrect. A build failure, broken fixture, or setup error does not establish the expected failure.
 - Ensure that new code has high test coverage.
 - Consider adding unit tests for older code to improve coverage.
 - Tests should be deterministic.
 - Unit tests should not require network access.
+- Unit tests should be fast, with a predictable duration.
 - Full end-to-end integration tests can require network access if it is essential.
 - Focus testing on changed behavior, important failure paths, and regression risk rather than chasing raw coverage numbers.
-- Prefer tests through stable interfaces, and avoid excessive mocking when cheap real collaborators are available.
+- Test observable behavior through stable interfaces. Tests should detect incorrect results without depending on the implementation's internal structure. Prefer cheap real collaborators over extensive mocking.
 - Keep fixtures, factories, and test helpers simple and local unless repeated reuse justifies sharing them.
+- Isolate tests from mutable state left by other tests or previous runs, including preferences, caches, files, and environment settings. Give each test ownership of the state it changes.
+- Control clocks, randomness, and external services where their variability affects the result. Introduce only the test support needed for the behavior being verified.
+- For refactoring that preserves behavior, use existing tests to establish correctness and add tests where meaningful coverage is missing.
+- Review existing tests as part of the change. Remove or rewrite tests that merely mirror implementation details, duplicate coverage without testing a distinct behavior or failure mode, or assert incidental formatting or documentation text. Preserve tests where exact output or structure is part of the required contract. Do not add new tests with those weaknesses.
 - Avoid sleeps and other time-based synchronization when a more explicit readiness or completion signal is available.
 - If relevant tests cannot be run, report the exact gap and the likely risk.
 
@@ -25,7 +27,8 @@ If the platform has a live preview feature (for example, #Preview for SwiftUI), 
 
 If the platform has a UI-testing framework (for example, XCTest UI testing for Swift), use it.
 Create UI tests that target important behaviours, state changes, and key navigation.
-UI tests can be fragile - avoid creating tests that are sensitive to stylistic or layout changes.
+Create UI when needed to test that an implementation is working as expected.
+Avoid creating fragile UI tests that are sensitive to stylistic or layout changes.
 
 Use previews to support fast iteration, but do not treat them as a full replacement for other relevant UI or integration validation.
 
@@ -57,5 +60,3 @@ When summarizing work:
 - Prefer the repo's configured linter/formatter. If the repo has no linter yet, keep style conservative and idiomatic for the language.
 - Run project commands to respect local environment settings (`swift run`, `bundle exec`, `penv` etc)
 - Add or update executable validation when behavior changes: tests for logic changes, lint or format checks for style-sensitive work, and packaging checks for metadata or executable wiring.
-- Don't add external dependencies without explicit permission.
-- Keep dependency additions justified. Every new dependency should remove meaningful complexity or supply capability the standard library or existing dependency graph does not already cover.
