@@ -19,11 +19,9 @@ This requirement applies to every review mode, including plans and design docume
 
 Before assessing the implementation or proposed design, enumerate the project's complete decision log and read every decision record in full. Determine applicability after reading each record; do not select records by title, keyword, diff scope, or perceived relevance. An index, summary, search excerpt, previous review, or an author's compliance claim does not substitute for reading the records. Follow references needed to understand their constraints. If the project has no decision log, record that explicitly.
 
-Maintain a compact decision assessment covering the complete inventory:
+Keep the complete decision assessment in internal working notes: each record's status and applicability, its binding constraints, and the evidence checked, including newly exercised existing code. Independently verify the author's assessment. Consider draft and superseded records in context, but do not enforce them as accepted current policy.
 
-- Record each decision's identifier or path, status, and applicability to the review scope, including newly exercised existing code.
-- For each applicable decision, identify its binding constraints and the source or design evidence showing compliance, conflict, or an unresolved gap. Independently verify the author's assessment.
-- Explain non-applicability briefly; records sharing the same reason may be grouped if each remains identifiable. Consider draft and superseded records in context, but do not enforce them as accepted current policy. Report unclear status, conflicting records, or uncertain supersession explicitly.
+Report only deviations from decisions, conflicts or unclear status that affect the review, and unresolved coverage gaps. Put deviations in Findings with the governing decision, conflicting evidence and recommended action; put unread records or unchecked constraints in Not Checked. Do not include an inventory, compliance table, per-decision clean results, non-applicability explanations or a separate compliance appendix in the report or journal unless the user explicitly requests one. Complete checking does not require exhaustive reporting.
 
 Existing code patterns, passing tests, and compiler acceptance do not establish compliance with a decision or authorize an exception. Report contradictions as findings with the governing constraint and conflicting evidence. Do not silently reinterpret a decision to fit the implementation.
 
@@ -60,16 +58,12 @@ A codebase review is not a series of package reviews. Its main subject is how th
 2. **Review the seams.** At each package boundary, compare how callers actually use an API with how it was designed. Look for mismatched assumptions, workarounds and adapters in callers, leaky or unused abstractions, responsibilities split across packages or duplicated on both sides, and dependencies that run against the intended direction.
 3. **Review across the whole.** Look for what only the whole shows: the same job done in more than one package or for more than one platform; one concept modelled differently in different places; special cases kept beside a general mechanism that could represent them, as described under Special cases the general form can absorb in Process step 4; cross-cutting concerns, such as error handling, logging, concurrency and isolation, observation, localization and test helpers, handled inconsistently; standards and idioms applied unevenly; and old and new ways of doing something left side by side.
 4. **Each package in depth.** Give each package its own full review, every file read in full and checked against the applicable skill checklists, informed by the map, so that findings about a package's fit with the rest are made there too. When the review is split, give each package session the map so it can judge fit, and keep the map, seams and whole-codebase passes in the main session so they are not lost between reports.
-5. **Report.** Use the structure below. Lead with the codebase-level findings, from the seams and the whole. A report made only of per-package findings is not a codebase review, and one that sampled files is reported as sampled, never as complete.
+5. **Report.** Report decision deviations and unresolved gaps as described in Decision Coverage; omit clean decision results. Use the structure below. Lead with the codebase-level findings, from the seams and the whole. A report made only of per-package findings is not a codebase review, and one that sampled files is reported as sampled, never as complete.
 
 ```markdown
 ## Summary
 
 The codebase's purpose, the scope reviewed, a verdict on its overall health, and the most important findings, in three or four sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
-
-## Decision Compliance
-
-The complete decision inventory, statuses, applicability, binding constraints and checked evidence, as required by Decision Coverage. State whether coverage is complete and identify conflicts or unresolved gaps; link a detailed assessment when needed.
 
 ## Map
 
@@ -153,16 +147,12 @@ Report work beyond the change's scope as a follow-up, separate from issues that 
 
 ### 5. Report
 
-Use this structure:
+Report decision deviations in Findings and unresolved coverage gaps in Not Checked, as described in Decision Coverage. Omit clean decision results and a separate Decision Compliance section. Use this structure:
 
 ```markdown
 ## Summary
 
 Intent, verdict (ready, ready after fixes, or needs rework), and the most important findings, in two or three sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
-
-## Decision Compliance
-
-The complete decision inventory, statuses, applicability, binding constraints and checked evidence, as required by Decision Coverage. State whether coverage is complete and identify conflicts or unresolved gaps; link a detailed assessment when needed.
 
 ## Findings
 
@@ -197,9 +187,9 @@ Check before reporting the review:
 - The mode was chosen from the request, or the user was asked which was meant.
 - For an entire-codebase review, the scope and map are stated, a split was proposed when the scope exceeded about 10,000 lines, the report follows the codebase structure with the seams and whole-codebase findings first, every package has its own findings, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
-- The decision inventory is complete and reconciled with the assessment: every record was read in full and considered, with status and applicability recorded, or each missing read is explicitly listed as a coverage gap. If no decision log exists, that is stated.
-- Every applicable decision constraint has checked evidence or an explicit gap; non-applicability is explained, contradictions are findings, and unclear status or supersession is reported.
-- Decision Compliance is present in the report. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
+- Every decision record was read in full and considered internally, or each missing read is explicitly listed as a coverage gap. If no decision log exists, that is stated.
+- Every applicable decision constraint has checked evidence or an explicit gap; contradictions are findings, and unclear status or supersession is reported when it affects the review.
+- Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
 - Every changed file, or for a full review every file in scope, was read in full and checked against the applicable skill checklists.
 - For a diff or package review, all four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present, each with a "Checked:" record, and between them they cover what the four sections ask: obsolete code, possible simplification, duplication and design clarity.
 - Every finding has evidence and a recommended action.
