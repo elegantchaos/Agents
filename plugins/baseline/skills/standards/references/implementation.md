@@ -10,6 +10,14 @@ Use this file when deciding how broad a change should be and how code should be 
 - Use `~/.local/share/agents/COMMON.md`.
 - Never let shared fallback guidance override explicit local repository rules.
 
+## Project Decisions
+
+- If the project maintains a decision log, read every record in full before proposing a design or changing code. Determine applicability after reading.
+- Reuse records already read in the current conversation unless they have changed. Follow additional references only where needed to understand a decision's constraints.
+- Apply accepted decisions; consider draft and superseded records as context. Raise unclear status, conflicting decisions, or conflicts with the proposed implementation before proceeding with affected work.
+- Existing code, established patterns, and passing tests do not authorize exceptions. Use `baseline:records` for proposed decision changes.
+- Report unread records or unchecked constraints explicitly. Do not claim decision compliance while those gaps remain.
+
 ## Change Strategy
 
 - Apply focused changes to perform the requested actions.

@@ -41,6 +41,7 @@ If the task has a language or framework specialist skill, use the guidance here 
 
 Check every changed file before reporting work complete:
 
+- Where a decision log exists, every record has been considered and applicable constraints checked; conflicts and coverage gaps are reported.
 - New behaviour has tests, written first for non-UI code.
 - Documentation and comments describe the current behaviour, with no references to past behaviour.
 - Every type and member has a documentation comment, including private ones.

@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-22 Decision Coverage Before Design And Implementation](2026-10-22-implementation-decision-coverage.md): Conditional complete decision reading, reuse of unchanged records, conflict handling, and checklist coverage; baseline 0.8.4.
+
 - [2026-10-22 Explicit Data Preservation Requirements](2026-10-22-data-preservation-default.md): Finding 2 withdrawn; preservation support requires an explicit project requirement, with resettable data as the default; pending baseline 0.8.3.
 
 - [2026-10-22 Adapter Guidance](2026-10-22-adapter-guidance.md): Approved distinction between substantive adapters, superficial compliance layers, and compatibility scaffolding; baseline 0.8.3.
