@@ -12,7 +12,8 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - In code you write or change, follow the guidelines rather than the style of the surrounding code.
 - Follow the spirit of all guidelines, not just the letter. Avoid workarounds which superficially make a pattern fit by adding a forwarding or translation layer.
 - Work is complete only when changed files have been checked against the required skills' checklists, and lint findings in them are fixed.
-- Work on a branch and worktree, and use a pull request for every change to `main`. Do not merge until the repository's required full validation has passed for the final PR head.
+- Work on a branch and worktree, and use a pull request for every change to `main`. Do not merge until the repository's required full validation has passed for the PR's latest commit that changes more than documentation files; later documentation-only commits do not need it again.
+- Give each worktree a semantic name that describes its task, matching the branch name without its prefix, such as `remove-writer-browser-refreshes` for `feature/remove-writer-browser-refreshes`. Do not keep a generated name such as `xenodochial-hofstadter-117f77`.
 - When a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing.
 - Run Python-based agent utilities, including skill validators, using `~/.local/share/agents/.venv/bin/python` explicitly. Use each project's own environment for project Python code. If the shared environment or a required dependency is missing, report it.
 - Install shared Python agent dependencies from `~/.local/share/agents/requirements-agent-tools.lock` with `--require-hashes --only-binary=:all:`. Review version and hash changes before updating the lock file.
