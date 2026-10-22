@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-22 Failure Handling And Resource Ownership](2026-10-22-failure-resource-guidance.md): Explicit failure outcomes, error propagation, cleanup, cancellation, safe retries, and required recovery machinery; baseline 0.8.6.
+
 - [2026-10-22 Behavior-Focused Testing Guidance](2026-10-22-testing-guidance.md): Meaningful red failures, state isolation, behavior-focused coverage, and quality checks for existing tests; baseline 0.8.5.
 
 - [2026-10-22 Decision Coverage Before Design And Implementation](2026-10-22-implementation-decision-coverage.md): Conditional complete decision reading, reuse of unchanged records, conflict handling, and checklist coverage; baseline 0.8.4.

@@ -77,6 +77,15 @@ A project that requires data preservation can state:
 - Use wrappers and adapters only when they have a concrete responsibility, such as translating an external contract, enforcing isolation, or managing resource lifetime. Explain why that boundary is needed.
 - Do not add forwarding or translation layers merely to make an existing design appear to satisfy a guideline. Fix the underlying design.
 
+## Failure Handling And Resource Ownership
+
+- Make failure and cancellation behavior explicit at operation boundaries, including whether partial work can remain. Follow the operation's contract and documented project requirements.
+- Propagate failures with enough context to diagnose the cause. Do not silently swallow errors, substitute success-shaped defaults, or expose secrets in diagnostics.
+- Give resources a clear owner and lifetime. Release owned resources on success, failure, and cancellation, using the language or framework's established mechanisms.
+- Honor cancellation and avoid leaving work running after its owner has finished. Preserve meaningful distinctions between cancellation and failure.
+- Add retries only where required. Bound repeated attempts and ensure repetition cannot produce unintended duplicate effects.
+- Add transactions, rollback, or recovery machinery only where the operation's contract or documented project requirements require it. Avoid speculative resilience layers.
+
 ## Formatting
 
 - Prefer formatters and linters over manual stylistic rewriting.
