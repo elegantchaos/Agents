@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-23 Explicit Voice Traits](2026-10-23-voice-traits.md): Replace the ambiguous character blend with named traits, explicit writing behavior and safeguards against performed toughness.
+
 - [2026-10-23 Design Documentation Confirmation](2026-10-23-design-confirmation.md): Reviewable proposal and separate confirmation before design-document edits, with bounded scope and matching checklist, standards pointer and template; baseline 0.8.16.
 
 - [2026-10-23 Compact Decision Records](2026-10-23-compact-decision-records.md): Distinct binding choices, compact conditional sections, sufficient context, linked design detail and a decision-record compliance checklist; baseline 0.8.15.
