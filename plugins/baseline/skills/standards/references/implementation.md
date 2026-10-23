@@ -93,9 +93,10 @@ A project that requires data preservation can state:
 
 ## Documentation
 
-- Keep documentation factual, concise, and aligned with current behavior.
+- Keep documentation factual and concise. Describe current behavior in implementation and usage documentation, and the current intended design in design documents.
+- Use `baseline:records` for design-document confirmation, shape, terminology and the boundary between design, implementation status and project history. The instruction to keep documentation current does not waive its confirmation gate.
 - Update when workflows, commands, designs, architecture or implementation changes.
-- Avoid historical framing. Describe what the code does _now_.
+- Avoid historical framing. Describe current behavior or intent according to the document's purpose.
 - Remove stale or contradictory docs rather than layering new text on top.
 - Retain roadmap and planning documentation if it is still relevant; remove if implemented.
 - If specifically instructed to produce a migration guide, you can provide historical context, otherwise avoid it.

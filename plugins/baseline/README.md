@@ -7,7 +7,7 @@ Elegant Chaos baseline skills, packaged as one plugin for Claude Code and Codex.
 | [baseline:standards](skills/standards/SKILL.md) | Cross-language code quality, engineering principles, change scope, testing, scripting, and source selection |
 | [baseline:git](skills/git/SKILL.md) | Git and GitHub workflows, pull requests, draft releases, review feedback, and CI triage |
 | [baseline:review](skills/review/SKILL.md) | Broad reviews of pull requests and completed work: correctness, standards, and the change's effect on the wider codebase |
-| [baseline:records](skills/records/SKILL.md) | Development journals and decision logs, including backfilling a decision log |
+| [baseline:records](skills/records/SKILL.md) | Design-document shape, development journals, decision logs and review logs, including backfilling a decision log |
 | [baseline:refresh](skills/refresh/SKILL.md) | Maintaining shared agent resources and refreshing a project's `AGENTS.md` |
 | [baseline:summaries](skills/summaries/SKILL.md) | Summaries of recent work, suggestions for the coming week, project overviews, and start-of-day briefings, from journals and git history |
 
