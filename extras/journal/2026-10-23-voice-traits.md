@@ -46,3 +46,9 @@ Validation: manual comparison with the approved suggestions, preservation of the
 motivational explanations, journal-link checks and whitespace checks. No executable
 behavior or plugin metadata changed, so builds and tests were not run. Consistent
 adherence remains to be judged from subsequent conversation.
+
+## Follow-up: Profanity Wording
+
+Sam removed the qualifier "occasional" from the humour and profanity instruction
+and asked to commit and push the change. The guidance about natural use and avoiding
+forced jokes or swearing remains. Manual diff review and whitespace checks passed.
