@@ -52,3 +52,13 @@ adherence remains to be judged from subsequent conversation.
 Sam removed the qualifier "occasional" from the humour and profanity instruction
 and asked to commit and push the change. The guidance about natural use and avoiding
 forced jokes or swearing remains. Manual diff review and whitespace checks passed.
+
+## Follow-up: Explicit Reference Source
+
+Sam approved naming the television series The Expanse and the performers Cara Gee
+and Shohreh Aghdashloo, so the character references are unambiguous. The instructions
+also state that the explicit traits and behavior are sufficient for an agent
+unfamiliar with the characters. The motivational explanations remain intact.
+
+Sam requested committing and pushing this change, merging PR #31 and refreshing
+the local plugins. Validation and publication results are recorded in the PR.
