@@ -1,5 +1,15 @@
 # Journal
 
+- [2026-10-23 Design Documentation Confirmation](2026-10-23-design-confirmation.md): Reviewable proposal and separate confirmation before design-document edits, with bounded scope and matching checklist, standards pointer and template; baseline 0.8.16.
+
+- [2026-10-23 Compact Decision Records](2026-10-23-compact-decision-records.md): Distinct binding choices, compact conditional sections, sufficient context, linked design detail and a decision-record compliance checklist; baseline 0.8.15.
+
+- [2026-10-23 Review: Design Guidance Against Datastore Design](2026-10-23-datastore-guidance-comparison.md): Preserve the conceptual overview and detailed-design structure; clarify repetition, subfolders, API references and background appendices; identify small mechanism sketches that strict rules would move.
+
+- [2026-10-23 Design Document Guidance](2026-10-23-design-document-guidance.md): Root notes integrated into baseline records; expanded overview/detail structure, blank template, document boundaries, naming, location, Excalidraw diagrams and compliance checklist; matching baseline 0.8.14 manifests.
+
+- [2026-10-23 Review: Design Document Shape](2026-10-23-design-document-review.md): Clarify intended design, essential constraints, outline, terminology and redesign context; recommend the baseline records skill as owner. Proposal and skills unchanged.
+
 - [2026-10-22 Report Decision Deviations Only](2026-10-22-decision-review-reporting.md): Complete decision checking stays internal; reports omit compliance inventories and list only deviations and unresolved gaps; baseline 0.8.11.
 
 - [2026-10-22 Full Validation Skips Documentation-Only Commits, And Worktrees Get Semantic Names](2026-10-22-docs-only-validation.md): Merging needs full validation on the PR's latest commit that changes more than documentation files; `COMMON.md`, `baseline:git` and `swift:validation` agree; worktrees are named after their task and branch; baseline 0.8.10, swift 0.11.1.
