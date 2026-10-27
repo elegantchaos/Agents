@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-27 Decision Records Without Plans](2026-10-27-decision-records-no-plans.md): Decision records link design documents only and leave out details likely to go out of date, such as planned implementation, delivery order or status; voice greeting suits the context; baseline 0.8.19.
+
 - [2026-10-27 Roadmap Trial And Source Reconciliation](2026-10-27-roadmap-upkeep.md): Smaller slices, finish conditions, explicit disposition of old actions and bounded upkeep checkpoints; project-local trial activated without shared skill changes.
 
 - [2026-10-27 Shared Agents Roadmap](2026-10-27-roadmap.md): Draft overview of shared capabilities, project continuity and parked Stack task access, separated from Bookish product goals.

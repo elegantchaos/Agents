@@ -204,6 +204,9 @@ size matters: keep each compact and free of unnecessary bureaucracy and repetiti
 Do not fill out sections merely to satisfy a template, invent alternatives or
 consequences, or restate the same rule as a summary, detail and consequence.
 
+Do not include details that will go out of date or are likely to change; for example,
+planned implementation work or temporary technical decisions.
+
 Follow the repository's existing naming scheme; default to `NNNN-short-title.md`.
 Use the following order, omitting optional sections that add nothing:
 
@@ -227,9 +230,10 @@ Use the following order, omitting optional sections that add nothing:
    already implied by the rules, repeated rationale, and migration or transition notes.
 
 Write in the present tense, as current fact and intent. Keep the binding rules and
-context needed to follow them in the record itself. Link directly to design and
-implementation documents for fuller models, mechanisms, examples and delivery plans;
-do not reproduce those documents or turn the decision into a design specification.
+context needed to follow them in the record itself. Link directly to design documents
+for fuller models, mechanisms and examples; do not reproduce those documents or turn
+the decision into a design specification. Do not link to implementation plans, delivery
+order or implementation status.
 
 ### Changing decisions
 
@@ -250,8 +254,10 @@ exceptions or unchecked items:
 - Every section and metadata line adds useful information. Empty template sections,
   administrative ceremony, repeated summaries, rules, rationale and obvious
   consequences have been removed.
-- Greater design and implementation detail lives in linked documents. Links resolve,
-  and removing detail has not removed binding constraints or useful evidence.
+- Greater design detail lives in linked design documents. Nothing links to an
+  implementation plan, delivery order or implementation status, or states details likely
+  to go out of date. Links resolve, and removing detail has not removed binding
+  constraints or useful evidence.
 - Alternatives and consequences are included only where they add real information;
   deferred possibilities are distinct from accepted rules.
 - The required confirmation was obtained for creating or amending the record, and
