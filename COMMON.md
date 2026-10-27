@@ -10,6 +10,7 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Follow the `baseline:standards` skill for all code work: reading, creating, refactoring, or reviewing code.
 - Use red/green TDD for non-UI code.
 - In code you write or change, follow the guidelines rather than the style of the surrounding code.
+- Never hard-wrap Markdown to a column width: write each paragraph and list item on one line, even in a file that is already wrapped.
 - Follow the spirit of all guidelines, not just the letter. Avoid workarounds which superficially make a pattern fit by adding a forwarding or translation layer.
 - Work is complete only when changed files have been checked against the required skills' checklists, and all lint findings are fixed.
 - Work on a branch and worktree, and use a pull request for every change to `main`.
