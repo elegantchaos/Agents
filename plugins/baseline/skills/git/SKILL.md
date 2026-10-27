@@ -29,6 +29,24 @@ Git and `gh` for operations it does not cover, including Actions logs.
   linked worktrees. Read-only inspection normally needs no escalation.
 - This guidance grants no extra permission to unrelated commands.
 
+## Commit Identity
+
+Commits carry the user's identity as both author and committer. Never commit as the
+agent, and never add co-author, "generated with" or other agent attribution lines to
+commit messages, PRs or release notes. A rebase, amend or cherry-pick records the
+configured committer on every commit it rewrites, so an environment configured with the
+agent's identity, as cloud sessions can be, puts the agent in history without any
+attribution being added.
+
+- Before committing, rebasing, amending or cherry-picking, check `git var GIT_AUTHOR_IDENT`
+  and `git var GIT_COMMITTER_IDENT`. If either names the agent, take the user's name and
+  email from the base branch's existing commits and set `user.name` and `user.email` for
+  the repository. Environment variables such as `GIT_COMMITTER_NAME` override that
+  configuration; when they are set, pass the user's identity with each command instead.
+- Before pushing, list `git log --format='%h %an <%ae> | %cn <%ce>' <base>..HEAD`. If any
+  commit names the agent as author or committer, rewrite those commits with the user's
+  identity before pushing, and report the rewrite.
+
 ## GitHub Workflows
 
 Read only the references relevant to the task:
