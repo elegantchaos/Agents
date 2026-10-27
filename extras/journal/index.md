@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-27 Commit Identity](2026-10-27-commit-identity.md): Commits carry the user's identity as author and committer, checked before committing, rewriting and pushing, so cloud sessions configured as the agent do not enter history; baseline 0.8.17.
+
 - [2026-10-23 Explicit Voice Traits](2026-10-23-voice-traits.md): Replace the ambiguous character blend with named traits, explicit writing behavior and safeguards against performed toughness.
 
 - [2026-10-23 Design Documentation Confirmation](2026-10-23-design-confirmation.md): Reviewable proposal and separate confirmation before design-document edits, with bounded scope and matching checklist, standards pointer and template; baseline 0.8.16.
