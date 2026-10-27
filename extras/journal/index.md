@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-27 Roadmap Trial And Source Reconciliation](2026-10-27-roadmap-upkeep.md): Smaller slices, finish conditions, explicit disposition of old actions and bounded upkeep checkpoints; project-local trial activated without shared skill changes.
+
 - [2026-10-27 Shared Agents Roadmap](2026-10-27-roadmap.md): Draft overview of shared capabilities, project continuity and parked Stack task access, separated from Bookish product goals.
 
 - [2026-10-27 Targeted Test Runs](2026-10-27-targeted-test-runs.md): Run every test, red/green steps included, through `agt validate --target`, never a direct runner; the validation skill's triggers now cover test runs during development; baseline 0.8.18, Swift 0.11.2.
