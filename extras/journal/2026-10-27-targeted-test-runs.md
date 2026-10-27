@@ -6,4 +6,6 @@ The skills left a gap at that moment. `baseline:standards` requires running the 
 
 `swift:validation` now covers every test run, red and green steps included: its description and triggers say so, its workflow says to run tests only through `agt validate --target` (or `--fast`), never `swift test` or `xcodebuild` directly, and a blocked `agt` needs the user's permission before any direct-runner fallback. The standards testing reference adds that tests run through the project's canonical validation command in its narrowest targeted mode. Baseline 0.8.18, Swift 0.11.2.
 
+The Codex agent prompt in the same skill still required a full result for a PR's final head, which the [2026-10-22 documentation-only validation](2026-10-22-docs-only-validation.md) change had missed. It now matches COMMON.md and the workflow reference: the latest commit that changes more than documentation.
+
 Considered and set aside: a `--filter` option for `agt validate`. Whole-target runs in Bookish take seconds, dominated by the build, and a filtered run would need guarding so it never counts as validation. Worth revisiting for a target with slow tests.
