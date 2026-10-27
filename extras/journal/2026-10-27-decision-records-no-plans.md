@@ -9,3 +9,7 @@ The user edited the skill, and the agent reviewed and completed the edit:
 - The decision compliance checklist checks for both.
 
 The same PR includes the user's VOICE.md edit: the greeting now suits the time, context or project, with fresh examples, and the series title uses underscores for emphasis. Baseline 0.8.19.
+
+## Follow-Up: No Hard-Wrapped Markdown
+
+The agent had rewrapped the user's unwrapped edit to the records skill to match the file's 88-column wrapping. The user does not want Markdown broken at an arbitrary column width, anywhere. The records skill is now unwrapped, and `COMMON.md` gains a core rule: write each paragraph and list item on one line, even in a file that is already wrapped. It goes in `COMMON.md` because every session reads it, and wrapping is a habit agents bring to any Markdown they touch.
