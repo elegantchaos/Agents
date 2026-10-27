@@ -3,6 +3,7 @@
 ## Non-UI Code
 
 - Use red/green TDD. Run the test before changing the implementation and confirm that it fails because the required behavior is missing or incorrect. A build failure, broken fixture, or setup error does not establish the expected failure.
+- Run tests, red and green steps included, through the project's canonical validation command in its narrowest targeted mode, such as `agt validate --target` for Swift projects using the `swift:validation` skill. Do not bypass it with a direct test runner.
 - Ensure that new code has high test coverage.
 - Consider adding unit tests for older code to improve coverage.
 - Tests should be deterministic.

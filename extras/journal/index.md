@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-27 Targeted Test Runs](2026-10-27-targeted-test-runs.md): Run every test, red/green steps included, through `agt validate --target`, never a direct runner; the validation skill's triggers now cover test runs during development; baseline 0.8.18, Swift 0.11.2.
+
 - [2026-10-27 Commit Identity](2026-10-27-commit-identity.md): Commits carry the user's identity as author and committer, checked before committing, rewriting and pushing, so cloud sessions configured as the agent do not enter history; baseline 0.8.17.
 
 - [2026-10-23 Explicit Voice Traits](2026-10-23-voice-traits.md): Replace the ambiguous character blend with named traits, explicit writing behavior and safeguards against performed toughness.
