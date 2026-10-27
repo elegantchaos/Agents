@@ -41,6 +41,14 @@ Use `agt validate --plan` when you need to know what validation covers, for exam
 
 Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt format` followed by `agt validate`.
 
+## Running Tests During Development
+
+Run every test through `agt validate`, including the failing and passing steps of red/green TDD. Do not run `swift test`, `xcodebuild test` or another runner directly: `agt` is the approved workflow, and inside an agent's sandbox it turns off SwiftPM's and Xcode's own sandboxes, which otherwise fail when nested.
+
+For a red or green step, run `agt validate --target <target-name>`, naming the target under test. It builds that target and runs every test target that depends on it, so the new test's failure and its neighbours' results arrive together. `agt validate --fast` does the same for every target the uncommitted changes touch. `agt` has no per-test filter; run the whole target.
+
+If `agt` itself is blocked, classify the blockage as described under Failure Classification. Do not fall back to a direct test runner, or step outside the sandbox to run one, without the user's permission.
+
 ## Required Workflow
 
 Run `agt format` after every change. It formats every Swift file in the repository and then lints them, reporting findings without failing. Fix lint findings in files you changed. Report the number of remaining findings elsewhere, but do not fix them unless the user asks.
