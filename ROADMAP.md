@@ -1,6 +1,6 @@
 # Shared Agents Roadmap
 
-Draft for Sam's curation. Last reconciled: **27 October 2026**.
+Trial roadmap for Sam's curation. Last reconciled: **27 October 2026**.
 
 This overview tracks shared agent capabilities and cross-project working habits.
 Project features belong in each project's roadmap; detailed proposals and
@@ -14,8 +14,9 @@ draft establishes the shape and known candidates, not an exhaustive task audit.
 The baseline and Swift plugins, AgentTools refresh/validation workflows, and
 project journals already supply the working foundation. Recent work tightened
 review evidence, design confirmation, commit identity and targeted test runs.
-The next proposed step is to curate this roadmap and settle a lightweight upkeep
-rule that helps future chats recover interrupted work.
+Bookish is now trying smaller work slices, explicit source reconciliation and
+checkpoint-based upkeep. Evaluate that trial before promoting its method into
+shared skills. This repository also reads and updates its own roadmap during work.
 
 **Stack integration is parked.** Sam uses Stack to capture tasks and thoughts
 across projects. Agents should eventually be able to read and write that data;
@@ -40,7 +41,7 @@ Markdown records. Stack access can follow when that integration is scheduled.
 
 | Workstream | State and next boundary | Home |
 | --- | --- | --- |
-| **Project continuity** | Draft. Bookish is trying a compact roadmap with a current-focus pointer, workstreams and explicit return points. Evaluate that use before introducing shared upkeep guidance; no new tracking system or automatic synchronisation is selected. | [Records skill](plugins/baseline/skills/records/SKILL.md), [Bookish roadmap PR](https://github.com/elegantchaos/Bookish/pull/112) |
+| **Project continuity** | Trial. Bookish keeps a compact overview plus a current work plan for slices, maintenance opportunities and source dispositions. Evaluate completed work before promoting this into shared skills; no new tracking system or automatic synchronisation is selected. | [Records skill](plugins/baseline/skills/records/SKILL.md), [Bookish roadmap PR](https://github.com/elegantchaos/Bookish/pull/112) |
 | **Stack task access** | Parked. First inspect Stack's existing access when resumed, then choose the smallest useful App Intents, CLI and/or MCP extension for reading and writing tasks. Keep captured task detail in Stack and link it to project workstreams. Implementation belongs in Stack; reusable agent guidance belongs here. | This roadmap; detailed proposal not yet written |
 | **Guidance and review quality** | Ongoing. Recent rules are delivered in repository guidance. Evaluate agent behaviour on real work before adding further rules; use concrete failures and keep proposed changes separate from current guidance. | [Journal index](extras/journal/index.md), [baseline plugin](plugins/baseline/README.md), [Swift plugin](plugins/swift/README.md) |
 | **Validation and resource maintenance** | Existing workflow. Keep tests on the canonical validation path and shared resources maintained through AgentTools. New tooling needs a demonstrated gap. | [Targeted test runs](extras/journal/2026-10-27-targeted-test-runs.md), [maintenance instructions](README.md#maintenance) |
@@ -60,7 +61,21 @@ before being treated as live implementation tasks.
   was explored in that same journal. Check whether its proposed external package
   exists and is useful before scheduling integration.
 
-## Proposed Upkeep
+## Next Slices
+
+| Slice | Finish condition | State |
+| --- | --- | --- |
+| Establish the Bookish trial | Its roadmap, current work plan, source register and project read/update instruction are reviewable; unresolved historical reconciliation is explicit. | In progress in Bookish PR #112. |
+| Evaluate upkeep on real work | After the first few completed slices, check whether a fresh chat can choose the next task and account for carried findings using current records. Record missed work, excessive granularity or repeated history scans. | Planned after trial use. |
+| Refine shared guidance | Use those results to propose a small addition to the existing records workflow, if useful; implement and validate through the normal skill process once agreed. | Parked pending evidence; no shared skill changes now. |
+| Investigate Stack access | When scheduled, inventory current access and identify the minimum useful read/write capability before choosing App Intents, CLI or MCP. | Parked at Sam's request. |
+
+Only the next slice needs a detailed checklist. Split work where outcomes,
+dependencies or verification differ. Attach related maintenance to the boundary
+it improves when it fits the scope; a substantial refactor gets its own slice
+and explicit dependency. Do not turn every opportunity into a release blocker.
+
+## Trial Upkeep And Source Closure
 
 - Read the overview when orienting shared work; update the affected row when
   starting, finishing, interrupting or resuming an initiative.
@@ -69,12 +84,32 @@ before being treated as live implementation tasks.
   from a dependency that genuinely blocks progress.
 - Sam curates priorities. Newly captured thoughts are candidates, not automatic
   commitments. Keep detailed task state in its owning tool or implementation plan.
-- Remove completed context once the journal supplies the history. Reconcile
-  later resolutions before reviving an old proposal.
+- Close each action in a review/plan as resolved with evidence, superseded by a
+  named replacement, carried to a live home with a return point, or declined by
+  Sam with a reason. Uncertain actions stay pending. Keep implementation,
+  merge and outstanding acceptance distinct.
+- Once every action has a disposition, mark the source reconciled in the current
+  work record and exclude it from routine intake. Keep historical reviews and
+  journals intact; close completed phases of living plans while preserving useful
+  explanation and a current remaining-work section. Required guidance and binding
+  design/decision reads still apply.
+- Inspect new evidence since a dated commit/PR/journal checkpoint, plus relevant
+  pending sources. Advance the checkpoint only when new actions are registered
+  or disposed of. A regression creates new intake, with links to old evidence
+  only where needed.
 
-These are draft maintenance rules, not installed skill or runtime instructions.
-Adopting a shared read/update rule is separate work after the shape is agreed.
-No plugin change, automatic Stack access, or task synchronisation is implemented.
+The project-specific AGENTS instruction activates this trial in the shared
+repository. It does not install a new rule in other projects. No shared skill,
+plugin, automatic Stack access or task synchronisation is changed.
+
+**Initial source set:** this roadmap, its linked journal entries and the journal
+index as of main `265402c`, plus this upkeep follow-up. Historical candidates in
+the previous section are carried pending a current status check, not resolved.
+The initial roadmap is delivered by [PR #34](https://github.com/elegantchaos/Agents/pull/34).
+Other journal-index history has not had a complete action reconciliation; that
+bounded initial debt remains explicit, rather than implying the whole backlog
+was cleared. Future intake starts after that baseline and is recorded as work
+progresses. Record the next processed head when this follow-up merges.
 
 ## Reconciliation Basis
 
