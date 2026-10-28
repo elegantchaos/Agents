@@ -56,7 +56,7 @@ A codebase review is not a series of package reviews. Its main subject is how th
 
 1. **Map the whole.** List every package and target with its source size, and state the scope, including whether dependencies the project owns, such as packages in submodules, are in or out; ask when it is unclear. When the scope has more than about 10,000 lines of source, excluding tests, propose splitting the review before starting, since one session cannot read that much in full without skimming: this session keeps the map, the seams and the whole-codebase passes, and each package's in-depth review runs in a separate session that reports back. Wait for the user's choice. Then map the codebase as it is: each package's role and public API, the actual dependency graph against the architecture the documentation and decisions describe, the concepts that more than one package models, and the code that differs by platform.
 2. **Review the seams.** At each package boundary, compare how callers actually use an API with how it was designed. Look for mismatched assumptions, workarounds and adapters in callers, leaky or unused abstractions, responsibilities split across packages or duplicated on both sides, and dependencies that run against the intended direction.
-3. **Review across the whole.** Look for what only the whole shows: the same job done in more than one package or for more than one platform; one concept modelled differently in different places; special cases kept beside a general mechanism that could represent them, as described under Special cases the general form can absorb in Process step 4; cross-cutting concerns, such as error handling, logging, concurrency and isolation, observation, localization and test helpers, handled inconsistently; standards and idioms applied unevenly; and old and new ways of doing something left side by side.
+3. **Review across the whole.** Look for what only the whole shows: the same job done in more than one package or for more than one platform; one concept modelled differently in different places; special cases kept beside a general mechanism that could represent them, as described under Simplification now possible in Process step 4; cross-cutting concerns, such as error handling, logging, concurrency and isolation, observation, localization and test helpers, handled inconsistently; standards and idioms applied unevenly; and old and new ways of doing something left side by side.
 4. **Each package in depth.** Give each package its own full review, every file read in full and checked against the applicable skill checklists, informed by the map, so that findings about a package's fit with the rest are made there too. When the review is split, give each package session the map so it can judge fit, and keep the map, seams and whole-codebase passes in the main session so they are not lost between reports.
 5. **Report.** Report decision deviations and unresolved gaps as described in Decision Coverage; omit clean decision results. Use the structure below. Lead with the codebase-level findings, from the seams and the whole. A report made only of per-package findings is not a codebase review, and one that sampled files is reported as sampled, never as complete.
 
@@ -77,13 +77,13 @@ Most severe first, from the seams and the whole-codebase pass. Each with severit
 
 ### Across the Whole
 
-Under each: findings, then "Checked:" listing each boundary, search pattern or command, and file read, and what it returned.
+Under each: conclusions and reasoning about the boundaries and responsibilities examined, supported by specific implementation locations. Explain why retained distinctions remain justified and state coverage limits. Keep detailed search commands and file inventories in working notes unless needed to reproduce a finding.
 
 ## Package Findings
 
 ### <Package>
 
-Each package's findings, most severe first, then "Checked:" with its files read and searches made. A package reviewed in a separate session links or includes that session's report.
+Each package's findings, most severe first, with implementation evidence and structural reasoning. A package reviewed in a separate session links or includes that session's report. Keep detailed search commands and file inventories in working notes unless needed to reproduce a finding.
 
 ## Follow-ups
 
@@ -100,7 +100,7 @@ Every package or file not read in full, and anything else skipped or unverified,
 - Read beyond the diff: every changed file in full, the callers of changed code, the code the change newly depends on or places in a new context, and sibling code that does similar jobs.
 - Back every finding with evidence: a `file:line`, a search result, or a test outcome. Mark findings you could not confirm as unverified.
 - When you find a defect, search the whole codebase for other instances of it, including code the change did not touch. Report every instance found.
-- Record what you checked, including checks that found nothing. Name each search with its pattern or command, each file you read, and what it returned. A list of areas checked is not a record. A clean result without that record is not a review result.
+- Keep working notes of what you checked, including checks that found nothing: searches and their results, files read, responsibilities traced and the reasoning behind structural conclusions. In the report, give conclusions with implementation evidence and coverage limits; include commands when needed to reproduce a finding. A search inventory alone does not establish a structural conclusion.
 - Apply the same process to guidance, documentation, and configuration changes. For these, callers are the files, skills, and scripts that reference them.
 - Do not change code, push, or post review comments unless asked. When asked to post, follow the `baseline:git` skill's review-comment guidance.
 - Use this skill in preference to built-in review commands, such as Claude Code's `/code-review` or Codex's `/review`. They can supplement the correctness pass. They do not replace this process.
@@ -124,7 +124,7 @@ Every package or file not read in full, and anything else skipped or unverified,
 - Check that the change achieves its intent.
 - Check edge cases, error paths, concurrency, and resource handling in changed code.
 - Check that tests exercise the new behaviour and would fail without it. Note untested behaviour.
-- Run the project's tests and linters when it is safe and practical. Otherwise record why not.
+- Inspect existing validation evidence for the reviewed revision and report its scope, result and any gaps. Do not rerun validation routinely during review. Run a targeted check only when needed to investigate a specific concern or verify evidence that is missing, stale or inconclusive. Full application validation is not a review requirement; the merge workflow owns that gate.
 
 ### 3. Standards
 
@@ -135,19 +135,26 @@ Every package or file not read in full, and anything else skipped or unverified,
 
 ### 4. Effect on the Codebase
 
-Work through each item. Record the searches and reads you did for each, whatever they found.
+Assess how the change affects the surrounding design, not just its references. Start from the concepts, responsibilities, invariants and ownership described by the design documents, then trace how the implementation distributes them across types, modules and callers.
 
-- **Made obsolete.** For each symbol, file, option, or behaviour the change removes, renames, or replaces, search for remaining references in code, tests, documentation, comments, configuration, and scripts. Look for code that existed only to support the old behaviour.
-- **Simplification now possible.** For each edge case, state, or input the change eliminates or makes impossible, find the guards, branches, fallbacks, tests, and documentation that handled it. List those that can now be removed or simplified.
-- **Special cases the general form can absorb.** Look for representations that keep variants side by side, such as enum cases, optional fields set in mutually exclusive combinations, parallel accessors, `isX` flags, or separate code paths, where one variant is a general mechanism and the others exist only for what it apparently cannot handle. Ask whether the special case could become an instance of the general one: a type conforming to the same protocol, a value of the same type, or an input the general path already accepts. Signs include switches whose branches do the same job by different means, accessors that return nil for the other variant, equality, encoding or display defined per variant, and a variant that exists because one requirement of the general form does not fit it, such as a static member, a non-optional field, or a fixed type. Treat that requirement as open to change: relaxing it is often enough. When it is, recommend the change and list the cases, branches, accessors and tests that collapse. For example, a payload with typed and raw cases collapses into one once raw payloads become a type conforming to the payload protocol, with the protocol's static kind made an instance property. Report these under Simplification Now Possible.
-- **Duplication.** For each new function, type, or significant block, search for existing code that does the same or a similar job: related names, the same APIs or libraries, and similar shapes. Report duplication the change introduces, and existing duplicates the change makes easier to merge. Suggest merges.
-- **Design clarity.** For each new concept, type, or layer, check whether it overlaps an existing one, and whether names and boundaries make clear which to use. Flag old and new ways of doing the same thing left side by side. Check that documentation describing the design still matches it.
+Read enough of the surrounding implementation to explain why its boundaries still make sense after this change. Searches help locate that code and check completeness; search results alone do not establish a structural conclusion.
 
-Report work beyond the change's scope as a follow-up, separate from issues that block the change.
+Consider:
+
+- **Made obsolete.** Does the change supersede a concept, representation, responsibility, workflow or architectural boundary? Look for types, protocols, services, packages, configuration and documentation that remain active but whose original purpose has disappeared. Referenced code can still be obsolete: its callers may now be doing unnecessary work. Also check remaining references to removed or renamed symbols and behaviour.
+- **Simplification now possible.** What assumptions or capabilities have changed? Could the resulting design use fewer states, representations, layers, dependencies or independently maintained facts? Examine whether types can collapse, ownership can move to one place, special cases can become instances of a general mechanism, or a boundary can disappear. Treat restrictions of the general mechanism as open to examination: a static member, fixed type or non-optional field may be the only reason a special case exists. Explain which distinct responsibilities would remain and why.
+- **Duplication.** Look for the same domain rule, state, transformation or orchestration expressed in different places, even under unrelated names or different code structures. Trace who owns each fact and who can change it. Distinguish duplicated knowledge from superficially similar code that serves different contracts. Recommend consolidation only when it produces a clearer owner or shared abstraction.
+- **Design clarity.** Can a reader explain where each responsibility belongs and which mechanism to use? Identify competing models, overlapping abstractions, misleading boundaries and documentation that describes a different architecture. Assess whether the change establishes a coherent direction or adds another approach beside the existing ones.
+
+For each material conclusion, explain the relevant design relationship, the implementation evidence and the consequence. For a proposed simplification, describe what would disappear, what would take over its responsibility and which constraints prevent or permit it.
+
+Keep this assessment proportional to the change. Follow affected concepts across their boundaries; do not turn every diff review into a whole-codebase review. Identify any boundary you could not investigate and qualify the corresponding conclusion.
+
+Report necessary corrections as findings and independent improvements as follow-ups. Do not manufacture refactoring recommendations to populate these sections.
 
 ### 5. Report
 
-Report decision deviations in Findings and unresolved coverage gaps in Not Checked, as described in Decision Coverage. Omit clean decision results and a separate Decision Compliance section. Use this structure:
+Report decision deviations in Findings and unresolved coverage gaps in Not Checked, as described in Decision Coverage. Omit clean decision results and a separate Decision Compliance section. In every review mode, distinguish previous validation inspected from checks run during review. Name the revision and scope the evidence covers, and report missing or unverified evidence as a gap; inspecting adequate existing evidence does not require a fresh run. Use this structure:
 
 ```markdown
 ## Summary
@@ -168,7 +175,7 @@ Most severe first. Each with severity (blocking, should fix, or suggestion), loc
 
 ### Design Clarity
 
-Under each: findings, then "Checked:" listing each search pattern or command, each file read, and what it returned.
+Under each codebase-effect heading, give the conclusion and its reasoning, supported by specific implementation locations. For a clean assessment, briefly explain why the relevant responsibilities or distinctions remain justified. Keep detailed search commands and file inventories in working notes unless they are needed to reproduce a finding. State coverage limits explicitly.
 
 ## Follow-ups
 
@@ -191,7 +198,8 @@ Check before reporting the review:
 - Every applicable decision constraint has checked evidence or an explicit gap; contradictions are findings, and unclear status or supersession is reported when it affects the review.
 - Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
 - Every changed file, or for a full review every file in scope, was read in full and checked against the applicable skill checklists.
-- For a diff or package review, all four codebase-effect sections are present, each with a "Checked:" record naming specific searches and files. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present, each with a "Checked:" record, and between them they cover what the four sections ask: obsolete code, possible simplification, duplication and design clarity.
+- The codebase-effect assessment addresses concepts, ownership and structural consequences. Conclusions follow from reading implementations and tracing responsibilities; reference counts and search inventories are supporting checks, not substitutes for that analysis.
+- For a diff or package review, all four codebase-effect sections are present. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present. Together they cover obsolete concepts and code, possible simplification, duplication and design clarity, with implementation evidence, reasoning and explicit coverage limits.
 - Every finding has evidence and a recommended action.
 - Every defect was searched for across the codebase, and all instances are reported.
-- Tests and linters were run, or Not Checked says why not.
+- Existing validation evidence was assessed for the reviewed revision, with its scope, result and gaps reported separately from any checks run during review. Any new run addresses a specific concern or missing, stale or inconclusive evidence; full application validation is left to the merge workflow.
