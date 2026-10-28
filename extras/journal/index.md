@@ -1,6 +1,6 @@
 # Journal
 
-- [2026-10-28 Reviews Assess Design Consequences](2026-10-28-review-design-analysis.md): Trace concepts, responsibilities and ownership across affected boundaries; report structural reasoning with implementation evidence, keeping detailed search inventories in working notes. PRs default to ready for review, with drafts reserved for explicitly early work or a user's request; baseline 0.8.20.
+- [2026-10-28 Reviews Assess Design Consequences](2026-10-28-review-design-analysis.md): Trace concepts, responsibilities and ownership across affected boundaries; report structural reasoning with implementation evidence, keeping detailed search inventories in working notes. PRs default to ready for review; reviews inspect existing validation evidence without routine reruns, leaving full app validation to the merge gate; baseline 0.8.20.
 
 - [2026-10-27 Decision Records Without Plans](2026-10-27-decision-records-no-plans.md): Decision records link design documents only and leave out details likely to go out of date, such as planned implementation, delivery order or status; voice greeting suits the context; baseline 0.8.19.
 

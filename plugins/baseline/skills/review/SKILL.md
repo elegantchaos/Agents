@@ -124,7 +124,7 @@ Every package or file not read in full, and anything else skipped or unverified,
 - Check that the change achieves its intent.
 - Check edge cases, error paths, concurrency, and resource handling in changed code.
 - Check that tests exercise the new behaviour and would fail without it. Note untested behaviour.
-- Run the project's tests and linters when it is safe and practical. Otherwise record why not.
+- Inspect existing validation evidence for the reviewed revision and report its scope, result and any gaps. Do not rerun validation routinely during review. Run a targeted check only when needed to investigate a specific concern or verify evidence that is missing, stale or inconclusive. Full application validation is not a review requirement; the merge workflow owns that gate.
 
 ### 3. Standards
 
@@ -154,7 +154,7 @@ Report necessary corrections as findings and independent improvements as follow-
 
 ### 5. Report
 
-Report decision deviations in Findings and unresolved coverage gaps in Not Checked, as described in Decision Coverage. Omit clean decision results and a separate Decision Compliance section. Use this structure:
+Report decision deviations in Findings and unresolved coverage gaps in Not Checked, as described in Decision Coverage. Omit clean decision results and a separate Decision Compliance section. In every review mode, distinguish previous validation inspected from checks run during review. Name the revision and scope the evidence covers, and report missing or unverified evidence as a gap; inspecting adequate existing evidence does not require a fresh run. Use this structure:
 
 ```markdown
 ## Summary
@@ -202,4 +202,4 @@ Check before reporting the review:
 - For a diff or package review, all four codebase-effect sections are present. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present. Together they cover obsolete concepts and code, possible simplification, duplication and design clarity, with implementation evidence, reasoning and explicit coverage limits.
 - Every finding has evidence and a recommended action.
 - Every defect was searched for across the codebase, and all instances are reported.
-- Tests and linters were run, or Not Checked says why not.
+- Existing validation evidence was assessed for the reviewed revision, with its scope, result and gaps reported separately from any checks run during review. Any new run addresses a specific concern or missing, stale or inconclusive evidence; full application validation is left to the merge workflow.
