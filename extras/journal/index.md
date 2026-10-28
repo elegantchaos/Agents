@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-28 Reviews Assess Design Consequences](2026-10-28-review-design-analysis.md): Trace concepts, responsibilities and ownership across affected boundaries; report structural reasoning with implementation evidence, keeping detailed search inventories in working notes; baseline 0.8.20.
+
 - [2026-10-27 Decision Records Without Plans](2026-10-27-decision-records-no-plans.md): Decision records link design documents only and leave out details likely to go out of date, such as planned implementation, delivery order or status; voice greeting suits the context; baseline 0.8.19.
 
 - [2026-10-27 Roadmap Trial And Source Reconciliation](2026-10-27-roadmap-upkeep.md): Smaller slices, finish conditions, explicit disposition of old actions and bounded upkeep checkpoints; project-local trial activated without shared skill changes.
