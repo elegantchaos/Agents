@@ -26,10 +26,11 @@ Do not use it for Python, Ruby, JavaScript, or other non-Swift projects unless t
 
 1. Run commands from the repository root.
 2. Get `agt` with this skill's `scripts/ensure-agt.sh`, as described in `references/workflow.md`.
-3. Follow the Swift validation workflow in `references/workflow.md`.
+3. Prepare a fresh checkout before the first test run, as described in `references/workflow.md`. `agt worktree create` does this during setup; use `agt prepare` for an existing checkout.
+4. Follow the Swift validation workflow in `references/workflow.md`.
    Run every test through `agt validate`, using `--target` for a single target; never run `swift test` or `xcodebuild` directly.
-4. After `agt format`, read its lint findings. It reports PASS even when it finds problems; fix every finding in files you changed before validating.
-5. Report results using the output rules in `references/workflow.md`.
+5. After `agt format`, read its lint findings. It reports PASS even when it finds problems; fix every finding in files you changed before validating.
+6. Report results using the output rules in `references/workflow.md`.
 
 ## References
 

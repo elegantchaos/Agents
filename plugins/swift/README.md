@@ -10,7 +10,7 @@ Opinionated Swift skills from Elegant Chaos, packaged as one plugin for Claude C
 | [swift:testing](skills/testing/SKILL.md) | Swift Testing test design, async tests, and migration from XCTest |
 | [swift:swiftui-trace](skills/swiftui-trace/SKILL.md) | Analysing SwiftUI Instruments `.trace` files for invalidation causes and `View.body` costs, using Miguel de Icaza's script |
 | [swift:swiftdata](skills/swiftdata/SKILL.md) | SwiftData models, queries, predicates, indexing, and CloudKit |
-| [swift:validation](skills/validation/SKILL.md) | AgentTools (`agt format`, `agt validate`) formatting, linting, build, and test validation |
+| [swift:validation](skills/validation/SKILL.md) | AgentTools dependency preparation (`agt prepare`), formatting, linting, builds and tests (`agt format`, `agt validate`) |
 
 ## Installation
 

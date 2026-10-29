@@ -9,7 +9,9 @@ draft establishes the shape and known candidates, not an exhaustive task audit.
 
 ## You Are Here
 
-**Current focus: establish a useful overview of shared work and parked ideas.**
+**Current focus: make new worktrees ready for sandboxed development through AgentTools.**
+
+Worktree setup and dependency preparation are delegated to `agt worktree create` and `agt prepare`. The command implementation lives in AgentTools; the baseline Git and Swift validation skills own authorization, runtime integration and the TDD workflow. Adoption requires an AgentTools release containing the commands. Return point: release the implementation, then install the updated baseline and Swift plugins and confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture; its product source is unchanged.
 
 The baseline and Swift plugins, AgentTools refresh/validation workflows, and
 project journals already supply the working foundation. Recent work tightened
@@ -44,7 +46,7 @@ Markdown records. Stack access can follow when that integration is scheduled.
 | **Project continuity** | Trial. Bookish keeps a compact overview plus a current work plan for slices, maintenance opportunities and source dispositions. Evaluate completed work before promoting this into shared skills; no new tracking system or automatic synchronisation is selected. | [Records skill](plugins/baseline/skills/records/SKILL.md), [Bookish roadmap PR](https://github.com/elegantchaos/Bookish/pull/112) |
 | **Stack task access** | Parked. First inspect Stack's existing access when resumed, then choose the smallest useful App Intents, CLI and/or MCP extension for reading and writing tasks. Keep captured task detail in Stack and link it to project workstreams. Implementation belongs in Stack; reusable agent guidance belongs here. | This roadmap; detailed proposal not yet written |
 | **Guidance and review quality** | The review skill now requires structural reasoning about concepts, responsibilities and ownership, with search inventories kept in working notes, and inspects existing validation evidence without routine reruns; PRs default to ready for review ([evidence and changes](extras/journal/2026-10-28-review-design-analysis.md)). Next: evaluate subsequent reviews for justified conclusions about still-used obsolete machinery, simplification and duplicated knowledge; metadata checks alone do not close that behavioural evaluation. | [Journal index](extras/journal/index.md), [baseline plugin](plugins/baseline/README.md), [Swift plugin](plugins/swift/README.md) |
-| **Validation and resource maintenance** | Existing workflow. Keep tests on the canonical validation path and shared resources maintained through AgentTools. New tooling needs a demonstrated gap. | [Targeted test runs](extras/journal/2026-10-27-targeted-test-runs.md), [maintenance instructions](README.md#maintenance) |
+| **Validation and resource maintenance** | Worktree setup and dependency preparation use AgentTools, with explicit permission for any outside-sandbox setup. Targeted tests remain on the canonical validation path. Release and fresh Claude acceptance remain the adoption boundary. | [Preparation workflow](extras/journal/2026-10-29-worktree-preparation.md), [Targeted test runs](extras/journal/2026-10-27-targeted-test-runs.md), [maintenance instructions](README.md#maintenance) |
 
 ## Parked Candidates To Recheck
 
@@ -65,6 +67,7 @@ before being treated as live implementation tasks.
 
 | Slice | Finish condition | State |
 | --- | --- | --- |
+| Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Implemented with AgentTools integration evidence in the linked journal. Release, plugin installation and fresh Claude runtime acceptance remain outstanding. |
 | Establish the Bookish trial | Its roadmap, current work plan, source register and project read/update instruction are reviewable; unresolved historical reconciliation is explicit. | In progress in Bookish PR #112. |
 | Evaluate upkeep on real work | After the first few completed slices, check whether a fresh chat can choose the next task and account for carried findings using current records. Record missed work, excessive granularity or repeated history scans. | Planned after trial use. |
 | Refine shared guidance | Use those results to propose a small addition to the existing records workflow, if useful; implement and validate through the normal skill process once agreed. | Parked pending evidence; no shared skill changes now. |
