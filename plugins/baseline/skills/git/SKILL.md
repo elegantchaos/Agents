@@ -16,12 +16,18 @@ Git and `gh` for operations it does not cover, including Actions logs.
 - Prefer the tool's working-directory parameter and plain `git <subcommand>` so
   command-prefix rules match predictably. Use `git -C` when the interface needs
   it; it does not bypass filesystem restrictions.
-- Follow the current session's sandbox and approval policy. A command allow rule
-  does not grant filesystem access. Under Codex's default workspace-write policy,
+- Follow the current session's sandbox and approval policy. A Codex prefix allow
+  rule can preauthorise execution outside the sandbox; it does not change the
+  permissions of a process that remains sandboxed. Check the actual execution
+  mode rather than inferring it from a command's success. Under workspace-write,
   `.git` and resolved worktree Git directories are protected; other permission
   profiles may differ. When the active policy protects Git metadata, use its
   supported approval path for commands that write there. Do not change sandbox
   configuration as part of ordinary Git work.
+- Use the runtime's configured approval process, including automatic review when
+  enabled. Do not ask for an extra human confirmation after that process has
+  authorised the action unless an explicit policy requires one. An allow rule
+  can bypass the approval request; auto mode does not make such rules irrelevant.
 - Diagnose lock errors from the actual message: permission-denied or
   operation-not-permitted failures differ from a lock that already exists.
   Do not delete locks or repeat failing writes as a substitute for diagnosis.
@@ -33,9 +39,9 @@ Git and `gh` for operations it does not cover, including Actions logs.
 
 Reuse a suitable existing checkout or worktree when one is already available. To create a new worktree, run `agt worktree create <name>` from a checkout of the repository. AgentTools owns the naming, branch and location rules, initialises submodules, and prepares dependencies. Use `--base <revision>` when the task specifies a starting revision; otherwise the invoking checkout's HEAD is used. Uncommitted changes and ignored machine-local configuration are not copied.
 
-Obtain `agt` with `../refresh/scripts/ensure-agt.sh`. This workflow requires a release that includes `agt worktree create` and `agt prepare`; check their help before use. If the installed release lacks them, report the version gap rather than reconstructing setup with ad hoc commands. During development of these commands, an explicitly supplied source build can be used.
+Obtain `agt` with `../refresh/scripts/ensure-agt.sh`. Check `agt worktree create --help` and `agt prepare --help` before use. If either command is missing, run that helper once with `--update`, use the absolute executable path it returns, and check again. Report a version gap only if the updated tool still lacks the commands. If the bootstrap is blocked, follow the runtime's approval process or ask the user to run it; do not reconstruct setup with ad hoc commands. During AgentTools development, an explicitly supplied source build can be used.
 
-The command remains inside the caller's sandbox. Where Git metadata protection blocks setup, request approval for the single `agt worktree create <name>` invocation outside the sandbox, or ask the user to run it. Explain that it creates the worktree and branch, initialises submodules and resolves dependencies, including evaluating package manifests, but does not build targets or run tests. An existing approval applies only within its stated scope; do not infer a general sandbox exception. Do not weaken sandbox settings, relocate protected metadata or repeat denied writes to evade the protection.
+AgentTools does not change its caller's execution permissions. Check the runtime's effective sandbox and approval policy: standing command rules can preauthorise outside-sandbox execution. Where Git metadata protection blocks setup, request approval for the single `agt worktree create <name>` invocation outside the sandbox, or ask the user to run it. Explain that it creates the worktree and branch, initialises submodules and resolves dependencies, including evaluating package manifests, but does not build targets or run tests. An existing approval applies only within its stated scope; do not infer a general sandbox exception. Do not weaken sandbox settings, relocate protected metadata or repeat denied writes to evade the protection.
 
 Use the absolute path reported by the command for subsequent work. A setup failure can leave a valid worktree: follow its reported resume operation there instead of creating another one. Use `agt prepare` in that checkout after dependency changes or cleaning. Preparation is not validation; Swift test runs, including red/green steps, still use `agt validate --target <target>` through `swift:validation`.
 

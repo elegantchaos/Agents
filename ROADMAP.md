@@ -11,7 +11,7 @@ draft establishes the shape and known candidates, not an exhaustive task audit.
 
 **Current focus: make new worktrees ready for sandboxed development through AgentTools.**
 
-Worktree setup and dependency preparation are delegated to `agt worktree create` and `agt prepare`. The command implementation lives in AgentTools; the baseline Git and Swift validation skills own authorization, runtime integration and the TDD workflow. Adoption requires an AgentTools release containing the commands. Return point: release the implementation, then install the updated baseline and Swift plugins and confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture; its product source is unchanged.
+Worktree setup and dependency preparation are delegated to `agt worktree create` and `agt prepare`. The command implementation lives in AgentTools; the baseline Git and Swift validation skills own authorization, runtime integration and the TDD workflow. Merge Agents #38 only after an AgentTools release containing the commands is available: COMMON.md is read directly from this checkout, so plugin installation cannot defer activation of its new rule. Return point: release AgentTools, merge the shared guidance, then refresh the baseline/Swift plugins and generated rules and confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture; its product source is unchanged.
 
 The baseline and Swift plugins, AgentTools refresh/validation workflows, and
 project journals already supply the working foundation. Recent work tightened

@@ -1,6 +1,8 @@
 # Journal
 
-- [2026-10-29 Worktree Preparation](2026-10-29-worktree-preparation.md) — AgentTools owns worktree conventions and dependency preparation; shared Git and Swift guidance owns authorization, TDD and runtime integration. Release and Claude acceptance remain the adoption boundary.
+- [2026-10-29 PR #38 Review Fixes](2026-10-29-pr38-review-fixes.md): Release-before-merge prerequisite, one-time bootstrap updates, approved removal of the blanket agt allow rule, and qualified runtime-sandbox evidence.
+
+- [2026-10-29 Worktree Preparation](2026-10-29-worktree-preparation.md): AgentTools owns worktree conventions and dependency preparation; shared Git and Swift guidance owns authorization, TDD and runtime integration. Release and Claude acceptance remain the adoption boundary.
 
 - [2026-10-28 Reviews Assess Design Consequences](2026-10-28-review-design-analysis.md): Trace concepts, responsibilities and ownership across affected boundaries; report structural reasoning with implementation evidence, keeping detailed search inventories in working notes. PRs default to ready for review; reviews inspect existing validation evidence without routine reruns, leaving full app validation to the merge gate; baseline 0.8.20.
 
