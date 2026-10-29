@@ -4,8 +4,14 @@
 
 Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`; it installs AgentTools (and Mint, via Homebrew) if `agt` is missing.
 
+Before dependency preparation, check `agt prepare --help`. If it is missing, run this skill's `scripts/ensure-agt.sh --update` once, use the absolute executable path it returns, and check again. Report a version gap only if the updated tool still lacks preparation. If the bootstrap is blocked, follow Failure Classification rather than running it outside the sandbox automatically. During AgentTools development, an explicitly supplied source build can be used.
+
 ## Commands
 
+- Prepare dependencies in an existing checkout without building targets or running tests:
+  - `agt prepare`
+- List dependency preparation steps:
+  - `agt prepare --plan`
 - Format and lint every Swift file:
   - `agt format`
 - Fast validation of the uncommitted changes, then full validation in the background when preparing to merge:
@@ -35,13 +41,25 @@ Fast validation builds, for macOS, only the package targets, packages, or produc
 
 Comprehensive validation builds every product scheme for every platform the product supports, then runs, platform by platform, the product's tests and the tests of the local Swift packages that are part of the product, on simulators where needed. Local packages in git submodules are tested only when the submodule has changed. Projects configure schemes, platforms, test platforms, submodule testing, and excluded packages in `.agt/config.json`, with per-machine overrides in `.agt/local/config.json`; see `agt validate --help`. Do not create or change these files unless the user asks.
 
-Background validation runs detached, so work can continue while it runs. Its result records a fingerprint of the working tree, including untracked files, and counts only for that tree. `agt validate --wait` waits for a running background validation, then fails unless full validation passed for the current working tree; it fails the same way when the tree changed while validation ran, when a newer run replaced it, or when none has run. Starting background validation again when it has already passed for the current tree does nothing. Any new `agt validate` run stops a background validation that is still running, so the two never compete for build directories.
+Background validation runs detached, so work can continue while it runs. Its result records a fingerprint of the working tree, including untracked files, and counts only for that tree. `agt validate --wait` waits for a running background validation, then fails unless full validation passed for the current working tree; it fails the same way when the tree changed while validation ran, when a newer run replaced it, or when none has run. Starting background validation again when it has already passed for the current tree does nothing. A new validation execution stops a background validation that is still running, so the two never compete for build directories; status/wait commands inspect it, and plan commands wait for the shared operation lock without stopping it.
 
 Use `agt validate --plan` when you need to know what validation covers, for example to report which schemes, platforms, packages, and tests were checked, or to explain a skipped check. Validation caches what it discovers about the project in `.build/agt`, so the first run in a project is slower than later ones.
 
 Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt format` followed by `agt validate`.
 
 ## Running Tests During Development
+
+### Prepare Before TDD
+
+For a new worktree, follow `baseline:git`, which owns creation, bootstrap recovery, authorization and runtime integration. For an existing fresh checkout, run `agt prepare` before the first red test.
+
+Preparation resolves dependencies into the same per-package SwiftPM scratch directories and Xcode DerivedData directories validation uses. Product-scheme preparation alone does not warm the separate SwiftPM directories used by targeted tests. It evaluates manifests and may update `Package.resolved`, but does not build targets, run tests or boot simulators. A passing preparation result is not validation evidence.
+
+Some sandboxes deny dependency `.git/config` and `.git/hooks` writes even inside writable checkout directories. Claude's and Codex's protected paths differ by runtime, version and configuration; do not assume every nested `.git` path is denied in both. A writable SwiftPM repository cache does not remove the need to materialise local Git checkouts. An empty Git template directory fixes only sample-hook copying.
+
+Where these restrictions apply to an existing checkout, request approval for one `agt prepare` run outside the sandbox through the runtime's configured approval process, or ask the user to run it. Automatic review can handle that request when enabled; do not add a separate human-confirmation step after it authorises the action. AgentTools does not escalate itself, but standing runtime rules can authorise external execution before the command starts; check effective policy rather than assuming a successful command was sandboxed. Name the command, explain that it evaluates dependency manifests, and keep ordinary builds and tests inside the sandbox unless the user has authorised a specific exception. Do not add a standing exception unless the user explicitly authorises one.
+
+Repeat preparation after dependency graph changes, switching to revisions that need different dependencies, removing checkout directories or `agt validate --clean`. Worktree creation does not copy ignored machine-local configuration; account for any needed settings explicitly. Preparation and validation share a checkout lock: execution requires another foreground operation to finish, and preparation stops an existing background validation before resolving. Both `--plan` commands wait for the current lock holder without stopping it, reporting its PID and operation; use `agt validate --status` or `--wait` to inspect a background holder. Retain a partially prepared checkout and use the reported resume command. Report remaining failures as external blockages or source failures according to their evidence.
 
 Run every test through `agt validate`, including the failing and passing steps of red/green TDD. Do not run `swift test`, `xcodebuild test` or another runner directly: `agt` is the approved workflow, and inside an agent's sandbox it turns off SwiftPM's and Xcode's own sandboxes, which otherwise fail when nested.
 
@@ -74,6 +92,8 @@ A source failure is caused by code, tests, project configuration, or generated p
 When a source failure can be corrected within the user's request without a material design decision, fix it and rerun the failed validation command. Otherwise, report the failure and ask the user for direction.
 
 An external blockage prevents validation without indicating an error in the changed source. Examples include a locked build database, a missing SDK, unavailable credentials, an unavailable service, or a network failure.
+
+A dependency clone or checkout failing with `Operation not permitted` or `Permission denied` on `.git/config`, `.git/config.lock` or `.git/hooks` is a dependency-preparation blockage. Follow Prepare Before TDD above: request approval for `agt prepare` outside the sandbox, or ask the user to run it, then retry the same `agt validate` command inside the sandbox. Do not rerun the entire validation outside merely to populate dependencies. Cache permissions and network failures are separate failure classes; preparation advice does not fix them.
 
 A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Run `scripts/ensure-agt.sh --update`, which needs network access, to install the latest AgentTools release and get the path to `agt`. Then ask the user to run `<path> sandbox configure`, giving the absolute path it printed, and to start a new session. That command lets Claude Code's and Codex's sandboxes write those caches. If the sandbox also blocks `ensure-agt.sh --update`, which builds AgentTools with SwiftPM, ask the user to run it too.
 
