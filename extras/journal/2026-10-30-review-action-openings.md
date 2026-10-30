@@ -11,3 +11,7 @@ Validation: review skill metadata validator, matching manifest versions, whitesp
 ## Follow-up: Bold No-Action Openings
 
 Sam requested bold no-action sentences so they stand out alongside the recommended-action labels. The skill now requires the whole opening sentence to be bold, and the Bookish review demonstrates it. Both baseline manifests advance to 0.8.24; the merge and refresh return point is unchanged. Skill metadata, manifest consistency and whitespace checks passed.
+
+## Follow-up: Lists For Multiple Recommendations
+
+Sam requested Markdown lists when a section recommends more than one action. The skill requires one recommendation per list item under the bold label; a single recommendation can stay inline. The Bookish review follows that format. Both baseline manifests advance to 0.8.25. Skill metadata, manifest consistency and whitespace checks passed; the merge and refresh return point is unchanged.
