@@ -15,3 +15,7 @@ Sam requested bold no-action sentences so they stand out alongside the recommend
 ## Follow-up: Lists For Multiple Recommendations
 
 Sam requested Markdown lists when a section recommends more than one action. The skill requires one recommendation per list item under the bold label; a single recommendation can stay inline. The Bookish review follows that format. Both baseline manifests advance to 0.8.25. Skill metadata, manifest consistency and whitespace checks passed; the merge and refresh return point is unchanged.
+
+## Follow-up: Actionable Reports Without Status Recaps
+
+Sam clarified that all review sections should focus on what needs changing, retaining known behaviour, previous reviews and settled plans only as necessary context. Existing full reviews are consulted internally rather than listed routinely; a proposed new review names its scope and the remaining need. Small package size alone no longer triggers a repeat-review offer. The Bookish report removes clean-status recaps, unchanged planned work and the existing-review inventory while preserving findings, validation and coverage gaps. Both baseline manifests advance to 0.8.26. Skill metadata, manifest consistency and whitespace checks passed; merge and plugin refresh remain the return point.

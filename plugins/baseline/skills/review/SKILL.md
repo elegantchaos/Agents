@@ -43,12 +43,9 @@ When a request fits more than one row, or none, ask which is meant.
 - **Diff review.** Reviews a pull request, branch, diff, or completed task. Its scope is the change, the code the change calls or newly depends on, and existing code the change places in a new context, such as a reusable control it puts in a toolbar for the first time. Defects in that newly exercised code are in scope even though the diff does not touch it.
 - **Full review.** Reviews a whole package, or an entire codebase with all its packages, reading every source file against every reference of every relevant skill. It finds defects that diff reviews miss because the code that contains them never changes. For a package, follow the same process, applied to the whole package: intent becomes the package's purpose as its documentation states it, and the codebase-effect sections cover the whole package, including dead code, duplication, and documentation that no longer matches the code. An entire-codebase review follows its own method and report, in Reviewing an Entire Codebase, because it is more than the sum of its packages' reviews.
 
-After a diff review of a pull request, also offer a full review of each package the change touches when either:
+After a diff review of a pull request, assess whether a separate full package review would address a meaningful remaining need. Consult the project's journal for previous coverage, considering unreviewed boundaries, substantial subsequent changes, review age and releases. Package size informs scope and feasibility; it is not by itself a reason to repeat a recent review. Recommend a new full review only when you can name its scope and explain what it would resolve. Put it in Follow-ups as a proposed action, not as an ambiguous offer or an implied prerequisite for this PR. Do not list existing full reviews unless one supplies important context for a finding or recommendation.
 
-- the package has at most 5,000 lines of source, excluding tests; or
-- its last full review is more than 30 days old or predates its last release, or no full review is recorded.
-
-Find the last full review in the project's journal. Record each full review there as an entry whose title begins "Full Review", stating the date, each package covered with its path, the commit or release reviewed, and whether coverage was complete or partial, listing what a partial review left out. A package's last full review is the latest complete one that names it; compare its reviewed commit or release with the package's latest release. Say when you cannot tell.
+Record each full review actually performed in the journal as an entry whose title begins "Full Review", stating the date, each package covered with its path, the commit or release reviewed, and whether coverage was complete or partial, listing what a partial review left out. A package's last full review is the latest complete one that names it; compare its reviewed commit or release with the package's latest release when that affects a recommendation. State uncertainty when it limits the assessment.
 
 ### Reviewing an Entire Codebase
 
@@ -77,7 +74,7 @@ Most severe first, from the seams and the whole-codebase pass. Each with severit
 
 ### Across the Whole
 
-Under each: recommended actions first, then conclusions and reasoning about the boundaries and responsibilities examined, supported by specific implementation locations. Use the action-first reporting guidance in Process step 5, including its brief no-action openings. Explain why retained distinctions remain justified and state coverage limits. Keep detailed search commands and file inventories in working notes unless needed to reproduce a finding.
+Under each: recommended actions first, then conclusions and reasoning about the boundaries and responsibilities examined, supported by specific implementation locations. Use the action-first reporting guidance in Process step 5, including its brief no-action openings. Explain retained distinctions only when they matter to a finding or recommendation; state material coverage limits. Keep detailed search commands and file inventories in working notes unless needed to reproduce a finding.
 
 ## Package Findings
 
@@ -154,7 +151,9 @@ Report necessary corrections as findings and independent improvements as follow-
 
 ### 5. Report
 
-Start each codebase-effect section with the actions recommended for that concern, clearly separated from the supporting assessment. Use a bold **Recommended actions:** label; when there is more than one recommendation, put each in its own Markdown list item beneath the label, with a blank line before the list. A single recommendation can follow the label on the same line. Distinguish fixes needed now from opportunities for later work, and link findings or follow-ups instead of burying recommendations in explanatory prose. When nothing needs doing, open with a brief, section-specific sentence such as **No action needed.**, **No simplifications recommended.**, **No duplication found.** or **No design changes recommended.** Bold the entire no-action opening sentence, just as the recommended-action label is bold. Follow with the context and evidence that justify the assessment. Apply this structure to the corresponding whole-codebase sections too; do not invent actions to fill a section.
+Write the report primarily to show what needs changing and why. Lead with actionable findings and recommendations; include existing behaviour, prior reviews, settled decisions and completed work only when they are necessary context for a finding, recommendation or material coverage limit. Keep clean checks and detailed inventories in working notes. Do not repeat known follow-ups or planned work as new recommendations unless this review changes their scope, priority or disposition; link the existing destination when needed. Preserve the evidence, validation result and explicit gaps needed to judge the verdict. This applies to every review section, not just follow-ups or codebase effects.
+
+Start each codebase-effect section with the actions recommended for that concern, clearly separated from the supporting assessment. Use a bold **Recommended actions:** label; when there is more than one recommendation, put each in its own Markdown list item beneath the label, with a blank line before the list. A single recommendation can follow the label on the same line. Distinguish fixes needed now from opportunities for later work, and link findings or follow-ups instead of burying recommendations in explanatory prose. When nothing needs doing, open with a brief, section-specific sentence such as **No action needed.**, **No simplifications recommended.**, **No duplication found.** or **No design changes recommended.** Bold the entire no-action opening sentence, just as the recommended-action label is bold. Follow with only the context and evidence needed to justify the assessment; clean sections need no explanatory paragraph by default. Apply this structure to the corresponding whole-codebase sections too; do not invent actions to fill a section.
 
 Report decision deviations in Findings and unresolved coverage gaps in Not Checked, as described in Decision Coverage. Omit clean decision results and a separate Decision Compliance section. In every review mode, distinguish previous validation inspected from checks run during review. Name the revision and scope the evidence covers, and report missing or unverified evidence as a gap; inspecting adequate existing evidence does not require a fresh run. Use this structure:
 
@@ -177,7 +176,7 @@ Most severe first. Each with severity (blocking, should fix, or suggestion), loc
 
 ### Design Clarity
 
-Under each codebase-effect heading, lead with recommended actions or a brief no-action sentence, then give the conclusion and its reasoning, supported by specific implementation locations. For a clean assessment, briefly explain why the relevant responsibilities or distinctions remain justified. Keep detailed search commands and file inventories in working notes unless they are needed to reproduce a finding. State coverage limits explicitly.
+Under each codebase-effect heading, lead with recommended actions or a brief no-action sentence, then give the conclusion and its reasoning, supported by specific implementation locations. For a clean assessment, the brief no-action sentence is sufficient unless context is needed to understand its scope or a related finding. Keep detailed search commands and file inventories in working notes unless they are needed to reproduce a finding. State coverage limits explicitly.
 
 ## Follow-ups
 
@@ -192,7 +191,7 @@ What was skipped or could not be verified, and why.
 
 Check before reporting the review:
 
-- The review mode is stated, and after a diff review of a pull request, whether a full review is due and why.
+- The review mode is stated. Any proposed full review names a scope and a concrete remaining need; existing reviews are mentioned only when they supply necessary context.
 - The mode was chosen from the request, or the user was asked which was meant.
 - For an entire-codebase review, the scope and map are stated, a split was proposed when the scope exceeded about 10,000 lines, the report follows the codebase structure with the seams and whole-codebase findings first, every package has its own findings, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
@@ -203,6 +202,6 @@ Check before reporting the review:
 - The codebase-effect assessment addresses concepts, ownership and structural consequences. Conclusions follow from reading implementations and tracing responsibilities; reference counts and search inventories are supporting checks, not substitutes for that analysis.
 - Each codebase-effect section, or corresponding whole-codebase section, opens with recommended actions separated from the assessment, or a brief, bold, section-specific sentence explicitly saying nothing needs doing. Immediate fixes and later opportunities are distinguished.
 - For a diff or package review, all four codebase-effect sections are present. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present. Together they cover obsolete concepts and code, possible simplification, duplication and design clarity, with implementation evidence, reasoning and explicit coverage limits.
-- Every finding has evidence and a recommended action.
+- Every finding has evidence and a recommended action. The report omits known status, clean-check inventories and unchanged plans unless needed to assess a finding, recommendation or material gap.
 - Every defect was searched for across the codebase, and all instances are reported.
 - Existing validation evidence was assessed for the reviewed revision, with its scope, result and gaps reported separately from any checks run during review. Any new run addresses a specific concern or missing, stale or inconclusive evidence; full application validation is left to the merge workflow.
