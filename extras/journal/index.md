@@ -1,6 +1,6 @@
 # Journal
 
-- [2026-10-30 Calendar Command Approval](2026-10-30-calendar-approval.md): Revised to summaries guidance for outside-sandbox calendar execution through runtime approval, replacing the proposed standing rule; baseline 0.8.22.
+- [2026-10-30 Calendar Command Approval](2026-10-30-calendar-approval.md): Summaries guidance for runtime-approved calendar execution and automatic permission requests with `--no-prompt`; baseline 0.8.22, requiring the companion AgentTools release.
 
 - [2026-10-29 PR #38 Review Fixes](2026-10-29-pr38-review-fixes.md): Release-before-merge prerequisite, one-time bootstrap updates, approved removal of the blanket agt allow rule, and qualified runtime-sandbox evidence.
 

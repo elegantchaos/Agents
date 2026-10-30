@@ -15,3 +15,9 @@ Sam chose runtime approval guidance instead of the proposed calendar allow rule,
 Both baseline manifests advance to 0.8.22, above their existing 0.8.21/0.8.20 values. The roadmap return point is plugin refresh after merge rather than rule synchronization. The earlier rule and checker results above record the superseded proposal, not the final change. No installed rules, plugins or AgentTools code are changed by this revision.
 
 Revision validation: summaries skill metadata validation passed; both plugin manifests parse and declare 0.8.22; the tools rule file is byte-for-byte identical to main; whitespace and the new journal links pass. Manual checklist review covered the initial request, sandbox-failure retry, genuine missing grant, denied/restricted states and unavailable escalation. No builds or behavioral agent evaluation were run for this guidance-only revision, and no plugins were refreshed.
+
+## Follow-up: Queries Request Their Own Permission
+
+Sam chose automatic permission requests for events/reminders with `--no-prompt` to suppress them, and removal of the separate authorize command. The summaries skill now describes those semantics, explains possible prompts before the first query, and preserves outside-sandbox runtime approval without a standing rule. Existing grants work without a request; blocked grants and outside-sandbox failures are reported without repeated attempts. AgentTools PR #9 owns implementation and Decision 0007's approved revision. Release that AgentTools change before activating this guidance; no installed executable or plugin is changed here.
+
+Validation of the query-guidance revision: skill metadata validation, matching 0.8.22 manifests and whitespace checks pass. The canonical tools rule file remains identical to main. Workflow review covered automatic prompting, `--no-prompt`, existing grants, blocked grants and sandbox failures. Behavioral agent evaluation and plugin refresh remain unrun.
