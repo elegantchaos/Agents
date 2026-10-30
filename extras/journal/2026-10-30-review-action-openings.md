@@ -1,4 +1,4 @@
-# 2026-10-30 Review Sections Lead With Actions
+# Review Sections Lead With Actions
 
 Sam's feedback on Bookish PR #119's review was that codebase-effect sections mixed recommendations with descriptions of current behaviour. Each section now starts with its recommended actions, distinguishing immediate fixes from later opportunities, before giving the supporting assessment and evidence.
 

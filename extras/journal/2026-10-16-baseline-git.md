@@ -1,4 +1,4 @@
-# Baseline Git migration and guidance review
+# Baseline Git Migration And Guidance Review
 
 Date: 2026-10-16
 
