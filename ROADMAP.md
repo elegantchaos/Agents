@@ -9,7 +9,7 @@ draft establishes the shape and known candidates, not an exhaustive task audit.
 
 ## You Are Here
 
-Calendar access follow-up: a scoped Codex rule approves `agt calendar` for the bare command and Sam's installed Mint path. The companion AgentTools fix makes inaccessible permission state and authorization failures actionable. Return point: review both PRs, then merge and synchronize the canonical rules; installed-rule rollout is not part of this source change. See [the journal](extras/journal/2026-10-30-calendar-approval.md). This does not resume the broader approval-rule redesign.
+Calendar access follow-up: the summaries skill requests outside-sandbox calendar execution through each runtime's approval flow, without a standing command rule. The companion AgentTools fix makes inaccessible permission state and authorization failures actionable. Return point: review both PRs, then merge and refresh the baseline plugin; installed-plugin rollout is not part of this source change. See [the journal](extras/journal/2026-10-30-calendar-approval.md). This does not resume the broader approval-rule redesign.
 
 **Current focus: make new worktrees ready for sandboxed development through AgentTools.**
 

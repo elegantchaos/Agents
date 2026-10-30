@@ -1,6 +1,6 @@
 # Journal
 
-- [2026-10-30 Calendar Command Approval](2026-10-30-calendar-approval.md): Allow bare and installed Mint `agt calendar` outside the Codex sandbox, with positive and negative policy examples; all other `agt` commands remain under normal approval handling.
+- [2026-10-30 Calendar Command Approval](2026-10-30-calendar-approval.md): Revised to summaries guidance for outside-sandbox calendar execution through runtime approval, replacing the proposed standing rule; baseline 0.8.22.
 
 - [2026-10-29 PR #38 Review Fixes](2026-10-29-pr38-review-fixes.md): Release-before-merge prerequisite, one-time bootstrap updates, approved removal of the blanket agt allow rule, and qualified runtime-sandbox evidence.
 

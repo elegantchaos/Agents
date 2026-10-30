@@ -1,28 +1,4 @@
 prefix_rule(pattern=[".venv/bin/python"], decision="allow")
-# Calendar queries and authorization need macOS services unavailable in the agent sandbox.
-prefix_rule(
-    pattern=[["agt", "/Users/sam/.mint/bin/agt"], "calendar"],
-    decision="allow",
-    justification="Allow the trusted calendar command family to reach macOS Calendar and Reminders services.",
-    match=[
-        "agt calendar events",
-        "agt calendar reminders --days 3",
-        "agt calendar authorize",
-        "/Users/sam/.mint/bin/agt calendar events --days 7",
-        "/Users/sam/.mint/bin/agt calendar reminders",
-        "/Users/sam/.mint/bin/agt calendar authorize",
-    ],
-    not_match=[
-        "agt validate",
-        "agt prepare",
-        "agt worktree create example",
-        "agt refresh",
-        "/Users/sam/.mint/bin/agt validate",
-        "/Users/sam/.mint/bin/agt prepare",
-        "/Users/sam/.mint/bin/agt refresh",
-        "agt calendar-extra events",
-    ],
-)
 prefix_rule(pattern=["brew", "info", "xpkg-git"], decision="allow")
 prefix_rule(pattern=["brew", "install", "--HEAD"], decision="allow")
 prefix_rule(pattern=["brew", "postinstall", "xpkg-git"], decision="allow")
