@@ -77,7 +77,7 @@ Most severe first, from the seams and the whole-codebase pass. Each with severit
 
 ### Across the Whole
 
-Under each: conclusions and reasoning about the boundaries and responsibilities examined, supported by specific implementation locations. Explain why retained distinctions remain justified and state coverage limits. Keep detailed search commands and file inventories in working notes unless needed to reproduce a finding.
+Under each: recommended actions first, then conclusions and reasoning about the boundaries and responsibilities examined, supported by specific implementation locations. Use the action-first reporting guidance in Process step 5, including its brief no-action openings. Explain why retained distinctions remain justified and state coverage limits. Keep detailed search commands and file inventories in working notes unless needed to reproduce a finding.
 
 ## Package Findings
 
@@ -154,6 +154,8 @@ Report necessary corrections as findings and independent improvements as follow-
 
 ### 5. Report
 
+Start each codebase-effect section with the actions recommended for that concern, clearly separated from the supporting assessment. Distinguish fixes needed now from opportunities for later work, and link findings or follow-ups instead of burying recommendations in explanatory prose. When nothing needs doing, open with a brief, section-specific sentence such as "No action needed", "No simplifications recommended", "No duplication found" or "No design changes recommended". Follow with the context and evidence that justify the assessment. Apply this structure to the corresponding whole-codebase sections too; do not invent actions to fill a section.
+
 Report decision deviations in Findings and unresolved coverage gaps in Not Checked, as described in Decision Coverage. Omit clean decision results and a separate Decision Compliance section. In every review mode, distinguish previous validation inspected from checks run during review. Name the revision and scope the evidence covers, and report missing or unverified evidence as a gap; inspecting adequate existing evidence does not require a fresh run. Use this structure:
 
 ```markdown
@@ -175,7 +177,7 @@ Most severe first. Each with severity (blocking, should fix, or suggestion), loc
 
 ### Design Clarity
 
-Under each codebase-effect heading, give the conclusion and its reasoning, supported by specific implementation locations. For a clean assessment, briefly explain why the relevant responsibilities or distinctions remain justified. Keep detailed search commands and file inventories in working notes unless they are needed to reproduce a finding. State coverage limits explicitly.
+Under each codebase-effect heading, lead with recommended actions or a brief no-action sentence, then give the conclusion and its reasoning, supported by specific implementation locations. For a clean assessment, briefly explain why the relevant responsibilities or distinctions remain justified. Keep detailed search commands and file inventories in working notes unless they are needed to reproduce a finding. State coverage limits explicitly.
 
 ## Follow-ups
 
@@ -199,6 +201,7 @@ Check before reporting the review:
 - Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
 - Every changed file, or for a full review every file in scope, was read in full and checked against the applicable skill checklists.
 - The codebase-effect assessment addresses concepts, ownership and structural consequences. Conclusions follow from reading implementations and tracing responsibilities; reference counts and search inventories are supporting checks, not substitutes for that analysis.
+- Each codebase-effect section, or corresponding whole-codebase section, opens with recommended actions separated from the assessment, or a brief, section-specific sentence explicitly saying nothing needs doing. Immediate fixes and later opportunities are distinguished.
 - For a diff or package review, all four codebase-effect sections are present. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present. Together they cover obsolete concepts and code, possible simplification, duplication and design clarity, with implementation evidence, reasoning and explicit coverage limits.
 - Every finding has evidence and a recommended action.
 - Every defect was searched for across the codebase, and all instances are reported.

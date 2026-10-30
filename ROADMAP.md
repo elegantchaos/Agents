@@ -9,6 +9,8 @@ draft establishes the shape and known candidates, not an exhaustive task audit.
 
 ## You Are Here
 
+Review report formatting is updated from Bookish PR #119 feedback: codebase-effect sections lead with actions, or a brief sentence explicitly saying nothing needs doing, before supporting context. Added to PR #40; return point is its existing release prerequisite, merge and baseline refresh. See [the journal](extras/journal/2026-10-30-review-action-openings.md). Structural review evaluation remains open.
+
 Calendar access follow-up: the summaries skill requests outside-sandbox calendar execution through each runtime's approval flow, without a standing command rule. The companion AgentTools fix makes queries request their own permission by default, adds `--no-prompt`, removes `authorize`, and improves failure diagnostics. Return point: review both PRs, release the AgentTools change before activating this guidance, then merge and refresh the baseline plugin; installed-plugin rollout is not part of this source change. See [the journal](extras/journal/2026-10-30-calendar-approval.md). This does not resume the broader approval-rule redesign.
 
 **Current focus: make new worktrees ready for sandboxed development through AgentTools.**
