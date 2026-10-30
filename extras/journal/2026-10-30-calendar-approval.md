@@ -21,3 +21,7 @@ Revision validation: summaries skill metadata validation passed; both plugin man
 Sam chose automatic permission requests for events/reminders with `--no-prompt` to suppress them, and removal of the separate authorize command. The summaries skill now describes those semantics, explains possible prompts before the first query, and preserves outside-sandbox runtime approval without a standing rule. Existing grants work without a request; blocked grants and outside-sandbox failures are reported without repeated attempts. AgentTools PR #9 owns implementation and Decision 0007's approved revision. Release that AgentTools change before activating this guidance; no installed executable or plugin is changed here.
 
 Validation of the query-guidance revision: skill metadata validation, matching 0.8.22 manifests and whitespace checks pass. The canonical tools rule file remains identical to main. Workflow review covered automatic prompting, `--no-prompt`, existing grants, blocked grants and sandbox failures. Behavioral agent evaluation and plugin refresh remain unrun.
+
+## Follow-up: AgentTools 3.13.0 Released
+
+AgentTools 3.13.0 contains PR #9, and Sam has it installed through Mint. The summaries skill now names 3.13 as its minimum version in both places, and baseline advances to 0.8.28. The release prerequisite is met; merge and plugin refresh remain.
