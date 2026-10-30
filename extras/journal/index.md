@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-10-30 Calendar Command Approval](2026-10-30-calendar-approval.md): Allow bare and installed Mint `agt calendar` outside the Codex sandbox, with positive and negative policy examples; all other `agt` commands remain under normal approval handling.
+
 - [2026-10-29 PR #38 Review Fixes](2026-10-29-pr38-review-fixes.md): Release-before-merge prerequisite, one-time bootstrap updates, approved removal of the blanket agt allow rule, and qualified runtime-sandbox evidence.
 
 - [2026-10-29 Journal Index Normalised](2026-10-29-journal-index.md): PR #8 post-merge review; index reordered newest first with titled links throughout; unsourced research figures and journal path case left as open suggestions.

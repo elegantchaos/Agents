@@ -9,6 +9,8 @@ draft establishes the shape and known candidates, not an exhaustive task audit.
 
 ## You Are Here
 
+Calendar access follow-up: a scoped Codex rule approves `agt calendar` for the bare command and Sam's installed Mint path. The companion AgentTools fix makes inaccessible permission state and authorization failures actionable. Return point: review both PRs, then merge and synchronize the canonical rules; installed-rule rollout is not part of this source change. See [the journal](extras/journal/2026-10-30-calendar-approval.md). This does not resume the broader approval-rule redesign.
+
 **Current focus: make new worktrees ready for sandboxed development through AgentTools.**
 
 Worktree setup and dependency preparation are delegated to `agt worktree create` and `agt prepare`. The command implementation lives in AgentTools; the baseline Git and Swift validation skills own authorization, runtime integration and the TDD workflow. Merge Agents #38 only after an AgentTools release containing the commands is available: COMMON.md is read directly from this checkout, so plugin installation cannot defer activation of its new rule. Return point: release AgentTools, merge the shared guidance, then refresh the baseline/Swift plugins and generated rules and confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture; its product source is unchanged.
