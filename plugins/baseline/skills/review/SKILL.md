@@ -40,7 +40,7 @@ Choose the mode from the request, and state it at the start of the review:
 
 When a request fits more than one row, or none, ask which is meant.
 
-- **Diff review.** Reviews a pull request, branch, diff, or completed task. Its scope is the change, the code the change calls or newly depends on, and existing code the change places in a new context, such as a reusable control it puts in a toolbar for the first time. Defects in that newly exercised code are in scope even though the diff does not touch it.
+- **Diff review.** Reviews a pull request, branch, diff, or completed task. Its correctness audit covers the change, the code the change calls or newly depends on, and existing code the change places in a new context, such as a reusable control it puts in a toolbar for the first time. Defects in that newly exercised code are in scope even though the diff does not touch it. Its Codebase Effect investigation follows the change's consequences across the whole codebase, as Process step 4 describes; it is not limited to changed files or direct callers.
 - **Full review.** Reviews a whole package, or an entire codebase with all its packages, reading every source file against every reference of every relevant skill. It finds defects that diff reviews miss because the code that contains them never changes. For a package, follow the same process, applied to the whole package: intent becomes the package's purpose as its documentation states it, and the codebase-effect sections cover the whole package, including dead code, duplication, and documentation that no longer matches the code. An entire-codebase review follows its own method and report, in Reviewing an Entire Codebase, because it is more than the sum of its packages' reviews.
 
 After a diff review of a pull request, assess whether a separate full package review would address a meaningful remaining need. Consult the project's journal for previous coverage, considering unreviewed boundaries, substantial subsequent changes, review age and releases. Package size informs scope and feasibility; it is not by itself a reason to repeat a recent review. Recommend a new full review only when you can name its scope and explain what it would resolve. Put it in Follow-ups as a proposed action, not as an ambiguous offer or an implied prerequisite for this PR. Do not list existing full reviews unless one supplies important context for a finding or recommendation.
@@ -132,9 +132,11 @@ Every package or file not read in full, and anything else skipped or unverified,
 
 ### 4. Effect on the Codebase
 
-Assess how the change affects the surrounding design, not just its references. Start from the concepts, responsibilities, invariants and ownership described by the design documents, then trace how the implementation distributes them across types, modules and callers.
+Answer: **Given this change, what improvements are now unlocked, and what problems are now present elsewhere in the codebase?** This is a change-driven investigation across the whole codebase, including during a diff review. Do not fence it at package boundaries, changed files, direct callers or symbol references, and do not substitute a description of the new code's local design for this investigation.
 
-Read enough of the surrounding implementation to explain why its boundaries still make sense after this change. Searches help locate that code and check completeness; search results alone do not establish a structural conclusion.
+Start by identifying the capabilities, representations, constraints, assumptions and ownership the change adds, removes or alters. Search the whole repository for the same concepts, competing mechanisms, special cases and consumers that rely on the old assumptions, even when they share no symbols with the diff. Trace the relevant workflows and boundaries into their implementations: other features, UI surfaces, configuration, persistence, import/export, tests and documentation as applicable. Follow each material consequence until its responsibility and affected consumers are understood; searches locate that code but do not replace reading it.
+
+For each candidate improvement or problem, establish what this change now makes possible or invalid, where the consequence appears, what concrete action would address it, and which constraints justify retaining any distinction. Distinguish a newly unlocked opportunity from an already planned task or unrelated existing defect. Investigate enough to support the recommendation; label unresolved hypotheses and coverage gaps instead of presenting possibilities as findings.
 
 Consider:
 
@@ -145,7 +147,7 @@ Consider:
 
 For each material conclusion, explain the relevant design relationship, the implementation evidence and the consequence. For a proposed simplification, describe what would disappear, what would take over its responsibility and which constraints prevent or permit it.
 
-Keep this assessment proportional to the change. Follow affected concepts across their boundaries; do not turn every diff review into a whole-codebase review. Identify any boundary you could not investigate and qualify the corresponding conclusion.
+Keep depth proportional to the consequences, not to diff size or physical proximity. This does not require the exhaustive file-by-file audit of a full-codebase review, and that mode's size/splitting gate does not apply merely because the impact search spans the repository. Keep the capability/assumption map, paths traced and rejected opportunities in working notes. Report any material boundary left unexplored and qualify the corresponding conclusion; do not claim a whole-codebase impact assessment from an immediate-caller pass.
 
 Report necessary corrections as findings and independent improvements as follow-ups. Do not manufacture refactoring recommendations to populate these sections.
 
@@ -199,7 +201,7 @@ Check before reporting the review:
 - Every applicable decision constraint has checked evidence or an explicit gap; contradictions are findings, and unclear status or supersession is reported when it affects the review.
 - Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
 - Every changed file, or for a full review every file in scope, was read in full and checked against the applicable skill checklists.
-- The codebase-effect assessment addresses concepts, ownership and structural consequences. Conclusions follow from reading implementations and tracing responsibilities; reference counts and search inventories are supporting checks, not substitutes for that analysis.
+- The codebase-effect investigation maps changed capabilities and assumptions, searches across the whole codebase and traces their wider consequences beyond direct callers. Recommendations identify what this change unlocks or breaks, the implementation evidence, the action and relevant constraints; unexplored material boundaries are explicit. Local design descriptions and reference inventories do not substitute for this pass.
 - Each codebase-effect section, or corresponding whole-codebase section, opens with recommended actions separated from the assessment, or a brief, bold, section-specific sentence explicitly saying nothing needs doing. Immediate fixes and later opportunities are distinguished.
 - For a diff or package review, all four codebase-effect sections are present. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present. Together they cover obsolete concepts and code, possible simplification, duplication and design clarity, with implementation evidence, reasoning and explicit coverage limits.
 - Every finding has evidence and a recommended action. The report omits known status, clean-check inventories and unchanged plans unless needed to assess a finding, recommendation or material gap.

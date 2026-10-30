@@ -19,3 +19,11 @@ Sam requested Markdown lists when a section recommends more than one action. The
 ## Follow-up: Actionable Reports Without Status Recaps
 
 Sam clarified that all review sections should focus on what needs changing, retaining known behaviour, previous reviews and settled plans only as necessary context. Existing full reviews are consulted internally rather than listed routinely; a proposed new review names its scope and the remaining need. Small package size alone no longer triggers a repeat-review offer. The Bookish report removes clean-status recaps, unchanged planned work and the existing-review inventory while preserving findings, validation and coverage gaps. Both baseline manifests advance to 0.8.26. Skill metadata, manifest consistency and whitespace checks passed; merge and plugin refresh remain the return point.
+
+## Follow-up: Repository-Wide Consequences In Diff Reviews
+
+Sam clarified that Codebase Effect asks what a change unlocks or breaks across the wider codebase. The skill now distinguishes a diff review's bounded correctness audit from a change-driven impact investigation across the whole repository. It requires mapping changed capabilities and assumptions, finding conceptually related consumers beyond direct callers, tracing implementations, and supporting each recommendation with the changed premise, consequence, action and constraints. This does not require an exhaustive whole-codebase audit. Unexplored material boundaries remain explicit.
+
+The Bookish PR #119 pass followed collection overrides into import replacement, reproducing a lost membership identity; it also traced annotated viewing into generic list overflow and series display, draft-change previews, and source-name ordering/rename invalidation in entry queries. The latest head was selected explicitly after another session landed the original fixes. A separate wider-impact review preserves the historical report. The targeted probe failed as expected, alongside four image-related tests of undetermined cause; no production fixes were made.
+
+Both baseline manifests advance to 0.8.27. Skill metadata, manifest consistency and whitespace checks passed. Source updates remain on PR #40; installed-plugin refresh still follows merge and its existing calendar release prerequisite.
