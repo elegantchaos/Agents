@@ -27,3 +27,9 @@ Sam clarified that Codebase Effect asks what a change unlocks or breaks across t
 The Bookish PR #119 pass followed collection overrides into import replacement, reproducing a lost membership identity; it also traced annotated viewing into generic list overflow and series display, draft-change previews, and source-name ordering/rename invalidation in entry queries. The latest head was selected explicitly after another session landed the original fixes. A separate wider-impact review preserves the historical report. The targeted probe failed as expected, alongside four image-related tests of undetermined cause; no production fixes were made.
 
 Both baseline manifests advance to 0.8.27. Skill metadata, manifest consistency and whitespace checks passed. Source updates remain on PR #40; installed-plugin refresh still follows merge and its existing calendar release prerequisite.
+
+## Follow-up: Separate Wider Consequences From Findings
+
+Sam clarified that Codebase Effect must not repeat correctness findings or make a local fix look like codebase-wide work. The skill now requires one combined report, with each problem and fix stated once; a finding is referenced in Codebase Effect only for a distinct wider consequence or additional action. Sections without one retain their brief no-action sentence. The Bookish wider-impact report removes the repeated F5 import-policy fix and F6 README correction from those sections while preserving them in Findings.
+
+Checked the other session's `2703ad8` edits first: its full-package starting point and clean-section checklist correction are preserved. Both baseline manifests advance to 0.8.30. Review metadata, matching manifest versions and whitespace checks passed; no executable or installed-plugin changes.

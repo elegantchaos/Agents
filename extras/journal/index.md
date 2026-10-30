@@ -2,7 +2,7 @@
 
 - [2026-10-30 Session Tool Updates](2026-10-30-session-tool-updates.md): Every session updates `agt` and `rt` with Mint, so skills drop minimum tool versions; PR #40 review fixes, roadmap upkeep rule and normalised journal titles; baseline 0.8.29.
 
-- [2026-10-30 Review Sections Lead With Actions](2026-10-30-review-action-openings.md): Codebase-effect sections start with recommendations or a brief, section-specific no-action sentence, and diff reviews trace consequences across the whole codebase; baseline 0.8.29.
+- [2026-10-30 Review Sections Lead With Actions](2026-10-30-review-action-openings.md): One report covers correctness and wider impact without repeating findings; codebase-effect sections lead with actions or brief no-action sentences, and diff reviews trace consequences across the whole codebase; baseline 0.8.30.
 
 - [2026-10-30 Calendar Command Approval](2026-10-30-calendar-approval.md): Summaries guidance for runtime-approved calendar execution and automatic permission requests with `--no-prompt`; released in AgentTools 3.13.0; baseline 0.8.29.
 
