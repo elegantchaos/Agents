@@ -1,10 +1,16 @@
 # Journal
 
+- [2026-10-30 Session Tool Updates](2026-10-30-session-tool-updates.md): Every session updates `agt` and `rt` with Mint, so skills drop minimum tool versions; PR #40 review fixes, roadmap upkeep rule and normalised journal titles; baseline 0.8.29.
+
+- [2026-10-30 Review Sections Lead With Actions](2026-10-30-review-action-openings.md): One report covers correctness and wider impact without repeating findings; codebase-effect sections lead with actions or brief no-action sentences, and diff reviews trace consequences across the whole codebase; no separate Follow-ups recap; baseline 0.8.31.
+
+- [2026-10-30 Calendar Command Approval](2026-10-30-calendar-approval.md): Summaries guidance for runtime-approved calendar execution and automatic permission requests with `--no-prompt`; released in AgentTools 3.13.0; baseline 0.8.29.
+
 - [2026-10-29 PR #38 Review Fixes](2026-10-29-pr38-review-fixes.md): Release-before-merge prerequisite, one-time bootstrap updates, approved removal of the blanket agt allow rule, and qualified runtime-sandbox evidence.
 
 - [2026-10-29 Journal Index Normalised](2026-10-29-journal-index.md): PR #8 post-merge review; index reordered newest first with titled links throughout; unsourced research figures and journal path case left as open suggestions.
 
-- [2026-10-29 Worktree Preparation](2026-10-29-worktree-preparation.md): AgentTools owns worktree conventions and dependency preparation; shared Git and Swift guidance owns authorization, TDD and runtime integration. Release and Claude acceptance remain the adoption boundary.
+- [2026-10-29 Worktree Setup Before TDD](2026-10-29-worktree-preparation.md): AgentTools owns worktree conventions and dependency preparation; shared Git and Swift guidance owns authorization, TDD and runtime integration. Release and Claude acceptance remain the adoption boundary.
 
 - [2026-10-28 Reviews Assess Design Consequences](2026-10-28-review-design-analysis.md): Trace concepts, responsibilities and ownership across affected boundaries; report structural reasoning with implementation evidence, keeping detailed search inventories in working notes. PRs default to ready for review; reviews inspect existing validation evidence without routine reruns, leaving full app validation to the merge gate; baseline 0.8.20.
 
@@ -60,7 +66,7 @@
 
 - [2026-10-16 PR #23 Review](2026-10-16-pr23-review.md): Existing draft target handling needs clarification; draft-state preflight and shared-Python pointer suggested; packaging and six skill validators pass.
 
-- [2026-10-16 Baseline Git](2026-10-16-baseline-git.md): Standalone Git skill moved to baseline:git in a worktree; Codex/Claude comparison, permission and text-handling findings, recommended revisions approved and implemented.
+- [2026-10-16 Baseline Git Migration And Guidance Review](2026-10-16-baseline-git.md): Standalone Git skill moved to baseline:git in a worktree; Codex/Claude comparison, permission and text-handling findings, recommended revisions approved and implemented.
 
 - [2026-10-16 PR #22 Review](2026-10-16-pr22-review.md): Narrow the conditional-container rule to preserve omission semantics; clarify full-review record identity and debugging audit scope. Metadata, reference paths and whitespace checks pass; runtime behavior remains unverified.
 

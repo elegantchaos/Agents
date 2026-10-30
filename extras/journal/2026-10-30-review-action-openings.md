@@ -1,0 +1,39 @@
+# Review Sections Lead With Actions
+
+Sam's feedback on Bookish PR #119's review was that codebase-effect sections mixed recommendations with descriptions of current behaviour. Each section now starts with its recommended actions, distinguishing immediate fixes from later opportunities, before giving the supporting assessment and evidence.
+
+When nothing needs doing, the opening is a brief sentence specific to the concern: for example, "No action needed", "No simplifications recommended", "No duplication found" or "No design changes recommended". The same structure applies to the corresponding whole-codebase sections. The report templates and checklist reflect it; recommendations are not manufactured to fill sections.
+
+Added to existing Agents PR #40 as a separate commit at Sam's request. Both baseline manifests advance to 0.8.23. The calendar guidance's AgentTools release prerequisite remains unchanged. Return point: review and merge #40 after that prerequisite is met, then refresh the baseline plugin; installed copies are unchanged by this source update.
+
+Validation: review skill metadata validator, matching manifest versions, whitespace checks and manual comparison with the revised Bookish report. No executable changes, new behavioral agent evaluation or installed-plugin refresh.
+
+## Follow-up: Bold No-Action Openings
+
+Sam requested bold no-action sentences so they stand out alongside the recommended-action labels. The skill now requires the whole opening sentence to be bold, and the Bookish review demonstrates it. Both baseline manifests advance to 0.8.24; the merge and refresh return point is unchanged. Skill metadata, manifest consistency and whitespace checks passed.
+
+## Follow-up: Lists For Multiple Recommendations
+
+Sam requested Markdown lists when a section recommends more than one action. The skill requires one recommendation per list item under the bold label; a single recommendation can stay inline. The Bookish review follows that format. Both baseline manifests advance to 0.8.25. Skill metadata, manifest consistency and whitespace checks passed; the merge and refresh return point is unchanged.
+
+## Follow-up: Actionable Reports Without Status Recaps
+
+Sam clarified that all review sections should focus on what needs changing, retaining known behaviour, previous reviews and settled plans only as necessary context. Existing full reviews are consulted internally rather than listed routinely; a proposed new review names its scope and the remaining need. Small package size alone no longer triggers a repeat-review offer. The Bookish report removes clean-status recaps, unchanged planned work and the existing-review inventory while preserving findings, validation and coverage gaps. Both baseline manifests advance to 0.8.26. Skill metadata, manifest consistency and whitespace checks passed; merge and plugin refresh remain the return point.
+
+## Follow-up: Repository-Wide Consequences In Diff Reviews
+
+Sam clarified that Codebase Effect asks what a change unlocks or breaks across the wider codebase. The skill now distinguishes a diff review's bounded correctness audit from a change-driven impact investigation across the whole repository. It requires mapping changed capabilities and assumptions, finding conceptually related consumers beyond direct callers, tracing implementations, and supporting each recommendation with the changed premise, consequence, action and constraints. This does not require an exhaustive whole-codebase audit. Unexplored material boundaries remain explicit.
+
+The Bookish PR #119 pass followed collection overrides into import replacement, reproducing a lost membership identity; it also traced annotated viewing into generic list overflow and series display, draft-change previews, and source-name ordering/rename invalidation in entry queries. The latest head was selected explicitly after another session landed the original fixes. A separate wider-impact review preserves the historical report. The targeted probe failed as expected, alongside four image-related tests of undetermined cause; no production fixes were made.
+
+Both baseline manifests advance to 0.8.27. Skill metadata, manifest consistency and whitespace checks passed. Source updates remain on PR #40; installed-plugin refresh still follows merge and its existing calendar release prerequisite.
+
+## Follow-up: Separate Wider Consequences From Findings
+
+Sam clarified that Codebase Effect must not repeat correctness findings or make a local fix look like codebase-wide work. The skill now requires one combined report, with each problem and fix stated once; a finding is referenced in Codebase Effect only for a distinct wider consequence or additional action. Sections without one retain their brief no-action sentence. The Bookish wider-impact report removes the repeated F5 import-policy fix and F6 README correction from those sections while preserving them in Findings.
+
+Checked the other session's `2703ad8` edits first: its full-package starting point and clean-section checklist correction are preserved. Both baseline manifests advance to 0.8.30. Review metadata, matching manifest versions and whitespace checks passed; no executable or installed-plugin changes.
+
+## Follow-up: Remove The Follow-ups Section
+
+Removed the separate Follow-ups section from both review templates at Sam's request. Correctness actions stay with Findings, wider work stays with its codebase assessment, and actions needed to close validation or coverage gaps stay in Not Checked. Proposed full reviews also belong with the relevant wider assessment. The Bookish report drops its repeated E1–E3 recap, retaining their disposition with each recommendation. Both baseline manifests advance to 0.8.31. Skill metadata, matching manifest versions and whitespace checks passed; no executable changes require build validation. Sam authorised committing, merging Agents #40 and refreshing installed skills. Fresh Claude worktree acceptance remains outstanding.

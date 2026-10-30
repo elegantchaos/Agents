@@ -87,7 +87,8 @@ Before reporting a design-document task complete, check each document against th
 ## Journal
 
 - Add a dated Markdown entry when a session produces context worth preserving: implementation work, research, experiments, approaches tried, findings, open questions, and ideas still to try.
-- Keep `index.md` updated as the guide to the journal, because filenames only give rough chronology.
+- Keep `index.md` updated as the guide to the journal, because filenames only give rough chronology. It describes where each entry ended up: when a follow-up changes an entry's outcome, update its index line.
+- Give each entry a Title Case heading without a date, since the filename carries it. Its index line uses the date followed by that same title.
 - Treat entries as history. Do not rewrite past entries to match later changes; record the change in a new entry or a clearly separated follow-up section.
 - Link entries to the decisions they establish or apply.
 - When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.

@@ -1,4 +1,4 @@
-# 2026-10-19 Review: Special Cases The General Form Can Absorb
+# Review: Special Cases The General Form Can Absorb
 
 ## Context
 

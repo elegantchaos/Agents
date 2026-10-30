@@ -1,6 +1,6 @@
 # Shared Agents Roadmap
 
-Trial roadmap for Sam's curation. Last reconciled: **27 October 2026**.
+Trial roadmap for Sam's curation. Last reconciled: **30 October 2026**.
 
 This overview tracks shared agent capabilities and cross-project working habits.
 Project features belong in each project's roadmap; detailed proposals and
@@ -9,9 +9,9 @@ draft establishes the shape and known candidates, not an exhaustive task audit.
 
 ## You Are Here
 
-**Current focus: make new worktrees ready for sandboxed development through AgentTools.**
+**Current focus: confirm worktree preparation in a fresh Claude session.**
 
-Worktree setup and dependency preparation are delegated to `agt worktree create` and `agt prepare`. The command implementation lives in AgentTools; the baseline Git and Swift validation skills own authorization, runtime integration and the TDD workflow. Merge Agents #38 only after an AgentTools release containing the commands is available: COMMON.md is read directly from this checkout, so plugin installation cannot defer activation of its new rule. Return point: release AgentTools, merge the shared guidance, then refresh the baseline/Swift plugins and generated rules and confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture; its product source is unchanged.
+Agents #40 merges the calendar guidance, review reporting changes and session tool update rule. Refresh the installed plugins after merge. Worktree preparation is next: Agents #38 is merged and the installed AgentTools has `agt worktree create` and `agt prepare`. Return point: refresh the baseline and Swift plugins and generated rules, then confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture; its product source is unchanged.
 
 The baseline and Swift plugins, AgentTools refresh/validation workflows, and
 project journals already supply the working foundation. Recent work tightened
@@ -45,8 +45,8 @@ Markdown records. Stack access can follow when that integration is scheduled.
 | --- | --- | --- |
 | **Project continuity** | Trial. Bookish keeps a compact overview plus a current work plan for slices, maintenance opportunities and source dispositions. Evaluate completed work before promoting this into shared skills; no new tracking system or automatic synchronisation is selected. | [Records skill](plugins/baseline/skills/records/SKILL.md), [Bookish roadmap PR](https://github.com/elegantchaos/Bookish/pull/112) |
 | **Stack task access** | Parked. First inspect Stack's existing access when resumed, then choose the smallest useful App Intents, CLI and/or MCP extension for reading and writing tasks. Keep captured task detail in Stack and link it to project workstreams. Implementation belongs in Stack; reusable agent guidance belongs here. | This roadmap; detailed proposal not yet written |
-| **Guidance and review quality** | The review skill now requires structural reasoning about concepts, responsibilities and ownership, with search inventories kept in working notes, and inspects existing validation evidence without routine reruns; PRs default to ready for review ([evidence and changes](extras/journal/2026-10-28-review-design-analysis.md)). Next: evaluate subsequent reviews for justified conclusions about still-used obsolete machinery, simplification and duplicated knowledge; metadata checks alone do not close that behavioural evaluation. | [Journal index](extras/journal/index.md), [baseline plugin](plugins/baseline/README.md), [Swift plugin](plugins/swift/README.md) |
-| **Validation and resource maintenance** | Worktree setup and dependency preparation use AgentTools, with explicit permission for any outside-sandbox setup. Targeted tests remain on the canonical validation path. Release and fresh Claude acceptance remain the adoption boundary. | [Preparation workflow](extras/journal/2026-10-29-worktree-preparation.md), [Targeted test runs](extras/journal/2026-10-27-targeted-test-runs.md), [maintenance instructions](README.md#maintenance) |
+| **Guidance and review quality** | The review skill now requires structural reasoning about concepts, responsibilities and ownership, with search inventories kept in working notes, and inspects existing validation evidence without routine reruns; PRs default to ready for review ([evidence and changes](extras/journal/2026-10-28-review-design-analysis.md)). Next: evaluate subsequent reviews for justified conclusions about still-used obsolete machinery, simplification and duplicated knowledge; metadata checks alone do not close that behavioural evaluation. Agents #40 adds a change-driven impact investigation and one action-first report covering correctness and wider consequences without repeated findings or a separate Follow-ups recap, from Bookish PR #119 feedback ([journal](extras/journal/2026-10-30-review-action-openings.md)). | [Journal index](extras/journal/index.md), [baseline plugin](plugins/baseline/README.md), [Swift plugin](plugins/swift/README.md) |
+| **Validation and resource maintenance** | Worktree setup and dependency preparation use AgentTools, with explicit permission for any outside-sandbox setup. Targeted tests remain on the canonical validation path. Plugin refresh and fresh Claude acceptance remain the adoption boundary. Agents #40 updates `agt` and `rt` at session start, so skills no longer name minimum versions, and moves calendar queries to runtime approval ([tool updates](extras/journal/2026-10-30-session-tool-updates.md), [calendar](extras/journal/2026-10-30-calendar-approval.md)). This does not resume the approval-rule redesign. | [Preparation workflow](extras/journal/2026-10-29-worktree-preparation.md), [Targeted test runs](extras/journal/2026-10-27-targeted-test-runs.md), [maintenance instructions](README.md#maintenance) |
 
 ## Parked Candidates To Recheck
 
@@ -67,7 +67,8 @@ before being treated as live implementation tasks.
 
 | Slice | Finish condition | State |
 | --- | --- | --- |
-| Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Implemented with AgentTools integration evidence in the linked journal. Release, plugin installation and fresh Claude runtime acceptance remain outstanding. |
+| Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Merged in Agents #38 and released in AgentTools. Plugin refresh and fresh Claude runtime acceptance remain outstanding. |
+| Land Agents #40 | Calendar, review and session tool guidance merged, and the baseline plugin refreshed. | Merged; refresh installed plugins, then continue fresh Claude acceptance. |
 | Establish the Bookish trial | Its roadmap, current work plan, source register and project read/update instruction are reviewable; unresolved historical reconciliation is explicit. | In progress in Bookish PR #112. |
 | Evaluate upkeep on real work | After the first few completed slices, check whether a fresh chat can choose the next task and account for carried findings using current records. Record missed work, excessive granularity or repeated history scans. | Planned after trial use. |
 | Refine shared guidance | Use those results to propose a small addition to the existing records workflow, if useful; implement and validate through the normal skill process once agreed. | Parked pending evidence; no shared skill changes now. |
@@ -82,6 +83,7 @@ and explicit dependency. Do not turn every opportunity into a release blocker.
 
 - Read the overview when orienting shared work; update the affected row when
   starting, finishing, interrupting or resuming an initiative.
+- Keep one primary focus in You Are Here. Other work goes in the tables, never as extra paragraphs above the focus. A change corrects any focus, return point or slice it makes false, and advances the reconciled date.
 - Record why work paused, where its implementation lives, and the concrete step
   or condition for returning. Keep one primary focus and distinguish parked work
   from a dependency that genuinely blocks progress.

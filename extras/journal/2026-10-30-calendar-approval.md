@@ -1,0 +1,27 @@
+# Calendar Command Approval
+
+Sam approved restoring outside-sandbox approval only for `agt calendar`, covering events, reminders and explicit authorization, rather than reinstating the blanket `agt` rule. Both the bare command and `/Users/sam/.mint/bin/agt` are included because summaries use the absolute Mint path when the command is absent from PATH. This explicitly scoped installation path is an exception to the shared rules' portability preference; other executable paths do not match.
+
+The Codex tools rule includes positive examples for all three calendar subcommands and negative examples for validation, preparation, worktree creation, refresh, similarly named subcommands and unrelated executables. These commands need access to macOS services that the agent sandbox can obscure even after the user's grant. AgentTools' companion calendar-access-diagnostics branch improves the resulting error messages; the rule is independently usable with the installed executable.
+
+Only canonical source rules are changed. Installed rules are not synchronized by this task. Merge and normal rule synchronization/restart remain the activation boundary. No blanket AgentTools approval, Claude permissions, plugin version or sandbox configuration is changed.
+
+Validation: the installed Codex execpolicy checker loaded the complete tools rule file and validated its six positive and eight negative examples. Explicit command checks allowed bare calendar events and absolute-Mint calendar reminders, and returned no matching rule for bare validation, absolute-Mint preparation or `/tmp/agt calendar events`. Inline path examples use the checker's executable-resolution behavior, so explicit checks also verify the command forms used by summaries. Whitespace and local journal links pass. The checker reports a nonfatal warning about optional PATH-alias creation. No builds or runtime authorization prompts are needed for this policy-only change. The changed rule, journal, index and roadmap were checked against the relevant guidance; the deliberate machine-local executable path is the portability exception described above.
+
+## Follow-up: Guidance Instead Of A Standing Rule
+
+Sam chose runtime approval guidance instead of the proposed calendar allow rule, since Codex and Claude both use automatic approval. PR #40 now restores tools.rules exactly to main and updates the summaries skill: request outside-sandbox calendar execution through the runtime's approval flow, retry sandbox-obscured access outside before reauthorization, and run authorization outside only if permission remains undetermined there. Denied, write-only and restricted states get their appropriate recovery paths. Unavailable or rejected execution is reported without repeated permission requests. No extra human confirmation is added after runtime approval.
+
+Both baseline manifests advance to 0.8.22, above their existing 0.8.21/0.8.20 values. The roadmap return point is plugin refresh after merge rather than rule synchronization. The earlier rule and checker results above record the superseded proposal, not the final change. No installed rules, plugins or AgentTools code are changed by this revision.
+
+Revision validation: summaries skill metadata validation passed; both plugin manifests parse and declare 0.8.22; the tools rule file is byte-for-byte identical to main; whitespace and the new journal links pass. Manual checklist review covered the initial request, sandbox-failure retry, genuine missing grant, denied/restricted states and unavailable escalation. No builds or behavioral agent evaluation were run for this guidance-only revision, and no plugins were refreshed.
+
+## Follow-up: Queries Request Their Own Permission
+
+Sam chose automatic permission requests for events/reminders with `--no-prompt` to suppress them, and removal of the separate authorize command. The summaries skill now describes those semantics, explains possible prompts before the first query, and preserves outside-sandbox runtime approval without a standing rule. Existing grants work without a request; blocked grants and outside-sandbox failures are reported without repeated attempts. AgentTools PR #9 owns implementation and Decision 0007's approved revision. Release that AgentTools change before activating this guidance; no installed executable or plugin is changed here.
+
+Validation of the query-guidance revision: skill metadata validation, matching 0.8.22 manifests and whitespace checks pass. The canonical tools rule file remains identical to main. Workflow review covered automatic prompting, `--no-prompt`, existing grants, blocked grants and sandbox failures. Behavioral agent evaluation and plugin refresh remain unrun.
+
+## Follow-up: AgentTools 3.13.0 Released
+
+AgentTools 3.13.0 contains PR #9, and Sam has it installed through Mint. The summaries skill now names 3.13 as its minimum version in both places, and baseline advances to 0.8.28. The release prerequisite is met; merge and plugin refresh remain.
