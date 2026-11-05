@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-05 Decision Log](2026-11-05-decision-log.md): Enabled the local decision log, recorded five retrospective decisions and carried baseline, voice and tooling follow-ups.
+
 - [2026-11-05 Agents Roadmap Scope](2026-11-05-agents-roadmap-scope.md): Focused the roadmap on ongoing evolution of shared guidance and work owned by Agents, without overall release targets.
 
 - [2026-11-05 Voice Openings](2026-11-05-voice-openings.md): Avoid formulaic judgment-and-colon openings and state the substance directly.
