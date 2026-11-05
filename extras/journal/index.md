@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-05 Agents Roadmap Scope](2026-11-05-agents-roadmap-scope.md): Focused the roadmap on ongoing evolution of shared guidance and work owned by Agents, without overall release targets.
+
 - [2026-11-05 Voice Openings](2026-11-05-voice-openings.md): Avoid formulaic judgment-and-colon openings and state the substance directly.
 
 - [2026-10-30 Session Tool Updates](2026-10-30-session-tool-updates.md): Every session updates `agt` and `rt` with Mint, so skills drop minimum tool versions; PR #40 review fixes, roadmap upkeep rule and normalised journal titles; baseline 0.8.29.
