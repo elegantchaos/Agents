@@ -1,6 +1,7 @@
 # 0005 Shared Baseline Through Project Instructions
 
-Status: Accepted  
+Status: Accepted
+
 Date: 2026-11-05
 
 ## Decision

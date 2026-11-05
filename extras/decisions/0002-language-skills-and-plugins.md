@@ -1,6 +1,7 @@
 # 0002 Skills and Plugins
 
-Status: Accepted  
+Status: Accepted
+
 Date: 2026-11-05
 
 ## Decision

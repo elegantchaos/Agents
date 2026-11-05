@@ -1,6 +1,7 @@
 # 0001 Shared Guidance Ownership
 
-Status: Accepted  
+Status: Accepted
+
 Date: 2026-11-05
 
 ## Decision

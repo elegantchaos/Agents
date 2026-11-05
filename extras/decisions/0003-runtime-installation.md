@@ -1,6 +1,7 @@
 # 0003 Runtime Installation
 
-Status: Accepted  
+Status: Accepted
+
 Date: 2026-11-05
 
 ## Decision

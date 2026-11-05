@@ -1,6 +1,7 @@
 # 0004 AgentTools Owns Supporting Commands
 
-Status: Accepted  
+Status: Accepted
+
 Date: 2026-11-05
 
 ## Decision
