@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-05 Voice Openings](2026-11-05-voice-openings.md): Avoid formulaic judgment-and-colon openings and state the substance directly.
+
 - [2026-10-30 Session Tool Updates](2026-10-30-session-tool-updates.md): Every session updates `agt` and `rt` with Mint, so skills drop minimum tool versions; PR #40 review fixes, roadmap upkeep rule and normalised journal titles; baseline 0.8.29.
 
 - [2026-10-30 Review Sections Lead With Actions](2026-10-30-review-action-openings.md): One report covers correctness and wider impact without repeating findings; codebase-effect sections lead with actions or brief no-action sentences, and diff reviews trace consequences across the whole codebase; no separate Follow-ups recap; baseline 0.8.31.
