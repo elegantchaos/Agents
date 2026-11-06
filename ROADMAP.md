@@ -1,6 +1,6 @@
 # Shared Agents Roadmap
 
-Roadmap for Sam's curation. Last reconciled: **5 November 2026**.
+Roadmap for Sam's curation. Last reconciled: **6 November 2026**.
 
 This overview tracks the ongoing evolution and maintenance of shared agent guidance and capabilities owned by the Agents repository. It records current priorities, possible improvements and return points as they change; it does not prescribe a release schedule or a finished end state. Other projects appear only where their work provides evidence or a dependency for shared guidance. Their features and delivery plans belong in their own roadmaps.
 
@@ -8,7 +8,7 @@ This overview tracks the ongoing evolution and maintenance of shared agent guida
 
 **Current focus: confirm worktree preparation in a fresh Claude session.**
 
-Agents #40 merged the calendar guidance, review reporting changes and session tool update rule. Worktree preparation is next: Agents #38 is merged and the installed AgentTools has `agt worktree create` and `agt prepare`. Return point: refresh the baseline and Swift plugins and generated rules, then confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture.
+Agents #40 merged the calendar guidance, review reporting changes and session tool update rule. Worktree preparation is next: Agents #38 is merged and the installed AgentTools has `agt worktree create` and `agt prepare`. The baseline and Swift plugins and generated rules were refreshed on 6 November. Return point: confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture.
 
 The baseline and Swift plugins, AgentTools refresh/validation workflows, and
 project journals already supply the working foundation. Recent work tightened
@@ -33,7 +33,7 @@ Evaluate project experience with smaller work slices, source reconciliation and 
 | **Skill distribution** | Proposed direction: package each standalone language skill as a language plugin. Existing submodules and runtime symlinks remain in use until a migration is planned and implemented. | [Shared skills](README.md#shared-skills) |
 | **Stack task access guidance** | Parked. When Stack agent access is scheduled, assess whether reusable guidance is needed here; access implementation belongs in Stack. | This roadmap |
 | **Guidance and review quality** | Evaluate subsequent reviews for justified conclusions about still-used obsolete machinery, simplification and duplicated knowledge; metadata checks alone do not close that behavioural evaluation. The personal-voice decision candidate awaits confirmation. | [Journal index](extras/journal/index.md), [baseline plugin](plugins/baseline/README.md), [Swift plugin](plugins/swift/README.md) |
-| **Validation and resource maintenance** | Refresh the baseline and Swift plugins and generated rules, then confirm fresh Claude worktree preparation and targeted validation. The approval-rule redesign remains parked. | [Preparation workflow](extras/journal/2026-10-29-worktree-preparation.md), [maintenance instructions](README.md#maintenance) |
+| **Validation and resource maintenance** | Plugins and generated rules refreshed on 6 November. Next, confirm fresh Claude worktree preparation and targeted validation. The approval-rule redesign remains parked. | [Preparation workflow](extras/journal/2026-10-29-worktree-preparation.md), [maintenance instructions](README.md#maintenance) |
 
 ## Parked Candidates To Recheck
 
@@ -54,8 +54,8 @@ before being treated as live implementation tasks.
 
 | Slice | Finish condition | State |
 | --- | --- | --- |
-| Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Merged in Agents #38 and released in AgentTools. Plugin refresh and fresh Claude runtime acceptance remain outstanding. |
-| Land Agents #40 | Calendar, review and session tool guidance merged, and the baseline plugin refreshed. | Merged; refresh installed plugins, then continue fresh Claude acceptance. |
+| Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Merged in Agents #38, released in AgentTools and plugins refreshed. Fresh Claude runtime acceptance remains outstanding. |
+| Land Agents #40 | Calendar, review and session tool guidance merged, and the baseline plugin refreshed. | Done; merged and installed plugins refreshed on 6 November. |
 | Migrate standalone language skills to plugins | Plan and migrate the JavaScript, Python and Ruby skills to language plugins, including supported-runtime installation and guidance updates. | Candidate; inspect ownership and migration details before implementation. Existing links remain in use. |
 | Move SwiftUI trace analysis to AgentTools | Assess and move the SwiftUI trace-analysis script into an AgentTools command, then update the Swift skill and its installation guidance. | Candidate; inspect the script and command boundary before implementation. `ensure-agt.sh` remains a bootstrap exception. |
 | Evaluate upkeep on real work | Use completed project work as evidence to check whether a fresh chat can choose the next task and account for carried findings using current records. Record missed work, excessive granularity or repeated history scans. | Planned; Bookish provides one source of evidence. |
