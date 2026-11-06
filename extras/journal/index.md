@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-06 Refresh Drift](2026-11-06-refresh-drift.md): Merged #43, refreshed runtimes, aligned the Swift plugin Codex version and the records bullet, and added Claude Code rules as a roadmap candidate.
+
 - [2026-11-06 Swift CI Rule](2026-11-06-swift-ci-rule.md): Replaced the Mint allow rule for the renamed SwiftWorkflowBuilder tool.
 
 - [2026-11-05 Draft PR Readiness](2026-11-05-draft-pr-readiness.md): PRs start as drafts; offer readiness after the task and validation are complete so automatic review sees the intended work.

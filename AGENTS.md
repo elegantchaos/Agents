@@ -20,7 +20,7 @@
 
 - Follow the `baseline:standards` skill for all coding.
 - Use the `baseline:review` skill for reviewing pull requests and completed work.
-- Use the `baseline:records` skill for the development journal.
+- Use the `baseline:records` skill for the development journal and decision log.
 - Use the `baseline:git` skill for git and GitHub operations.
 - Use the `baseline:refresh` skill for shared resource maintenance, public skill sync/link/status checks, optional guidance research, and project `AGENTS.md` refreshes.
 
