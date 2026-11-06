@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-06 Swift CI Rule](2026-11-06-swift-ci-rule.md): Replaced the Mint allow rule for the renamed SwiftWorkflowBuilder tool.
+
 - [2026-11-05 Draft PR Readiness](2026-11-05-draft-pr-readiness.md): PRs start as drafts; offer readiness after the task and validation are complete so automatic review sees the intended work.
 
 - [2026-11-05 Decision Log](2026-11-05-decision-log.md): Enabled the local decision log, recorded five retrospective decisions and carried baseline, voice and tooling follow-ups.
