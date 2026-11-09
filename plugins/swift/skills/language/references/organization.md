@@ -5,7 +5,7 @@ Use this file when shaping Swift source files and type boundaries.
 - Always use a separate source file for each type.
 - Name files after the type (`MyType.swift`).
 - Use focused extension files for distinct responsibilities (`MyType+Functionality.swift`).
-- For protocol-conformance files, use `MyType+ProtocolName.swift`.
+- Prefer declaring compiler-synthesized conformances on the primary type. Keep the conformance in the same file when synthesis requires it, as with synthesized `Equatable` and `Hashable`. Use `MyType+ProtocolName.swift` for a custom conformance that can be implemented in a separate file without widening access.
 - Use PascalCase file names.
 
 In each Swift file, prefer this order:
@@ -42,6 +42,14 @@ For protocols, prefer:
 
 1. properties
 2. methods
+
+### Reordering existing declarations
+
+Use our preferred order and update affected callers in the same change when we control them. For example, reordering stored properties can change the parameter order of a synthesized memberwise initializer.
+
+Check whether a move changes runtime initialization, persisted values, UI order or an interface used by clients we cannot update together. Preserve the contracts and behavior outside the scope of the change. Move documentation, attributes and conditional guards with the declarations they belong to.
+
+If preserving an external contract is the sole reason you skip part of a requested cleanup or reorder, report the affected declaration, the change you skipped, and what making it would mean for that contract. Give the user enough detail to decide whether to authorize the change.
 
 ## Documentation comments
 

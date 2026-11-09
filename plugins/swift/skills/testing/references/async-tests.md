@@ -1,98 +1,63 @@
 # Async tests
 
-Swift Testing is built to be async and run tests in parallel; special care must be taken to ensure those tests run well, particularly when Swift concurrency is involved. For more help with Swift concurrency, suggest the `swift-concurrency-pro` skill.
+Use async test functions and await production operations directly when possible. Use `swift:concurrency` for the code under test's isolation, task lifetime and cancellation rules.
 
 ## Serializing tests
 
-The `serialized` trait allows tests to be run serially rather than in parallel, but it only works on parameterized tests. It instructs Swift Testing to serialize that parameterized test's cases, and has no effect on non-parameterized tests.
+- Apply `.serialized` to a parameterized test to run its argument cases serially. It has no effect on an individual non-parameterized test.
+- Apply `.serialized` to a suite to run its tests and sub-suites serially, including ordinary tests and the cases of parameterized tests. Other suites can still run concurrently.
+- Give tests independent state by default. If unrelated suites must use the same process-wide resource, coordinate all users of that resource. A suite's `.serialized` trait only controls execution within that suite.
 
-This also applies to using `.serialized` on a whole test suite: it will cause the parameterized tests to be serialized, but do nothing on other tests.
+See [Swift Testing's parallelization rules](https://github.com/swiftlang/swift-testing/blob/swift-6.2-RELEASE/Sources/Testing/Traits/ParallelizationTrait.swift).
 
-**Important:** Most agents very strongly believe that `.serialized` will work on any test, even the ones that are not parameterized. They are wrong. It only works on parameterized tests.
+## Synchronizing with the work under test
 
-## Confirming async work
+- **Readiness.** Install a synchronous observer before triggering the event. For an observer started in another task, wait for a signal that it has registered and can receive the event. Starting a task, yielding or sleeping gives the observer a chance to run. Use an observable signal to establish that it has reached the required point.
+- **Completion.** Await the operation, its task handle, or the specific event that proves the work finished. For debounce, retry or other time-driven behavior, use a controllable clock where the project supports one. After advancing it, wait for the resulting operation or event before asserting.
+- **Teardown.** Cancel or stop tasks and subscriptions owned by the test and await their termination when cleanup is asynchronous. Arrange cleanup to run when a requirement throws or a wait times out. Reuse the project's bounded waits. A timeout makes missing progress a test failure.
+- **Cancellation.** Wait for production code to signal it reached the point where cancellation matters, such as a blocked read. Cancel the task, await its result, and verify the promised outcome, such as throwing `CancellationError` or releasing a resource. The assertion must exercise production cancellation behavior.
 
-When using `confirmation(expectedCount:)` to check that an async function has been executed a certain number of times, any tested code must have finished executing fully by the time the `confirmation()` closure finishes.
+## Confirming async events
 
-**This means attempting to use a completion closure will make the test fail, because `confirmation()` doesn't know to wait.**
+`confirmation(expectedCount:)` checks the number of calls made before its closure returns. Call the confirmation from the actual event handler. Keep the closure open by awaiting the operation or an explicit completion signal. For a callback that runs synchronously, recording the result directly may be simpler.
 
-For example, this code does some work inside a task, but there's no way to monitor it being completed:
+In this example, `submit` returns after the save and its callback, or immediately after rejecting an empty title. The awaited call defines the observation window for both cases.
 
 ```swift
-struct Worker {
-    func run(_ work: @escaping () -> Void) -> Task<Void, Never> {
-        Task {
-            let start = CFAbsoluteTimeGetCurrent()
-            work()
-            print("Elapsed:", CFAbsoluteTimeGetCurrent() - start)
+import Testing
+
+/// Saves accepted titles and reports when a save finishes.
+struct Importer {
+    /// Writes an accepted title to storage.
+    let save: (String) async -> Void
+
+    /// Saves a nonempty title and reports completion before returning.
+    func submit(_ title: String, didSave: () -> Void) async {
+        guard !title.isEmpty else {
+            return
+        }
+
+        await save(title)
+        didSave()
+    }
+}
+
+/// Reports one event for a saved title and zero for a rejected title.
+@Test(arguments: [("A Book", 1), ("", 0)])
+func reportsSuccessfulSaves(title: String, expectedCount: Int) async {
+    let importer = Importer { _ in }
+
+    await confirmation(expectedCount: expectedCount) { didSave in
+        await importer.submit(title) {
+            didSave()
         }
     }
 }
 ```
 
-That kind of code will not work well with `confirmation()`, because it will not understand to wait for the work to complete.
+For zero-event assertions, establish that observation is active before the trigger and keep it active through the whole interval being checked. Prefer a producer-owned completion signal that covers all relevant work and event delivery. If the contract is silence over a fixed interval, control time where possible and state the interval the test covers. Cancelling and joining the collector proves that collection ended. To check that the producer stopped emitting, keep observing through the stop and the relevant subsequent work, or await producer-owned completion that guarantees emission has ended.
 
-Instead, it's better to either remove the `Task` and make the method `async` like this:
-
-```swift
-struct Worker {
-    func run(_ work: @escaping () -> Void) async {
-        let start = CFAbsoluteTimeGetCurrent()
-        work()
-        print("Elapsed:", CFAbsoluteTimeGetCurrent() - start)
-    }
-}
-
-@Test
-func workerRunsThreeTimes() async {
-    let worker = Worker()
-
-    await confirmation(expectedCount: 3) { confirm in
-        for _ in 0..<3 {
-            await worker.run {
-                // your work here
-            }
-            confirm()
-        }
-    }
-}
-```
-
-Alternatively, if the code cannot be changed to `async`, the internal `Task` should be returned so it can be tracked by the test, like this:
-
-```swift
-struct Worker {
-    func run(_ work: @escaping () -> Void) -> Task<Void, Never> {
-        Task {
-            let start = CFAbsoluteTimeGetCurrent()
-            work()
-            print("Elapsed:", CFAbsoluteTimeGetCurrent() - start)
-        }
-    }
-}
-```
-
-And now tests can wait for the task to complete:
-
-```swift
-@Test
-func workerRunsThreeTimes() async {
-    let worker = Worker()
-
-    await confirmation(expectedCount: 3) { confirm in
-        for _ in 0..<3 {
-            let task = worker.run {
-                // simulated work
-            }
-
-            await task.value
-            confirm()
-        }
-    }
-}
-```
-
-**Note:** `confirmation(expectedCount: 0)` is valid, and means “ensure the event we’re watching never happens.”
+See [Testing asynchronous code](https://developer.apple.com/documentation/testing/testing-asynchronous-code).
 
 ## How to set a time limit for concurrent tests
 
@@ -154,50 +119,7 @@ Finally, test targets can have default actor isolation enabled, which might forc
 
 ## Testing pre-concurrency code
 
-If the project contains older concurrency code that relies on callback functions (as opposed to modern Swift concurrency's `async`/`await` approach), do not attempt to modernize their production code without permission.
-
-Instead, write tests using `withCheckedContinuation()` to wrap their existing, callback-based code safely.
-
-**Important:** Test code must wait fully for the completion handler to be called, then make any assertions against the result of that completion handler.
-
-As an example, we might have a class like this one:
-
-```swift
-class ViewModel {
-    func loadReadings(completion: @Sendable @escaping ([Double]) -> Void) {
-        let url = URL(string: "https://hws.dev/readings.json")!
-
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data {
-                if let numbers = try? JSONDecoder().decode([Double].self, from: data) {
-                    completion(numbers)
-                    return
-                }
-            }
-
-            completion([])
-        }.resume()
-    }
-}
-```
-
-That fetches, decodes, and returns data through a completion handler, which may or may not be mocked for tests.
-
-Testing this correctly is done using a continuation that resumes when the completion handler is called, like this:
-
-```swift
-@Test("Loading view model readings")
-func loadReadings() async {
-    let viewModel = ViewModel()
-
-    await withCheckedContinuation { continuation in
-        viewModel.loadReadings { readings in
-            #expect(readings.count >= 10, "At least 10 readings must be returned.")
-            continuation.resume()
-        }
-    }
-}
-```
+Test an existing callback API through its completion handler. Prefer the project's bounded callback bridge so a missing callback fails the test and cleanup can run. A checked continuation fits an API that guarantees exactly one completion. Account for cancellation and missing callbacks explicitly when the API can abandon the operation.
 
 ## Mocking networking
 

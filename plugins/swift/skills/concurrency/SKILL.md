@@ -130,4 +130,4 @@ End of example.
 - `references/interop.md` - Migrating from GCD, `Mutex`/locks, completion handlers, delegates, and Combine.
 - `references/bug-patterns.md` - Common concurrency failure modes and their fixes.
 - `references/diagnostics.md` - Strict-concurrency compiler errors, protocol conformance fixes, and likely remedies.
-- `references/testing.md` - Async test strategy with Swift Testing, race detection, avoiding timing-based tests.
+- `references/testing.md` - Test isolation, race detection, and routing to Swift Testing's async test guidance.

@@ -13,7 +13,7 @@ Review process:
 
 1. Ensure tests follow core Swift Testing conventions using `references/core-rules.md`.
 1. Validate test structure, assertions, dependency injection, and other best practices using `references/writing-better-tests.md`.
-1. Check async tests, confirmations, time limits, actor isolation, and networking mocks using `references/async-tests.md`.
+1. Check async test synchronization, cancellation, confirmations, time limits, actor isolation, and networking mocks using `references/async-tests.md`.
 1. Ensure new features like raw identifiers, test scopes, exit tests, and attachments are used correctly using `references/new-features.md`.
 1. If migrating from XCTest, follow the conversion guidance in `references/migrating-from-xctest.md`.
 
@@ -108,6 +108,6 @@ End of example.
 
 - `references/core-rules.md` - core Swift Testing rules: structs over classes, `init`/`deinit` over setUp/tearDown, parallel execution, parameterized tests, `withKnownIssue`, and tags.
 - `references/writing-better-tests.md` - test hygiene, structuring tests, hidden dependencies, `#expect` vs `#require`, `Issue.record()`, `#expect(throws:)`, and verification methods.
-- `references/async-tests.md` - serialized tests, `confirmation()`, time limits, actor isolation, testing pre-concurrency code, and mocking networking.
+- `references/async-tests.md` - serialized tests, readiness, completion, teardown, cancellation, `confirmation()`, time limits, actor isolation, callback APIs, and networking mocks.
 - `references/new-features.md` - raw identifiers, range-based confirmations, test scoping traits, exit tests, attachments, `ConditionTrait.evaluate()`, and the updated `#expect(throws:)` return value.
 - `references/migrating-from-xctest.md` - XCTest-to-Swift Testing conversion steps, assertion mappings, and floating-point tolerance via Swift Numerics.

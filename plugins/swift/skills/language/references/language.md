@@ -25,6 +25,8 @@ Use this file for baseline Swift coding conventions that are not owned by a spec
 
 ## API
 
+- Order parameters for a readable call site. Put the main inputs first and keep related parameters together.
+- Prefer placing defaulted options and callback or builder closures near the end of the parameter list.
 - Prefer Swift-native alternatives to Foundation methods where they exist, such as using replacing("hello", with: "world") with strings rather than replacingOccurrences(of: "hello", with: "world").
 - Prefer modern Foundation API, for example URL.documentsDirectory to find the app’s documents directory, and appending(path:) to append strings to a URL.
 - Never use C-style number formatting such as Text(String(format: "%.2f", abs(myNumber))); always use Text(abs(change), format: .number.precision(.fractionLength(2))) instead.

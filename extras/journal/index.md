@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-09 Hughes Skill Comparison](2026-11-09-hughes-skill-comparison.md): Compared the Universal and Apple Platform plugins with our baseline and Swift skills. Updated Swift ordering, synthesis and async testing guidance. Parked the focused Swift and SwiftUI follow-up with simplification as its return point.
+
 - [2026-11-09 Validation Modes](2026-11-09-validation-modes.md): Updated `swift:validation` for AgentTools' targeted, change-scoped and full modes, including a `--wait --full` merge gate; merge after the AgentTools release.
 
 - [2026-11-06 Refresh Drift](2026-11-06-refresh-drift.md): Merged #43, refreshed runtimes, aligned the Swift plugin Codex version and the records bullet, and added Claude Code rules as a roadmap candidate.
