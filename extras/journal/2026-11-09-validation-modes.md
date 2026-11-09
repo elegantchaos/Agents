@@ -9,3 +9,7 @@
 ## Follow-up
 
 AgentTools #14 settled the submodule rules, and the skill now matches them. By default, full validation tests a submodule's packages only when the branch moved its commit since the merge base with `main`. Committed validation refuses submodule commits that no remote branch contains, so agents push submodule work, for example to its `integration/<app>` branch, before validating. An empty change-scoped run is recorded as finding nothing, and `--wait` rejects it, instead of reporting success.
+
+## Release
+
+AgentTools 4.0.0 shipped the modes, and the local `agt` was updated to it through `ensure-agt.sh --update`; `agt validate --help` lists `--full`. Merged this change afterwards.
