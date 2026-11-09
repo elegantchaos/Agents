@@ -14,36 +14,40 @@ Before dependency preparation, check `agt prepare --help`. If it is missing, run
   - `agt prepare --plan`
 - Format and lint every Swift file:
   - `agt format`
-- Fast validation of the uncommitted changes, then full validation in the background when preparing to merge:
-  - `agt validate --fast --background`
-- Start full validation in the background directly, including on a clean checkout:
-  - `agt validate --background`
-- Fast validation of the uncommitted changes only:
-  - `agt validate --fast`
-- Report, or wait for, the result of background validation:
-  - `agt validate --status`
-  - `agt validate --wait`
-- Fast validation of one target:
+- Targeted validation of one target, including uncommitted edits:
   - `agt validate --target <target-name>`
-- Comprehensive validation:
+- Change-scoped validation of the committed changes against `main`:
   - `agt validate`
+- Full validation of the committed tree:
+  - `agt validate --full`
+- Start full validation in the background when preparing to merge:
+  - `agt validate --full --background`
+- Report the background result, or wait for a full pass for the current commit:
+  - `agt validate --status`
+  - `agt validate --wait --full`
 - List the steps validation would run, with their commands, without running them:
-  - `agt validate --plan` or `agt validate --fast --plan`
+  - `agt validate --plan` or `agt validate --full --plan`
 - Options:
   - `agt format --help`
   - `agt validate --help`
 
-`agt validate` never modifies the project's source, so always run `agt format` first.
+These modes need an AgentTools release that has `--full`. If `agt validate --help` does not list it, run `scripts/ensure-agt.sh --update` once and use the path it returns.
+
+`agt validate` never modifies the development checkout's source, so always run `agt format` first.
 
 Builds during validation may re-resolve Swift package dependencies and update Xcode and SwiftPM `Package.resolved` files. Keep those updates; do not revert them.
 
-Fast validation builds, for macOS, only the package targets, packages, or product that the uncommitted changes touched, and runs the test targets that depend on them. It ignores changes that do not affect a build, such as documentation, and runs nothing when there are none.
+Targeted validation builds the named target from the live checkout, uncommitted edits included, for macOS, and runs the test targets that depend on it. When no package defines the target, it builds the Xcode scheme of that name for macOS.
 
-Comprehensive validation builds every product scheme for every platform the product supports, then runs, platform by platform, the product's tests and the tests of the local Swift packages that are part of the product, on simulators where needed. Local packages in git submodules are tested only when the submodule has changed. Projects configure schemes, platforms, test platforms, submodule testing, and excluded packages in `.agt/config.json`, with per-machine overrides in `.agt/local/config.json`; see `agt validate --help`. Do not create or change these files unless the user asks.
+Change-scoped and full validation check committed code only. They refuse a checkout with staged, unstaged or untracked changes, including in submodules, so commit first. They build the pinned commit in a separate validation worktree that AgentTools keeps under `.build/agt-validation/`, so later edits or branch switches do not affect a run.
 
-Background validation runs detached, so work can continue while it runs. Its result records a fingerprint of the working tree, including untracked files, and counts only for that tree. `agt validate --wait` waits for a running background validation, then fails unless full validation passed for the current working tree; it fails the same way when the tree changed while validation ran, when a newer run replaced it, or when none has run. Starting background validation again when it has already passed for the current tree does nothing. A new validation execution stops a background validation that is still running, so the two never compete for build directories; status/wait commands inspect it, and plan commands wait for the shared operation lock without stopping it.
+Change-scoped validation selects what the diff from the merge base with local `main` (or `origin/main`) touched: package targets and their dependent tests, whole packages for manifest, resolution or submodule changes, and the macOS product scheme for app sources and Xcode build inputs. It ignores documentation and other non-build changes. When nothing relevant changed, including on `main` itself, it runs nothing and still reports success. That result validates nothing; never report it, or any change-scoped result, as full validation.
 
-Use `agt validate --plan` when you need to know what validation covers, for example to report which schemes, platforms, packages, and tests were checked, or to explain a skipped check. Validation caches what it discovers about the project in `.build/agt`, so the first run in a project is slower than later ones.
+Full validation builds every product scheme for every platform the product supports, then runs, platform by platform, the product's tests and the tests of the local Swift packages that are part of the product, on simulators where needed. Packages in git submodules are tested unless the project sets `testSubmodules` to `never`. Projects configure schemes, platforms, test platforms, submodule testing, and excluded packages in `.agt/config.json`, with per-machine overrides in `.agt/local/config.json`; see `agt validate --help`. Do not create or change these files unless the user asks.
+
+Background validation runs detached, so work can continue while it runs. Its result records the commit and scope it checked. `agt validate --status` reports both. `agt validate --wait --full` waits for a running background validation, then fails unless full validation passed for the checkout's current commit; it also fails when the checkout has uncommitted changes, when a newer run replaced it, or when none has run. Without `--full`, `--wait` accepts a change-scoped pass, so always pass `--full` when a full result is required. A new change-scoped or full run from the same checkout stops a background run that is still going. Targeted validation and other checkouts use separate build directories and locks, so they neither stop it nor wait for it.
+
+Use `agt validate --plan` when you need to know what validation covers, for example to report which schemes, platforms, packages, and tests were checked, or to explain a skipped check. Validation caches what it discovers about the project, so the first run in a checkout is slower than later ones.
 
 Some repositories' `AGENTS.md` still name `rt validate`. It is deprecated; use `agt format` followed by `agt validate`.
 
@@ -59,11 +63,11 @@ Some sandboxes deny dependency `.git/config` and `.git/hooks` writes even inside
 
 Where these restrictions apply to an existing checkout, request approval for one `agt prepare` run outside the sandbox through the runtime's configured approval process, or ask the user to run it. Automatic review can handle that request when enabled; do not add a separate human-confirmation step after it authorises the action. AgentTools does not escalate itself, but standing runtime rules can authorise external execution before the command starts; check effective policy rather than assuming a successful command was sandboxed. Name the command, explain that it evaluates dependency manifests, and keep ordinary builds and tests inside the sandbox unless the user has authorised a specific exception. Do not add a standing exception unless the user explicitly authorises one.
 
-Repeat preparation after dependency graph changes, switching to revisions that need different dependencies, removing checkout directories or `agt validate --clean`. Worktree creation does not copy ignored machine-local configuration; account for any needed settings explicitly. Preparation and validation share a checkout lock: execution requires another foreground operation to finish, and preparation stops an existing background validation before resolving. Both `--plan` commands wait for the current lock holder without stopping it, reporting its PID and operation; use `agt validate --status` or `--wait` to inspect a background holder. Retain a partially prepared checkout and use the reported resume command. Report remaining failures as external blockages or source failures according to their evidence.
+Repeat preparation after dependency graph changes, switching to revisions that need different dependencies, removing checkout directories or `agt validate --clean`. Worktree creation does not copy ignored machine-local configuration; account for any needed settings explicitly. Preparation and targeted validation share a checkout lock: execution requires another operation on that lock to finish. Both `--plan` commands wait for the current lock holder, reporting its PID and operation. Change-scoped and full validation prepare dependencies in their own validation worktree as they run, so `agt prepare` does not cover them. Retain a partially prepared checkout and use the reported resume command. Report remaining failures as external blockages or source failures according to their evidence.
 
 Run every test through `agt validate`, including the failing and passing steps of red/green TDD. Do not run `swift test`, `xcodebuild test` or another runner directly: `agt` is the approved workflow, and inside an agent's sandbox it turns off SwiftPM's and Xcode's own sandboxes, which otherwise fail when nested.
 
-For a red or green step, run `agt validate --target <target-name>`, naming the target under test. It builds that target and runs every test target that depends on it, so the new test's failure and its neighbours' results arrive together. `agt validate --fast` does the same for every target the uncommitted changes touch. `agt` has no per-test filter; run the whole target.
+For a red or green step, run `agt validate --target <target-name>`, naming the target under test. It builds that target and runs every test target that depends on it, so the new test's failure and its neighbours' results arrive together. Red and green steps are uncommitted, so they always use `--target`. `agt` has no per-test filter; run the whole target.
 
 If `agt` itself is blocked, classify the blockage as described under Failure Classification. Do not fall back to a direct test runner, or step outside the sandbox to run one, without the user's permission.
 
@@ -71,15 +75,15 @@ If `agt` itself is blocked, classify the blockage as described under Failure Cla
 
 Run `agt format` after every change. It formats every Swift file in the repository and then lints them, reporting findings without failing. Fix lint findings in files you changed. Report the number of remaining findings elsewhere, but do not fix them unless the user asks.
 
-Then run `agt validate --fast` after each meaningful code change. Fix failures before continuing. Fast validation is enough while developing, committing, and opening a PR. Report it as fast validation, not comprehensive validation.
+Then, after each meaningful code change, run `agt validate --target <target-name>` for each target the change touched. After committing, run `agt validate` to check everything the branch's commits touched. Fix failures before continuing. Targeted and change-scoped validation are enough while developing, committing, and opening a PR. Report which one ran; neither is full validation.
 
-Agents may start full validation optimistically in the background while continuing other work, without prior confirmation, including before asking the user whether a full result is needed. Use `agt validate --background`, or `agt validate --fast --background` to run fast validation first and start full validation only if it passes. Starting a background run does not require waiting for completion. Wait when the user agrees that a full result is needed, or when an already-authorized action requires it, such as merging a PR. Do not ask again when the user has already authorized that action.
+Agents may start full validation optimistically in the background while continuing other work, without prior confirmation, including before asking the user whether a full result is needed. Commit first, then use `agt validate --full --background`. Starting a background run does not require waiting for completion. Wait when the user agrees that a full result is needed, or when an already-authorized action requires it, such as merging a PR. Do not ask again when the user has already authorized that action.
 
-Before merging the PR, require full validation to pass locally on a clean checkout of the PR's latest commit that changes more than documentation files. Use `agt validate --wait` to confirm a passing full background result for that tree. The result counts only for the exact tree it ran on, so a documentation-only commit added afterwards makes `--wait` report it as stale; in that case confirm with `git diff --name-only <validated-commit> HEAD` that every later change is a documentation file, and rely on the recorded result. If the result is stale for any other reason, or missing, start full validation again and wait, or run `agt validate` in the foreground. Do not run foreground validation merely to check a background run: it stops the background run and starts again. After a commit that changes code, tests, configuration or other build inputs, run full validation again before merging; a commit that changes only documentation files, such as guides, journal entries and decision records, does not need it.
+Before merging the PR, require full validation to pass locally for the PR's latest commit that changes more than documentation files. Use `agt validate --wait --full` on a clean checkout of that commit to confirm a passing full background result. The result counts only for the commit it ran on, so after a later documentation-only commit `--wait --full` fails and `--status` reports the result as being for a different checkout state; in that case confirm with `git diff --name-only <validated-commit> HEAD` that every later change is a documentation file, and rely on the recorded result. If the result is for another commit for any other reason, or missing, start full validation again and wait, or run `agt validate --full` in the foreground. Do not run foreground validation merely to check a background run: it stops the background run and starts again. After a commit that changes code, tests, configuration or other build inputs, run full validation again before merging; a commit that changes only documentation files, such as guides, journal entries and decision records, does not need it.
 
 Record the passing full result on the PR, naming the commit it ran on, before merging. Until CI runs full validation as a required check, the person merging must verify this local result; GitHub branch protection alone cannot enforce it.
 
-Passing fast validation is not comprehensive validation; report which one ran.
+Passing targeted or change-scoped validation is not full validation; report which one ran.
 
 If validation fails, stop the standard Swift validation, analyze the output, and report the failure clearly. Do not treat successful earlier stages as a successful validation result. For example, if formatting passes but the workspace build fails, report `agt validate` as failed.
 

@@ -1,6 +1,6 @@
 # Shared Agents Roadmap
 
-Roadmap for Sam's curation. Last reconciled: **6 November 2026**.
+Roadmap for Sam's curation. Last reconciled: **9 November 2026**.
 
 This overview tracks the ongoing evolution and maintenance of shared agent guidance and capabilities owned by the Agents repository. It records current priorities, possible improvements and return points as they change; it does not prescribe a release schedule or a finished end state. Other projects appear only where their work provides evidence or a dependency for shared guidance. Their features and delivery plans belong in their own roadmaps.
 
@@ -33,7 +33,7 @@ Evaluate project experience with smaller work slices, source reconciliation and 
 | **Skill distribution** | Proposed direction: package each standalone language skill as a language plugin. Existing submodules and runtime symlinks remain in use until a migration is planned and implemented. | [Shared skills](README.md#shared-skills) |
 | **Stack task access guidance** | Parked. When Stack agent access is scheduled, assess whether reusable guidance is needed here; access implementation belongs in Stack. | This roadmap |
 | **Guidance and review quality** | Evaluate subsequent reviews for justified conclusions about still-used obsolete machinery, simplification and duplicated knowledge; metadata checks alone do not close that behavioural evaluation. The personal-voice decision candidate awaits confirmation. | [Journal index](extras/journal/index.md), [baseline plugin](plugins/baseline/README.md), [Swift plugin](plugins/swift/README.md) |
-| **Validation and resource maintenance** | Plugins and generated rules refreshed on 6 November. Next, confirm fresh Claude worktree preparation and targeted validation. Shared rules stay in use under both runtimes' auto modes; Claude Code rules are a candidate slice. | [Preparation workflow](extras/journal/2026-10-29-worktree-preparation.md), [maintenance instructions](README.md#maintenance) |
+| **Validation and resource maintenance** | Plugins and generated rules refreshed on 6 November. Next, confirm fresh Claude worktree preparation and targeted validation. The Swift validation skill's update for AgentTools' targeted, change-scoped and full modes waits on that AgentTools release. Shared rules stay in use under both runtimes' auto modes; Claude Code rules are a candidate slice. | [Preparation workflow](extras/journal/2026-10-29-worktree-preparation.md), [maintenance instructions](README.md#maintenance) |
 
 ## Parked Candidates To Recheck
 
@@ -53,6 +53,7 @@ before being treated as live implementation tasks.
 | --- | --- | --- |
 | Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Merged in Agents #38, released in AgentTools and plugins refreshed. Fresh Claude runtime acceptance remains outstanding. |
 | Land Agents #40 | Calendar, review and session tool guidance merged, and the baseline plugin refreshed. | Done; merged and installed plugins refreshed on 6 November. |
+| Adopt AgentTools validation modes | `swift:validation` uses `--target` for live edits, bare `agt validate` for committed changes and `--full` / `--wait --full` for the merge gate, merged with the AgentTools release that adds them and the Swift plugin refreshed. | Skill update drafted ([journal](extras/journal/2026-11-09-validation-modes.md)). Return point: merge after [AgentTools #14](https://github.com/elegantchaos/AgentTools/pull/14) is released, then refresh. Merging earlier tells agents to use flags the installed `agt` lacks. |
 | Migrate standalone language skills to plugins | Plan and migrate the JavaScript, Python and Ruby skills to language plugins, including supported-runtime installation and guidance updates. | Candidate; inspect ownership and migration details before implementation. Existing links remain in use. |
 | Add Claude Code rules | Shared rules also produce Claude Code permission allow rules, installed by the refresh workflow, with guidance and decision 0003 updated to cover both runtimes. | Candidate. Sam now runs both runtimes with auto-approval and keeps the rules, settling the question parked in the [29 September journal](extras/journal/2026-09-29.md): allow rules still apply in auto mode. Decide the source format and how Claude settings are written before implementation. Matching commands skip review in both runtimes, so keep rules narrow. |
 | Move SwiftUI trace analysis to AgentTools | Assess and move the SwiftUI trace-analysis script into an AgentTools command, then update the Swift skill and its installation guidance. | Candidate; inspect the script and command boundary before implementation. `ensure-agt.sh` remains a bootstrap exception. |
