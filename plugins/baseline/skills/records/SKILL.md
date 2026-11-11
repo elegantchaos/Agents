@@ -97,9 +97,9 @@ Before reporting a design-document task complete, check each document against th
 
 ### What to record
 
-- Record one Markdown file per important decision: a choice that later work must follow, such as an architectural boundary, technology baseline, or cross-cutting policy. A record should guide where future code goes or how it must behave.
+- Decision records capture policies or chosen approaches that future design and implementation work must respect, such as an architectural boundary, technology baseline or cross-cutting policy. Record one binding choice per file, with its scope and the reasons that should prevent its accidental reversal.
 - Before proposing a record, identify the binding choice and what future work it constrains. A document that mainly explains a model, algorithm, component interaction or implementation belongs in design or implementation documentation. A design change alone does not justify a decision record; record a distinct binding choice only when there is one. Choices that follow from existing decisions need no separate record. Keep naming and emergent or unconfirmed directions in the journal.
-- Check decisions before implementing new code. If the work would conflict with a decision, raise it with the user instead of diverging.
+- Check decisions before proposing a design or changing code. If the work would conflict with a decision, raise it with the user instead of diverging.
 
 ### Confirming
 
@@ -110,15 +110,18 @@ Before reporting a design-document task complete, check each document against th
 
 All decision records are intended to be read in full into a session. Their combined size matters: keep each compact and free of unnecessary bureaucracy and repetition. Include sections only when they add useful information, describe actual alternatives, and state each rule once.
 
+Justifying a record establishes a home for its binding rules, scope and essential rationale. It does not justify including the surrounding design or implementation. Apply this boundary to every section of the record.
+
+State the general rules the policy or approach defines. For each specific detail, ask whether it could change while those rules remained true; if so, put it in supporting documentation. Name a technology, type, API or format only when selecting or constraining it is itself part of the binding choice. Models, algorithms, component interactions, examples and implementation mechanics belong in linked design or implementation documentation, with only the information essential to state the binding rules retained in the record.
+
 Do not include details that will go out of date or are likely to change; for example, planned implementation work or temporary technical decisions.
 
 Follow the repository's existing naming scheme; default to `NNNN-short-title.md`. Use the following order, omitting optional sections that add nothing:
 
 1. **Title, status and date.** Add relationship lines such as Refines or Supersedes only when they clarify a real dependency or replacement, linking the other record. Omit administrative metadata and change logs. A revision line gives its date only; Git records what changed.
 2. **`## Decision`.** Lead with the binding choice, its scope and the rules later work must follow, in a few concise paragraphs or bullets. Incorporate essential obligations and applicability limits beside the rules they qualify. Do not add a separate summary.
-3. **`## Context`**, when needed. Give enough project context, constraints and rationale to understand and apply the decision correctly. Usually a few sentences suffice; retain essential context even when it needs more space. Avoid project history, repeated metadata and explanations already clear from the decision.
-4. **`## Details`**, only for essential secondary rules that would obscure the main choice. Move them here without repeating them; explanatory design detail belongs in a linked document.
-5. **`## Alternatives considered`**, only when actual alternatives and the reasons for choosing between them help prevent accidental reversal. Keep it brief and distinguish rejected options from those retained for later.
+3. **`## Context`**, when needed. Include only the project constraints and rationale needed to understand why the rules apply. Keep subsystem background in its design documentation and omit explanations already clear from the decision.
+4. **`## Alternatives considered`**, only when actual alternatives and the reasons for choosing between them help prevent accidental reversal. Keep it brief and distinguish rejected options from those retained for later.
 
 Write in the present tense, as current fact and intent. Keep the binding rules and context needed to follow them in the record itself. Link directly to design documents for fuller models, mechanisms and examples; do not reproduce those documents or turn the decision into a design specification. Do not link to implementation plans, delivery order or implementation status.
 
@@ -136,10 +139,10 @@ Write in the present tense, as current fact and intent. Keep the binding rules a
 
 Before reporting a decision-record task complete, check each record and report any exceptions or unchecked items:
 
-- It states a distinct binding choice that guides later work; it is not a design document, implementation plan or a restatement of an existing decision.
+- It states a distinct policy or chosen approach that future design and implementation work must respect; it is not a design document, implementation plan or a restatement of an existing decision.
 - The record contains enough scope, rules and context to apply it correctly without reconstructing essential constraints from linked documents.
 - Every section and metadata line adds useful information. Essential obligations and applicability limits sit with the rules they qualify; implied conclusions and repeated summaries, rules and rationale have been removed.
-- Greater design detail lives in linked design documents. Nothing links to an implementation plan, delivery order or implementation status, or states details likely to go out of date. Links resolve, and removing detail has not removed binding constraints or useful evidence.
+- Every section stays within the general rules, their scope and essential rationale. Specifics that could change without changing those rules live in supporting documentation; a named technology, type, API or format is essential to the binding choice itself. Nothing links to an implementation plan, delivery order or implementation status, or states details likely to go out of date. Links resolve, and removing detail has not removed binding constraints or useful evidence.
 - Alternatives describe actual choices and useful trade-offs; deferred possibilities are distinct from accepted rules.
 - The required confirmation was obtained for creating or changing the record. For a changed direction, revision in place was proposed as the default and a new superseding decision offered as the alternative. An in-place revision has a dated Revised line and preserves still-useful reasons; a superseding decision follows the user's confirmed choice.
 
