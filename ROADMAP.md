@@ -1,6 +1,6 @@
 # Shared Agents Roadmap
 
-Roadmap for Sam's curation. Last reconciled: **9 November 2026**.
+Roadmap for Sam's curation. Last reconciled: **11 November 2026**.
 
 This overview tracks the ongoing evolution and maintenance of shared agent guidance and capabilities owned by the Agents repository. It records current priorities, possible improvements and return points as they change; it does not prescribe a release schedule or a finished end state. Other projects appear only where their work provides evidence or a dependency for shared guidance. Their features and delivery plans belong in their own roadmaps.
 
@@ -51,6 +51,7 @@ before being treated as live implementation tasks.
 
 | Slice | Finish condition | State |
 | --- | --- | --- |
+| Revise decisions in place | The records skill defaults to revision in place, retains reasons that prevent accidental reversal, requires confirmation, and offers a new superseding decision as the alternative. | Guidance updated with its compliance checklist; both baseline manifests are 0.8.33. [Journal](extras/journal/2026-11-11-decision-revision-policy.md). Runtime installation remains due after merge. Return point: install the merged baseline and remove Bookish's redundant project override. |
 | Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Merged in Agents #38, released in AgentTools and plugins refreshed. Fresh Claude runtime acceptance remains outstanding. |
 | Land Agents #40 | Calendar, review and session tool guidance merged, and the baseline plugin refreshed. | Done; merged and installed plugins refreshed on 6 November. |
 | Adopt AgentTools validation modes | `swift:validation` uses `--target` for live edits, bare `agt validate` for committed changes and `--full` / `--wait --full` for the merge gate, merged with the AgentTools release that adds them and the Swift plugin refreshed. | Merged in Agents #45 after [AgentTools 4.0.0](https://github.com/elegantchaos/AgentTools/releases/tag/v4.0.0) was released and installed ([journal](extras/journal/2026-11-09-validation-modes.md)). Return point: refresh the installed Swift plugin from a shared checkout that contains #45. |

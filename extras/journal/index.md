@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-11 Decision Revision Policy](2026-11-11-decision-revision-policy.md): Made revision in place the shared default, retaining useful reasons, requiring confirmation and offering a new superseding decision as the alternative; baseline 0.8.33 installation is due after merge.
+
 - [2026-11-09 Validation Modes](2026-11-09-validation-modes.md): Updated `swift:validation` for AgentTools' targeted, change-scoped and full modes, including a `--wait --full` merge gate; merge after the AgentTools release.
 
 - [2026-11-06 Refresh Drift](2026-11-06-refresh-drift.md): Merged #43, refreshed runtimes, aligned the Swift plugin Codex version and the records bullet, and added Claude Code rules as a roadmap candidate.
