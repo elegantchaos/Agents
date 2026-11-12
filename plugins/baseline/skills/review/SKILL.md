@@ -27,6 +27,16 @@ Existing code patterns, passing tests, and compiler acceptance do not establish 
 
 If any record is unread or an applicable constraint remains unchecked, decision coverage is incomplete. Continue useful review work, identify every gap and its reason in Not Checked, and qualify the verdict as partial. Do not issue an unqualified ready verdict or claim architectural compliance. Time or context limits do not justify silently sampling the decision log. Resolve coverage gaps before making a complete compliance claim.
 
+## Skill Coverage
+
+This requirement applies to every review mode, including plans and design documents.
+
+Before assessing the change, list every skill that applies to it: those the project's `AGENTS.md` assigns, and those for each changed file's language and framework. Read each skill's `SKILL.md` and every reference it marks as required, in full. Then check every changed file, or every file in scope for a full review, against each applicable skill's checklist.
+
+An unread skill or unchecked checklist is not a coverage gap to report: it blocks the review. Read it before reporting. If a skill genuinely cannot be read, report that the review is incomplete and give no verdict. Time or context limits do not justify skipping skills or sampling their references, and general knowledge of a language or framework does not substitute for its skill.
+
+Name the skills read in the Summary. Report checklist deviations in Findings with the governing rule; omit clean checklist results.
+
 ## Review Modes
 
 Choose the mode from the request, and state it at the start of the review:
@@ -60,7 +70,7 @@ A codebase review is not a series of package reviews. Its main subject is how th
 ```markdown
 ## Summary
 
-The codebase's purpose, the scope reviewed, a verdict on its overall health, and the most important findings, in three or four sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
+The codebase's purpose, the scope reviewed, the skills read, a verdict on its overall health, and the most important findings, in three or four sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
 
 ## Map
 
@@ -100,7 +110,7 @@ Every package or file not read in full, anything else skipped or unverified, why
 
 ## Required References
 
-- The `baseline:standards` skill, its required references, and any language or framework skills that apply to the changed files.
+- The `baseline:standards` skill, its required references, and any language or framework skills that apply to the changed files, read in full under Skill Coverage before assessing the change.
 - The project's `AGENTS.md`, every record in its decision log when it keeps one, and references needed to understand those records' constraints. Follow Decision Coverage before assessing the change.
 
 ## Process
@@ -108,6 +118,7 @@ Every package or file not read in full, anything else skipped or unverified, why
 ### 1. Establish Intent
 
 - Read the PR description, linked issues, commit messages, and relevant journal entries.
+- Complete the skill reading required by Skill Coverage before assessing the implementation or proposed design.
 - Complete the decision-log reading and applicability assessment required by Decision Coverage before assessing the implementation or proposed design.
 - State in one or two sentences what the change is meant to achieve. If you cannot, report that as a finding.
 - Note anything the change claims to do that the diff does not do, and anything the diff does that nothing explains.
@@ -162,7 +173,7 @@ Report decision deviations in Findings and unresolved coverage gaps in Not Check
 ```markdown
 ## Summary
 
-Intent, verdict (ready, ready after fixes, or needs rework), and the most important findings, in two or three sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
+Intent, the skills read, verdict (ready, ready after fixes, or needs rework), and the most important findings, in two or three sentences. Qualify the verdict as partial when decision coverage is incomplete; do not claim architectural compliance.
 
 ## Findings
 
@@ -193,6 +204,7 @@ Check before reporting the review:
 - The mode was chosen from the request, or the user was asked which was meant.
 - For an entire-codebase review, the scope and map are stated, a split was proposed when the scope exceeded about 10,000 lines, the report follows the codebase structure with the seams and whole-codebase findings first, every package has its own findings, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
+- Every applicable skill and its required references were read in full before assessment, each file in scope was checked against their checklists, and the Summary names them; no skill appears under Not Checked.
 - Every decision record was read in full and considered internally, or each missing read is explicitly listed as a coverage gap. If no decision log exists, that is stated.
 - Every applicable decision constraint has checked evidence or an explicit gap; contradictions are findings, and unclear status or supersession is reported when it affects the review.
 - Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.

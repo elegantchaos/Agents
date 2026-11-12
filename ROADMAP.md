@@ -1,6 +1,6 @@
 # Shared Agents Roadmap
 
-Roadmap for Sam's curation. Last reconciled: **11 November 2026**.
+Roadmap for Sam's curation. Last reconciled: **12 November 2026**.
 
 This overview tracks the ongoing evolution and maintenance of shared agent guidance and capabilities owned by the Agents repository. It records current priorities, possible improvements and return points as they change; it does not prescribe a release schedule or a finished end state. Other projects appear only where their work provides evidence or a dependency for shared guidance. Their features and delivery plans belong in their own roadmaps.
 
@@ -51,6 +51,7 @@ before being treated as live implementation tasks.
 
 | Slice | Finish condition | State |
 | --- | --- | --- |
+| Require skill coverage in reviews | The review skill makes reading every applicable skill and checking its checklist a precondition of any verdict, and summaries name the skills read. | Guidance updated; both baseline manifests are 0.8.34. [Journal](extras/journal/2026-11-12-review-skill-coverage.md). Return point: install the merged baseline, then check later reviews name their skills and report checklist deviations. |
 | Revise decisions in place | The records skill defaults to revision in place with confirmation and a supersession alternative; every record section stays within the general policies future design and implementation must respect, their scope and essential reasons. | Guidance updated with its record shape and compliance checklist; both baseline manifests are 0.8.33. [Journal](extras/journal/2026-11-11-decision-revision-policy.md). Runtime installation remains due after merge. Return point: install the merged baseline and remove Bookish's redundant project override. |
 | Prepare worktrees before TDD | AgentTools creates worktrees, initialises submodules and resolves dependencies into validation's directories; shared guidance names the commands and preserves authorization boundaries. | Merged in Agents #38, released in AgentTools and plugins refreshed. Fresh Claude runtime acceptance remains outstanding. |
 | Land Agents #40 | Calendar, review and session tool guidance merged, and the baseline plugin refreshed. | Done; merged and installed plugins refreshed on 6 November. |
