@@ -16,6 +16,8 @@ Each kind of record has one job:
 - The journal records work as it happened.
 - Reviews record the assessment of changes against the project's standards, decisions, and other relevant criteria.
 
+Links follow the same split. Keep links in current documentation pointing at each target's current home, updating them in place when a target moves. The journal and other historical records, such as closed reviews, follow the Journal rules for links.
+
 ## Design Documents
 
 ### Confirming
@@ -23,7 +25,7 @@ Each kind of record has one job:
 - Before creating or changing a design document, prepare the proposed text or diff for review, then ask a separate question naming each document and summarising the changes, including any changes to meaning, scope or structure. Only a direct yes to that question confirms the edit. Prepare drafts in the conversation or a temporary working file; keep the canonical document unchanged until confirmed.
 - Agreement with a design, approval to implement code, or a general instruction to keep documentation current is not confirmation to write or rewrite the design document. A question that bundles design agreement with permission to edit does not count.
 - Confirmation covers only the proposed edits. Do not expand a focused update into a rewrite, compaction or reorganisation. Present further changes separately for confirmation; do not ask again for edits already confirmed in the current scope.
-- Apply this gate to all edits, including wording, links and diagrams, and to renaming, moving or deleting design documents. Changes to a design diagram include its editable source and rendered image.
+- Apply this gate to all edits, including wording, links and diagrams, and to renaming, moving or deleting design documents. Changes to a design diagram include its editable source and rendered image. Correcting a link's target after the linked file moves or is renamed is the exception: it needs no confirmation, provided the link text and its meaning are unchanged.
 
 ### Scope And Boundaries
 
@@ -90,6 +92,13 @@ Before reporting a design-document task complete, check each document against th
 - Keep `index.md` updated as the guide to the journal, because filenames only give rough chronology. It describes where each entry ended up: when a follow-up changes an entry's outcome, update its index line.
 - Give each entry a Title Case heading without a date, since the filename carries it. Its index line uses the date followed by that same title.
 - Treat entries as history. Do not rewrite past entries to match later changes; record the change in a new entry or a clearly separated follow-up section.
+- Write links in a new entry as relative links. A relative link shows its target as it is now, not as it was when the entry was written, so an old entry's links drift as their targets are revised. Accept that for ordinary revisions: the entry's date tells a reader when to look at the target's history.
+- Convert a link in a past entry to a permalink when drift would mislead or the link would break:
+  - the target is moved, renamed or removed; or
+  - a revision removes or reverses what the entry cites, such as a decision that changes direction or a section that is deleted.
+
+  Make the conversion in the same change that causes it. Point the permalink at the target as it stood in the commit where the entry first carried the link, and leave the link text as written. Never repoint a past entry's link at a current document that replaced its target.
+- Correcting links this way is link maintenance, not rewriting history, and needs no confirmation. The same applies to other historical records, such as closed reviews.
 - Link entries to the decisions they establish or apply.
 - When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.
 
@@ -104,7 +113,7 @@ Before reporting a design-document task complete, check each document against th
 ### Confirming
 
 - Before writing or changing any decision record, ask a separate question that names the record (its new number and title, or the existing decision being amended) and summarises what it will say. When an existing decision changes direction, propose revising it in place by default and offer a new superseding decision as the alternative before asking for confirmation of the chosen edit. Only a direct yes to that confirmation question authorizes the edit.
-- Agreement with a design or policy choice is not confirmation to record it, and a question that bundles the two does not count. Changes to existing decisions, including added cross-reference or "Refined by" lines, need the same confirmation.
+- Agreement with a design or policy choice is not confirmation to record it, and a question that bundles the two does not count. Changes to existing decisions, including added cross-reference or "Refined by" lines, need the same confirmation. Correcting a link's target after the linked file moves or is renamed is the exception: it needs no confirmation, provided the link text and its meaning are unchanged.
 
 ### Shape
 

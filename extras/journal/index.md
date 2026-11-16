@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-16 Historical Links](2026-11-16-historical-links.md): Past journal entries and closed reviews get permalinks when a link would break or mislead; link-target corrections need no confirmation; an `agt links` command is a candidate
+
 - [2026-11-12 Review Skill Coverage](2026-11-12-review-skill-coverage.md): Unread skills now block a review instead of becoming Not Checked items; summaries name the skills read; baseline 0.8.34 installation is due after merge.
 
 - [2026-11-11 Decision Revision Policy](2026-11-11-decision-revision-policy.md): Made revision in place the shared default, retained confirmation and the supersession alternative, and limited every record section to binding rules, scope and essential reasons; baseline 0.8.33 installation is due after merge.
