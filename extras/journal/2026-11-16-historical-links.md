@@ -31,6 +31,16 @@ The rule is only cheap if the conversion is mechanical. A candidate AgentTools c
 
 The prototype existed only in a cloud session's scratch space and is not preserved; the description above is its algorithm.
 
+## Follow-Up: Command Built
+
+[AgentTools #17](https://github.com/elegantchaos/AgentTools/pull/17) adds `agt links` and `agt links --fix-history` as described above, and the records skill now names them. Replayed on Bookish at the commit before its repair, the command fixed all 234 broken links at the commit that introduced them and matched the prototype's output, apart from two links where the prototype had fallen back and the command found the introducing commit.
+
+One rule differs from the description above. A file "contains the link" at a commit when it holds the same link text or a link to the same repository path. Bookish's archived reviews had their links respelled for the new folder after the targets had gone, so text alone did not find them.
+
+The command converts only links that are broken. A link that still resolves but would mislead, the rule's second trigger, is converted by hand.
+
+The skill names a command that is not yet released, so this pull request merges after the AgentTools release.
+
 ## Validation
 
 Documentation only. The shared skill validator was not run: the cloud session has no `~/.local/share/agents/.venv`. The edited skill was read against its own guidance. Installation is due after merge.

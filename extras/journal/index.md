@@ -1,6 +1,6 @@
 # Journal
 
-- [2026-11-16 Historical Links](2026-11-16-historical-links.md): Past journal entries and closed reviews get permalinks when a link would break or mislead; link-target corrections need no confirmation; an `agt links` command is a candidate
+- [2026-11-16 Historical Links](2026-11-16-historical-links.md): Past journal entries and closed reviews get permalinks when a link would break or mislead; link-target corrections need no confirmation; `agt links --fix-history` makes the conversion, built in AgentTools #17 and due for release before this merges
 
 - [2026-11-12 Review Skill Coverage](2026-11-12-review-skill-coverage.md): Unread skills now block a review instead of becoming Not Checked items; summaries name the skills read; baseline 0.8.34 installation is due after merge.
 

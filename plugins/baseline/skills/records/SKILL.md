@@ -98,6 +98,8 @@ Before reporting a design-document task complete, check each document against th
   - a revision removes or reverses what the entry cites, such as a decision that changes direction or a section that is deleted.
 
   Make the conversion in the same change that causes it. Point the permalink at the target as it stood in the commit where the entry first carried the link, and leave the link text as written. Never repoint a past entry's link at a current document that replaced its target.
+
+  For links that are now broken, `agt links --fix-history` makes the conversion: it rewrites broken links in the journal and reviews folders as permalinks at that commit, and `agt links` reports any that remain. Convert by hand a link that still resolves but would mislead.
 - Correcting links this way is link maintenance, not rewriting history, and needs no confirmation. The same applies to other historical records, such as closed reviews.
 - Link entries to the decisions they establish or apply.
 - When the repository has a current research summary or implementation plan, keep it aligned with the code and journal rather than simply listing journal entries.
