@@ -37,7 +37,7 @@ Git and `gh` for operations it does not cover, including Actions logs.
 
 ## Worktree Setup
 
-Reuse a suitable existing checkout or worktree when one is already available. To create a new worktree, run `agt worktree create <name>` from a checkout of the repository. AgentTools owns the naming, branch and location rules, initialises submodules, and prepares dependencies. Use `--base <revision>` when the task specifies a starting revision; otherwise the invoking checkout's HEAD is used. Uncommitted changes and ignored machine-local configuration are not copied.
+Reuse a suitable existing checkout or worktree when one is already available. To create a new worktree, run `agt worktree create <name>` from a checkout of the repository. AgentTools owns the naming, branch and location rules, initialises submodules, and prepares dependencies. Worktrees belong in `<project-root>/.worktrees/<tree>`, including when invoked from an existing linked checkout. Use `--base <revision>` when the task specifies a starting revision; otherwise the invoking checkout's HEAD is used. Uncommitted changes and ignored machine-local configuration are not copied.
 
 Obtain `agt` with `../refresh/scripts/ensure-agt.sh`. Check `agt worktree create --help` and `agt prepare --help` before use. If either command is missing, run that helper once with `--update`, use the absolute executable path it returns, and check again. Report a version gap only if the updated tool still lacks the commands. If the bootstrap is blocked, follow the runtime's approval process or ask the user to run it; do not reconstruct setup with ad hoc commands. During AgentTools development, an explicitly supplied source build can be used.
 
@@ -45,7 +45,7 @@ AgentTools does not change its caller's execution permissions. Check the runtime
 
 Use the absolute path reported by the command for subsequent work. A setup failure can leave a valid worktree: follow its reported resume operation there instead of creating another one. Use `agt prepare` in that checkout after dependency changes or cleaning. Preparation is not validation; Swift test runs, including red/green steps, still use `agt validate --target <target>` through `swift:validation`.
 
-Runtime integration remains the agent's responsibility. When Codex supports attaching the resulting existing worktree, attach it and use the returned workspace path. If it cannot attach an externally created checkout, keep using the printed absolute path explicitly and report the integration limit. Do not create a second worktree merely to obtain an attachment. Other runtimes should switch their working context to the reported path using their supported mechanism.
+Runtime integration remains the agent's responsibility. In Codex, after `agt worktree create` succeeds, call `attach_worktree` with its `path` argument set to the absolute checkout path printed by `agt`, then use the returned workspace path. Attachment registers the existing checkout; it does not require another creation step. If the attachment tool is unavailable or attachment fails, keep using the printed absolute path explicitly and report the integration limit. Do not create a second worktree merely to obtain an attachment. If a higher-priority runtime instruction prevents AgentTools creation, report the conflict before creating a worktree in a different location. Other runtimes should switch their working context to the reported path using their supported mechanism.
 
 ## Commit Identity
 

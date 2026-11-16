@@ -6,9 +6,9 @@ This overview tracks the ongoing evolution and maintenance of shared agent guida
 
 ## You Are Here
 
-**Current focus: confirm worktree preparation in a fresh Claude session.**
+**Current focus: land the shared skill changes in Agents #47.**
 
-Agents #40 merged the calendar guidance, review reporting changes and session tool update rule. Worktree preparation is next: Agents #38 is merged and the installed AgentTools has `agt worktree create` and `agt prepare`. The baseline and Swift plugins and generated rules were refreshed on 6 November. Return point: confirm a fresh Claude worktree can run targeted tests after one approved preparation step. Bookish supplies the integration fixture.
+Agents #47 combines review skill coverage, historical-link guidance and explicit attachment of AgentTools worktrees in Codex. Return point: release the required AgentTools links command, merge #47 and refresh the baseline plugin in both runtimes. Fresh Claude worktree preparation remains outstanding in the workstream and slice tables.
 
 The baseline and Swift plugins, AgentTools refresh/validation workflows, and
 project journals already supply the working foundation. Recent work tightened
@@ -51,6 +51,7 @@ before being treated as live implementation tasks.
 
 | Slice | Finish condition | State |
 | --- | --- | --- |
+| Attach AgentTools worktrees in Codex | Shared rules specify `<project-root>/.worktrees/<tree>` and the Git skill explicitly calls `attach_worktree` with the checkout path printed by `agt`. | Guidance added to Agents #47; attachment of an existing project-local worktree succeeded in this session. Return point: merge and install the baseline, then verify creation and attachment together in a fresh session; Codex's higher-priority creation instruction remains a runtime conflict. [Journal](extras/journal/2026-11-16-worktree-attachment.md). |
 | Require skill coverage in reviews | The review skill makes reading every applicable skill and checking its checklist a precondition of any verdict, and summaries name the skills read. | Guidance updated; both baseline manifests are 0.8.34. [Journal](extras/journal/2026-11-12-review-skill-coverage.md). Return point: install the merged baseline, then check later reviews name their skills and report checklist deviations. |
 | Keep historical links accurate | The records skill says when a link in a past journal entry or closed review becomes a permalink, keeps current documentation's links pointing at current homes, and exempts link-target corrections from the design and decision confirmation gates. | Guidance updated, sharing baseline 0.8.34 with skill coverage. [Journal](extras/journal/2026-11-16-historical-links.md). Return point: install the merged baseline. |
 | Add link checking and repair to AgentTools | An `agt` command reports broken relative Markdown links and converts those in historical records to permalinks at the commit that introduced them, and the records skill names it. | Built in [AgentTools #17](https://github.com/elegantchaos/AgentTools/pull/17), unreleased; the records skill names `agt links`. [Journal](extras/journal/2026-11-16-historical-links.md#agenttools-command). Return point: merge and release AgentTools #17 before this guidance merges. |
