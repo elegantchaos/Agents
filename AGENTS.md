@@ -5,8 +5,7 @@
 - Because this repository owns the shared baseline, agents working here should edit shared guidance at the source files and skill repos rather than creating duplicate local copies.
 - Keep a development journal in `extras/journal/`.
 - Keep a decision log in `extras/decisions/`.
-- Read `ROADMAP.md` when starting shared work and update the affected slice, focus and return point when work starts, completes, parks or resumes. Reconcile actionable review/plan items with evidence or a live destination, and use a recorded upkeep checkpoint instead of repeatedly scanning historical sources.
-- `ROADMAP.md`'s `You Are Here` holds one primary focus. Record other work in the workstream and slice tables, never as extra paragraphs above the focus. In the same change, correct any focus, return point or slice it makes false, and advance `Last reconciled`.
+- Read `ROADMAP.md` when starting shared work. Open work lives in work items under `extras/work/`, which the roadmap lists; follow `extras/work/README.md` when creating, starting, parking or finishing one. Make these updates in the same PR as the work, written as the state once it merges. Never open a separate PR only to record that another merged.
 
 # Standard Rules
 

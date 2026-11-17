@@ -2,7 +2,7 @@
 
 This repository is the shared home for agent resources used across Elegant Chaos projects.
 
-[Roadmap](ROADMAP.md): shared goals, current focus, source reconciliation and parked integration work.
+[Roadmap](ROADMAP.md): shared aims, current and next work items, later ideas and what is delivered. Open work lives in [work items](extras/work/README.md).
 
 GitHub: [github.com/elegantchaos/Agents](https://github.com/elegantchaos/Agents)
 
