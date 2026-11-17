@@ -1,5 +1,11 @@
 # Journal
 
+- [2026-11-16 Worktree Attachment](2026-11-16-worktree-attachment.md): Explicit project-local worktree location and Codex `attach_worktree` step after AgentTools creation; added to Agents #47, with installation and fresh-session acceptance due after merge.
+
+- [2026-11-16 Historical Links](2026-11-16-historical-links.md): Past journal entries and closed reviews get permalinks when a link would break or mislead; link-target corrections need no confirmation; `agt links --fix-history` makes the conversion, built in AgentTools #17 and due for release before this merges
+
+- [2026-11-12 Review Skill Coverage](2026-11-12-review-skill-coverage.md): Unread skills now block a review instead of becoming Not Checked items; summaries name the skills read; baseline 0.8.34 installation is due after merge.
+
 - [2026-11-11 Decision Revision Policy](2026-11-11-decision-revision-policy.md): Made revision in place the shared default, retained confirmation and the supersession alternative, and limited every record section to binding rules, scope and essential reasons; baseline 0.8.33 installation is due after merge.
 
 - [2026-11-09 Validation Modes](2026-11-09-validation-modes.md): Updated `swift:validation` for AgentTools' targeted, change-scoped and full modes, including a `--wait --full` merge gate; merge after the AgentTools release.
