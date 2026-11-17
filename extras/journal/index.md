@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-17 Roadmap Work Items](2026-11-17-roadmap-work-items.md): Adopted Bookish's work items without its release layer; the roadmap lists items in Now and Next, Later ideas and Delivered, and the slices delivered by #47 and the AgentTools #17 release left the plan.
+
 - [2026-11-16 Worktree Attachment](2026-11-16-worktree-attachment.md): Explicit project-local worktree location and Codex `attach_worktree` step after AgentTools creation; added to Agents #47, with installation and fresh-session acceptance due after merge.
 
 - [2026-11-16 Historical Links](2026-11-16-historical-links.md): Past journal entries and closed reviews get permalinks when a link would break or mislead; link-target corrections need no confirmation; `agt links --fix-history` makes the conversion, built in AgentTools #17 and due for release before this merges.
