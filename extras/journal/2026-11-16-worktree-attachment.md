@@ -7,3 +7,7 @@ The current Codex app instructions require its own `create_worktree` tool, whose
 At Sam's request, this change joins [Agents #47](https://github.com/elegantchaos/Agents/pull/47) on `feature/review-skill-coverage`. The PR's existing baseline 0.8.34 version bump covers these additional unpublished changes. Runtime installation remains due after merge. The temporary `feature/agt-worktree-attachment` branch has no unique commits and was not used for edits.
 
 Validation covers whitespace, plugin manifests, skill metadata and the changed guidance's consistency. No application code changed, so builds and application tests are unnecessary. A full resource refresh, rule sync and AGENTS regeneration are outside this focused change.
+
+## Follow-Up: Location Ownership
+
+Review of Agents #47 found the Git skill both crediting AgentTools with the location rules and stating the location as its own rule. The skill now describes where AgentTools places worktrees, leaving AgentTools as the single owner. Baseline 0.8.35.
