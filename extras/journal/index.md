@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-17 Bionic And Local Coding Models](2026-11-17-bionic-harness.md): Linked shared skills into Bionic and started the loopback model server; 35B Qwen used tools through Codex and Claude, but broad verification and startup-compliance checks exposed gaps; coding quality remains unverified.
+
 - [2026-11-17 Roadmap Work Items](2026-11-17-roadmap-work-items.md): Adopted Bookish's work items without its release layer; the roadmap lists items in Now and Next, Later ideas and Delivered, and the slices delivered by #47 and the AgentTools #17 release left the plan.
 
 - [2026-11-16 Worktree Attachment](2026-11-16-worktree-attachment.md): Explicit project-local worktree location and Codex `attach_worktree` step after AgentTools creation; added to Agents #47, with installation and fresh-session acceptance due after merge.

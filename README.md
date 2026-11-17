@@ -76,12 +76,15 @@ asdf exec python3 -m venv .venv
 
 ## Runtime Support
 
-Claude Code and Codex are both supported.
+Claude Code and Codex have automated installation. [Bionic](runtimes/bionic/README.md) has experimental support through manually linked skills and an explicit session bootstrap; `agt refresh` does not configure it.
+
+For local coding, [run Codex CLI or Claude Code against the LM Studio model server](runtimes/local-models.md). This keeps the existing harness configuration while serving the model locally, using Bionic now or llmster for a separate headless setup.
 
 - **Project guidance.** Each project's `AGENTS.md` comes from the `baseline:refresh` template. Codex reads it directly. Claude Code reads it when the project has no `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md`, so the refresh skill never creates one and warns when one exists. The template's `@~/.local/share/agents/COMMON.md` line makes Claude Code import `COMMON.md` at launch; Codex reads it as an instruction to open the file.
 - **Shared baseline.** Projects adopting the shared guidance require agents to read `COMMON.md` through their `AGENTS.md` before starting work. It is not loaded globally. Task-specific guidance lives in skills.
 - **The voice is personal.** It reflects one user's taste, so it must not reach other people's sessions. It lives only in the user-global files, never in `COMMON.md` or project files: `~/.claude/CLAUDE.md` imports `VOICE.md` with an `@` line, and `~/.codex/AGENTS.md` tells Codex to read the same file.
 - **Skills and plugins.** `agt skills link` links shared skills into `~/.claude/skills/` and `~/.codex/skills/`, and `agt refresh` installs the plugins in both runtimes. Bump a plugin's version in both its `.claude-plugin` and `.codex-plugin` manifests whenever its guidance changes, or installed copies keep the old text.
+- **Bionic.** Link standalone and plugin skill directories into `~/.lmstudio/skills`, following the [Bionic setup](runtimes/bionic/README.md). Invoke `bionic-session` at the start of each chat to load the personal voice and project guidance. Bionic shares the skill content; its tools, integrations and permissions are configured separately.
 
 ## Shared Rules
 

@@ -33,6 +33,7 @@ In rough order of need.
 | [TR1: SwiftUI Trace Command](extras/work/TR1%20SwiftUI%20Trace%20Command.md) | Proposed |
 | [LP1: Language Skills As Plugins](extras/work/LP1%20Language%20Skills%20As%20Plugins.md) | Proposed |
 | [VO1: Personal Voice Decision](extras/work/VO1%20Personal%20Voice%20Decision.md) | Proposed |
+| [BH2: Bionic Refresh Integration](extras/work/BH2%20Bionic%20Refresh%20Integration.md) | Proposed |
 
 ## Later
 
@@ -47,6 +48,7 @@ Ideas without an item. Check each one's current status before creating an item f
 What the shared guidance provides now. The journal holds the detail and evidence.
 
 - **Distribution:** the `baseline` and `swift` plugins, standalone language skills linked as submodules, and `agt refresh` installing them in Claude Code and Codex with shared sandbox and rule configuration. See decisions [0002](extras/decisions/0002-language-skills-and-plugins.md) and [0003](extras/decisions/0003-runtime-installation.md).
+- **Bionic:** manual links expose the same standalone and plugin skills; an explicit `bionic-session` invocation loads personal voice and project guidance. Automatic refresh and model-behavior acceptance remain separate. See [Bionic setup](runtimes/bionic/README.md) and [BH1](extras/work/Done/BH1%20Bionic%20Skills%20And%20Session%20Guidance.md).
 - **Shared baseline:** `COMMON.md`, required by each adopting project's `AGENTS.md`, with task-specific guidance in skills. See [decision 0005](extras/decisions/0005-shared-baseline.md).
 - **Reviews:** decision coverage, skill coverage as a precondition of any verdict, action-first reporting and change-driven codebase-effect investigation. See [Review skill coverage](extras/journal/2026-11-12-review-skill-coverage.md).
 - **Records:** design confirmation gates, decision records revised in place, journal and index rules, and permalinks for historical links, repaired by `agt links --fix-history`. See [Decision revision policy](extras/journal/2026-11-11-decision-revision-policy.md) and [Historical links](extras/journal/2026-11-16-historical-links.md).
