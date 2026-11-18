@@ -31,3 +31,9 @@ Completed [LI1](../work/Done/LI1%20Local%20Inference%20And%20Evaluation.md) and 
 Prepared the requested permanent label `com.elegantchaos.ollama`, matching plist filename and `.ollama-setup` marker. Only the Label changes in the service configuration; account, model/cache/temp/log paths and startup policy stay unchanged. Updated the operating guide and prepared a one-off administrator rename command with a readiness check and restoration of the previous service on replacement startup failure. Application remains pending Sam's manual administrator command. Historical experimental scripts retain their original names and remain unsuitable for managing the renamed service.
 
 Sam ran the rename successfully. A read-only check confirmed the permanent label running, the previous label absent, the renamed plist and setup marker present, and API version 0.40.16 responding. Updated the operating guide to describe the installed state. No inference rerun was needed for the label-only change.
+
+## Context Capacity
+
+Sam selected the packaged model’s full 262,144-token context, retaining it unless actual use proves unusable. Prepared a context-only launchd configuration change and an administrator restart command. Application and inference verification remain pending; earlier tests used 65,536 tokens.
+
+Sam applied the context-only service change. Confirmed the running launchd environment has `OLLAMA_CONTEXT_LENGTH=262144`; a short request with no `num_ctx` override returned `LOCAL_OK`. `/api/ps` reports a 262,144-token context and 28,767,472,842 bytes (26.8 GiB) of GPU allocation. The cold load took 56.3 seconds; the 17-token prompt used thinking disabled. Ollama and llama-server still run as `_ollama`. This does not validate long-input throughput, memory peaks or full-window answer quality; 256k remains selected.

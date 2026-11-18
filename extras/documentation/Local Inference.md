@@ -6,7 +6,7 @@ The verified local coding path is Claude Code CLI → Ollama on loopback → a l
 
 The machine configuration verified on 18 November 2026 uses an Apple M1 Max, Ollama 0.40.16 and a hidden `_ollama` service account (UID/GID 503) with login shell `/usr/bin/false`. A system LaunchDaemon runs the CLI bundled in `/Applications/Ollama.app`; the Ollama GUI is not required or running for this setup. The API binds only to `127.0.0.1:11434`, with cloud models disabled. This account boundary is not an outbound-network firewall or a complete application sandbox; other local processes can reach the API.
 
-The selected packaged model is `qwen3.6:35b-a3b-q4_K_M`, manifest digest `07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522`. It uses GGUF Q4_K_M weights, approximately 24 GB of model data, the llama.cpp runner and Metal. The configured context is 65,536 tokens, with one loaded model and one parallel inference request. Models unload after five idle minutes by default; the small API server remains available.
+The selected packaged model is `qwen3.6:35b-a3b-q4_K_M`, manifest digest `07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522`. It uses GGUF Q4_K_M weights, approximately 24 GB of model data, the llama.cpp runner and Metal. The configured default context is 262,144 tokens (256k), with one loaded model and one parallel inference request. A short inference request using the server default passed at that allocation. Retain 256k unless measured operation proves unusable. Models unload after five idle minutes by default; the small API server remains available.
 
 The installed DMG was inspected before execution on 17 November: its SHA-256 was `b48d74a2d8c6a0592c816a4f85643d8d8608ad592abafbe95c04128a73c398c6`, matching the official release asset. App/disk-image signatures, stapled notarization tickets and Gatekeeper checks passed; 34 Mach-O items validated under Infra Technologies, Inc., team `3MU9H2V9Y9`. No build attestation was established. Those checks concern that downloaded version, not all future updates or proof that its source/build system is uncompromised. Recheck provenance and signatures when updating.
 
@@ -50,7 +50,7 @@ Its explicit environment includes:
 | `TMPDIR` | `/Volumes/Models/services/ollama/home/tmp` |
 | `HF_HUB_OFFLINE`, `TRANSFORMERS_OFFLINE` | `1` |
 | `OLLAMA_NO_CLOUD`, `OLLAMA_NOPRUNE` | `1` |
-| `OLLAMA_CONTEXT_LENGTH` | `65536` |
+| `OLLAMA_CONTEXT_LENGTH` | `262144` |
 | `OLLAMA_MAX_LOADED_MODELS`, `OLLAMA_NUM_PARALLEL` | `1` |
 | `PATH` | `/usr/bin:/bin:/usr/sbin:/sbin` |
 
@@ -122,12 +122,15 @@ Claude retains its normal user-global voice import, project guidance, installed 
 | --- | --- |
 | Packaged Qwen basic inference | Returned `LOCAL_OK`; foreground and launchd runs passed |
 | Launchd with all private runtime state inside external home | Real inference passed; initial load about 50 seconds |
+| Launchd with 256k default context | Returned `LOCAL_OK` without a request-level context override; `/api/ps` confirmed 262,144; cold load about 56 seconds and Ollama-reported GPU allocation about 26.8 GiB on a 64 GiB Mac |
 | Launchd stdout/stderr inside external home | Separate probe and working-service restart passed |
 | Claude Code CLI with packaged Qwen | Real instruction-file reads and baseline/Swift skill discovery passed, about 33 seconds |
 | Codex CLI with packaged Qwen | Read voice/baseline, but incorrectly reported both skills missing; about 185 seconds; exit 0 was not acceptance |
 | Hosted Claude Code and Codex controls | Both passed the earlier instruction-reading and discovery request |
 | Actual coding benchmark | Fixture supplied separately; no model coding score established by the above checks |
 | Claude.app Code tab with restricted server | Not tested; its settings and running work have not been changed |
+
+The 256k check used a 17-token prompt with thinking disabled. It establishes successful loading and short inference, not speed, memory demand or answer quality near a full 256k window.
 
 The CLI instruction checks ran before the storage move; launchd inference was verified separately. Those checks do not establish complete plugin/hook/MCP parity or every approval path. The timings used different harness contexts and are observations, not controlled speed comparisons.
 
