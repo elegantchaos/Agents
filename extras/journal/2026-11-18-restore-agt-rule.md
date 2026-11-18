@@ -1,0 +1,7 @@
+# Restore The agt Approval Rule
+
+The shared Codex `tools.rules` lost its blanket `agt` allow rule on 29 October, in the [PR 38 review fixes](2026-10-29-pr38-review-fixes.md), because a Codex allow rule runs a command outside the sandbox without prompting, and `agt` builds and tests other projects' code. Codex's runtime copy kept `agt` and gained `/Users/sam/.mint/bin/agt` and `/Users/sam/.mint/bin/rt`, so `agt rules status` reported it as differing from the shared file.
+
+Sam decided to keep the blanket approval: `agt` and `rt` are his own tools, built and trusted not to cause damage. The absolute-path variants stay too. They were added because Codex did not apply the bare rules to commands run by their Mint path, at a time when Codex could not see Mint's directory on `PATH`. Codex rule patterns are literal command tokens with no `~` expansion, and Sam's Mac user name is always `sam`, so the absolute form holds wherever it is needed. All three rules are now in the shared file, so synchronising no longer removes them.
+
+Whether the absolute-path rules are still needed is unsettled. `codex execpolicy check` in Codex CLI 0.169.0-alpha.11.1 reported no match for any command against any rule file, including `perl -0pi`, which `tools.rules` names exactly, so it gave no evidence either way. A live check in a Codex session, running `agt` by its Mint path without those rules, would settle it.
