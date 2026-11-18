@@ -4,6 +4,8 @@ This repository is the shared home for agent resources used across Elegant Chaos
 
 [Roadmap](ROADMAP.md): shared aims, current and next work items, later ideas and what is delivered. Open work lives in [work items](extras/work/README.md).
 
+[Documentation](extras/documentation/README.md): local inference setup and repeatable coding-harness evaluation.
+
 GitHub: [github.com/elegantchaos/Agents](https://github.com/elegantchaos/Agents)
 
 It provides:
