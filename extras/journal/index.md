@@ -6,7 +6,7 @@
 
 - [2026-11-18 Generated Localisation Symbols By Default](2026-11-18-generated-localisation-symbols.md): Swift localisation guidance makes generated catalog symbols the default, with named placeholders and the `defaultLocalization` requirement; Swift plugin 0.12.0.
 
-- [2026-11-18 Local Inference And Harness Evaluation](2026-11-18-local-inference.md): Documented restricted-account launchd operation and qualified a cross-harness Swift fixture; archived Bionic PR 50. Recorded a five-minute coding timeout and a thinking-off attempt that stopped with a plan and no edits. Desktop routing, useful model coding output, boot startup and durable AgentTools management remain unverified or pending.
+- [2026-11-18 Local Inference And Harness Evaluation](2026-11-18-local-inference.md): Documented restricted-account launchd operation and qualified a cross-harness Swift fixture; archived Bionic PR 50. Recorded a five-minute timeout, a thinking-off premature stop and an unbounded thinking-on completion with a reproduced overflow defect. Desktop routing, useful model coding output, boot startup and durable AgentTools management remain unverified or pending.
 
 - [2026-11-17 Roadmap Work Items](2026-11-17-roadmap-work-items.md): Adopted Bookish's work items without its release layer; the roadmap lists items in Now and Next, Later ideas and Delivered, and the slices delivered by #47 and the AgentTools #17 release left the plan.
 

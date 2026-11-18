@@ -126,8 +126,12 @@ Report all failed and not-observed dimensions beside a passing result. The exist
 
 The suite was qualified on 18 November 2026 with Swift 6.4.2 and AgentTools 4.1.0. The extracted baseline's 10 cases passed. Adding the independent 23 cases caused six expected missing-feature failures; a temporary reference implementation then passed all 33 cases. Full macOS validation of the restored baseline also passed through `agt validate --full`; formatting/lint checks passed. The reference solution is not committed with the fixture. This validates the fixture and oracle, not an agent's ability to complete the task; no hosted evaluation credits were consumed during qualification.
 
+The version 1 acceptance checks miss some decimal multiplication overflows, as the [unbounded Qwen run](../evaluations/results/2026-11-18-qwen-thinking-unbounded.md) demonstrated. Review numeric accumulation independently and label supplemental probes separately. Adding them to the fixed suite requires a new pinned suite revision; do not silently compare its count with earlier version 1 results.
+
 ## Recorded Runs
 
 - [Qwen smoke, 18 November 2026](../evaluations/results/2026-11-18-qwen-smoke.md): local Claude Code at 256k timed out at five minutes before editing or testing. No generated code; six acceptance failures on the unchanged baseline. No hosted spend.
 
 - [Qwen thinking off, 18 November 2026](../evaluations/results/2026-11-18-qwen-thinking-off.md): explicitly disabled thinking, no operator deadline; stopped normally after 149.70 seconds with a plan and no edits or tests. No hosted spend.
+
+- [Qwen thinking on, unbounded, 18 November 2026](../evaluations/results/2026-11-18-qwen-thinking-unbounded.md): completed after 1 hour 46 minutes; own tests and fixed acceptance passed, but three additional decimal-overflow probes failed. Needs rework. No hosted spend.
