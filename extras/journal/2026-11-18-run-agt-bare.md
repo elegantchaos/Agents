@@ -1,0 +1,7 @@
+# Run agt As A Command On Its Own
+
+Agents in Claude Code and Codex kept hitting sandbox failures with `agt` and repeating runs unsandboxed. A sandboxed probe from a Bookish session found two hard limits: full validation's checkout needs `.git/worktrees`, which the sandbox keeps read-only, and CoreSimulatorService refuses connections from inside it, so iOS simulators are unreachable whatever paths are writable. Targeted validation works sandboxed.
+
+Codex already allowed `agt` outside its sandbox through the shared rules, and AgentTools PR #18 adds the Claude Code equivalent, `sandbox.excludedCommands`. A live check had Codex run `agt` four ways: the bare command and its Mint path ran outside the sandbox, while `cd … && agt` and `agt … | tail` ran inside it. Codex's [rules documentation](https://learn.chatgpt.com/docs/agent-configuration/rules) explains why: it splits a linear chain joined by `&&`, `||`, `;` or `|` and applies the strictest result of its parts, and a redirect such as `2>&1` stops the split, so the whole `bash -lc` script must match. Claude Code likewise requires every part of a call to be excluded and keeps any call with a `cd` sandboxed. Codex has no setting that lists commands to run outside its sandbox; rules are its only mechanism. Allowing `cd` and filters such as `tail` as rules was rejected, because a redirect still defeats it and Claude Code differs.
+
+The Swift validation guidance now says to run `agt` as a command on its own and read its logs rather than filtering its output, and explains why. Swift plugin 0.12.1.
