@@ -25,3 +25,7 @@ AgentTools rejected the nested package without a Swift product at the Agents Git
 Closed [PR 50](https://github.com/elegantchaos/Agents/pull/50) after publishing annotated tag `archive/bionic-harness-2026-11-18`, resolving to exact PR head `5d69f3da1fdfdfd451af862b9df48c90cb2cf9e7`. The branch/worktree and experimental links remain. Harness/backend separation, invocation-local routing and tool-evidence guidance are carried into the current guides; Bionic-specific startup and LM Studio instructions remain archived.
 
 Completed [LI1](../work/Done/LI1%20Local%20Inference%20And%20Evaluation.md) and linked the documentation in the roadmap. Existing priorities stay intact. Codex's managed-worktree requirement conflicts with the project-local AgentTools creation rule; this task used the required runtime tool and explicitly worked in its returned checkout. Main and the retained Bionic checkout were not used for these edits.
+
+## Service Naming
+
+Prepared the requested permanent label `com.elegantchaos.ollama`, matching plist filename and `.ollama-setup` marker. Only the Label changes in the service configuration; account, model/cache/temp/log paths and startup policy stay unchanged. Updated the operating guide and prepared a one-off administrator rename command with a readiness check and restoration of the previous service on replacement startup failure. Application remains pending Sam's manual administrator command. Historical experimental scripts retain their original names and remain unsuitable for managing the renamed service.
