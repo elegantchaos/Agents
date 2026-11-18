@@ -52,6 +52,7 @@ What the shared guidance provides now. The journal holds the detail and evidence
 - **Records:** design confirmation gates, decision records revised in place, journal and index rules, and permalinks for historical links, repaired by `agt links --fix-history`. See [Decision revision policy](extras/journal/2026-11-11-decision-revision-policy.md) and [Historical links](extras/journal/2026-11-16-historical-links.md).
 - **Worktrees and validation:** `agt worktree create` and `agt prepare` for setup, Codex attachment of the resulting checkout, and `agt validate` with targeted, change-scoped and full modes. Fresh-session acceptance is WT1. See [Worktree preparation](extras/journal/2026-10-29-worktree-preparation.md) and [Validation modes](extras/journal/2026-11-09-validation-modes.md).
 - **Calendar and session tools:** guidance merged in Agents #40.
+- **Localisation:** generated string catalog symbols by default, text parameters and storage chosen by what callers pass and what the type does with the text, and the `defaultLocalization` that SwiftPM symbol generation needs. See [Generated localisation symbols](extras/journal/2026-11-18-generated-localisation-symbols.md).
 
 ## Keeping This Current
 
