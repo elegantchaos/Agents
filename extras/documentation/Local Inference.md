@@ -127,7 +127,7 @@ Claude retains its normal user-global voice import, project guidance, installed 
 | Claude Code CLI with packaged Qwen | Real instruction-file reads and baseline/Swift skill discovery passed, about 33 seconds |
 | Codex CLI with packaged Qwen | Read voice/baseline, but incorrectly reported both skills missing; about 185 seconds; exit 0 was not acceptance |
 | Hosted Claude Code and Codex controls | Both passed the earlier instruction-reading and discovery request |
-| Actual coding benchmark | Fixture supplied separately; no model coding score established by the above checks |
+| Coding smoke at 256k | First five-minute local Claude Code run timed out before edits or tests; see the [recorded run](../evaluations/results/2026-11-18-qwen-smoke.md) |
 | Claude.app Code tab with restricted server | Not tested; its settings and running work have not been changed |
 
 The 256k check used a 17-token prompt with thinking disabled. It establishes successful loading and short inference, not speed, memory demand or answer quality near a full 256k window.
