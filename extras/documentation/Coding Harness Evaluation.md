@@ -15,10 +15,11 @@ There is no maintained evaluation runner yet. These are fixtures, fixed prompts 
 | Discovery | Read-only instruction/skill check | New endpoint, harness configuration or plugin installation |
 | Smoke | One ByteCount feature task | Routine skills/plugin change; the default coding regression check |
 | Extended | Discovery, feature task and read-only parser review, each in a fresh session | Larger changes, investigating a regression or choosing a model |
+| Long-running | The same feature task with a longer allowance or explicitly no operator deadline | Assessing useful coding output when interactive speed is unnecessary |
 
 Run local smoke first. A hosted control is a separate opt-in operator action, never an automatic fallback from a local failure. Use one run per candidate for screening. Repeat only an important failure or close comparison, ideally three paired runs, and report the individual results rather than hiding variation in a single average. Keep prompt and final-answer sizes bounded. Read-only review can be expensive when its required skills load many references; reserve it for the extended tier.
 
-Record the actual hosted model and provider before launch, set a wall-clock limit (initial smoke limit: five minutes), and stop for repeated tool loops. For hosted Claude API billing, `--max-budget-usd` in print mode can bound reported API spend; it is not a precise Claude subscription-credit cap. Budget termination is a budget-limited result, not a coding-quality failure. Codex has no dollar cap established by this procedure: its operator must enforce the time limit and inspect usage. Do not invent a common cost from unlike subscription counters or provider token counts. A prepaid spending limit or account-level budget, where available, remains a separate control.
+Record the actual model and provider before launch and specify the time policy. The initial smoke limit is five minutes; long-running trials can have an agreed longer limit or no operator deadline. A smoke timeout records responsiveness under that limit, not coding incapability. Where slower or overnight work is acceptable, evaluate eventual correctness under the separately recorded longer allowance. Do not shorten an authorized long run merely because reasoning is slow; record demonstrable repeated tool failures separately. For hosted Claude API billing, `--max-budget-usd` in print mode can bound reported API spend; it is not a precise Claude subscription-credit cap. Budget termination is a budget-limited result, not a coding-quality failure. Codex has no dollar cap established by this procedure: its operator must enforce the time limit and inspect usage. Do not invent a common cost from unlike subscription counters or provider token counts. A prepaid spending limit or account-level budget, where available, remains a separate control.
 
 The complete skills and project context contribute input tokens even for a short task. Do not remove the very guidance under evaluation to make a run artificially cheap. Disable unrelated external MCP servers in the test session when appropriate, but hold that setting constant and record it. Whether hooks are enabled is part of the experiment; the previous transport controls disabled hooks and do not validate hook behavior.
 
@@ -62,11 +63,11 @@ For an interactive run, launch the selected harness in the worktree root, paste 
 For repeatable CLI capture, both tools support noninteractive runs:
 
 ```sh
-claude --print --no-session-persistence --output-format stream-json --verbose
+claude --print --output-format stream-json --verbose
 codex exec --ephemeral --sandbox workspace-write --json
 ```
 
-Supply the fixed prompt on standard input, save output outside the fixture and use the intended provider/model configuration. These are capture options, not complete permission presets. Use ordinary tool permissions or an explicitly reviewed fixture-scoped allowlist; noninteractive denials are reported as permission blockages. Do not bypass permissions globally. The local Claude environment must be applied to that invocation; the hosted invocation must not accidentally inherit it. Do not put hosted credentials in a local-server command or project file.
+Supply the fixed prompt on standard input, save output outside the fixture and use the intended provider/model configuration. Preserve Claude session persistence for long runs and record the session ID so an interrupted run can be resumed. A resumed or coached run must be labelled separately from a fresh fixed-prompt attempt. These are capture options, not complete permission presets. Use ordinary tool permissions or an explicitly reviewed fixture-scoped allowlist; noninteractive denials are reported as permission blockages. Do not bypass permissions globally. The local Claude environment must be applied to that invocation; the hosted invocation must not accidentally inherit it. Do not put hosted credentials in a local-server command or project file.
 
 The smoke task extends a parser from unsigned decimal byte counts to optional KiB/MiB units, with exact grammar and overflow handling. The model must add relevant regression tests, demonstrate red before implementation, format and obtain a green targeted validation result. The existing decimal tests and manifest must remain intact. Added tests should cover behavior, not mirror implementation.
 
@@ -128,3 +129,5 @@ The suite was qualified on 18 November 2026 with Swift 6.4.2 and AgentTools 4.1.
 ## Recorded Runs
 
 - [Qwen smoke, 18 November 2026](../evaluations/results/2026-11-18-qwen-smoke.md): local Claude Code at 256k timed out at five minutes before editing or testing. No generated code; six acceptance failures on the unchanged baseline. No hosted spend.
+
+- [Qwen thinking off, 18 November 2026](../evaluations/results/2026-11-18-qwen-thinking-off.md): explicitly disabled thinking, no operator deadline; stopped normally after 149.70 seconds with a plan and no edits or tests. No hosted spend.
