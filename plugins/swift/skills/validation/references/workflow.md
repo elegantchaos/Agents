@@ -39,6 +39,12 @@ Builds during validation may re-resolve Swift package dependencies and update Xc
 
 Targeted validation builds the named target from the live checkout, uncommitted edits included, for macOS, and runs the test targets that depend on it. When no package defines the target, it builds the Xcode scheme of that name for macOS.
 
+### Running agt In An Agent Sandbox
+
+Run `agt` as a command on its own: no `cd … &&` prefix, pipe, redirect (including `2>&1`) or command substitution. Change directory in a separate call first, and read results from the summary `agt` prints and the log files it names, not by filtering its output with `grep`, `tail` or `head`.
+
+Claude Code and Codex run `agt` outside their sandboxes only when the whole call is `agt`: Claude Code through `sandbox.excludedCommands`, which `agt sandbox configure` sets, and Codex through the allow rules in the shared runtime rules. Each checks every part of a chained call, so a `cd` or a filter adds a part that keeps it sandboxed, and a redirect stops Codex splitting the call at all. Inside a sandbox, targeted validation still works, but full validation cannot: iOS simulators are unreachable there, and the validation checkout's Git metadata is read-only. When `agt` reports that it is running inside another sandbox, check the command's form before suspecting the tool.
+
 Change-scoped and full validation check committed code only. They refuse a checkout with staged, unstaged or untracked changes, including in submodules, so commit first. They also refuse submodule commits that no remote branch contains, because the validation worktree fetches submodules from their remotes: push submodule work first, for example to its `integration/<app>` branch. They build the pinned commit in a separate validation worktree that AgentTools keeps under `.build/agt-validation/`, so later edits or branch switches do not affect a run.
 
 Change-scoped validation selects what the diff from the merge base with local `main` (or `origin/main`) touched: package targets and their dependent tests, whole packages for manifest, resolution or submodule changes, and the macOS product scheme for app sources and Xcode build inputs. It ignores documentation and other non-build changes. When nothing relevant changed, including on `main` itself, it runs nothing: a foreground run exits successfully but says it produced no validation evidence, and a background run is recorded as finding nothing, which `--wait` does not accept. Never report that, or any change-scoped result, as full validation.

@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-18 Run agt As A Command On Its Own](2026-11-18-run-agt-bare.md): runtimes exempt only a plain `agt` command from their sandboxes, as a live Codex check and both runtimes' documentation show; validation guidance now says to run it alone and read its logs; Swift plugin 0.12.1.
+
 - [2026-11-18 Restore The agt Approval Rule](2026-11-18-restore-agt-rule.md): blanket `agt` allow rule restored at Sam's request, with Mint-path `agt` and `rt` variants; whether those variants are still needed awaits a live Codex check, as `execpolicy check` matched nothing.
 
 - [2026-11-18 Generated Localisation Symbols By Default](2026-11-18-generated-localisation-symbols.md): Swift localisation guidance makes generated catalog symbols the default, with named placeholders and the `defaultLocalization` requirement; Swift plugin 0.12.0.
