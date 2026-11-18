@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-18 Restore The agt Approval Rule](2026-11-18-restore-agt-rule.md): blanket `agt` allow rule restored at Sam's request, with Mint-path `agt` and `rt` variants; whether those variants are still needed awaits a live Codex check, as `execpolicy check` matched nothing.
+
 - [2026-11-18 Generated Localisation Symbols By Default](2026-11-18-generated-localisation-symbols.md): Swift localisation guidance makes generated catalog symbols the default, with named placeholders and the `defaultLocalization` requirement; Swift plugin 0.12.0.
 
 - [2026-11-17 Roadmap Work Items](2026-11-17-roadmap-work-items.md): Adopted Bookish's work items without its release layer; the roadmap lists items in Now and Next, Later ideas and Delivered, and the slices delivered by #47 and the AgentTools #17 release left the plan.
