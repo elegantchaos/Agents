@@ -29,3 +29,5 @@ Completed [LI1](../work/Done/LI1%20Local%20Inference%20And%20Evaluation.md) and 
 ## Service Naming
 
 Prepared the requested permanent label `com.elegantchaos.ollama`, matching plist filename and `.ollama-setup` marker. Only the Label changes in the service configuration; account, model/cache/temp/log paths and startup policy stay unchanged. Updated the operating guide and prepared a one-off administrator rename command with a readiness check and restoration of the previous service on replacement startup failure. Application remains pending Sam's manual administrator command. Historical experimental scripts retain their original names and remain unsuitable for managing the renamed service.
+
+Sam ran the rename successfully. A read-only check confirmed the permanent label running, the previous label absent, the renamed plist and setup marker present, and API version 0.40.16 responding. Updated the operating guide to describe the installed state. No inference rerun was needed for the label-only change.

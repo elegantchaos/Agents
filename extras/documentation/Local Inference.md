@@ -23,7 +23,7 @@ The external APFS volume is mounted at `/Volumes/Models`, with filesystem owners
 | Ollama key/configuration directory | `/Volumes/Models/services/ollama/home/.ollama` |
 | Shared MLX weights | `/Volumes/Models/mlx/mlx-community/` |
 | Installed executable | `/Applications/Ollama.app/Contents/Resources/ollama` |
-| Launchd definition after rename | `/Library/LaunchDaemons/com.elegantchaos.ollama.plist` |
+| Installed launchd definition | `/Library/LaunchDaemons/com.elegantchaos.ollama.plist` |
 
 The machine-specific paths above document the installed service, not portable installation defaults. The executable, OS account record and launchd definition remain on the startup disk; runtime models, cache, temporary files and logs are on Models. Shared MLX weights remain outside the private service home. Keeping weights outside it has not been established as suitable for unattended daemon inference, even when ordinary account reads succeed.
 
@@ -35,7 +35,7 @@ Volume ownership initially exposed old stored UID 99 entries, which can behave a
 
 ## Service Definition
 
-The permanent label is `com.elegantchaos.ollama`. The rename from the earlier experimental label is prepared but still awaits the administrator command on this machine. It runs `ollama serve` directly as `_ollama`, group `_ollama`, with working directory `/`, `RunAtLoad=false` and `KeepAlive=false`. It is loaded and started manually; it does not yet start after reboot or restart automatically after a crash. Terminal closure does not stop it.
+The installed label is `com.elegantchaos.ollama`. It runs `ollama serve` directly as `_ollama`, group `_ollama`, with working directory `/`, `RunAtLoad=false` and `KeepAlive=false`. It is loaded and started manually; it does not yet start after reboot or restart automatically after a crash. Terminal closure does not stop it.
 
 Its explicit environment includes:
 
@@ -56,11 +56,11 @@ Its explicit environment includes:
 
 `OLLAMA_NO_CLOUD` disables Ollama cloud features, not all network activity. The Hugging Face offline settings do not prohibit Ollama registry downloads. Downloads initiated through the API are written by the restricted server into its private store. The service does not run the GUI updater.
 
-The root-owned setup marker is `/Volumes/Models/services/ollama/.ollama-setup` after that rename. Historical one-off scripts retain their original experiment names and must not be used to manage the renamed service.
+The root-owned setup marker is `/Volumes/Models/services/ollama/.ollama-setup`. Historical one-off scripts retain their original experiment names and must not be used to manage the renamed service.
 
 ## Operate The Installed Service
 
-These commands work in fish, zsh and sh, and assume the permanent-name service definition above has been installed. They do not install or repair the service. Use administrator commands manually; the current setup is not yet an `agt inference` feature.
+These commands work in fish, zsh and sh, and assume the installed service definition above. They do not install or repair the service. Use administrator commands manually; the current setup is not yet an `agt inference` feature.
 
 Inspect launchd and check the API:
 
