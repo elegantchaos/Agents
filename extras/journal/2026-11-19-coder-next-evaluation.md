@@ -13,3 +13,11 @@ Sam requested retaining model outputs for posterity, with a possible permanent c
 ## Archive Relocation
 
 Sam corrected the volume root’s owner to Sam, retaining `_ollama` ownership of its private home. Moved the archive to `/Volumes/Models/evaluations/byte-count-v1/Archive/`, verifying all 103 files (6,022,421 bytes) by SHA-256 and file mode before removing the original. The destination is owned by Sam and has mode `700`. Updated the current operating path and the evaluation record; no service permissions or generated model output changed.
+
+## Local AI Mac Guide
+
+Read the linked [local-ai-mac guide](https://github.com/dmitryryabkov/local-ai-mac/blob/37f123969d548a34df8fc205015b49339be4383c/README.md) and checked the model-specific advice against Qwen's own cards. Context headroom, cache reuse and explicit server profiles are useful priorities. The completed archive relocation remains separate from any runtime tuning; no inference settings changed during this research.
+
+The earlier 35B runner logs show the general-thinking profile: temperature 1.0, top-p 0.95, top-k 20, presence penalty 1.5. [Qwen3.6's coding recommendation](https://huggingface.co/Qwen/Qwen3.6-35B-A3B#best-practices) instead uses temperature 0.6 and presence penalty 0, with the same top-p/top-k and min-p 0. Qwen also documents preserved thinking for agent workloads. Neither a coding-specific profile nor effective historical-thinking preservation was explicitly established by our earlier trials; these are potential follow-up variables, not proven explanations for the failures. Coder Next's logged temperature 1.0, top-p 0.95 and top-k 40 already match [its official recommendation](https://huggingface.co/Qwen/Qwen3-Coder-Next#best-practices).
+
+The proposed next baseline is the existing 35B GGUF through direct llama-server at 64k and one sequence, checking tool calls, actual sampling and cache reuse before another full coding task. Keep min-p 0 where the model card requests it. Treat global GPU wired-memory changes, speculative/MTP decoding and MLX comparisons as separate later experiments; blanket speedup and quantisation-accuracy percentages from the guide are not established results for this machine.
