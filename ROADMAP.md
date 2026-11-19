@@ -32,7 +32,6 @@ In rough order of need.
 | [CC1: Claude Code Allow Rules](extras/work/CC1%20Claude%20Code%20Allow%20Rules.md) | Proposed |
 | [TR1: SwiftUI Trace Command](extras/work/TR1%20SwiftUI%20Trace%20Command.md) | Proposed |
 | [LP1: Language Skills As Plugins](extras/work/LP1%20Language%20Skills%20As%20Plugins.md) | Proposed |
-| [VO1: Personal Voice Decision](extras/work/VO1%20Personal%20Voice%20Decision.md) | Proposed |
 
 ## Later
 

@@ -16,6 +16,18 @@
 2. Inspect divergence from the intended base. Integrate the base when needed for authorized work; being behind alone does not require an unsolicited pull.
 3. When publishing commits, validate and push the intended head. Confirm the branch before pushing when needed.
 4. Write a concise, factual description explaining the change and its purpose, with explicit validation results and gaps.
+   - Open with one short paragraph a reviewer can read in seconds: what changed, why, and anything they must act on, such as a validation gap or merge prerequisite. Keep it visible.
+   - Put the remaining detail, such as per-file changes, reasoning and full validation results, in a collapsed block after it. Use `Details` as the summary text, never a model or agent name. Leave a blank line after `</summary>` and before `</details>`, or GitHub shows the Markdown inside as plain text. Omit the block when the paragraph already says everything.
+
+     ```markdown
+     <details>
+     <summary>Details</summary>
+
+     ...
+
+     </details>
+     ```
+
    - Use a structured body argument when a suitable connector supports the operation.
    - For `gh pr create` or `gh pr edit`, write the body safely to a UTF-8 file with real newlines and pass `--body-file`. Do not use inline `--body` for multiline Markdown.
    - Use file tools, a quoted heredoc, or a proper argument API to create the file without interpolating backticks, dollar signs, or command substitutions. `--body-file` does not make an unsafe file-writing command safe.
