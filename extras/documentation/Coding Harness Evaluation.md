@@ -76,9 +76,12 @@ After the model stops, preserve its original diff, transcript and test output be
 ```sh
 cp ~/.local/share/agents/extras/evaluations/checks/ByteCountAcceptanceTests.swift Tests/ByteCountTests/ByteCountAcceptanceTests.swift
 agt validate --target ByteCount
+swift test --filter ByteCountAcceptanceTests
 ```
 
 Run these commands at the extracted fixture worktree root. The acceptance source must match the pinned Agents revision, not a newer canonical checkout. These checks must fail against the baseline decimal-only implementation and pass against a correct feature implementation. Run them once on the untouched baseline when qualifying the suite, then separately on each candidate's output. They cover grammar, boundary values and multiplication overflow, supplementing the model's tests. A crash, deleted/disabled check or public-API change fails correctness. Preserve the candidate's added tests for a separate quality assessment; an oracle pass alone is insufficient.
+
+`agt validate --target ByteCount` selects the `ByteCountTests` suite. Because the independent checks live in a separate `ByteCountAcceptanceTests` suite, run the explicit `swift test --filter ByteCountAcceptanceTests` command as well; a green `agt validate` alone does not establish that the evaluator suite ran.
 
 For the extended review task, leave the fixture unchanged and review `review-candidate.md`. Useful concrete findings include: empty/space-only input traps at `parts[0]`; valid joined forms such as `1KiB` and tab-separated input are rejected; unknown units or extra components such as `1 KB` and `1 KiB junk` can return a bare count; and valid UInt64 numbers can trap on multiplication, for example `18014398509481984 KiB`. Count related grammar examples as one finding rather than inflating the score. Wrong findings, missing impacts and unsupported assertions also count. Do not run intentionally trapping review code.
 
@@ -126,7 +129,7 @@ Report all failed and not-observed dimensions beside a passing result. The exist
 
 Preserve each run's original patch, generated source/tests, transcript, invocation settings and validation evidence before evaluator edits. Retain incomplete and operator-stopped attempts with their actual stop reason; do not overwrite them with a later attempt. Raw transcripts can contain personal instruction context and should stay private unless reviewed for publication.
 
-Available runs and the pinned suite are archived privately under `/Volumes/Models/evaluations/byte-count-v1/Archive/2026-11-18/`, including the Coder Next run spanning 18–19 November. The current archive is outside worktree scratch storage so cleanup does not remove the evidence. A permanent evaluation repository and selected GitHub publication are deferred; this documentation repository does not contain the raw archive. The earlier one-hour attempt was intentionally deleted before this retention policy and is unavailable.
+Available runs and the pinned suite are archived privately under `/Volumes/Models/evaluations/byte-count-v1/Archive/`, including the Coder Next run spanning 18–19 November. The current archive is outside worktree scratch storage so cleanup does not remove the evidence. A permanent evaluation repository and selected GitHub publication are deferred; this documentation repository does not contain the raw archive. The earlier one-hour attempt was intentionally deleted before this retention policy and is unavailable.
 
 ## Suite Qualification
 
@@ -137,6 +140,8 @@ The version 1 acceptance checks miss some decimal multiplication overflows, as t
 ## Recorded Runs
 
 - [Qwen3.6 direct-server checks, 19 November 2026](../evaluations/results/2026-11-19-qwen36-direct-64k.md): 35B at 64k passed short API and tool checks, with 57–64 tokens/second generation samples; real Claude Code required system-message normalization. Transport calibration only, not a coding score.
+
+- [Qwen3.6 Ollama coding evaluation, 19 November 2026](../evaluations/results/2026-11-19-qwen36-ollama-64k-coding.md): completed in 28 minutes, but the generated parser trapped on decimal overflow and a partial unit; two model-authored expectations were also wrong. The test crash was reproducible as a code defect, not a sandbox block.
 
 - [Qwen smoke, 18 November 2026](../evaluations/results/2026-11-18-qwen-smoke.md): local Claude Code at 256k timed out at five minutes before editing or testing. No generated code; six acceptance failures on the unchanged baseline. No hosted spend.
 

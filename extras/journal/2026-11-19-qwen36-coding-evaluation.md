@@ -1,0 +1,9 @@
+# Qwen3.6 Coding Evaluation
+
+Ran the fresh ByteCount feature task through local Ollama using Claude Code as the harness, with Qwen3.6 35B GGUF, thinking enabled and a 64k context. The model finished in 27 minutes 57 seconds without an operator deadline. Its source built and formatted, but the tests terminated with signal 5.
+
+The final-digit addition in decimal parsing traps on `18446744073709551616`; a focused test for `1Ki` also traps on an out-of-range array access. Selected tests ran successfully in the same environment, and the two crashes reproduce on those inputs, so sandboxing does not explain this failure. Two model-authored tests also expected `0KiB` to be rejected and a trailing newline to be accepted; each expectation is contrary to the task contract. The model noticed the first mismatch in its final response but left the test unchanged.
+
+The model read VOICE.md, COMMON.md and fixture AGENTS.md and stayed within the fixture, but did not load the baseline or Swift skills required by its instructions. It attempted a red test run before implementation, but sandbox permissions denied that direct invocation, so no relevant red result was demonstrated. Its final attribution of the later test crash to sandboxing was not supported by the independent reproduction.
+
+The detailed [run record](../evaluations/results/2026-11-19-qwen36-ollama-64k-coding.md) includes configuration, code-quality findings and independent acceptance results. Raw evidence, the original candidate snapshot, evaluator checks and Ollama logs remain private under `/Volumes/Models/evaluations/byte-count-v1/Archive/2026-11-19/qwen36-ollama-64k-coding/`. No generated code was repaired. The run also exposed a process gap: `agt validate --target ByteCount` does not select the separate acceptance suite, so the evaluation guide now requires an explicit filtered `swift test` command for that suite.
