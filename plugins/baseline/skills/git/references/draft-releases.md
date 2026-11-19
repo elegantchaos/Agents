@@ -20,7 +20,7 @@
 3. Generate notes using repository release tooling when available, such as `rt changes` for projects using ReleaseTools. Otherwise derive them from the verified commit range.
    - Write notes safely as UTF-8 with real newlines using file tools, a quoted heredoc, or a proper argument API that avoids shell interpolation.
    - Store notes in the harness-provided scratchpad directory, otherwise `<repository>/.build/tmp/`; create the directory if needed. Do not use a system temporary directory.
-4. Improve the notes with a concise human-readable opening summary and changes supported by the commit range.
+4. Improve the notes with a concise human-readable opening summary and changes supported by the commit range. Keep the summary visible, and when the list of changes runs past a few lines, collapse it in a `<details>` block as described for PR descriptions in [pull-requests.md](pull-requests.md).
 5. Create or update the intended draft.
    - On creation, pass the intended tag and explicit target commit: `gh release create <tag> --draft --target <commit-sha> --title <title> --notes-file <notes-path>`.
    - Add `--verify-tag` when using an existing remote tag. Verify its commit separately; `--target` does not move an existing tag.
