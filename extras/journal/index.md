@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-19 Review Report Handoff](2026-11-19-review-report-handoff.md): Review reports default to `Extras/Reviews/` and are committed and pushed to the reviewed branch for the next agent. Baseline plugin 0.8.37.
+
 - [2026-11-19 Collapsed PR And Release Detail](2026-11-19-collapsed-descriptions.md): PR descriptions keep one visible paragraph and collapse the rest in a `Details` block; long release change lists collapse the same way; VO1 closed as declined; baseline plugin 0.8.36.
 
 - [2026-11-18 Run agt As A Command On Its Own](2026-11-18-run-agt-bare.md): runtimes exempt only a plain `agt` command from their sandboxes, as a live Codex check and both runtimes' documentation show; validation guidance now says to run it alone and read its logs; Swift plugin 0.12.1.
