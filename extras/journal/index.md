@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-19 Direct Local Server Checks](2026-11-19-direct-server-checks.md): 35B at 64k passed authentication, preserved-thinking and API tool checks; Claude's embedded system messages required temporary normalization for a successful 16-second read-tool cycle. Recorded short throughput samples and partial cache reuse; no coding-quality score.
+
 - [2026-11-19 Coder Next Evaluation Stopped](2026-11-19-coder-next-evaluation.md): Operator stopped the 256k run after 14 hours 45 minutes with compiling code and crashing tests; preserved available outputs privately, unloaded the model and recorded runtime tuning possibilities; subsequently moved the verified archive onto the Models volume.
 
 - [2026-11-18 Run agt As A Command On Its Own](2026-11-18-run-agt-bare.md): runtimes exempt only a plain `agt` command from their sandboxes, as a live Codex check and both runtimes' documentation show; validation guidance now says to run it alone and read its logs; Swift plugin 0.12.1.

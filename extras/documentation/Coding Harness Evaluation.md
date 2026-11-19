@@ -136,6 +136,8 @@ The version 1 acceptance checks miss some decimal multiplication overflows, as t
 
 ## Recorded Runs
 
+- [Qwen3.6 direct-server checks, 19 November 2026](../evaluations/results/2026-11-19-qwen36-direct-64k.md): 35B at 64k passed short API and tool checks, with 57–64 tokens/second generation samples; real Claude Code required system-message normalization. Transport calibration only, not a coding score.
+
 - [Qwen smoke, 18 November 2026](../evaluations/results/2026-11-18-qwen-smoke.md): local Claude Code at 256k timed out at five minutes before editing or testing. No generated code; six acceptance failures on the unchanged baseline. No hosted spend.
 
 - [Qwen thinking off, 18 November 2026](../evaluations/results/2026-11-18-qwen-thinking-off.md): explicitly disabled thinking, no operator deadline; stopped normally after 149.70 seconds with a plan and no edits or tests. No hosted spend.
