@@ -126,7 +126,7 @@ Report all failed and not-observed dimensions beside a passing result. The exist
 
 Preserve each run's original patch, generated source/tests, transcript, invocation settings and validation evidence before evaluator edits. Retain incomplete and operator-stopped attempts with their actual stop reason; do not overwrite them with a later attempt. Raw transcripts can contain personal instruction context and should stay private unless reviewed for publication.
 
-Available runs and the pinned suite are archived locally under `~/Developer/Evaluations/ByteCount-v1/Archive/2026-11-18/`, including the Coder Next run spanning 18–19 November. The current archive is outside worktree scratch storage so cleanup does not remove the evidence. A permanent evaluation repository and selected GitHub publication are deferred; this documentation repository does not contain the raw archive. The earlier one-hour attempt was intentionally deleted before this retention policy and is unavailable.
+Available runs and the pinned suite are archived privately under `/Volumes/Models/evaluations/byte-count-v1/Archive/2026-11-18/`, including the Coder Next run spanning 18–19 November. The current archive is outside worktree scratch storage so cleanup does not remove the evidence. A permanent evaluation repository and selected GitHub publication are deferred; this documentation repository does not contain the raw archive. The earlier one-hour attempt was intentionally deleted before this retention policy and is unavailable.
 
 ## Suite Qualification
 

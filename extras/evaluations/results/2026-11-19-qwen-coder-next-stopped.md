@@ -36,3 +36,7 @@ The test Claude process was terminated at Sam's request, resulting in exit 143 w
 The final code, original patch/status, complete transcript, invocation/session metadata, last build/test logs, SHA-256 snapshot manifest and initial transport attempt are preserved privately under `~/Developer/Evaluations/ByteCount-v1/Archive/2026-11-18/qwen-coder-next-unbounded/`. An earlier in-progress checkpoint is retained alongside it. The fixture worktree also keeps the generated files unmodified.
 
 The archive includes the earlier available Qwen attempts, fixed task, prompts and acceptance checks. The previously deleted one-hour run remains unavailable, as Sam had explicitly requested its removal before this retention policy. Raw transcripts may contain personal instruction context and are not included in this repository. Creating a permanent evaluation repository and publishing selected material to GitHub is deferred. No hosted inference cost was incurred by the model calls.
+
+## Archive Relocation
+
+On 19 November, after Sam took ownership of the volume root, moved the private archive to `/Volumes/Models/evaluations/byte-count-v1/Archive/`. All 103 files (6,022,421 bytes) matched their source SHA-256 hashes and file modes before the original was removed. The archive remains owned by Sam with directory mode `700`; Ollama service ownership was unchanged. The run evidence is now under the `2026-11-18/qwen-coder-next-unbounded/` subdirectory there.
