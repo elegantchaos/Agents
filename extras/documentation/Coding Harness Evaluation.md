@@ -122,6 +122,12 @@ Blockages, misses, false positives and remaining limitations:
 
 Report all failed and not-observed dimensions beside a passing result. The existing file-read controls are a useful discovery baseline, not scores for this new coding suite. No hosted or local model coding result is claimed until its exact fixture, prompt, context and test evidence are recorded.
 
+## Retaining Outputs
+
+Preserve each run's original patch, generated source/tests, transcript, invocation settings and validation evidence before evaluator edits. Retain incomplete and operator-stopped attempts with their actual stop reason; do not overwrite them with a later attempt. Raw transcripts can contain personal instruction context and should stay private unless reviewed for publication.
+
+Available runs and the pinned suite are archived locally under `~/Developer/Evaluations/ByteCount-v1/Archive/2026-11-18/`, including the Coder Next run spanning 18–19 November. The current archive is outside worktree scratch storage so cleanup does not remove the evidence. A permanent evaluation repository and selected GitHub publication are deferred; this documentation repository does not contain the raw archive. The earlier one-hour attempt was intentionally deleted before this retention policy and is unavailable.
+
 ## Suite Qualification
 
 The suite was qualified on 18 November 2026 with Swift 6.4.2 and AgentTools 4.1.0. The extracted baseline's 10 cases passed. Adding the independent 23 cases caused six expected missing-feature failures; a temporary reference implementation then passed all 33 cases. Full macOS validation of the restored baseline also passed through `agt validate --full`; formatting/lint checks passed. The reference solution is not committed with the fixture. This validates the fixture and oracle, not an agent's ability to complete the task; no hosted evaluation credits were consumed during qualification.
@@ -135,3 +141,5 @@ The version 1 acceptance checks miss some decimal multiplication overflows, as t
 - [Qwen thinking off, 18 November 2026](../evaluations/results/2026-11-18-qwen-thinking-off.md): explicitly disabled thinking, no operator deadline; stopped normally after 149.70 seconds with a plan and no edits or tests. No hosted spend.
 
 - [Qwen thinking on, unbounded, 18 November 2026](../evaluations/results/2026-11-18-qwen-thinking-unbounded.md): completed after 1 hour 46 minutes; own tests and fixed acceptance passed, but three additional decimal-overflow probes failed. Needs rework. No hosted spend.
+
+- [Qwen Coder Next, operator-stopped, 19 November 2026](../evaluations/results/2026-11-19-qwen-coder-next-stopped.md): stopped after 14 hours 45 minutes at 256k; 36 tool calls, compiling code but crashing tests. Incomplete configuration evaluation, with original output archived privately.
