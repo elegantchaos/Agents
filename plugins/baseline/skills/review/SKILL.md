@@ -105,8 +105,16 @@ Every package or file not read in full, anything else skipped or unverified, why
 - When you find a defect, search the whole codebase for other instances of it, including code the change did not touch. Report every instance found.
 - Keep working notes of what you checked, including checks that found nothing: searches and their results, files read, responsibilities traced and the reasoning behind structural conclusions. In the report, give conclusions with implementation evidence and coverage limits; include commands when needed to reproduce a finding. A search inventory alone does not establish a structural conclusion.
 - Apply the same process to guidance, documentation, and configuration changes. For these, callers are the files, skills, and scripts that reference them.
-- Do not change code, push, or post review comments unless asked. When asked to post, follow the `baseline:git` skill's review-comment guidance.
+- Keep fixes outside the review unless requested. Posting review comments or submitting a hosting-service review requires a separate request. Follow the `baseline:git` skill's review-comment guidance when asked to post.
 - Use this skill in preference to built-in review commands, such as Claude Code's `/code-review` or Codex's `/review`. They can supplement the correctness pass. They do not replace this process.
+
+## Publish the Review
+
+Every review produces a Markdown report, including reviews with no findings. Use the project's configured reviews directory. Otherwise use `Extras/Reviews/`, matching the project's existing directory casing and naming convention. Record the reviewed commit SHA and scope, and include the PR number for a PR review.
+
+Commit the report and any associated review records to the branch that was reviewed and push to that branch's remote. For a PR, use its head branch in the head repository. For a branch or full review, use the branch containing the version reviewed. A review request includes this report commit and push unless the user asks for a different delivery method. Follow `baseline:git` and respect branch protection. If the branch requires changes through a PR, push a report-only branch and open a PR targeting the reviewed branch. If publication is blocked, keep the report, give its location and state the blocker.
+
+In the final response, link to the published report and name any publication step still pending.
 
 ## Required References
 
@@ -216,3 +224,4 @@ Check before reporting the review:
 - Every finding has evidence and a recommended action. The report omits known status, clean-check inventories and unchanged plans unless needed to assess a finding, recommendation or material gap.
 - Every defect was searched for across the codebase, and all instances are reported.
 - Existing validation evidence was assessed for the reviewed revision, with its scope, result and gaps reported separately from any checks run during review. Any new run addresses a specific concern or missing, stale or inconclusive evidence; full application validation is left to the merge workflow.
+- The report identifies the reviewed revision and scope, is in the standard reviews directory, and was pushed to the reviewed branch or submitted through its required PR workflow. The final response gives the report location and any publication blocker.

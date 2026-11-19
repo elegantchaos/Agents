@@ -5,7 +5,7 @@ description: Shapes design documentation and maintains project journals, decisio
 
 # Project Records
 
-Apply the design-document guidance whenever writing or revising a design document. Create and maintain journals, decision logs and review logs only when the project enables them in `Project Specific Rules`. If the repository has a root `Extras/` folder, use `Extras/Journal/`, `Extras/Decisions/` and `Extras/Reviews/`; otherwise use its configured locations.
+Apply the design-document guidance whenever writing or revising a design document. Create and maintain journals and decision logs only when the project enables them in `Project Specific Rules`. If the repository has a root `Extras/` folder, use `Extras/Journal/` and `Extras/Decisions/`; otherwise use its configured locations. Follow `baseline:review` for saving and publishing review reports.
 
 Each kind of record has one job:
 
