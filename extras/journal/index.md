@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-19 Tighten Codex Brew Rules](2026-11-19-tighten-codex-brew-rules.md): Codex no longer allows `brew install --HEAD` or `brew reinstall` for any formula without a prompt; a read-only `brew info` replaces the `xpkg-git` rules.
+
 - [2026-11-19 Review Report Handoff](2026-11-19-review-report-handoff.md): Review reports default to `Extras/Reviews/` and are committed and pushed to the reviewed branch for the next agent. Baseline plugin 0.8.37.
 
 - [2026-11-19 Collapsed PR And Release Detail](2026-11-19-collapsed-descriptions.md): PR descriptions keep one visible paragraph and collapse the rest in a `Details` block; long release change lists collapse the same way; VO1 closed as declined; baseline plugin 0.8.36.
