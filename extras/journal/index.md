@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-19 Coder Next Evaluation Stopped](2026-11-19-coder-next-evaluation.md): Operator stopped the 256k run after 14 hours 45 minutes with compiling code and crashing tests; preserved available outputs privately, unloaded the model and recorded runtime tuning possibilities; subsequently moved the verified archive onto the Models volume.
+
 - [2026-11-18 Run agt As A Command On Its Own](2026-11-18-run-agt-bare.md): runtimes exempt only a plain `agt` command from their sandboxes, as a live Codex check and both runtimes' documentation show; validation guidance now says to run it alone and read its logs; Swift plugin 0.12.1.
 
 - [2026-11-18 Restore The agt Approval Rule](2026-11-18-restore-agt-rule.md): blanket `agt` allow rule restored at Sam's request, with Mint-path `agt` and `rt` variants; whether those variants are still needed awaits a live Codex check, as `execpolicy check` matched nothing.
