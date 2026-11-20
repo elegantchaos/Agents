@@ -13,7 +13,7 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Never hard-wrap Markdown to a column width: write each paragraph and list item on one line, even in a file that is already wrapped.
 - Follow the spirit of all guidelines, not just the letter. Avoid workarounds which superficially make a pattern fit by adding a forwarding or translation layer.
 - Work is complete only when changed files have been checked against the required skills' checklists, and all lint findings are fixed.
-- Work on a branch and worktree, and use a pull request for every change to `main`.
+- Work on a branch and worktree, and use a pull request for every change to `main`, unless the project's AGENTS.md says to work in the main checkout or commit to `main` directly.
 - Create new worktrees with `agt worktree create <name>` in the project's `.worktrees/<tree>` directory. In Codex, attach the resulting checkout with `attach_worktree`; follow `baseline:git` for setup, authorization and runtime integration.
 - Do not merge until the repository's required full validation has passed for the PR's latest commit that affected the build; later documentation-only commits do not need it again.
 
