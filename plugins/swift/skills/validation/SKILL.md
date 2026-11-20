@@ -25,7 +25,7 @@ Do not use it for Python, Ruby, JavaScript, or other non-Swift projects unless t
 ## Workflow
 
 1. Run commands from the repository root.
-2. Get `agt` with this skill's `scripts/ensure-agt.sh`, as described in `references/workflow.md`.
+2. Get `agt` with this skill's copy of `scripts/ensure-agt.sh`, following `baseline:tools` for missing commands and blocked installs.
 3. Prepare a fresh checkout before the first test run, as described in `references/workflow.md`. `agt worktree create` does this during setup; use `agt prepare` for an existing checkout.
 4. Follow the Swift validation workflow in `references/workflow.md`.
    Run every test through `agt validate`, using `--target` for a single target; never run `swift test` or `xcodebuild` directly.

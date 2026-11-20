@@ -1,0 +1,4 @@
+interface:
+  display_name: "Standard Tools"
+  short_description: "Installing and updating Mint, agt, rt and swift ci"
+  default_prompt: "Use $baseline:tools to make sure the standard tools are installed and up to date."

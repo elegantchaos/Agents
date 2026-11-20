@@ -24,7 +24,7 @@ Clone this repository to:
 `agt`, from [AgentTools](https://github.com/elegantchaos/AgentTools), manages shared resources. With [Homebrew](https://brew.sh) installed, install it, or update it to the latest release, with the `baseline` plugin's helper, which installs Mint first if it is missing and prints the path to `agt` (usually `~/.mint/bin/agt`):
 
 ```bash
-~/.local/share/agents/plugins/baseline/skills/refresh/scripts/ensure-agt.sh --update
+~/.local/share/agents/plugins/baseline/skills/tools/scripts/ensure-agt.sh --update
 ```
 
 The commands below assume `agt` is on your `PATH`. If `ensure-agt.sh` printed `~/.mint/bin/agt`, add `~/.mint/bin` to your `PATH` first.

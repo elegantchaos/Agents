@@ -51,8 +51,7 @@ Projects opt in to a development journal or decision log through `Project Specif
 
 ## Tool Paths
 
-- At the start of every session, before other work, run `mint install elegantchaos/AgentTools` and `mint install elegantchaos/ReleaseTools`, which change nothing when the newest release is already installed. They need network access and write outside the workspace, so when sandboxed, request outside-sandbox execution through the runtime's approval flow. If they cannot run, continue with the installed tools and report that they may be out of date. Skills assume the latest release and do not name minimum tool versions.
-- When a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing.
+- At the start of every session, before other work, run `mint install elegantchaos/AgentTools` and `mint install elegantchaos/ReleaseTools`, which change nothing when the newest release is already installed. Follow the `baseline:tools` skill to find, install or update these and the other standard tools, including when the sandbox blocks an install.
 - Run Python-based agent utilities, including skill validators, using `~/.local/share/agents/.venv/bin/python` explicitly. Use each project's own environment for project Python code. If the shared environment or a required dependency is missing, report it.
 - Install shared Python agent dependencies from `~/.local/share/agents/requirements-agent-tools.lock` with `--require-hashes --only-binary=:all:`. Review version and hash changes before updating the lock file.
 - Write temporary files to the harness-provided scratchpad directory if one exists; otherwise use `<repository>/.build/tmp/`, creating it if needed. Do not use `/tmp`, `/private/tmp`, or other system temporary directories, which can trigger unnecessary approval prompts.

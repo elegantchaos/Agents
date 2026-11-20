@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-20 Standard Tools Skill](2026-11-20-tools-skill.md): `baseline:tools` covers installing, finding and updating Mint, `agt`, `rt` and `swift ci`, owns `ensure-agt.sh`, and settles what to do when an install is blocked; needs an AgentTools release with the new canonical path; baseline plugin 0.8.38, Swift plugin 0.12.2.
+
 - [2026-11-20 One Worktree Per Session](2026-11-20-session-worktrees.md): the git skill keeps work out of the main checkout unless asked or the project's AGENTS.md opts out; a session starts in the worktree it is pointed at or makes one, and reuses it for diversions and stacked PRs; baseline plugin 0.8.38.
 
 - [2026-11-19 Tighten Codex Brew Rules](2026-11-19-tighten-codex-brew-rules.md): Codex no longer allows `brew install --HEAD` or `brew reinstall` for any formula without a prompt; a read-only `brew info` replaces the `xpkg-git` rules.
