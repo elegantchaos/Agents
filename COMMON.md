@@ -13,7 +13,7 @@ Keep detailed and task-specific guidance in skills; the `baseline` plugin owns c
 - Never hard-wrap Markdown to a column width: write each paragraph and list item on one line, even in a file that is already wrapped.
 - Follow the spirit of all guidelines, not just the letter. Avoid workarounds which superficially make a pattern fit by adding a forwarding or translation layer.
 - Work is complete only when changed files have been checked against the required skills' checklists, and all lint findings are fixed.
-- Work on a branch and worktree, and use a pull request for every change to `main`.
+- Work on a branch and worktree, and use a pull request for every change to `main`, unless the project's AGENTS.md says to work in the main checkout or commit to `main` directly.
 - Create new worktrees with `agt worktree create <name>` in the project's `.worktrees/<tree>` directory. In Codex, attach the resulting checkout with `attach_worktree`; follow `baseline:git` for setup, authorization and runtime integration.
 - Do not merge until the repository's required full validation has passed for the PR's latest commit that affected the build; later documentation-only commits do not need it again.
 
@@ -51,8 +51,7 @@ Projects opt in to a development journal or decision log through `Project Specif
 
 ## Tool Paths
 
-- At the start of every session, before other work, run `mint install elegantchaos/AgentTools` and `mint install elegantchaos/ReleaseTools`, which change nothing when the newest release is already installed. They need network access and write outside the workspace, so when sandboxed, request outside-sandbox execution through the runtime's approval flow. If they cannot run, continue with the installed tools and report that they may be out of date. Skills assume the latest release and do not name minimum tool versions.
-- When a required Mint-installed command is unavailable on `PATH`, use `~/.mint/bin/<command>` as a fallback before treating the tool as missing.
+- At the start of every session, before other work, update the standard tools as the `baseline:tools` skill describes.
 - Run Python-based agent utilities, including skill validators, using `~/.local/share/agents/.venv/bin/python` explicitly. Use each project's own environment for project Python code. If the shared environment or a required dependency is missing, report it.
 - Install shared Python agent dependencies from `~/.local/share/agents/requirements-agent-tools.lock` with `--require-hashes --only-binary=:all:`. Review version and hash changes before updating the lock file.
 - Write temporary files to the harness-provided scratchpad directory if one exists; otherwise use `<repository>/.build/tmp/`, creating it if needed. Do not use `/tmp`, `/private/tmp`, or other system temporary directories, which can trigger unnecessary approval prompts.
