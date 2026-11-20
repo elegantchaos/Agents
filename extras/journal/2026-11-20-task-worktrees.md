@@ -1,0 +1,5 @@
+# Every Task Gets Its Own Worktree
+
+Sam found Bookish's NR1 branch checked out in the main checkout. The reflog showed every task branch for days had been made there with `git checkout -b`. The git skill opened its worktree section with "reuse a suitable existing checkout or worktree", and an agent could read the main checkout as suitable. Bookish's AGENTS.md also allowed "a `feature/` branch without approval" and said nothing about a worktree, while the sandbox made `git checkout -b` free and `agt worktree create` cost an approval.
+
+The skill now says that each new task starts in a worktree of its own, without approval, and that neither the main checkout nor another task's worktree counts as suitable. It also covers unrelated work in an existing task's worktree: offer a new worktree and wait for confirmation. That rule came from Bookish's AGENTS.md, which now drops the line. The rule does not name a creation tool, so Codex's refusal to use `agt` for worktrees is still handled by the existing runtime conflict clause, not by this rule. Baseline plugin 0.8.38.

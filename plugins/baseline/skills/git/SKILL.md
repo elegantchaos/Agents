@@ -37,7 +37,9 @@ Git and `gh` for operations it does not cover, including Actions logs.
 
 ## Worktree Setup
 
-Reuse a suitable existing checkout or worktree when one is already available. To create a new worktree, run `agt worktree create <name>` from a checkout of the repository. AgentTools owns the naming, branch and location rules, initialises submodules, and prepares dependencies; it places each worktree in `<project-root>/.worktrees/<tree>`, including when invoked from an existing linked checkout. Use `--base <revision>` when the task specifies a starting revision; otherwise the invoking checkout's HEAD is used. Uncommitted changes and ignored machine-local configuration are not copied.
+Start each new task in a worktree of its own, on its own branch; this needs no approval. Never start one in the repository's main checkout, or in a worktree that belongs to other work, even if it is clean; reuse only a worktree already made for this task. When the user asks for unrelated work in a worktree that belongs to another task, offer a new worktree for it and wait for confirmation.
+
+To create a new worktree, run `agt worktree create <name>` from a checkout of the repository. AgentTools owns the naming, branch and location rules, initialises submodules, and prepares dependencies; it places each worktree in `<project-root>/.worktrees/<tree>`, including when invoked from an existing linked checkout. Use `--base <revision>` when the task specifies a starting revision; otherwise the invoking checkout's HEAD is used. Uncommitted changes and ignored machine-local configuration are not copied.
 
 Obtain `agt` with `../refresh/scripts/ensure-agt.sh`. Check `agt worktree create --help` and `agt prepare --help` before use. If either command is missing, run that helper once with `--update`, use the absolute executable path it returns, and check again. Report a version gap only if the updated tool still lacks the commands. If the bootstrap is blocked, follow the runtime's approval process or ask the user to run it; do not reconstruct setup with ad hoc commands. During AgentTools development, an explicitly supplied source build can be used.
 

@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-20 Every Task Gets Its Own Worktree](2026-11-20-task-worktrees.md): the git skill makes a worktree of its own mandatory for each new task and rules out the main checkout and other tasks' worktrees; unrelated work prompts an offer of a new worktree; baseline plugin 0.8.38.
+
 - [2026-11-19 Tighten Codex Brew Rules](2026-11-19-tighten-codex-brew-rules.md): Codex no longer allows `brew install --HEAD` or `brew reinstall` for any formula without a prompt; a read-only `brew info` replaces the `xpkg-git` rules.
 
 - [2026-11-19 Review Report Handoff](2026-11-19-review-report-handoff.md): Review reports default to `Extras/Reviews/` and are committed and pushed to the reviewed branch for the next agent. Baseline plugin 0.8.37.
