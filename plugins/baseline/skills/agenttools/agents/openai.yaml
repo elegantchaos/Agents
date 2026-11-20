@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentTools"
+  short_description: "Getting and updating the agt command-line tool"
+  default_prompt: "Use $baseline:agenttools to make sure agt is installed and up to date."

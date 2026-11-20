@@ -1,5 +1,7 @@
 # Journal
 
+- [2026-11-20 AgentTools Skill](2026-11-20-agenttools-skill.md): `baseline:agenttools` owns `ensure-agt.sh` and the rules for getting and updating `agt` and for a blocked install, which four places described differently; needs an AgentTools release with the new canonical path; baseline plugin 0.8.39, Swift plugin 0.12.2.
+
 - [2026-11-19 Tighten Codex Brew Rules](2026-11-19-tighten-codex-brew-rules.md): Codex no longer allows `brew install --HEAD` or `brew reinstall` for any formula without a prompt; a read-only `brew info` replaces the `xpkg-git` rules.
 
 - [2026-11-19 Review Report Handoff](2026-11-19-review-report-handoff.md): Review reports default to `Extras/Reviews/` and are committed and pushed to the reviewed branch for the next agent. Baseline plugin 0.8.37.
