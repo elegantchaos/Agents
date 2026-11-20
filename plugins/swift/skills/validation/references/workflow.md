@@ -1,8 +1,6 @@
 # Swift Validation Workflow
 
-## Getting `agt`
-
-Formatting and validation run `agt format` and `agt validate` from AgentTools. Run this skill's `scripts/ensure-agt.sh` to get the path to `agt`. `baseline:tools` owns the rest: checking that a subcommand or option such as `agt prepare` or `--full` exists, updating once when it does not, and what to do when the install is blocked.
+Formatting and validation run `agt format` and `agt validate` from AgentTools.
 
 ## Commands
 
@@ -28,8 +26,6 @@ Formatting and validation run `agt format` and `agt validate` from AgentTools. R
 - Options:
   - `agt format --help`
   - `agt validate --help`
-
-These modes need an AgentTools release that has `--full`; if `agt validate --help` does not list it, follow `baseline:tools`.
 
 `agt validate` never modifies the development checkout's source, so always run `agt format` first.
 
@@ -103,7 +99,7 @@ An external blockage prevents validation without indicating an error in the chan
 
 A dependency clone or checkout failing with `Operation not permitted` or `Permission denied` on `.git/config`, `.git/config.lock` or `.git/hooks` is a dependency-preparation blockage. Follow Prepare Before TDD above: request approval for `agt prepare` outside the sandbox, or ask the user to run it, then retry the same `agt validate` command inside the sandbox. Do not rerun the entire validation outside merely to populate dependencies. Cache permissions and network failures are separate failure classes; preparation advice does not fix them.
 
-A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Get the latest `agt` with `scripts/ensure-agt.sh --update`, as `baseline:tools` describes, including when the sandbox blocks it. Then ask the user to run `<path> sandbox configure`, giving the absolute path it printed, and to start a new session. That command lets Claude Code's and Codex's sandboxes write those caches.
+A sandbox that denies writes to `~/Library/Caches/org.swift.swiftpm` or the per-user clang module cache ("Operation not permitted") is an external blockage. Ask the user to run `agt sandbox configure` and start a new session. That command lets Claude Code's and Codex's sandboxes write those caches.
 
 Apart from that update, for an external blockage, do not modify the environment or run separate fallback verification automatically. Report the validation as blocked, identify the blocker and skipped stages, then request permission for any proposed fallback command.
 

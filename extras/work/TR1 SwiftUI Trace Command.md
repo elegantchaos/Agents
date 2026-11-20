@@ -10,4 +10,4 @@ SwiftUI trace analysis is an `agt` command, the `swift:swiftui-trace` skill invo
 
 ## Notes
 
-Inspect the script and decide the command boundary before implementation. `ensure-agt.sh` remains the only bootstrap exception to decision 0004.
+Inspect the script and decide the command boundary before implementation.

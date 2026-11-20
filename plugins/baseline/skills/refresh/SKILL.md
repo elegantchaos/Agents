@@ -54,7 +54,7 @@ Examples:
 ## Shared Resource Maintenance
 
 The public skill and shared rules workflows are part of the global pass.
-Use the `agt` command from the shared agents repository root. Start by installing the latest release with `../tools/scripts/ensure-agt.sh --update`, which prints the path to `agt`; `baseline:tools` covers a missing command or a blocked install:
+Use the `agt` command from the shared agents repository root:
 
 ```bash
 agt refresh

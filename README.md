@@ -21,13 +21,14 @@ Clone this repository to:
 
 - `~/.local/share/agents`
 
-`agt`, from [AgentTools](https://github.com/elegantchaos/AgentTools), manages shared resources. With [Homebrew](https://brew.sh) installed, install it, or update it to the latest release, with the `baseline` plugin's helper, which installs Mint first if it is missing and prints the path to `agt` (usually `~/.mint/bin/agt`):
+`agt`, from [AgentTools](https://github.com/elegantchaos/AgentTools), manages shared resources. On a new machine with [Homebrew](https://brew.sh), install Mint and then AgentTools:
 
 ```bash
-~/.local/share/agents/plugins/baseline/skills/tools/scripts/ensure-agt.sh --update
+brew install mint
+mint install elegantchaos/AgentTools
 ```
 
-The commands below assume `agt` is on your `PATH`. If `ensure-agt.sh` printed `~/.mint/bin/agt`, add `~/.mint/bin` to your `PATH` first.
+Mint installs `agt` in `~/.mint/bin`; add that folder to your `PATH`. After this, agents keep it up to date.
 
 Then, from the repository root, run `agt refresh`. It syncs and links the shared skills, lets both runtimes' sandboxes write the caches that Swift validation needs (`agt sandbox configure`, which merges this machine's paths into `~/.claude/settings.json` and `~/.codex/config.toml`), and installs the shared plugins in Claude Code and Codex (skipping a runtime that is not installed):
 
