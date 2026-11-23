@@ -1,6 +1,6 @@
 # Journal
 
-- [2026-11-23 How Much Detail A Design Holds](2026-11-23-design-detail.md): the records skill makes communicating the overall shape a design document's primary purpose, draws the design/implementation line at commitment, not level of detail, and checks each detail for commitment, necessity and placement; bulky contracts go in detailed subsections or linked design documents; baseline plugin 0.8.39.
+- [2026-11-23 How Much Detail A Design Holds](2026-11-23-design-detail.md): the records skill makes communicating the overall shape a design document's primary purpose, draws the design/implementation line at commitment, not level of detail, and checks each detail for commitment, necessity and placement; bulky contracts go in detailed subsections or linked design documents; the design guidance is reordered to follow its own progressive disclosure; diagrams are hand-written SVG instead of Excalidraw; baseline plugin 0.8.39.
 
 - [2026-11-20 Standard Tools Skill](2026-11-20-tools-skill.md): `baseline:tools` covers installing, updating and finding Mint, `agt`, `rt` and `swift ci`, including the session-start update and blocked installs; `ensure-agt.sh` is deleted and a new machine is set up by hand; AgentTools Owns Supporting Commands (0004) revised; baseline plugin 0.8.38, Swift plugin 0.12.2.
 

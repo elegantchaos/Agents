@@ -67,7 +67,9 @@ For an explicit major redesign, isolate any necessary comparison with the previo
 
 Use diagrams where they clarify relationships, boundaries, flows or interactions more effectively than prose alone. Place a broad conceptual diagram near the overview and more detailed diagrams beside the concepts they explain, when useful. Do not add diagrams that merely decorate the document or repeat an already clear list.
 
-Draw diagrams with Excalidraw. Keep an editable `.excalidraw` source and a rendered image in the project's documentation tree, following its asset conventions. Embed the image and link the editable source beside it; include an online editing link when one is available. Check the rendered diagram visually for readable labels, clear flow and agreement with the text, and update both source and image together.
+Draw each diagram as a hand-written SVG file, which is both its editable source and its rendered image. Store it in the project's documentation tree, following its asset conventions, and embed it with alt text that says what the diagram shows. Give the SVG a `<title>` and a `<desc>` that describes the diagram in prose, and a solid background so it stays readable on dark themes. Keep it plain and legible: a system font, text no smaller than 12px, a small consistent palette, labels inside or beside their shapes, and arrows that do not cross text. Render it and check it visually for readable labels, clear flow and agreement with the text.
+
+Diagrams in other formats, such as Excalidraw source and image pairs, can stay until they next need changing; then redraw them as SVG and remove the old files.
 
 ### Naming And Location
 
@@ -78,7 +80,7 @@ Name design documents `<Subject> Design.md`, such as `Datastore Design.md`. Name
 - Before creating or changing a design document, prepare the proposed text or diff for review, then ask a separate question naming each document and summarising the changes, including any changes to meaning, scope or structure. Only a direct yes to that question confirms the edit. Prepare drafts in the conversation or a temporary working file; keep the canonical document unchanged until confirmed.
 - Agreement with a design, approval to implement code, or a general instruction to keep documentation current is not confirmation to write or rewrite the design document. A question that bundles design agreement with permission to edit does not count.
 - Confirmation covers only the proposed edits. Do not expand a focused update into a rewrite, compaction or reorganisation. Present further changes separately for confirmation; do not ask again for edits already confirmed in the current scope.
-- Apply this gate to all edits, including wording, links and diagrams, and to renaming, moving or deleting design documents. Changes to a design diagram include its editable source and rendered image. Correcting a link's target after the linked file moves or is renamed is the exception: it needs no confirmation, provided the link text and its meaning are unchanged.
+- Apply this gate to all edits, including wording, links and diagrams, and to renaming, moving or deleting design documents. Correcting a link's target after the linked file moves or is renamed is the exception: it needs no confirmation, provided the link text and its meaning are unchanged.
 
 ### Compliance Checklist
 
@@ -93,7 +95,7 @@ Before reporting a design-document task complete, check each document against th
 - Optional sections earn their place. Appendices contain supporting material, and the main design is self-contained.
 - The document describes the current intended design in the present tense; proposal status and unresolved questions are explicit.
 - Superseded descriptions and revision-history framing have been removed. Any appendix about earlier revisions was requested; any previous-design comparison is necessary to an explicit major redesign and isolated from the main design. Background, prior art and brief rationale are relevant, and deferred possibilities are clearly distinguished from current commitments.
-- Diagrams are used where they improve understanding. Each is drawn with Excalidraw, has a linked editable source and embedded rendered image, has been visually checked, and agrees with the text. Source and image are current together.
+- Diagrams are used where they improve understanding. Each is an embedded SVG with a title, description and alt text, has been rendered and checked visually, and agrees with the text.
 - The filename is `<Subject> Design.md` under `Extras/Documentation/`, optionally in a topic subfolder, or an explicit project convention accounts for the difference. A corresponding implementation document uses `<Subject> Implementation.md` in the same home.
 - Links to implementation documentation, glossaries and enabled project records resolve and point to the appropriate source without duplicating its detailed rules.
 - The proposed text or diff was presented and a separate confirmation obtained for the named documents before editing them. The final diff stays within that scope, including any diagram, naming or location changes; no unreviewed rewrite or cleanup was added.
