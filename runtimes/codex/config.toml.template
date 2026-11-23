@@ -1,21 +1,40 @@
 model = "gpt-5.3-codex"
 personality = "pragmatic"
 
+# MCP servers. Those marked `enabled = false` stay configured but cost no
+# context until switched on.
+
 [mcp_servers.playwright]
 command = "npx"
 args = ["@playwright/mcp@latest"]
+enabled = false
 
 # Set this to the local path where cupertino is installed on each machine.
 [mcp_servers.cupertino]
 command = "/usr/local/bin/cupertino"
 args = ["serve"]
 
+[mcp_servers.cupertino.tools.search_docs]
+approval_mode = "approve"
+
+[mcp_servers.cupertino.tools.read_document]
+approval_mode = "approve"
+
 [mcp_servers.xcode]
 command = "xcrun"
 args = ["mcpbridge"]
+enabled = false
 
 [mcp_servers.figma]
 url = "https://mcp.figma.com/mcp"
+enabled = false
+
+[mcp_servers.excalidraw]
+url = "https://api.excalidraw.com/api/v1/mcp"
+enabled = false
+
+[mcp_servers.excalidraw.http_headers]
+Authorization = "Bearer <token goes here>"
 
 # Optional, machine-local trusted project paths:
 # [projects."/absolute/path/to/project"]
