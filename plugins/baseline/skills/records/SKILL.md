@@ -29,6 +29,8 @@ Links follow the same split. Keep links in current documentation pointing at eac
 
 ### Scope And Boundaries
 
+A design document's primary purpose is to communicate the overall shape of the design clearly to its reader: the main concepts, how they fit together, and the commitments that hold them together. The rules below serve that purpose. When a correct detail would obscure the shape, move it later or out of the document.
+
 A design states what any conforming implementation must honour: its concepts, relationships, responsibilities, contracts and invariants. Include ownership, failure behavior and algorithms where they define the design. The line between design and implementation is commitment, not level of detail. A precise data format that other components rely on is design; a high-level account of how particular code is organised is implementation.
 
 Do not describe implementation-specific types and functions, source file layouts, framework wiring, or code walkthroughs. This prohibition also applies to appendices. Put these details in a linked implementation document. Brief references to an API or technology are allowed when they explain a conceptual contract or illustrate a replaceable option; they must not become instructions for implementing it.
@@ -87,6 +89,7 @@ Before reporting a design-document task complete, check each document against th
 - The document describes the current intended design in the present tense; proposal status and unresolved questions are explicit.
 - Concepts, responsibilities and contracts are distinct from implementation details, usage instructions, progress, delivery plans and historical records. No descriptions of implementation-specific types, functions, source file layouts, framework wiring or code walkthroughs remain in the main text or appendices. Any API or technology references explain the conceptual contract or an option, without prescribing implementation mechanics.
 - Essential contracts, invariants, ownership, failure behavior and design-defining algorithms remain in their concept sections.
+- A reader can grasp the overall shape of the design from the main reading path without wading through detail.
 - Each detail is a commitment that callers, stored data, other components or correctness depend on. The design does not prescribe a single implementation, and deliberate freedoms are stated where readers might assume a constraint. The main reading path holds what a reader needs to understand the whole; bulky contracts sit in detailed subsections or linked design documents.
 - A short opening states purpose, scope and the central model. Any overview concept sections and principles develop the broad model before terminology and detailed design. The hierarchy supports these reading levels without forcing flat headings.
 - Terminology contains concise definitions of fundamental or ambiguous terms, links any project glossary and keeps detailed rules in the concept sections. Recaps agree with their authoritative definitions and contracts.
