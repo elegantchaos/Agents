@@ -6,8 +6,8 @@ before delivering a document. Omit sections that add no useful content. Follow t
 records skill's confirmation process before creating or changing the canonical
 design document; prepare the review draft separately. -->
 
-<!-- When a broad diagram helps, embed an Excalidraw image here and link its
-editable source. Use the project's asset locations; do not leave broken links. -->
+<!-- When a broad diagram helps, embed an SVG diagram here with alt text.
+Use the project's asset locations; do not leave broken links. -->
 
 ## {{Overview Concept}}
 
@@ -31,7 +31,7 @@ Link the project glossary if one exists; keep local definitions consistent. -->
 
 <!-- Describe the intended behavior, responsibilities and invariants.
 Repeat concept sections and subsections as needed. Keep implementation mechanics
-in implementation documentation. Add Excalidraw diagrams where they clarify detail. -->
+in implementation documentation. Add SVG diagrams where they clarify detail. -->
 
 ## Open Questions
 
