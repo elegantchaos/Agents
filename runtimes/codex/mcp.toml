@@ -27,3 +27,10 @@ enabled = false
 [mcp_servers.figma]
 url = "https://mcp.figma.com/mcp"
 enabled = false
+
+[mcp_servers.excalidraw]
+url = "https://api.excalidraw.com/api/v1/mcp"
+enabled = false
+
+[mcp_servers.excalidraw.headers]
+Authorization = "Bearer <token goes here>"
