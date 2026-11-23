@@ -1,5 +1,78 @@
-model = "gpt-5.3-codex"
-personality = "pragmatic"
+model = "gpt-6.2-sol"
+model_reasoning_effort = "medium"
+personality = "friendly"
+sandbox_mode = "workspace-write"
+web_search = "indexed"
+
+[features]
+js_repl = false
+memories = true
+
+[memories]
+generate_memories = true
+use_memories = true
+
+# `agt sandbox configure` adds this machine's writable roots.
+[sandbox_workspace_write]
+network_access = true
+
+# `agt refresh` adds the elegantchaos marketplace and installs its plugins.
+[plugins."baseline@elegantchaos"]
+enabled = true
+
+[plugins."swift@elegantchaos"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = false
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[[skills.config]]
+name = "github:gh-address-comments"
+enabled = false
+
+[[skills.config]]
+name = "github:github"
+enabled = false
+
+[[skills.config]]
+name = "github:yeet"
+enabled = false
+
+[apps.connector_openai_codex_document_control]
+enabled = false
+
+[apps.connector_openai_chatgpt_pets]
+enabled = false
+
+[apps.connector_openai_safety_settings]
+enabled = false
 
 # MCP servers. Those marked `enabled = false` stay configured but cost no
 # context until switched on.
@@ -13,6 +86,7 @@ enabled = false
 [mcp_servers.cupertino]
 command = "/usr/local/bin/cupertino"
 args = ["serve"]
+enabled = false
 
 [mcp_servers.cupertino.tools.search_docs]
 approval_mode = "approve"
@@ -23,7 +97,7 @@ approval_mode = "approve"
 [mcp_servers.xcode]
 command = "xcrun"
 args = ["mcpbridge"]
-enabled = false
+enabled = true
 
 [mcp_servers.figma]
 url = "https://mcp.figma.com/mcp"
@@ -35,6 +109,27 @@ enabled = false
 
 [mcp_servers.excalidraw.http_headers]
 Authorization = "Bearer <token goes here>"
+
+[desktop]
+codeFontSize = 12
+code-review-sidebar-layout = "compact"
+composerEnterBehavior = "cmdIfMultiline"
+conversationDetailMode = "STEPS_COMMANDS"
+dock-icon-preference = "codex-system"
+followUpQueueMode = "steer"
+git-branch-prefix = "feature/"
+git-show-sidebar-pr-icons = true
+localeOverride = "en-US"
+mac-menu-bar-enabled = false
+notifications-sound = "Tink"
+realtimeVoiceScreenContextEnabled = false
+show-context-window-usage = true
+worktree-confirm-before-delete = false
+worktree-keep-count = 5
+worktree-upstream-refresh-mode = "best-effort"
+
+[desktop.open-in-target-preferences]
+global = "vscode"
 
 # Optional, machine-local trusted project paths:
 # [projects."/absolute/path/to/project"]
