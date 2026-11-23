@@ -31,9 +31,9 @@ If any record is unread or an applicable constraint remains unchecked, decision 
 
 This requirement applies to every review mode, including plans and design documents.
 
-Before assessing the change, list every skill that applies to it: those the project's `AGENTS.md` assigns, and those for each changed file's language and framework. Read each skill's `SKILL.md` and every reference it marks as required, in full. Then check every changed file, or every file in scope for a full review, against each applicable skill's checklist.
+Before assessing the change, identify every applicable skill, including those assigned by the project's `AGENTS.md` and those for the languages and frameworks in scope. Inspect each skill's reference list. Read its `SKILL.md` in full, along with every reference it marks as required and every reference that applies to the review scope, including optional and unlabelled references. A reference applies if it governs or helps assess any file, behaviour, or design decision in scope. If applicability is unclear from the skill's description, open the reference and check. For a full package or codebase review, read every reference of each applicable skill. Check every changed file, or every file in scope for a full review, against the applicable checklists.
 
-An unread skill or unchecked checklist is not a coverage gap to report: it blocks the review. Read it before reporting. If a skill genuinely cannot be read, report that the review is incomplete and give no verdict. Time or context limits do not justify skipping skills or sampling their references, and general knowledge of a language or framework does not substitute for its skill.
+Complete the reading and checklist coverage before giving a verdict. If you cannot read an applicable skill or a reference covered by this rule, or cannot complete an applicable checklist, identify the gap, report the review as incomplete, and give no verdict. Read the material in full even when time or context is limited. General knowledge of a language or framework does not substitute for its skill.
 
 Name the skills read in the Summary. Report checklist deviations in Findings with the governing rule; omit clean checklist results.
 
@@ -101,12 +101,12 @@ Every package or file not read in full, anything else skipped or unverified, why
 
 - Review the whole change. Do not stop after the first few findings.
 - Read beyond the diff: every changed file in full, the callers of changed code, the code the change newly depends on or places in a new context, and sibling code that does similar jobs.
-- Back every finding with evidence: a `file:line`, a search result, or a test outcome. Mark findings you could not confirm as unverified.
+- Back every finding with evidence from the reviewed revision. Use the smallest useful line range and cite the governing project rule when the finding depends on one. For a correctness finding, name the input, state, environment, or caller that triggers the defect, explain what happens and what should happen, and base severity on the resulting impact. Mark findings you could not confirm as unverified.
 - When you find a defect, search the whole codebase for other instances of it, including code the change did not touch. Report every instance found.
 - Keep working notes of what you checked, including checks that found nothing: searches and their results, files read, responsibilities traced and the reasoning behind structural conclusions. In the report, give conclusions with implementation evidence and coverage limits; include commands when needed to reproduce a finding. A search inventory alone does not establish a structural conclusion.
 - Apply the same process to guidance, documentation, and configuration changes. For these, callers are the files, skills, and scripts that reference them.
 - Keep fixes outside the review unless requested. Posting review comments or submitting a hosting-service review requires a separate request. Follow the `baseline:git` skill's review-comment guidance when asked to post.
-- Use this skill in preference to built-in review commands, such as Claude Code's `/code-review` or Codex's `/review`. They can supplement the correctness pass. They do not replace this process.
+- Use this skill for the full review. For a high-risk change or a consequential finding that remains uncertain, consider a focused second pass with a fresh reviewer, such as Claude Code's `/code-review` or Codex's `/review`. Give it the same revision and comparison base, the expected behaviour, and the question to investigate. Check each candidate against the code or a targeted test before treating it as confirmed. Merge duplicate findings and keep the main reviewer responsible for coverage, severity, and the final verdict.
 
 ## Publish the Review
 
@@ -118,7 +118,7 @@ In the final response, link to the published report and name any publication ste
 
 ## Required References
 
-- The `baseline:standards` skill, its required references, and any language or framework skills that apply to the changed files, read in full under Skill Coverage before assessing the change.
+- The `baseline:standards` skill and any applicable language or framework skills. Follow Skill Coverage for all required reading before assessing the change.
 - The project's `AGENTS.md`, every record in its decision log when it keeps one, and references needed to understand those records' constraints. Follow Decision Coverage before assessing the change.
 
 ## Process
@@ -212,16 +212,16 @@ Check before reporting the review:
 - The mode was chosen from the request, or the user was asked which was meant.
 - For an entire-codebase review, the scope and map are stated, a split was proposed when the scope exceeded about 10,000 lines, the report follows the codebase structure with the seams and whole-codebase findings first, every package has its own findings, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
-- Every applicable skill and its required references were read in full before assessment, each file in scope was checked against their checklists, and the Summary names them; no skill appears under Not Checked.
+- All reading and file checks specified in Skill Coverage are complete, and the Summary names the skills read. If coverage is incomplete, identify the gap and give no verdict.
 - Every decision record was read in full and considered internally, or each missing read is explicitly listed as a coverage gap. If no decision log exists, that is stated.
 - Every applicable decision constraint has checked evidence or an explicit gap; contradictions are findings, and unclear status or supersession is reported when it affects the review.
-- Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
+- Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Incomplete decision coverage qualifies any verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
 - Every changed file, or for a full review every file in scope, was read in full and checked against the applicable skill checklists.
 - The codebase-effect investigation maps changed capabilities and assumptions, searches across the whole codebase and traces their wider consequences beyond direct callers. Recommendations identify what this change unlocks or breaks, the implementation evidence, the action and relevant constraints; unexplored material boundaries are explicit. Local design descriptions and reference inventories do not substitute for this pass. For a full package review, the package's own concepts, responsibilities and assumptions take the place of the change.
 - Each codebase-effect section, or corresponding whole-codebase section, opens with recommended actions separated from the assessment, or a brief, bold, section-specific sentence explicitly saying nothing needs doing. Immediate fixes and later opportunities are distinguished.
 - One report covers both correctness and wider impact without repeating findings. Every action in Codebase Effect addresses an additional wider consequence or improvement, not the same fix already stated in Findings.
 - For a diff or package review, all four codebase-effect sections are present. For an entire-codebase review, the Map, Seams, Across the Whole and Package Findings sections are present. Together they cover obsolete concepts and code, possible simplification, duplication and design clarity, with explicit coverage limits. Every recommendation has implementation evidence and reasoning; a clean section needs only its no-action sentence.
-- Every finding has evidence and a recommended action. The report omits known status, clean-check inventories and unchanged plans unless needed to assess a finding, recommendation or material gap.
+- Every finding has evidence and a recommended action. Each correctness finding explains its trigger and consequence, and its severity reflects that impact. Findings from a second pass have been checked and deduplicated. The report omits known status, clean-check inventories and unchanged plans unless needed to assess a finding, recommendation or material gap.
 - Every defect was searched for across the codebase, and all instances are reported.
 - Existing validation evidence was assessed for the reviewed revision, with its scope, result and gaps reported separately from any checks run during review. Any new run addresses a specific concern or missing, stale or inconclusive evidence; full application validation is left to the merge workflow.
 - The report identifies the reviewed revision and scope, is in the standard reviews directory, and was pushed to the reviewed branch or submitted through its required PR workflow. The final response gives the report location and any publication blocker.
