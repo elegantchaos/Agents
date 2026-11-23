@@ -1,0 +1,7 @@
+# How Much Detail A Design Holds
+
+Sam asked for a better account of the line between design and implementation documentation than "the main concepts and moving pieces, without too much detail". Level of detail turned out to be the wrong axis: a precise data format that other components rely on is design, and a high-level tour of how the code is organised is implementation. The line is commitment, meaning what any conforming implementation must honour.
+
+Sam added two limits that commitment alone misses. A design that holds every implementation-neutral detail can still be so prescriptive that only one implementation could conform. A design with the right content can still be unusable if the detail comes too early.
+
+The records skill's Scope And Boundaries section now opens with the commitment framing and replaces its single replaceability check with three questions in order: commitment (could the implementation change while this stays true, or would a behaviour-preserving refactor force an edit?), necessity (does anything depend on it? if not, leave it open, and say so where readers might assume a constraint), and placement (does a reader need it to understand the whole?). Progressive Disclosure now says that bulky but necessary contracts go in a detailed subsection of their concept or a linked design document, and the compliance checklist checks for both. Baseline plugin 0.8.39.

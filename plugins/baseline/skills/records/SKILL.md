@@ -29,13 +29,19 @@ Links follow the same split. Keep links in current documentation pointing at eac
 
 ### Scope And Boundaries
 
-Describe concepts, relationships, responsibilities, contracts and invariants. Include ownership, failure behavior and algorithms where they define the design.
+A design states what any conforming implementation must honour: its concepts, relationships, responsibilities, contracts and invariants. Include ownership, failure behavior and algorithms where they define the design. The line between design and implementation is commitment, not level of detail. A precise data format that other components rely on is design; a high-level account of how particular code is organised is implementation.
 
 Do not describe implementation-specific types and functions, source file layouts, framework wiring, or code walkthroughs. This prohibition also applies to appendices. Put these details in a linked implementation document. Brief references to an API or technology are allowed when they explain a conceptual contract or illustrate a replaceable option; they must not become instructions for implementing it.
 
 Keep user instructions in usage documentation and delivery history in the journal. Include brief rationale where it helps explain the design. Decision records, when enabled, hold the authoritative binding choices and fuller consideration of alternatives.
 
-Check each section: could the implementation be replaced while this description remains true? If it explains how particular code fulfils the design, move it into implementation documentation. Preserve algorithms and other contracts that constrain any conforming implementation.
+Test each section, and each detail within it, with three questions in order:
+
+1. **Commitment.** Could the implementation be replaced while this remains true? If it explains how particular code fulfils the design, or would need editing after a refactor that changes no behaviour, move it into implementation documentation.
+2. **Necessity.** Does anything depend on it, such as callers, stored data, other components or correctness? If not, leave it open, even when it is implementation-neutral. A design so detailed that only one implementation could conform is an implementation written in prose. Where readers might assume a constraint that the design deliberately leaves open, say that it is open.
+3. **Placement.** Does a reader need it to understand the whole? If so, keep it in the main reading path; otherwise place it later, as Progressive Disclosure describes.
+
+Preserve algorithms and other contracts that constrain any conforming implementation.
 
 ### Naming And Location
 
@@ -44,6 +50,8 @@ Name design documents `<Subject> Design.md`, such as `Datastore Design.md`. Name
 ### Progressive Disclosure
 
 Start with the conceptual overview and the most important information. Develop each concept from its role and relationships to its contracts and specific detail. Keep essential rules, including invariants, ownership, failure behavior and boundary contracts, in the relevant concept section. Put optional supporting material in an appendix and omit detail that adds no useful context.
+
+A necessary detail can still be in the wrong place. Keep the main reading path to the concepts and the contracts a reader needs to follow the whole. Put bulky contracts, such as a complete data format or every edge case of an algorithm, in a subsection of their concept in the detailed design, or in a separate design document linked from that concept when they are large enough to stand alone.
 
 ### Currency
 
@@ -79,6 +87,7 @@ Before reporting a design-document task complete, check each document against th
 - The document describes the current intended design in the present tense; proposal status and unresolved questions are explicit.
 - Concepts, responsibilities and contracts are distinct from implementation details, usage instructions, progress, delivery plans and historical records. No descriptions of implementation-specific types, functions, source file layouts, framework wiring or code walkthroughs remain in the main text or appendices. Any API or technology references explain the conceptual contract or an option, without prescribing implementation mechanics.
 - Essential contracts, invariants, ownership, failure behavior and design-defining algorithms remain in their concept sections.
+- Each detail is a commitment that callers, stored data, other components or correctness depend on. The design does not prescribe a single implementation, and deliberate freedoms are stated where readers might assume a constraint. The main reading path holds what a reader needs to understand the whole; bulky contracts sit in detailed subsections or linked design documents.
 - A short opening states purpose, scope and the central model. Any overview concept sections and principles develop the broad model before terminology and detailed design. The hierarchy supports these reading levels without forcing flat headings.
 - Terminology contains concise definitions of fundamental or ambiguous terms, links any project glossary and keeps detailed rules in the concept sections. Recaps agree with their authoritative definitions and contracts.
 - Superseded descriptions and revision-history framing have been removed. Any appendix about earlier revisions was requested; any previous-design comparison is necessary to an explicit major redesign and isolated from the main design. Background, prior art and brief rationale are relevant, and deferred possibilities are clearly distinguished from current commitments.
