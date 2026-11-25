@@ -2,16 +2,20 @@
   // these paths assume that the workspace file is located in ~/.local/share/agents/
   "folders": [
     {
-      "name": "agents",
+      "name": "Shared",
       "path": ".",
     },
     {
-      "name": ".codex",
+      "name": "Codex",
       "path": "../../../.codex",
     },
     {
-      "name": ".claude",
+      "name": "Claude",
       "path": "../../../.claude",
+    },
+    {
+      "name": "Claude (Ollama)",
+      "path": "../../../Library/Application Support/AgentTools/ClaudeOllama",
     },
   ],
   "settings": {
