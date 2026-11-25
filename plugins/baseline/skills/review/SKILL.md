@@ -31,7 +31,7 @@ If any record is unread or an applicable constraint remains unchecked, decision 
 
 This requirement applies to every review mode, including plans and design documents.
 
-Before assessing the subject, list every skill that applies to it: those the project's `AGENTS.md` assigns, and those for the language and framework of each file in scope. Read each skill's `SKILL.md` and every reference it marks as required, in full. Then check every file in scope against each applicable skill's checklist.
+Before assessing the subject, list the skills that apply to it: every skill in the `baseline` plugin, always; every skill in the plugin for each language the project uses, such as every `swift` plugin skill in a project with Swift code, or the language's own skill where it has no plugin, such as `python`; and any other skill the project's `AGENTS.md` assigns. Read each skill's `SKILL.md` and every one of its references in full, whether or not the skill marks the reference as required. Then check every file in scope against each applicable skill's checklist.
 
 An unread skill or unchecked checklist is not a coverage gap to report: it blocks the review. Read it before reporting. If a skill genuinely cannot be read, report that the review is incomplete and give no verdict. Time or context limits do not justify skipping skills or sampling their references, and general knowledge of a language or framework does not substitute for its skill.
 
@@ -137,7 +137,7 @@ In the final response, link to the published report and name any publication ste
 
 ## Required References
 
-- The `baseline:standards` skill, its required references, and any language or framework skills that apply to the files in scope, read in full under Skill Coverage before assessing the subject.
+- Every skill Skill Coverage lists, with all of its references, read in full before assessing the subject.
 - The project's `AGENTS.md`, every record in its decision log when it keeps one, and references needed to understand those records' constraints. Follow Decision Coverage before assessing the subject.
 
 ## Process
@@ -235,7 +235,7 @@ Check before reporting the review:
 - The mode was chosen from the request, or the user was asked which was meant.
 - For an entire-codebase review, the scope and map are stated, a split was proposed when the scope exceeded about 10,000 lines, the report follows the codebase structure with the seams and whole-codebase findings first, every package has its own findings, and every package or file not read in full is listed.
 - Intent is stated, or its absence is a finding.
-- Every applicable skill and its required references were read in full before assessment, each file in scope was checked against their checklists, and the Summary names them; no skill appears under Not Checked.
+- Every `baseline` skill, every skill for the project's languages and every other assigned skill, each with all of its references, was read in full before assessment, each file in scope was checked against their checklists, and the Summary names them; no skill appears under Not Checked.
 - Every decision record was read in full and considered internally, or each missing read is explicitly listed as a coverage gap. If no decision log exists, that is stated.
 - Every applicable decision constraint has checked evidence or an explicit gap; contradictions are findings, and unclear status or supersession is reported when it affects the review.
 - Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
