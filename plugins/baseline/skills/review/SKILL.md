@@ -59,7 +59,16 @@ Record each full review actually performed in the journal as an entry whose titl
 
 ### Full Review Coverage
 
-A full review examines every aspect of the package in full, in this order: the design, the code, the tests, then the documentation. None of them is optional. Review the design and the code for conformance to the standards as well as for correctness: the design must be right for the package's purpose and follow the engineering principles the `baseline:standards` skill sets out, and the code must realise that design correctly and follow the coding standards and the skills for its language and frameworks, such as `swift:language`, `swift:concurrency` and `swift:swiftui` for Swift code. Taking the aspects in this order lets a design problem inform the findings about the code, and a code problem those about its tests, so each fix addresses the cause instead of polishing what it will replace.
+A full review examines every aspect of the package in full, in this order: its place in the project, the design, the code, the tests, then the documentation. None of them is optional. Review the design and the code for conformance to the standards as well as for correctness: the design must be right for the package's purpose and follow the engineering principles the `baseline:standards` skill sets out, and the code must realise that design correctly and follow the coding standards and the skills for its language and frameworks, such as `swift:language`, `swift:concurrency` and `swift:swiftui` for Swift code. Taking the aspects in this order lets a problem with the package's place inform the findings about its design, a design problem those about the code, and a code problem those about its tests, so each fix addresses the cause instead of polishing what it will replace.
+
+Assess the package's place in the project or application it serves. This steps outside the package without becoming an entire-codebase review: map how the app and the other packages use it, and what they do near its responsibilities, reading the code needed to judge but not every file. Then answer:
+
+- **Fit for purpose.** Does the package do what the project needs from it, as its consumers show, and not only what its own documentation says?
+- **Duplication.** Does it duplicate functionality in the app or in other packages, or do they duplicate it?
+- **Boundaries.** Would it be better split into two packages, or merged with another package or back into the app? Name the responsibilities that would move and what each resulting part would own.
+- **Exposed surfaces.** Does its public API, or any other surface it exposes, such as configuration, resources, notifications or persisted formats, need refactoring to suit how it is actually used? Look for workarounds and adapters in callers, unused or leaky API, and callers reaching past the API.
+
+When the package serves more than one project, judge it against the consumers within reach and name them. Within an entire-codebase review, use the codebase map for this, and leave findings that belong to a seam between packages to the seams pass.
 
 Coverage must be complete. Read every file the package contains in full: sources, tests, test support such as fixtures and fakes, the manifest and documentation. Reading by search, sampling or reading only the files near a finding is not full coverage. As with skill coverage, a file in scope that has not been read in full blocks the report: read it before reporting, rather than listing it under Not Checked. If the package is too large to read in full in one session, propose a split before starting, as an entire-codebase review does.
 
@@ -195,6 +204,10 @@ Intent, the skills read, verdict (ready, ready after fixes, or needs rework), an
 
 Most severe first. Each with severity (blocking, should fix, or suggestion), location, evidence, and recommended action.
 
+## Place in the Project
+
+Full package reviews only. Lead with recommended actions or a brief no-action sentence, then the assessment of fitness for purpose, duplication with the app and other packages, whether to split or merge the package, and refactoring of its exposed surfaces, as Full Review Coverage describes, naming the consumers examined.
+
 ## Codebase Effect
 
 ### Made Obsolete
@@ -225,7 +238,8 @@ Check before reporting the review:
 - Every applicable decision constraint has checked evidence or an explicit gap; contradictions are findings, and unclear status or supersession is reported when it affects the review.
 - Decision reporting contains only deviations, relevant conflicts or uncertainty, and unresolved coverage gaps; no compliance inventory or clean-result table is included unless explicitly requested. Any incomplete coverage qualifies the verdict as partial and prevents an unqualified ready verdict or architectural compliance claim.
 - Every changed file, or for a full review every file in scope, test code and test support included, was read in full and checked against the applicable skill checklists. A full review's Not Checked lists no unread file in scope.
-- For a full review, the design, code, tests and documentation were each reviewed in full, in that order, with the design and the code checked for conformance to the standards as well as for correctness. Tests were checked for where each behaviour is tested, whether they follow the code's shape, and gaps in coverage.
+- For a full package review, Place in the Project assesses fitness for purpose, duplication with the app and other packages, splitting or merging, and the exposed surfaces, from how its consumers actually use it, and names the consumers examined.
+- For a full review, the package's place, design, code, tests and documentation were each reviewed in full, in that order, with the design and the code checked for conformance to the standards as well as for correctness. Tests were checked for where each behaviour is tested, whether they follow the code's shape, and gaps in coverage.
 - The codebase-effect investigation maps changed capabilities and assumptions, searches across the whole codebase and traces their wider consequences beyond direct callers. Recommendations identify what this change unlocks or breaks, the implementation evidence, the action and relevant constraints; unexplored material boundaries are explicit. Local design descriptions and reference inventories do not substitute for this pass. For a full package review, the package's own concepts, responsibilities and assumptions take the place of the change.
 - Each codebase-effect section, or corresponding whole-codebase section, opens with recommended actions separated from the assessment, or a brief, bold, section-specific sentence explicitly saying nothing needs doing. Immediate fixes and later opportunities are distinguished.
 - One report covers both correctness and wider impact without repeating findings. Every action in Codebase Effect addresses an additional wider consequence or improvement, not the same fix already stated in Findings.
