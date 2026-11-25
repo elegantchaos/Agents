@@ -34,11 +34,10 @@ If the project uses `@Observable` view models, these are directly testable witho
 
 ## Structuring tests
 
-Prefer to organize test types in a pattern that matches the production code. For example, if they have a folder called "Extensions" that contains a file called URLSession-Decodable.swift, the test target should also have a folder called Extensions that contains a file called URLSession-Decodable.swift, and it should test the contents of the original production file.
+Group tests logically, using suites and files. Aim to follow the organisational shape of the code they test, so a reader can find the tests for a piece of code where they would expect them, but the match need not be exact: a folder of related production files can share a test file, and a large production file can have several. Keep the grouping current as the code changes.
 
-**If you are writing new tests, follow this rule. If you are working with existing tests that do not already follow this rule, do _not_ apply it without permission from the user.**
-
-- Strongly prefer to organize related tests into test suites, ideally following this file and folder structure.
+- Test each behaviour as close to where it is implemented as practical. A pure rule, builder or value type gets direct tests; a service, coordinator or runtime that uses it keeps only tests of its own wiring, such as passing a flag through, ordering, or what it does when the rule refuses.
+- When code moves, is extracted or is renamed, move or rename its tests in the same change. Split or regroup test files, and reorganise test folders, whenever their structure has drifted from the code, so each file and suite has one clear subject. This is ordinary maintenance and needs no permission.
 - If there are test fixtures, put them in a dedicated file. If there are only a handful, a simple Fixtures folder is fine. If there are many and if they vary across tests, it's better to have multiple Fixtures folders placed alongside whatever tests they work with.
 - Use tags to mark up different kinds of work. At the very least this should be a `.networking` tag for network-related tests, even if they are mocked. You might also consider `.slow` for any tests that are unexpectedly slow, `.edgeCase` for tests that must be treated with extra care, `.smoke` for smoke tests, and more.
 - Add user-facing messages to `#expect` and `#require` when they provide value. This is not _always_ the case, but it usually is.
