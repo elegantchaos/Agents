@@ -5,13 +5,13 @@ description: Performs a broad review of a pull request, branch, diff, plan, or a
 
 # Review
 
-A review answers three questions:
+A review answers three questions about its subject, whether that is a change, a plan, a package or a whole codebase:
 
-1. Does the change do what it set out to do, correctly?
+1. Does it do what it is meant to do, correctly?
 2. Does it meet our standards?
-3. Is the codebase better for it, and what does it make possible or necessary next?
+3. How does it affect the rest of the codebase, and what does it make possible or necessary next?
 
-The third question matters as much as the first two. A change can be correct and compliant and still leave the codebase more confusing, duplicated, or inconsistent. Answering it requires reading beyond the diff.
+The third question matters as much as the first two. Code can be correct and compliant and still leave the codebase more confusing, duplicated, or inconsistent. Answering it requires reading beyond the subject itself.
 
 ## Decision Coverage
 
